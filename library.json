@@ -1,0 +1,37 @@
+{
+  "title": "Pick the symbols",
+  "description": "Let your student put the correct symbols into sentences",
+  "majorVersion": 0,
+  "minorVersion": 1,
+  "patchVersion": 0,
+  "runnable": 1,
+  "author": "Oliver Tacke",
+  "license": "MIT",
+  "machineName": "H5P.PickTheSymbols",
+  "embedTypes": [
+    "iframe"
+  ],
+  "preloadedJs": [
+    {
+      "path": "dist/h5p-pick-the-symbols.js"
+    }
+  ],
+  "preloadedCss": [
+    {
+      "path": "dist/h5p-pick-the-symbols.css"
+    }
+  ],
+  "preloadedDependencies": [
+    {
+      "machineName": "H5P.Question",
+      "majorVersion": 1,
+      "minorVersion": 4
+    },
+    {
+      "machineName": "H5P.JoubelUI",
+      "majorVersion": 1,
+      "minorVersion": 3
+    }
+  ],
+  "editorDependencies": []
+}

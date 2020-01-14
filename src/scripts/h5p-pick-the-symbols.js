@@ -60,7 +60,7 @@ export default class PickTheSymbols extends H5P.Question {
       const content = new PickTheSymbolsContent({
         taskDescription: this.params.taskDescription,
         text: this.params.text,
-        symbols: this.params.symbols,
+        symbols: Util.htmlDecode(this.params.symbols),
         colorBackground: this.params.behaviour.colorBackground
       });
 

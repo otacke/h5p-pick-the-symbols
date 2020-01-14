@@ -14,7 +14,6 @@ export default class PickTheSymbolsChooser {
     this.content = document.createElement('span');
     this.content.classList.add('h5p-pick-the-symbol-chooser');
     this.content.setAttribute('tabindex', 0);
-    this.content.innerHTML = '&nbsp;';
     this.content.style.backgroundColor = params.color;
 
     this.content.addEventListener('click', () => {

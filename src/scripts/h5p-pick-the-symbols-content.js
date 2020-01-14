@@ -7,9 +7,9 @@ export default class PickTheSymbolsContent {
    * @param {string} [username=world] Username.
    * @param {number} [random=-1] Random number.
    */
-  constructor(textField = 'Hello %username.', username = 'world', random = -1) {
+  constructor(params) {
     this.content = document.createElement('div');
-    this.content.innerHTML = `<p>${textField.replace('%username', username)} (${random})</p>`;
+    this.content.innerHTML = `<p>${params.text}</p>`;
 
     /**
      * Return the DOM for this class.

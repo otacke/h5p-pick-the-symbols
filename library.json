@@ -33,5 +33,11 @@
       "minorVersion": 3
     }
   ],
-  "editorDependencies": []
+  "editorDependencies": [
+    {
+      "machineName": "H5PEditor.RangeList",
+      "majorVersion": 1,
+      "minorVersion": 0
+    }
+  ]
 }

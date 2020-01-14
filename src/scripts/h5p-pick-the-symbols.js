@@ -5,16 +5,11 @@ import Util from './h5p-pick-the-symbols-util';
 /**
  * Class holding a full PickTheSymbols.
  *
- * TODO: Editor: Text input for text
- * TODO: Editor: List of Symbols that should be set by student: Punkt, Fragezeichen, Ausrufezeichen, Komma, Doppelpunkt, Semikolon, Anführungszeichen, Schrägstrich, Bindestrich
- * TODO: Editor: General feedback
- * TODO: Editor: Disable Retry
- * TODO: Editor: Disable Show Solution
- * TODO: Editor: l10n
  * TODO: View: Replace punctuation symbols (by list) with dropdown menu with options according to checked items in list, not blocking
  * TODO: View: Check
  * TODO: View: Show Solution
  * TODO: View: Retry
+ * TODO: xAPI ('multiple choice')
  */
 export default class PickTheSymbols extends H5P.Question {
   /**
@@ -44,6 +39,7 @@ export default class PickTheSymbols extends H5P.Question {
         enableSolutionsButton: true,
         enableRetry: true
       },
+      symbols: `.?!,:;'"`,
       l10n: {
         checkAnswer: 'Check answer',
         showSolution: 'Show solution',
@@ -58,11 +54,10 @@ export default class PickTheSymbols extends H5P.Question {
      * Register the DOM elements with H5P.Question
      */
     this.registerDomElements = () => {
-      const content = new PickTheSymbolsContent(
-        params.textField, // Parameter from editor
-        H5PIntegration.user.name, // Try to retrieve user name from host system,
-        this.previousState.random // previous session state
-      );
+      const content = new PickTheSymbolsContent({
+        text: this.params.text,
+        symbols: this.params.symbols
+      });
 
       // Register content with H5P.Question
       this.setContent(content.getDOM());

@@ -18,13 +18,13 @@ export default class PickTheSymbolsContent {
       .replace(/ &nbsp;/g, ' ')  // CKeditor creates &nbsp; for multiple blanks
       .replace(/[ ]{2,}/g, ' '); // Only keep one blank between words
 
-    const init = PickTheSymbolsContent.initChoosers(
+    this.choosers = [];
+
+    // DOM nodes need to be created first
+    this.textTemplate = PickTheSymbolsContent.createTextTemplate(
       [...params.text],
-      [...params.symbols],
-      params.colorBackground
+      [...params.symbols]
     );
-    this.text = init.text
-    this.choosers = init.choosers;
 
     // DOM
     this.content = document.createElement('div');
@@ -43,9 +43,22 @@ export default class PickTheSymbolsContent {
 
     // Textfield
     this.textfield = document.createElement('div');
-    this.textfield.innerHTML = this.text;
+    this.textfield.innerHTML = this.textTemplate;
     this.textfield.classList.add('h5p-pick-the-symbols-text');
     this.content.appendChild(this.textfield);
+
+    // Replace placeholders with chooser objects
+    const placeholders = this.content.querySelectorAll('.h5p-pick-the-symbols-placeholder');
+    placeholders.forEach(placeholder => {
+      const chooser = new PickTheSymbolsChooser({
+        color: params.colorBackground,
+        options: params.symbols,
+        solution: placeholder.dataset.solution
+      });
+
+      this.choosers.push(chooser);
+      placeholder.parentNode.replaceChild(chooser.getDOM(), placeholder);
+    })
 
     /**
      * Return the DOM for this class.
@@ -61,21 +74,20 @@ export default class PickTheSymbolsContent {
    * Initialize choosers and text.
    * @param {string[]} chars Characters of text.
    * @param {string[]} symbols Symbols to replace.
-   * @param {string} color CSS color for blanks background.
    * @return {object} Choosers and HTML text to display.
    */
-  static initChoosers(chars, symbols, color) {
+  static createTextTemplate(chars, symbols) {
     if (!chars || !symbols) {
       return;
     }
 
-    // We only want one chooser between words
+    // We only want one placeholder between words
     chars = chars.reduce( (prev, curr) => {
       if (curr === ' ' && symbols.indexOf(prev.slice(-1)) !== -1) {
-        return prev;
+        return `${prev}\u200C`;
       }
       else if (symbols.indexOf(curr) !== -1 && prev.slice(-1) === ' ') {
-        return `${prev.slice(0, -1)}${curr}`;
+        return `${prev.slice(0, -1)}\u200C${curr}`;
       }
       else {
         return `${prev}${curr}`;
@@ -83,7 +95,7 @@ export default class PickTheSymbolsContent {
     }, '');
 
     // We could end up with <p></p> later that wouldn't have height
-    chars = chars.replace(/&nbsp;/g, '\u2800');
+    chars = chars.replace(/&nbsp;/g, '\u200C');
     chars = [...chars];
 
     const choosers = [];
@@ -91,7 +103,7 @@ export default class PickTheSymbolsContent {
 
     for (let i = 0; i < chars.length; i++) {
 
-      // Skip HTML tags
+      // Skip HTML tags, so they won't be touched by replacement procedure
       if (!htmlMode && chars[i] === '<') {
         htmlMode = true;
         continue;
@@ -109,22 +121,10 @@ export default class PickTheSymbolsContent {
         continue;
       }
 
-      // Replace blanks and symbols with chooser
-      const chooser = new PickTheSymbolsChooser({
-        color: color,
-        options: symbols,
-        solution: chars[i]
-      });
-
-      choosers.push(chooser);
-
-      // TODO: Doh! This doesn't work, of course. Fix!
-      chars[i] = chooser.getDOM().outerHTML;
+      // Add placeholder
+      chars[i] = `<span class="h5p-pick-the-symbols-placeholder" data-solution="${chars[i]}"></span>`;
     }
 
-    return {
-      choosers: choosers,
-      text: chars.join('')
-    };
+    return chars.join('');
   }
 }

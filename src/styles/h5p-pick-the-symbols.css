@@ -1,3 +1,19 @@
 .h5p-pick-the-symbols {
-  color: blue;
+}
+
+.h5p-pick-the-symbols-content {
+  width: 100%
+}
+
+.h5p-pick-the-symbols-taskDescription {
+  width: 100%
+}
+
+.h5p-pick-the-symbols-ruler {
+  border-bottom: 2px solid #eee;
+  width: 100%
+}
+
+.h5p-pick-the-symbols-text {
+  width: 100%
 }

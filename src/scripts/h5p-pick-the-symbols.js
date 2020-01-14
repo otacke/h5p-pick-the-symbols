@@ -35,11 +35,13 @@ export default class PickTheSymbols extends H5P.Question {
 
     // Make sure all variables are set
     this.params = Util.extend({
+      taskDescription: '',
+      text: '',
+      symbols: `.?!,:;'"`,
       behaviour: {
         enableSolutionsButton: true,
         enableRetry: true
       },
-      symbols: `.?!,:;'"`,
       l10n: {
         checkAnswer: 'Check answer',
         showSolution: 'Show solution',
@@ -55,6 +57,7 @@ export default class PickTheSymbols extends H5P.Question {
      */
     this.registerDomElements = () => {
       const content = new PickTheSymbolsContent({
+        taskDescription: this.params.taskDescription,
         text: this.params.text,
         symbols: this.params.symbols
       });

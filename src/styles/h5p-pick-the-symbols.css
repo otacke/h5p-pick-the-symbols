@@ -18,3 +18,15 @@
   margin: 1em 0;
   width: 100%;
 }
+
+.h5p-pick-the-symbol-chooser {
+  border-radius: 0.25em;
+  display: inline-block;
+  height: 1em;
+  vertical-align: text-top;
+  width: 1em;
+}
+
+.h5p-pick-the-symbol-chooser:hover {
+  cursor: pointer;
+}

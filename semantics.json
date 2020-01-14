@@ -120,6 +120,20 @@
         "importance": "low",
         "default": true,
         "optional": true
+      },
+      {
+        "name": "colorBackground",
+        "type": "text",
+        "label": "Blanks background color",
+        "importance": "medium",
+        "optional": true,
+        "default": "#c6c6c6",
+        "widget": "colorSelector",
+        "spectrum": {
+          "showInput": true,
+          "showInitial": true,
+          "showPalette": true
+        }
       }
     ]
   },

@@ -40,7 +40,8 @@ export default class PickTheSymbols extends H5P.Question {
       symbols: `.?!,:;'"`,
       behaviour: {
         enableSolutionsButton: true,
-        enableRetry: true
+        enableRetry: true,
+        colorBackground: '#c6c6c6'
       },
       l10n: {
         checkAnswer: 'Check answer',
@@ -59,7 +60,8 @@ export default class PickTheSymbols extends H5P.Question {
       const content = new PickTheSymbolsContent({
         taskDescription: this.params.taskDescription,
         text: this.params.text,
-        symbols: this.params.symbols
+        symbols: this.params.symbols,
+        colorBackground: this.params.behaviour.colorBackground
       });
 
       // Register content with H5P.Question

@@ -30,22 +30,11 @@
     "importance": "high",
     "description": "Enter the text that contains symbols to be picked.",
     "enterMode": "div",
-    "tags": [
-      "strong",
-      "em",
-      "u",
-      "a",
-      "ul",
-      "ol",
-      "h2",
-      "h3",
-      "hr",
-      "pre",
-      "code"
-    ]
+    "tags": []
   },
   {
     "name": "symbols",
+    "label": "Symbols",
     "type": "text",
     "importance": "high",
     "description": "Enter the symbols that the student needs to pick from.",

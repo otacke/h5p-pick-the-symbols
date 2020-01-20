@@ -13,14 +13,14 @@ export default class PickTheSymbolsBlank {
    */
   constructor(params) {
     this.id = params.id;
-    this.answer = params.answer || '&nbsp;';
+    this.answer = params.answer || null;
     this.callbacks = params.callbacks;
     this.solution = params.solution;
 
     this.content = document.createElement('span');
     this.content.classList.add('h5p-pick-the-symbol-blank');
     this.content.setAttribute('tabindex', 0);
-    this.content.innerHTML = this.answer;
+    this.content.innerHTML = this.answer || '&nbsp;';
     this.content.style.backgroundColor = params.color;
 
     this.content.addEventListener('click', () => {
@@ -63,5 +63,13 @@ export default class PickTheSymbolsBlank {
      * @return {null|string} symbol Answer given.
      */
     this.getAnswer = () => this.answer;
+
+    /**
+     * Check if blank contains correct answer.
+     * @return {boolean} True, if answer is correct.
+     */
+    this.isCorrect = () => (this.solution === ' ') ?
+      this.answer === null :
+      this.answer === this.solution;
   }
 }

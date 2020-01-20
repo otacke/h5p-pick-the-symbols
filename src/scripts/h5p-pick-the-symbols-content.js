@@ -21,6 +21,7 @@ export default class PickTheSymbolsContent {
       .replace(/[ ]{2,}/g, ' '); // Only keep one blank between words
 
     this.blanks = [];
+    this.answerGiven = false;
 
     // DOM nodes need to be created first
     this.textTemplate = PickTheSymbolsContent.createTextTemplate(
@@ -113,7 +114,29 @@ export default class PickTheSymbolsContent {
     this.handleClickChooser = (symbol) => {
       this.blanks[this.currentBlank].setAnswer(symbol);
       this.overlay.hide();
+      this.answerGiven = true;
     };
+
+    /**
+     * Detect whether an answer has been given.
+     * @return {boolean} True, if answer was given.
+     */
+    this.getAnswerGiven = () => this.answerGiven;
+
+    /**
+     * Get maximum score possible.
+     * @return {number} Maximum score possible.
+     */
+    this.getMaxScore = () => this.blanks.filter(blank => blank.getSolution() !== ' ').length;
+
+    /**
+     * Get current score.
+     * @return {number} Current score.
+     */
+    this.getScore = () => Math.max(
+      0,
+      this.blanks.reduce((prev, current) => prev - (current.isCorrect() ? 0 : 1), this.getMaxScore())
+    );
   }
 
   /**

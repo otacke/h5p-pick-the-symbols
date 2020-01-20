@@ -48,7 +48,7 @@ export default class PickTheSymbolsBlank {
      * @param {string} symbol Answer given.
      */
     this.setAnswer = (symbol) => {
-      if (!symbol) {
+      if (!symbol || symbol === '&nbsp;') {
         this.answer = null;
         this.content.innerHTML = '&nbsp;';
       }

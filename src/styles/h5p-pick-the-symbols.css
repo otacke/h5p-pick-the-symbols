@@ -22,11 +22,55 @@
 .h5p-pick-the-symbol-blank {
   border-radius: 0.25em;
   display: inline-block;
-  height: 1em;
-  vertical-align: text-top;
   width: 1em;
 }
 
 .h5p-pick-the-symbol-blank:hover {
   cursor: pointer;
+}
+
+.h5p-pick-the-symbols-overlay-outer-wrapper {
+  background-color: rgba(200, 200, 200, 0.9);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  font-size: 0.75em;
+  opacity: 1;
+  padding: 0.5em 0.5em 0.25em 0.5em;
+  position: absolute;
+  top: 0;
+  transition: opacity 1s;
+  visibility: visible;
+  z-index: 10;
+}
+
+.h5p-pick-the-symbols-overlay-outer-wrapper button {
+  border-radius: 0.25em;
+  font-weight: bold;
+  height: 2em;
+  margin: 0 0.25em 0.25em 0;
+  padding: 0;
+  width: 2em;
+}
+
+.h5p-pick-the-symbols-overlay-outer-wrapper button:first-child {
+  margin: 0 0.25em 0.25em 0;
+}
+
+.h5p-pick-the-symbols-overlay-outer-wrapper button:last-child {
+  margin: 0 0 0.25em 0;
+}
+
+.h5p-pick-the-symbols-overlay-outer-wrapper button.active {
+  background-color: #104888;
+}
+
+.h5p-pick-the-symbols-invisible {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.h5p-pick-the-symbols-none {
+  display: none;
 }

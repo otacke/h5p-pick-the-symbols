@@ -1,4 +1,6 @@
+import Overlay from './h5p-pick-the-symbols-overlay';
 import PickTheSymbolsBlank from './h5p-pick-the-symbols-blank';
+import PickTheSymbolsChooser from './h5p-pick-the-symbols-chooser';
 
 /** Class representing the content */
 export default class PickTheSymbolsContent {
@@ -47,10 +49,38 @@ export default class PickTheSymbolsContent {
     this.textfield.classList.add('h5p-pick-the-symbols-text');
     this.content.appendChild(this.textfield);
 
+    // Overlay
+    this.chooser = new PickTheSymbolsChooser({
+      symbols: ['&nbsp;', ...params.symbols],
+      callbacks: {
+        click: (symbol) => {
+          this.handleClickChooser(symbol);
+        }
+      }
+    });
+
+    this.overlay = new Overlay({
+      content: this.chooser.getDOM(),
+      position: {
+        horizontal: 'left',
+        noOverflowX: true
+      }
+    });
+    this.content.appendChild(this.overlay.getDOM());
+
     // Replace placeholders with blanks objects
     const placeholders = this.content.querySelectorAll('.h5p-pick-the-symbols-placeholder');
-    placeholders.forEach(placeholder => {
+    placeholders.forEach((placeholder, index) => {
       const blank = new PickTheSymbolsBlank({
+        id: index,
+        callbacks: {
+          openOverlay: (id) => {
+            this.handleOpenOverlay(id);
+          },
+          closeOverlay: () => {
+            this.handleCloseOverlay();
+          }
+        },
         color: params.colorBackground,
         options: params.symbols,
         solution: placeholder.dataset.solution
@@ -67,6 +97,22 @@ export default class PickTheSymbolsContent {
      */
     this.getDOM = () => {
       return this.content;
+    };
+
+    this.handleOpenOverlay = (id) => {
+      this.currentBlank = id;
+      this.chooser.activateButton(this.blanks[id].getAnswer());
+      this.overlay.moveTo(this.blanks[id].getDOM());
+      this.overlay.show();
+    };
+
+    this.handleCloseOverlay = () => {
+      this.overlay.hide();
+    };
+
+    this.handleClickChooser = (symbol) => {
+      this.blanks[this.currentBlank].setAnswer(symbol);
+      this.overlay.hide();
     };
   }
 

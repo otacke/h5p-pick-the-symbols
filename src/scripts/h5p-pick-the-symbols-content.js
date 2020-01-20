@@ -1,4 +1,4 @@
-import PickTheSymbolsChooser from './h5p-pick-the-symbols-chooser';
+import PickTheSymbolsBlank from './h5p-pick-the-symbols-blank';
 
 /** Class representing the content */
 export default class PickTheSymbolsContent {
@@ -18,7 +18,7 @@ export default class PickTheSymbolsContent {
       .replace(/ &nbsp;/g, ' ')  // CKeditor creates &nbsp; for multiple blanks
       .replace(/[ ]{2,}/g, ' '); // Only keep one blank between words
 
-    this.choosers = [];
+    this.blanks = [];
 
     // DOM nodes need to be created first
     this.textTemplate = PickTheSymbolsContent.createTextTemplate(
@@ -47,18 +47,18 @@ export default class PickTheSymbolsContent {
     this.textfield.classList.add('h5p-pick-the-symbols-text');
     this.content.appendChild(this.textfield);
 
-    // Replace placeholders with chooser objects
+    // Replace placeholders with blanks objects
     const placeholders = this.content.querySelectorAll('.h5p-pick-the-symbols-placeholder');
     placeholders.forEach(placeholder => {
-      const chooser = new PickTheSymbolsChooser({
+      const blank = new PickTheSymbolsBlank({
         color: params.colorBackground,
         options: params.symbols,
         solution: placeholder.dataset.solution
       });
 
-      this.choosers.push(chooser);
-      placeholder.parentNode.replaceChild(chooser.getDOM(), placeholder);
-    })
+      this.blanks.push(blank);
+      placeholder.parentNode.replaceChild(blank.getDOM(), placeholder);
+    });
 
     /**
      * Return the DOM for this class.
@@ -71,10 +71,10 @@ export default class PickTheSymbolsContent {
   }
 
   /**
-   * Initialize choosers and text.
+   * Initialize blanks and text.
    * @param {string[]} chars Characters of text.
    * @param {string[]} symbols Symbols to replace.
-   * @return {object} Choosers and HTML text to display.
+   * @return {object} Blanks and HTML text to display.
    */
   static createTextTemplate(chars, symbols) {
     if (!chars || !symbols) {
@@ -98,7 +98,6 @@ export default class PickTheSymbolsContent {
     chars = chars.replace(/&nbsp;/g, '\u200C');
     chars = [...chars];
 
-    const choosers = [];
     let htmlMode = false;
 
     for (let i = 0; i < chars.length; i++) {

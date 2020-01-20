@@ -1,5 +1,5 @@
 /** Class representing the content */
-export default class PickTheSymbolsChooser {
+export default class PickTheSymbolsBlank {
   /**
    * @constructor
    *
@@ -12,12 +12,12 @@ export default class PickTheSymbolsChooser {
     this.solution = params.solution;
 
     this.content = document.createElement('span');
-    this.content.classList.add('h5p-pick-the-symbol-chooser');
+    this.content.classList.add('h5p-pick-the-symbol-blank');
     this.content.setAttribute('tabindex', 0);
     this.content.style.backgroundColor = params.color;
 
     this.content.addEventListener('click', () => {
-      // Open chooser overlay
+      // Open blank overlay
     });
 
     /**
@@ -30,10 +30,10 @@ export default class PickTheSymbolsChooser {
     };
 
     /**
-     * Get solution for this chooser.
+     * Get solution for this blank.
      */
     this.getSolution = () => {
       return this.solution;
-    }
+    };
   }
 }

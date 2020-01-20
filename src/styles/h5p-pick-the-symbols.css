@@ -19,7 +19,7 @@
   width: 100%;
 }
 
-.h5p-pick-the-symbol-chooser {
+.h5p-pick-the-symbol-blank {
   border-radius: 0.25em;
   display: inline-block;
   height: 1em;
@@ -27,6 +27,6 @@
   width: 1em;
 }
 
-.h5p-pick-the-symbol-chooser:hover {
+.h5p-pick-the-symbol-blank:hover {
   cursor: pointer;
 }

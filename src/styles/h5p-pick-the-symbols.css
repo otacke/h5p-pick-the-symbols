@@ -25,6 +25,14 @@
   width: 1em;
 }
 
+.h5p-pick-the-symbol-blank.h5p-pick-the-symbols-blank-state-correct {
+  background-color: #9dd8bb;
+}
+
+.h5p-pick-the-symbol-blank.h5p-pick-the-symbols-blank-state-wrong {
+  background-color: #f7d0d0;
+}
+
 .h5p-pick-the-symbol-blank:hover {
   cursor: pointer;
 }

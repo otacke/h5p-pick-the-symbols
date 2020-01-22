@@ -118,6 +118,15 @@ export default class PickTheSymbolsContent {
     };
 
     /**
+     * Mark visual state of blanks.
+     */
+    this.markBlanks = (show) => {
+      this.blanks.forEach(blank => {
+        blank.setVisualState(show);
+      });
+    };
+
+    /**
      * Detect whether an answer has been given.
      * @return {boolean} True, if answer was given.
      */

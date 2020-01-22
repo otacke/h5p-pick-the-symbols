@@ -82,6 +82,8 @@ export default class PickTheSymbols extends H5P.Question {
     this.addButtons = () => {
       // Check answer button
       this.addButton('check-answer', this.params.l10n.checkAnswer, () => {
+        this.content.markBlanks(true);
+
         const textScore = H5P.Question.determineOverallFeedback(
           this.params.overallFeedback, this.getScore() / this.getMaxScore());
 
@@ -162,6 +164,7 @@ export default class PickTheSymbols extends H5P.Question {
     this.resetTask = () => {
       // TODO: Reset what needs to be reset
       this.removeFeedback();
+      this.content.markBlanks(false);
     };
 
     /**

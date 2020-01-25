@@ -18,7 +18,7 @@ export default class PickTheSymbolsChooser {
 
     // Build content
     this.content = document.createElement('div');
-    this.content.classList.add('h5p-pick-the-symbol-chooser');
+    this.content.classList.add('h5p-pick-the-symbols-chooser');
 
     params.symbols.forEach(symbol => {
       const button = document.createElement('button');

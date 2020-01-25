@@ -118,6 +118,28 @@
     "description": "These options will let you control how the task behaves.",
     "fields": [
       {
+        "name": "highlightOnCheck",
+        "label": "Highlight answers",
+        "description": "Set which answers should be highlighted when clicking the \"Check\" button.",
+        "type": "select",
+        "importance": "low",
+        "options": [
+          {
+            "label": "only wrong answers",
+            "value": "wrong"
+          },
+          {
+            "label": "only correct answers",
+            "value": "correct"
+          },
+          {
+            "label": "wrong and correct answers",
+            "value": "all"
+          }
+        ],
+        "default": "correct"
+      },
+      {
         "name": "enableRetry",
         "label": "Enable \"Retry\"",
         "type": "boolean",

@@ -1,4 +1,5 @@
 // Import required classes
+import PickTheSymbolsBlank from './h5p-pick-the-symbols-blank';
 import PickTheSymbolsContent from './h5p-pick-the-symbols-content';
 import Util from './h5p-pick-the-symbols-util';
 
@@ -39,6 +40,7 @@ export default class PickTheSymbols extends H5P.Question {
       text: '',
       symbols: `.?!,:;'"`,
       behaviour: {
+        highlightOnCheck: 'correct',
         enableSolutionsButton: true,
         enableRetry: true,
         colorBackground: '#c6c6c6'
@@ -82,7 +84,15 @@ export default class PickTheSymbols extends H5P.Question {
     this.addButtons = () => {
       // Check answer button
       this.addButton('check-answer', this.params.l10n.checkAnswer, () => {
-        this.content.markBlanks(true);
+        this.content.toggleEnabled(false);
+        this.content.handleCloseOverlay();
+
+        // Highlight answers depending on settings
+        const highlight = `HIGHLIGHT_${this.params.behaviour.highlightOnCheck}`.toUpperCase();
+        this.content.showSolutions({
+          highlight: PickTheSymbolsBlank[highlight],
+          score: true
+        });
 
         const textScore = H5P.Question.determineOverallFeedback(
           this.params.overallFeedback, this.getScore() / this.getMaxScore());
@@ -106,7 +116,7 @@ export default class PickTheSymbols extends H5P.Question {
 
       // Show solution button
       this.addButton('show-solution', this.params.l10n.showSolution, () => {
-        // TODO: Implement something useful to do on click
+        this.showSolutions();
       }, false, {}, {});
 
       // Retry button
@@ -151,8 +161,11 @@ export default class PickTheSymbols extends H5P.Question {
      * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-4}
      */
     this.showSolutions = () => {
-      // TODO: Implement showing the solutions
-
+      this.content.showSolutions({
+        highlight: PickTheSymbolsBlank.HIGHLIGHT_ALL,
+        answer: true,
+        score: false
+      });
       this.trigger('resize');
     };
 
@@ -164,7 +177,7 @@ export default class PickTheSymbols extends H5P.Question {
     this.resetTask = () => {
       // TODO: Reset what needs to be reset
       this.removeFeedback();
-      this.content.markBlanks(false);
+      this.content.reset();
     };
 
     /**

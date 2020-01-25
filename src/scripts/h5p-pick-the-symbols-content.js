@@ -29,6 +29,8 @@ export default class PickTheSymbolsContent {
       [...params.symbols]
     );
 
+    this.enabled = true;
+
     // DOM
     this.content = document.createElement('div');
     this.content.classList.add('h5p-pick-the-symbols-content');
@@ -44,11 +46,16 @@ export default class PickTheSymbolsContent {
     ruler.classList.add('h5p-pick-the-symbols-ruler');
     this.content.appendChild(ruler);
 
+    // Text container
+    this.textContainer = document.createElement('div');
+    this.textContainer.classList.add('h5p-pick-the-symbols-text-container');
+    this.content.appendChild(this.textContainer);
+
     // Textfield
     this.textfield = document.createElement('div');
     this.textfield.innerHTML = this.textTemplate;
     this.textfield.classList.add('h5p-pick-the-symbols-text');
-    this.content.appendChild(this.textfield);
+    this.textContainer.appendChild(this.textfield);
 
     // Overlay
     this.chooser = new PickTheSymbolsChooser({
@@ -101,9 +108,13 @@ export default class PickTheSymbolsContent {
     };
 
     this.handleOpenOverlay = (id) => {
+      if (!this.enabled) {
+        return;
+      }
+
       this.currentBlank = id;
       this.chooser.activateButton(this.blanks[id].getAnswer());
-      this.overlay.moveTo(this.blanks[id].getDOM());
+      this.overlay.moveTo(this.blanks[id].getBlankDOM());
       this.overlay.show();
     };
 
@@ -119,11 +130,42 @@ export default class PickTheSymbolsContent {
 
     /**
      * Mark visual state of blanks.
+     * @param {object} [params={}] Parameters.
+     * @param {boolean} [params.highlight] If true, mark state, else reset.
+     * @param {boolean} [params.answer] If true, show answer, else hide.
      */
-    this.markBlanks = (show) => {
+    this.showSolutions = (params = {}) => {
       this.blanks.forEach(blank => {
-        blank.setVisualState(show);
+        blank.showSolution(params);
       });
+    };
+
+    /**
+     * Reset blanks.
+     */
+    this.reset = () => {
+      this.toggleEnabled(true);
+
+      this.blanks.forEach(blank => {
+        blank.reset();
+      });
+    };
+
+    /**
+     * Toggle enabled state.
+     * @param {boolean} [state] If true, will be enabled, else false.
+     */
+    this.toggleEnabled = (state) => {
+      state = (state === undefined) ? !this.enabled : state;
+
+      if (state) {
+        this.textContainer.classList.remove('h5p-pick-the-symbols-disabled');
+      }
+      else {
+        this.textContainer.classList.add('h5p-pick-the-symbols-disabled');
+      }
+
+      this.enabled = state;
     };
 
     /**
@@ -142,10 +184,11 @@ export default class PickTheSymbolsContent {
      * Get current score.
      * @return {number} Current score.
      */
-    this.getScore = () => Math.max(
-      0,
-      this.blanks.reduce((prev, current) => prev - (current.isCorrect() ? 0 : 1), this.getMaxScore())
-    );
+    this.getScore = () => {
+      const score = this.blanks.reduce((score, blank) => score + blank.getScore(), 0);
+
+      return Math.max(0, score);
+    };
   }
 
   /**

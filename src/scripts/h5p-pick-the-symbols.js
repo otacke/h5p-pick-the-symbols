@@ -43,7 +43,7 @@ export default class PickTheSymbols extends H5P.Question {
         highlightOnCheck: 'correct',
         enableSolutionsButton: true,
         enableRetry: true,
-        colorBackground: '#c6c6c6'
+        colorBackground: '#e0e0e0'
       },
       l10n: {
         checkAnswer: 'Check answer',

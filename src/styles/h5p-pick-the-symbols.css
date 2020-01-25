@@ -31,6 +31,7 @@
 .h5p-pick-the-symbols-blank {
   border-radius: 0.25em;
   display: inline-block;
+  margin-bottom: 0.5em;
   padding: .15em;
   position: relative;
   width: 1em;

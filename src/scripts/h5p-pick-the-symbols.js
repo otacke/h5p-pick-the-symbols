@@ -40,7 +40,6 @@ export default class PickTheSymbols extends H5P.Question {
       text: '',
       symbols: `.?!,:;'"`,
       behaviour: {
-        highlightOnCheck: 'correct',
         enableSolutionsButton: true,
         enableRetry: true,
         colorBackground: '#e0e0e0'
@@ -88,9 +87,8 @@ export default class PickTheSymbols extends H5P.Question {
         this.content.handleCloseOverlay();
 
         // Highlight answers depending on settings
-        const highlight = `HIGHLIGHT_${this.params.behaviour.highlightOnCheck}`.toUpperCase();
         this.content.showSolutions({
-          highlight: PickTheSymbolsBlank[highlight],
+          highlight: PickTheSymbolsBlank.HIGHLIGHT_CORRECT,
           score: true
         });
 

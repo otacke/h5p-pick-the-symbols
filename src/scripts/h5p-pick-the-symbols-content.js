@@ -24,10 +24,10 @@ export default class PickTheSymbolsContent {
     this.answerGiven = false;
 
     // DOM nodes need to be created first
-    this.textTemplate = PickTheSymbolsContent.createTextTemplate(
-      [...params.text],
-      [...params.symbols]
-    );
+    const textTemplate = PickTheSymbolsContent.createTextTemplate(params.text, params.symbols);
+
+    this.textTemplate = textTemplate.sentence;
+    const textBlanks = textTemplate.blanks;
 
     this.enabled = true;
 
@@ -87,11 +87,17 @@ export default class PickTheSymbolsContent {
           },
           closeOverlay: () => {
             this.handleCloseOverlay();
+          },
+          addBlank: (id, solution) => {
+            console.log('new blank:', id, solution);
+          },
+          removeBlank: (id) => {
+            console.log('remove blank:', id);
           }
         },
         color: params.colorBackground,
         options: params.symbols,
-        solution: placeholder.dataset.solution
+        solution: textBlanks[index]
       });
 
       this.blanks.push(blank);
@@ -193,58 +199,62 @@ export default class PickTheSymbolsContent {
 
   /**
    * Initialize blanks and text.
-   * @param {string[]} chars Characters of text.
+   * @param {string} text Characters of text.
    * @param {string[]} symbols Symbols to replace.
    * @return {object} Blanks and HTML text to display.
    */
-  static createTextTemplate(chars, symbols) {
-    if (!chars || !symbols) {
+  static createTextTemplate(text, symbols) {
+    if (!text || !symbols) {
       return;
     }
+    symbols = [...symbols];
 
-    // We only want one placeholder between words
-    chars = chars.reduce( (prev, curr) => {
-      if (curr === ' ' && symbols.indexOf(prev.slice(-1)) !== -1) {
-        return `${prev}\u200C`;
-      }
-      else if (symbols.indexOf(curr) !== -1 && prev.slice(-1) === ' ') {
-        return `${prev.slice(0, -1)}\u200C${curr}`;
-      }
-      else {
-        return `${prev}${curr}`;
-      }
-    }, '');
+    text = text
+      .replace(/ &nbsp;/g, ' ')      // CKeditor creates &nbsp; for multiple blanks
+      .replace(/[ ]{2,}/g, ' ')      // Only keep one blank between words
+      .replace(/&nbsp;/g, '\u200C'); // We could end up with <p></p> later that wouldn't have height
 
-    // We could end up with <p></p> later that wouldn't have height
-    chars = chars.replace(/&nbsp;/g, '\u200C');
-    chars = [...chars];
+    const placeholder = `<span class="h5p-pick-the-symbols-placeholder"></span>`;
+    const chars = [...text];
 
     let htmlMode = false;
+    let currentBlank = '';
+    let output = '';
+    const blanks = [];
 
     for (let i = 0; i < chars.length; i++) {
 
       // Skip HTML tags, so they won't be touched by replacement procedure
       if (!htmlMode && chars[i] === '<') {
         htmlMode = true;
+        output = output + chars[i];
         continue;
       }
       else if (htmlMode && chars[i] === '>') {
         htmlMode = false;
+        output = output + chars[i];
         continue;
       }
       else if (htmlMode) {
+        output = output + chars[i];
         continue;
       }
 
-      // Skip regular characters
-      if (chars[i] !== ' ' && symbols.indexOf(chars[i]) === -1) {
+      if (currentBlank !== '' && chars[i] !== ' ' && symbols.indexOf(chars[i]) === -1) {
+        blanks.push(currentBlank);
+        output = `${output}${placeholder}${chars[i]}`;
+        currentBlank = '';
         continue;
       }
 
-      // Add placeholder
-      chars[i] = `<span class="h5p-pick-the-symbols-placeholder" data-solution="${chars[i]}"></span>`;
+      if (chars[i] === ' ' || symbols.indexOf(chars[i]) !== -1) {
+        currentBlank += chars[i];
+        continue;
+      }
+
+      output = output + chars[i];
     }
 
-    return chars.join('');
+    return {sentence: output, blanks: blanks};
   }
 }

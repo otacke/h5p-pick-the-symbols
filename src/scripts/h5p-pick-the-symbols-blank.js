@@ -66,6 +66,13 @@ export default class PickTheSymbolsBlank {
     };
 
     /**
+     * Get solution for this blank.
+     */
+    this.getTail = () => {
+      return this.tail;
+    };
+
+    /**
      * Set answer for this blank.
      * @param {string} symbol Answer given.
      */

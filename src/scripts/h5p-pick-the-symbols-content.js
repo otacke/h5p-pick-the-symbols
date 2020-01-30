@@ -14,6 +14,8 @@ export default class PickTheSymbolsContent {
    * @param {string} params.colorBackground Background color of blanks.
    */
   constructor(params) {
+    this.params = params;
+
     // Space can't be a symbol
     params.symbols = params.symbols.replace(/ /g, '');
     params.text = params.text
@@ -21,6 +23,7 @@ export default class PickTheSymbolsContent {
       .replace(/[ ]{2,}/g, ' '); // Only keep one blank between words
 
     this.blanks = [];
+    this.nextBlankId = 0;
     this.answerGiven = false;
 
     // DOM nodes need to be created first
@@ -87,12 +90,6 @@ export default class PickTheSymbolsContent {
           },
           closeOverlay: () => {
             this.handleCloseOverlay();
-          },
-          addBlank: (id, solution) => {
-            console.log('new blank:', id, solution);
-          },
-          removeBlank: (id) => {
-            console.log('remove blank:', id);
           }
         },
         color: params.colorBackground,
@@ -101,6 +98,8 @@ export default class PickTheSymbolsContent {
       });
 
       this.blanks.push(blank);
+      this.nextBlankId++;
+
       placeholder.parentNode.replaceChild(blank.getDOM(), placeholder);
     });
 
@@ -118,7 +117,7 @@ export default class PickTheSymbolsContent {
         return;
       }
 
-      this.currentBlank = id;
+      this.currentBlankId = id;
       this.chooser.activateButton(this.blanks[id].getAnswer());
       this.overlay.moveTo(this.blanks[id].getBlankDOM());
       this.overlay.show();
@@ -129,8 +128,31 @@ export default class PickTheSymbolsContent {
     };
 
     this.handleClickChooser = (symbol) => {
-      this.blanks[this.currentBlank].setAnswer(symbol);
-      this.overlay.hide();
+      const currentBlank = this.blanks[this.currentBlankId];
+      currentBlank.setAnswer(symbol);
+
+      const blank = new PickTheSymbolsBlank({
+        id: this.nextBlankId,
+        callbacks: {
+          openOverlay: (id) => {
+            this.handleOpenOverlay(id);
+          },
+          closeOverlay: () => {
+            this.handleCloseOverlay();
+          }
+        },
+        color: this.params.colorBackground,
+        options: this.params.symbols,
+        solution: currentBlank.getTail()
+      });
+
+      this.blanks.push(blank);
+      this.nextBlankId++;
+
+      // TODO: Polyfill for ChildNode.after()
+      currentBlank.getDOM().after(blank.getDOM());
+
+      this.handleCloseOverlay();
       this.answerGiven = true;
     };
 

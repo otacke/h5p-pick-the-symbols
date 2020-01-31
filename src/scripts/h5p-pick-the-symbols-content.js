@@ -18,9 +18,6 @@ export default class PickTheSymbolsContent {
 
     // Space can't be a symbol
     params.symbols = params.symbols.replace(/ /g, '');
-    params.text = params.text
-      .replace(/ &nbsp;/g, ' ')  // CKeditor creates &nbsp; for multiple blanks
-      .replace(/[ ]{2,}/g, ' '); // Only keep one blank between words
 
     this.blanks = [];
     this.nextBlankId = 0;
@@ -93,6 +90,7 @@ export default class PickTheSymbolsContent {
           }
         },
         color: params.colorBackground,
+        isFirst: true,
         options: params.symbols,
         solution: textBlanks[index]
       });
@@ -232,9 +230,9 @@ export default class PickTheSymbolsContent {
     symbols = [...symbols];
 
     text = text
-      .replace(/ &nbsp;/g, ' ')      // CKeditor creates &nbsp; for multiple blanks
-      .replace(/[ ]{2,}/g, ' ')      // Only keep one blank between words
-      .replace(/&nbsp;/g, '\u200C'); // We could end up with <p></p> later that wouldn't have height
+      .replace(/&nbsp;/g, ' ')                 // CKeditor creates &nbsp;s
+      .replace(/[ ]{2,}/g, ' ')                // Only keep one blank between words
+      .replace(/<p> <\/p>/g, '<p>\u200C</p>'); // Prevent blanks in empty paragraphs
 
     const placeholder = `<span class="h5p-pick-the-symbols-placeholder"></span>`;
     const chars = [...text];
@@ -247,7 +245,7 @@ export default class PickTheSymbolsContent {
     for (let i = 0; i < chars.length; i++) {
 
       // Skip HTML tags, so they won't be touched by replacement procedure
-      if (!htmlMode && chars[i] === '<') {
+      if (currentBlank === '' && !htmlMode && chars[i] === '<') {
         htmlMode = true;
         output = output + chars[i];
         continue;
@@ -271,6 +269,12 @@ export default class PickTheSymbolsContent {
 
       if (chars[i] === ' ' || symbols.indexOf(chars[i]) !== -1) {
         currentBlank += chars[i];
+
+        // Check if was last symbol
+        if (i === chars.length - 1) {
+          blanks.push(currentBlank);
+          output = `${output}${placeholder}`;
+        }
         continue;
       }
 

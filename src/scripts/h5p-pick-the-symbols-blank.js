@@ -7,6 +7,7 @@ export default class PickTheSymbolsBlank {
    * @param {string} params.color CSS color for background.
    * @param {string[]} params.options Option characters.
    * @param {string} params.solution Solution characters.
+   * @param {boolean} params.isFirst If true, is first, undeletable blank.
    * @param {object} params.callbacks Callbacks.
    * @param {function} params.callbacks.openOverlay Open overlay.
    * @param {function} params.callbacks.closeOverlay Close overlay.
@@ -18,12 +19,17 @@ export default class PickTheSymbolsBlank {
     this.callbacks = params.callbacks;
     this.solution = params.solution.slice(0, 1);
     this.tail = params.solution.slice(1);
+    this.isFirst = params.isFirst;
 
     this.content = document.createElement('span');
     this.content.classList.add('h5p-pick-the-symbols-blank-container');
 
     this.blank = document.createElement('span');
     this.blank.classList.add('h5p-pick-the-symbols-blank');
+    if (!this.isFirst) {
+      this.blank.classList.add('h5p-pick-the-symbols-blank-tail');
+    }
+
     this.blank.setAttribute('tabindex', 0);
     this.blank.style.backgroundColor = params.color;
     this.content.append(this.blank);
@@ -56,6 +62,14 @@ export default class PickTheSymbolsBlank {
      */
     this.getBlankDOM = () => {
       return this.blank;
+    };
+
+    /**
+     * Get blank id.
+     * @return {number} Blank's id.
+     */
+    this.getId = () => {
+      return this.id;
     };
 
     /**

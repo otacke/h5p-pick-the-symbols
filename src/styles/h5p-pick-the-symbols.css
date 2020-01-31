@@ -37,6 +37,10 @@
   width: 1em;
 }
 
+.h5p-pick-the-symbols-blank.h5p-pick-the-symbols-blank-tail {
+  margin-left: .125em;
+}
+
 .h5p-pick-the-symbols-blank.h5p-pick-the-symbols-blank-state-correct {
   background-color: #9dd8bb;
   color: #255c41;

@@ -27,7 +27,10 @@ export default class PickTheSymbolsContent {
     const textDeconstructed = PickTheSymbolsContent.deconstructText(params.text, params.symbols);
 
     const textTemplate = textDeconstructed.sentence;
-    const textBlankGroups = textDeconstructed.blanks;
+    let textBlankGroups = textDeconstructed.blanks;
+
+    // No need to add blanks for single characters
+    textBlankGroups = textBlankGroups.map(group => (group.length > 1) ? group.trim() : group);
 
     this.enabled = true;
 

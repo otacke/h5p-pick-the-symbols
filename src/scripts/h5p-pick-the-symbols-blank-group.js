@@ -101,6 +101,21 @@ export default class PickTheSymbolsBlankGroup {
    * @param {boolean} [params.answer] If true, show answer, else hide.
    */
   showSolutions(params = {}) {
+
+    // Show all relevant blanks and only those
+    if (params.answer) {
+      while (this.blanks.length < this.params.solution.length) {
+        this.addBlank();
+      }
+
+      while (this.blanks.length > this.params.solution.length) {
+        if (this.getBlank(Infinity).getAnswer() !== null) {
+          break; // Useless blank has been filled
+        }
+        this.removeBlank();
+      }
+    }
+
     this.blanks.forEach(blank => {
       blank.showSolution(params);
     });
@@ -110,6 +125,11 @@ export default class PickTheSymbolsBlankGroup {
    * Reset blanks.
    */
   reset() {
+    // Remove all obsolete blanks
+    while (this.blanks.length > 1) {
+      this.removeBlank();
+    }
+
     this.blanks.forEach(blank => {
       blank.reset();
     });

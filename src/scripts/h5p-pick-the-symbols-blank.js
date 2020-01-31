@@ -9,7 +9,6 @@ export default class PickTheSymbolsBlank {
    * @param {boolean} params.isFirst If true, is first, undeletable blank.
    * @param {object} params.callbacks Callbacks.
    * @param {function} params.callbacks.openOverlay Open overlay.
-   * @param {function} params.callbacks.closeOverlay Close overlay.
    */
   constructor(params) {
     this.params = params;

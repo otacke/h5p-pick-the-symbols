@@ -60,9 +60,21 @@ export default class PickTheSymbolsContent {
     // Overlay
     this.chooser = new PickTheSymbolsChooser({
       symbols: ['&nbsp;', ...params.symbols],
+      l10n: {
+        addBlank: 'Add new blank',
+        addSymbol: 'Fill blank with @symbol',
+        blank: 'blank',
+        removeBlank: 'Remove blank'
+      },
       callbacks: {
-        click: (symbol) => {
-          this.handleClickChooser(symbol);
+        onPickSymbol: (symbol) => {
+          this.handleChooserPickSymbol(symbol);
+        },
+        onAddBlank: () => {
+          this.handleChooserAddBlank();
+        },
+        onRemoveBlank: () => {
+          this.handleChooserRemoveBlank();
         }
       }
     });
@@ -85,9 +97,6 @@ export default class PickTheSymbolsContent {
         callbacks: {
           onOpenOverlay: (blankGroup, blank) => {
             this.handleOpenOverlay(blankGroup, blank);
-          },
-          onCloseOverlay: () => {
-            this.handleCloseOverlay();
           }
         },
         colorBackground: params.colorBackground,
@@ -132,14 +141,32 @@ export default class PickTheSymbolsContent {
      * Handle click on chooser option.
      * @param {string} symbol Symbol that was clicked.
      */
-    this.handleClickChooser = (symbol) => {
+    this.handleChooserPickSymbol = (symbol) => {
       this.currentBlank.setAnswer(symbol);
-
-      this.currentBlankGroup.addBlank({id: this.nextBlankId});
-      this.nextBlankId++;
 
       this.handleCloseOverlay();
       this.answerGiven = true;
+    };
+
+    /**
+     * Handle click on chooser option.
+     * @param {string} symbol Symbol that was clicked.
+     */
+    this.handleChooserAddBlank = () => {
+      if (this.currentBlankGroup.getBlank() === this.currentBlank) {
+        this.currentBlankGroup.addBlank({id: this.nextBlankId});
+        this.nextBlankId++;
+      }
+    };
+
+    /**
+     * Handle click on chooser option.
+     * @param {string} symbol Symbol that was clicked.
+     */
+    this.handleChooserRemoveBlank = () => {
+      if (this.currentBlankGroup.getBlank() === this.currentBlank) {
+        this.currentBlankGroup.removeBlank();
+      }
     };
 
     /**

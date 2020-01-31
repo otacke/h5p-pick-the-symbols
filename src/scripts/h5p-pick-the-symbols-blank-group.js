@@ -28,7 +28,7 @@ export default class PickTheSymbolsBlankGroup {
   }
 
   /**
-   * Add blank to the group.
+   * Add blank to the end of the group.
    */
   addBlank(params) {
     const blank = new PickTheSymbolsBlank({
@@ -45,6 +45,28 @@ export default class PickTheSymbolsBlankGroup {
 
     this.blanks.push(blank);
     this.content.appendChild(blank.getDOM());
+  }
+
+  /**
+   * Remove last blank from the group.
+   */
+  removeBlank() {
+    if (this.blanks.length < 2) {
+      return;
+    }
+
+    this.content.removeChild(this.getBlank(Infinity).getDOM());
+    this.blanks.splice(-1);
+  }
+
+  /**
+   * Get blank.
+   * @param {number} [index=Infinity] Index of blank.
+   * @return {PickTheSymbolsBlank} Blank.
+   */
+  getBlank(index = Infinity) {
+    index = Math.min(Math.max(0, index), this.blanks.length - 1);
+    return this.blanks[index];
   }
 
   /**

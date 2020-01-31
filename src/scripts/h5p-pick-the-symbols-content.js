@@ -113,26 +113,40 @@ export default class PickTheSymbolsContent {
 
   /**
    * Return the DOM for this class.
-   *
    * @return {HTMLElement} DOM for this class.
    */
   getDOM() {
     return this.content;
   }
 
+  /**
+   * Handle closing the overlay.
+   * @param {PickTheSymbolsBlankGroup} blankGroup Calling blank group.
+   * @param {PickTheSymbolsBlank} blank Calling blank.
+   */
   handleOpenOverlay(blankGroup, blank) {
     if (!this.enabled) {
       return;
     }
 
-    this.currentBlankGroup = blankGroup;
-    this.currentBlank = blank;
+    this.currentBlankGroup = blankGroup || this.currentBlankGroup;
+    this.currentBlank = blank || this.currentBlank;
 
     this.chooser.activateButton(blank.getAnswer());
+
+    const isFirstBlank = this.currentBlankGroup.getBlank(0) === this.currentBlank;
+    const isLastBlank = this.currentBlankGroup.getBlank(Infinity) === this.currentBlank;
+
+    this.chooser.toggleAddButtonRemoveBlank(isLastBlank && !isFirstBlank);
+    this.chooser.toggleAddButtonAddBlank(isLastBlank);
+
     this.overlay.moveTo(blank.getBlankDOM());
     this.overlay.show();
   }
 
+  /**
+   * Handle closing the overlay.
+   */
   handleCloseOverlay() {
     this.overlay.hide();
   }
@@ -156,6 +170,7 @@ export default class PickTheSymbolsContent {
     if (this.currentBlankGroup.getBlank() === this.currentBlank) {
       this.currentBlankGroup.addBlank();
     }
+    this.handleCloseOverlay();
   }
 
   /**
@@ -166,6 +181,7 @@ export default class PickTheSymbolsContent {
     if (this.currentBlankGroup.getBlank() === this.currentBlank) {
       this.currentBlankGroup.removeBlank();
     }
+    this.handleCloseOverlay();
   }
 
   /**

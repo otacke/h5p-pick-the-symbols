@@ -16,6 +16,9 @@ export default class PickTheSymbolsChooser {
 
     this.buttons = [];
 
+    this.hasButtonAddBlank = false;
+    this.hasButtonRemoveBlank = false;
+
     // Build content
     this.content = document.createElement('div');
     this.content.classList.add('h5p-pick-the-symbols-chooser');
@@ -59,6 +62,34 @@ export default class PickTheSymbolsChooser {
    */
   getDOM() {
     return this.content;
+  }
+
+  /**
+   * Toggle visibility of button for removing blank.
+   */
+  toggleAddButtonAddBlank(state) {
+    state = (typeof state === 'boolean') ? state : !this.hasButtonAddBlank;
+
+    if (state) {
+      this.buttonAddBlank.classList.remove('h5p-pick-the-symbols-none');
+    }
+    else {
+      this.buttonAddBlank.classList.add('h5p-pick-the-symbols-none');
+    }
+  }
+
+  /**
+   * Toggle visibility of button for removing blank.
+   */
+  toggleAddButtonRemoveBlank(state) {
+    state = (typeof state === 'boolean') ? state : !this.hasButtonRemoveBlank;
+
+    if (state) {
+      this.buttonRemoveBlank.classList.remove('h5p-pick-the-symbols-none');
+    }
+    else {
+      this.buttonRemoveBlank.classList.add('h5p-pick-the-symbols-none');
+    }
   }
 
   activateButton(symbol) {

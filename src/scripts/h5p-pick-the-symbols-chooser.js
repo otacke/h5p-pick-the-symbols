@@ -50,25 +50,25 @@ export default class PickTheSymbolsChooser {
       this.params.callbacks.onAddBlank();
     });
     this.content.appendChild(this.buttonAddBlank);
+  }
 
-    /**
-     * Return the DOM for this class.
-     *
-     * @return {HTMLElement} DOM for this class.
-     */
-    this.getDOM = () => {
-      return this.content;
-    };
+  /**
+   * Return the DOM for this class.
+   *
+   * @return {HTMLElement} DOM for this class.
+   */
+  getDOM() {
+    return this.content;
+  }
 
-    this.activateButton = (symbol) => {
-      this.buttons.forEach(button => {
-        if (button.innerHTML === symbol) {
-          button.classList.add('active');
-        }
-        else {
-          button.classList.remove('active');
-        }
-      });
-    };
+  activateButton(symbol) {
+    this.buttons.forEach(button => {
+      if (button.innerHTML === symbol) {
+        button.classList.add('active');
+      }
+      else {
+        button.classList.remove('active');
+      }
+    });
   }
 }

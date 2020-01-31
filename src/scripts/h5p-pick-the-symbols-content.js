@@ -109,124 +109,128 @@ export default class PickTheSymbolsContent {
 
       placeholder.parentNode.replaceChild(blankGroup.getDOM(), placeholder);
     });
+  }
 
-    /**
-     * Return the DOM for this class.
-     *
-     * @return {HTMLElement} DOM for this class.
-     */
-    this.getDOM = () => {
-      return this.content;
-    };
+  /**
+   * Return the DOM for this class.
+   *
+   * @return {HTMLElement} DOM for this class.
+   */
+  getDOM() {
+    return this.content;
+  }
 
-    this.handleOpenOverlay = (blankGroup, blank) => {
-      if (!this.enabled) {
-        return;
-      }
+  handleOpenOverlay(blankGroup, blank) {
+    if (!this.enabled) {
+      return;
+    }
 
-      this.currentBlankGroup = blankGroup;
-      this.currentBlank = blank;
+    this.currentBlankGroup = blankGroup;
+    this.currentBlank = blank;
 
-      this.chooser.activateButton(blank.getAnswer());
-      this.overlay.moveTo(blank.getBlankDOM());
-      this.overlay.show();
-    };
+    this.chooser.activateButton(blank.getAnswer());
+    this.overlay.moveTo(blank.getBlankDOM());
+    this.overlay.show();
+  }
 
-    this.handleCloseOverlay = () => {
-      this.overlay.hide();
-    };
+  handleCloseOverlay() {
+    this.overlay.hide();
+  }
 
-    /**
-     * Handle click on chooser option.
-     * @param {string} symbol Symbol that was clicked.
-     */
-    this.handleChooserPickSymbol = (symbol) => {
-      this.currentBlank.setAnswer(symbol);
+  /**
+   * Handle click on chooser option.
+   * @param {string} symbol Symbol that was clicked.
+   */
+  handleChooserPickSymbol(symbol) {
+    this.currentBlank.setAnswer(symbol);
 
-      this.handleCloseOverlay();
-      this.answerGiven = true;
-    };
+    this.handleCloseOverlay();
+    this.answerGiven = true;
+  }
 
-    /**
-     * Handle click on chooser option.
-     * @param {string} symbol Symbol that was clicked.
-     */
-    this.handleChooserAddBlank = () => {
-      if (this.currentBlankGroup.getBlank() === this.currentBlank) {
-        this.currentBlankGroup.addBlank();
-      }
-    };
+  /**
+   * Handle click on chooser option.
+   * @param {string} symbol Symbol that was clicked.
+   */
+  handleChooserAddBlank() {
+    if (this.currentBlankGroup.getBlank() === this.currentBlank) {
+      this.currentBlankGroup.addBlank();
+    }
+  }
 
-    /**
-     * Handle click on chooser option.
-     * @param {string} symbol Symbol that was clicked.
-     */
-    this.handleChooserRemoveBlank = () => {
-      if (this.currentBlankGroup.getBlank() === this.currentBlank) {
-        this.currentBlankGroup.removeBlank();
-      }
-    };
+  /**
+   * Handle click on chooser option.
+   * @param {string} symbol Symbol that was clicked.
+   */
+  handleChooserRemoveBlank() {
+    if (this.currentBlankGroup.getBlank() === this.currentBlank) {
+      this.currentBlankGroup.removeBlank();
+    }
+  }
 
-    /**
-     * Mark visual state of blanks.
-     * @param {object} [params={}] Parameters.
-     * @param {boolean} [params.highlight] If true, mark state, else reset.
-     * @param {boolean} [params.answer] If true, show answer, else hide.
-     */
-    this.showSolutions = (params = {}) => {
-      this.blankGroups.forEach(blankGroup => {
-        blankGroup.showSolutions(params);
-      });
-    };
+  /**
+   * Mark visual state of blanks.
+   * @param {object} [params={}] Parameters.
+   * @param {boolean} [params.highlight] If true, mark state, else reset.
+   * @param {boolean} [params.answer] If true, show answer, else hide.
+   */
+  showSolutions(params = {}) {
+    this.blankGroups.forEach(blankGroup => {
+      blankGroup.showSolutions(params);
+    });
+  }
 
-    /**
-     * Reset blanks.
-     */
-    this.reset = () => {
-      this.toggleEnabled(true);
+  /**
+   * Reset blanks.
+   */
+  reset() {
+    this.toggleEnabled(true);
 
-      this.blankGroups.forEach(blankGroup => {
-        blankGroup.reset();
-      });
-    };
+    this.blankGroups.forEach(blankGroup => {
+      blankGroup.reset();
+    });
+  }
 
-    /**
-     * Toggle enabled state.
-     * @param {boolean} [state] If true, will be enabled, else false.
-     */
-    this.toggleEnabled = (state) => {
-      state = (state === undefined) ? !this.enabled : state;
+  /**
+   * Toggle enabled state.
+   * @param {boolean} [state] If true, will be enabled, else false.
+   */
+  toggleEnabled(state) {
+    state = (state === undefined) ? !this.enabled : state;
 
-      if (state) {
-        this.textContainer.classList.remove('h5p-pick-the-symbols-disabled');
-      }
-      else {
-        this.textContainer.classList.add('h5p-pick-the-symbols-disabled');
-      }
+    if (state) {
+      this.textContainer.classList.remove('h5p-pick-the-symbols-disabled');
+    }
+    else {
+      this.textContainer.classList.add('h5p-pick-the-symbols-disabled');
+    }
 
-      this.enabled = state;
-    };
+    this.enabled = state;
+  }
 
-    /**
-     * Detect whether an answer has been given.
-     * @return {boolean} True, if answer was given.
-     */
-    this.getAnswerGiven = () => this.answerGiven;
+  /**
+   * Detect whether an answer has been given.
+   * @return {boolean} True, if answer was given.
+   */
+  getAnswerGiven() {
+    return this.answerGiven;
+  }
 
-    /**
-     * Get maximum score possible.
-     * @return {number} Maximum score possible.
-     */
-    this.getMaxScore = () => this.blankGroups.reduce((score, blankGroup) => score + blankGroup.getMaxScore(), 0);
+  /**
+   * Get maximum score possible.
+   * @return {number} Maximum score possible.
+   */
+  getMaxScore() {
+    return this.blankGroups.reduce((score, blankGroup) => score + blankGroup.getMaxScore(), 0);
+  }
 
-    /**
-     * Get current score.
-     * @return {number} Current score.
-     */
-    this.getScore = () => {
-      const score = this.blankGroups.reduce((score, blankGroup) => score + blankGroup.getScore(), 0);
-      return Math.max(0, score);
-    };
+  /**
+   * Get current score.
+   * @return {number} Current score.
+   */
+  getScore() {
+    const score = this.blankGroups.reduce((score, blankGroup) => score + blankGroup.getScore(), 0);
+    return Math.max(0, score);
   }
 
   /**

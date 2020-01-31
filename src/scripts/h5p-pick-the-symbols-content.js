@@ -1,5 +1,4 @@
 import Overlay from './h5p-pick-the-symbols-overlay';
-import PickTheSymbolsBlank from './h5p-pick-the-symbols-blank';
 import PickTheSymbolsBlankGroup from './h5p-pick-the-symbols-blank-group';
 import PickTheSymbolsChooser from './h5p-pick-the-symbols-chooser';
 

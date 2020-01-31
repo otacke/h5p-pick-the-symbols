@@ -105,8 +105,7 @@ export default class PickTheSymbolsContent {
       this.blankGroups.push(blankGroup);
 
       // Add initial blank to blank group
-      blankGroup.addBlank({id: this.nextBlankId});
-      this.nextBlankId++;
+      blankGroup.addBlank();
 
       placeholder.parentNode.replaceChild(blankGroup.getDOM(), placeholder);
     });
@@ -154,8 +153,7 @@ export default class PickTheSymbolsContent {
      */
     this.handleChooserAddBlank = () => {
       if (this.currentBlankGroup.getBlank() === this.currentBlank) {
-        this.currentBlankGroup.addBlank({id: this.nextBlankId});
-        this.nextBlankId++;
+        this.currentBlankGroup.addBlank();
       }
     };
 

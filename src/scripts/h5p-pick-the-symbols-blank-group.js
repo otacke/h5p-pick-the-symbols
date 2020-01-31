@@ -30,16 +30,14 @@ export default class PickTheSymbolsBlankGroup {
   /**
    * Add blank to the end of the group.
    */
-  addBlank(params) {
+  addBlank() {
     const blank = new PickTheSymbolsBlank({
       callbacks: {
-        onOpenOverlay: (blank) => {
+        onClick: (blank) => {
           this.handleOpenOverlay(blank);
         }
       },
       color: this.params.colorBackground,
-      id: params.id,
-      isFirst: this.blanks.length === 0,
       solution: this.params.solution.slice(this.blanks.length, this.blanks.length + 1),
     });
 

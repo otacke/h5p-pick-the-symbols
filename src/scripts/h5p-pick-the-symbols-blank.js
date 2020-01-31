@@ -12,21 +12,15 @@ export default class PickTheSymbolsBlank {
    */
   constructor(params) {
     this.params = params;
-    this.id = params.id;
     this.answer = params.answer || null;
     this.callbacks = params.callbacks;
-    this.solution = params.solution.slice(0, 1);
-    this.tail = params.solution.slice(1);
-    this.isFirst = params.isFirst;
+    this.solution = params.solution;
 
     this.content = document.createElement('span');
     this.content.classList.add('h5p-pick-the-symbols-blank-container');
 
     this.blank = document.createElement('span');
     this.blank.classList.add('h5p-pick-the-symbols-blank');
-    if (!this.isFirst) {
-      this.blank.classList.add('h5p-pick-the-symbols-blank-tail');
-    }
 
     this.blank.setAttribute('tabindex', 0);
     this.blank.style.backgroundColor = params.color;
@@ -43,7 +37,7 @@ export default class PickTheSymbolsBlank {
     this.content.appendChild(this.correctAnswer);
 
     this.blank.addEventListener('click', () => {
-      this.callbacks.onOpenOverlay(this);
+      this.callbacks.onClick(this);
     });
 
     /**
@@ -63,25 +57,10 @@ export default class PickTheSymbolsBlank {
     };
 
     /**
-     * Get blank id.
-     * @return {number} Blank's id.
-     */
-    this.getId = () => {
-      return this.id;
-    };
-
-    /**
      * Get solution for this blank.
      */
     this.getSolution = () => {
       return this.solution;
-    };
-
-    /**
-     * Get solution for this blank.
-     */
-    this.getTail = () => {
-      return this.tail;
     };
 
     /**

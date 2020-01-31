@@ -28,7 +28,12 @@
   display: inline;
 }
 
+.h5p-pick-the-symbols-blank-group .h5p-pick-the-symbols-blank-container:first-child {
+  margin-left: 0;
+}
+
 .h5p-pick-the-symbols-blank-container {
+  margin-left: .125em;
   position: relative;
 }
 
@@ -39,10 +44,6 @@
   padding: .15em;
   position: relative;
   width: 1em;
-}
-
-.h5p-pick-the-symbols-blank.h5p-pick-the-symbols-blank-tail {
-  margin-left: .125em;
 }
 
 .h5p-pick-the-symbols-blank.h5p-pick-the-symbols-blank-state-correct {

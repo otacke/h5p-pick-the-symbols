@@ -24,6 +24,10 @@
   width: 100%;
 }
 
+.h5p-pick-the-symbols-blank-group {
+  display: inline;
+}
+
 .h5p-pick-the-symbols-blank-container {
   position: relative;
 }

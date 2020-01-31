@@ -1,5 +1,6 @@
 import Overlay from './h5p-pick-the-symbols-overlay';
 import PickTheSymbolsBlank from './h5p-pick-the-symbols-blank';
+import PickTheSymbolsBlankGroup from './h5p-pick-the-symbols-blank-group';
 import PickTheSymbolsChooser from './h5p-pick-the-symbols-chooser';
 
 /** Class representing the content */
@@ -19,15 +20,15 @@ export default class PickTheSymbolsContent {
     // Space can't be a symbol
     params.symbols = params.symbols.replace(/ /g, '');
 
-    this.blanks = [];
+    this.blankGroups = [];
     this.nextBlankId = 0;
     this.answerGiven = false;
 
     // DOM nodes need to be created first
-    const textTemplate = PickTheSymbolsContent.createTextTemplate(params.text, params.symbols);
+    const textDeconstructed = PickTheSymbolsContent.deconstructText(params.text, params.symbols);
 
-    this.textTemplate = textTemplate.sentence;
-    const textBlanks = textTemplate.blanks;
+    const textTemplate = textDeconstructed.sentence;
+    const textBlankGroups = textDeconstructed.blanks;
 
     this.enabled = true;
 
@@ -53,7 +54,7 @@ export default class PickTheSymbolsContent {
 
     // Textfield
     this.textfield = document.createElement('div');
-    this.textfield.innerHTML = this.textTemplate;
+    this.textfield.innerHTML = textTemplate;
     this.textfield.classList.add('h5p-pick-the-symbols-text');
     this.textContainer.appendChild(this.textfield);
 
@@ -76,29 +77,30 @@ export default class PickTheSymbolsContent {
     });
     this.content.appendChild(this.overlay.getDOM());
 
-    // Replace placeholders with blanks objects
+    // Replace placeholders with blank group objects
     const placeholders = this.content.querySelectorAll('.h5p-pick-the-symbols-placeholder');
     placeholders.forEach((placeholder, index) => {
-      const blank = new PickTheSymbolsBlank({
-        id: index,
+
+      // New Blank Group
+      const blankGroup = new PickTheSymbolsBlankGroup({
         callbacks: {
-          openOverlay: (id) => {
-            this.handleOpenOverlay(id);
+          onOpenOverlay: (blankGroup, blank) => {
+            this.handleOpenOverlay(blankGroup, blank);
           },
-          closeOverlay: () => {
+          onCloseOverlay: () => {
             this.handleCloseOverlay();
           }
         },
-        color: params.colorBackground,
-        isFirst: true,
-        options: params.symbols,
-        solution: textBlanks[index]
+        colorBackground: params.colorBackground,
+        solution: textBlankGroups[index]
       });
+      this.blankGroups.push(blankGroup);
 
-      this.blanks.push(blank);
+      // Add initial blank to blank group
+      blankGroup.addBlank({id: this.nextBlankId});
       this.nextBlankId++;
 
-      placeholder.parentNode.replaceChild(blank.getDOM(), placeholder);
+      placeholder.parentNode.replaceChild(blankGroup.getDOM(), placeholder);
     });
 
     /**
@@ -110,14 +112,16 @@ export default class PickTheSymbolsContent {
       return this.content;
     };
 
-    this.handleOpenOverlay = (id) => {
+    this.handleOpenOverlay = (blankGroup, blank) => {
       if (!this.enabled) {
         return;
       }
 
-      this.currentBlankId = id;
-      this.chooser.activateButton(this.blanks[id].getAnswer());
-      this.overlay.moveTo(this.blanks[id].getBlankDOM());
+      this.currentBlankGroup = blankGroup;
+      this.currentBlank = blank;
+
+      this.chooser.activateButton(blank.getAnswer());
+      this.overlay.moveTo(blank.getBlankDOM());
       this.overlay.show();
     };
 
@@ -125,30 +129,15 @@ export default class PickTheSymbolsContent {
       this.overlay.hide();
     };
 
+    /**
+     * Handle click on chooser option.
+     * @param {string} symbol Symbol that was clicked.
+     */
     this.handleClickChooser = (symbol) => {
-      const currentBlank = this.blanks[this.currentBlankId];
-      currentBlank.setAnswer(symbol);
+      this.currentBlank.setAnswer(symbol);
 
-      const blank = new PickTheSymbolsBlank({
-        id: this.nextBlankId,
-        callbacks: {
-          openOverlay: (id) => {
-            this.handleOpenOverlay(id);
-          },
-          closeOverlay: () => {
-            this.handleCloseOverlay();
-          }
-        },
-        color: this.params.colorBackground,
-        options: this.params.symbols,
-        solution: currentBlank.getTail()
-      });
-
-      this.blanks.push(blank);
+      this.currentBlankGroup.addBlank({id: this.nextBlankId});
       this.nextBlankId++;
-
-      // TODO: Polyfill for ChildNode.after()
-      currentBlank.getDOM().after(blank.getDOM());
 
       this.handleCloseOverlay();
       this.answerGiven = true;
@@ -161,8 +150,8 @@ export default class PickTheSymbolsContent {
      * @param {boolean} [params.answer] If true, show answer, else hide.
      */
     this.showSolutions = (params = {}) => {
-      this.blanks.forEach(blank => {
-        blank.showSolution(params);
+      this.blankGroups.forEach(blankGroup => {
+        blankGroup.showSolutions(params);
       });
     };
 
@@ -172,8 +161,8 @@ export default class PickTheSymbolsContent {
     this.reset = () => {
       this.toggleEnabled(true);
 
-      this.blanks.forEach(blank => {
-        blank.reset();
+      this.blankGroups.forEach(blankGroup => {
+        blankGroup.reset();
       });
     };
 
@@ -204,15 +193,14 @@ export default class PickTheSymbolsContent {
      * Get maximum score possible.
      * @return {number} Maximum score possible.
      */
-    this.getMaxScore = () => this.blanks.filter(blank => blank.getSolution() !== ' ').length;
+    this.getMaxScore = () => this.blankGroups.reduce((score, blankGroup) => score + blankGroup.getMaxScore(), 0);
 
     /**
      * Get current score.
      * @return {number} Current score.
      */
     this.getScore = () => {
-      const score = this.blanks.reduce((score, blank) => score + blank.getScore(), 0);
-
+      const score = this.blankGroups.reduce((score, blankGroup) => score + blankGroup.getScore(), 0);
       return Math.max(0, score);
     };
   }
@@ -223,7 +211,7 @@ export default class PickTheSymbolsContent {
    * @param {string[]} symbols Symbols to replace.
    * @return {object} Blanks and HTML text to display.
    */
-  static createTextTemplate(text, symbols) {
+  static deconstructText(text, symbols) {
     if (!text || !symbols) {
       return;
     }

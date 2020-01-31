@@ -5,7 +5,6 @@ export default class PickTheSymbolsBlank {
    *
    * @param {object} params Parameters.
    * @param {string} params.color CSS color for background.
-   * @param {string[]} params.options Option characters.
    * @param {string} params.solution Solution characters.
    * @param {boolean} params.isFirst If true, is first, undeletable blank.
    * @param {object} params.callbacks Callbacks.
@@ -45,7 +44,7 @@ export default class PickTheSymbolsBlank {
     this.content.appendChild(this.correctAnswer);
 
     this.blank.addEventListener('click', () => {
-      this.callbacks.openOverlay(this.id);
+      this.callbacks.onOpenOverlay(this);
     });
 
     /**

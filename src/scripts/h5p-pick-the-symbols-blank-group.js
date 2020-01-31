@@ -80,9 +80,7 @@ export default class PickTheSymbolsBlankGroup {
    * @return {number} Maximum score for group.
    */
   getMaxScore() {
-    return this.blanks.filter(blank => {
-      return (this.params.solution.indexOf(blank.getSolution()) !== -1);
-    }).length;
+    return this.params.solution.trim().length;
   }
 
   /**

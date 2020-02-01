@@ -46,8 +46,12 @@ export default class PickTheSymbols extends H5P.Question {
       l10n: {
         checkAnswer: 'Check answer',
         showSolution: 'Show solution',
-        tryAgain: 'Retry'
-      }
+        tryAgain: 'Retry',
+        addBlank: 'Add new blank',
+        addSymbol: 'Fill blank with @symbol',
+        space: 'space',
+        removeBlank: 'Remove blank'
+      },
     }, this.params);
 
     // this.previousState now holds the saved content state of the previous session
@@ -67,6 +71,12 @@ export default class PickTheSymbols extends H5P.Question {
           onContentInteraction: () => {
             this.handleContentInteraction();
           }
+        },
+        l10n: {
+          addBlank: this.params.l10n.addBlank,
+          addSymbol: this.params.l10n.addSymbol,
+          space: this.params.l10n.space,
+          removeBlank: this.params.l10n.removeBlank
         }
       });
 

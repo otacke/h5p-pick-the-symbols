@@ -27,7 +27,7 @@ export default class PickTheSymbolsChooser {
       const button = document.createElement('button');
       button.classList.add('h5p-joubelui-button');
       button.innerHTML = symbol;
-      button.setAttribute('title', this.params.l10n.addSymbol.replace(/@symbol/g, symbol.replace('&nbsp;', this.params.l10n.blank)));
+      button.setAttribute('title', this.params.l10n.addSymbol.replace(/@symbol/g, symbol.replace('&nbsp;', this.params.l10n.space)));
       button.addEventListener('click', () => {
         this.params.callbacks.onPickSymbol(button.innerHTML);
       });

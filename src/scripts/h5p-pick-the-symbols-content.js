@@ -70,10 +70,10 @@ export default class PickTheSymbolsContent {
     this.chooser = new PickTheSymbolsChooser({
       symbols: ['&nbsp;', ...params.symbols],
       l10n: {
-        addBlank: 'Add new blank', // TODO: Semantics
-        addSymbol: 'Fill blank with @symbol',
-        blank: 'blank',
-        removeBlank: 'Remove blank'
+        addBlank: this.params.l10n.addBlank,
+        addSymbol: this.params.l10n.addSymbol,
+        space: this.params.l10n.space,
+        removeBlank: this.params.l10n.removeBlank
       },
       callbacks: {
         onPickSymbol: (symbol) => {

@@ -194,6 +194,35 @@
         "label": "Text for \"Show solution\" button",
         "importance": "low",
         "default": "Show solution"
+      },
+      {
+        "name": "addBlank",
+        "type": "text",
+        "label": "Text for \"Add blank\" button",
+        "importance": "low",
+        "default": "Append a new blank"
+      },
+      {
+        "name": "removeBlank",
+        "type": "text",
+        "label": "Text for \"Remove blank\" button",
+        "importance": "low",
+        "default": "Remove current blank"
+      },
+      {
+        "name": "addSymbol",
+        "type": "text",
+        "label": "Text for \"Add symbol\" button",
+        "description": "@symbol will be replaced with the symbol that was picked.",
+        "importance": "low",
+        "default": "Fill blank with @symbol"
+      },
+      {
+        "name": "space",
+        "type": "text",
+        "label": "Name of \"space\" character",
+        "importance": "low",
+        "default": "space"
       }
     ]
   }

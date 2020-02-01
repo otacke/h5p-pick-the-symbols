@@ -35,6 +35,9 @@ export default class PickTheSymbolsContent {
     // No need to add blanks for single characters
     textBlankGroups = textBlankGroups.map(group => group.trim());
 
+    // Check if there are "complicated" blanks
+    this.onlySimpleBlanks = textBlankGroups.every(group => group.length < 2);
+
     this.enabled = true;
 
     // DOM
@@ -149,8 +152,10 @@ export default class PickTheSymbolsContent {
     const isFirstBlank = this.currentBlankGroup.getBlank(0) === this.currentBlank;
     const isLastBlank = this.currentBlankGroup.getBlank(Infinity) === this.currentBlank;
 
-    this.chooser.toggleAddButtonRemoveBlank(isLastBlank && !isFirstBlank);
-    this.chooser.toggleAddButtonAddBlank(isLastBlank);
+    if (!this.onlySimpleBlanks) {
+      this.chooser.toggleAddButtonRemoveBlank(isLastBlank && !isFirstBlank);
+      this.chooser.toggleAddButtonAddBlank(isLastBlank);
+    }
 
     this.overlay.moveTo(blank.getBlankDOM());
     this.overlay.show();

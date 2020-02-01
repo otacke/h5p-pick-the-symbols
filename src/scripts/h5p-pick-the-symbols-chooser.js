@@ -38,6 +38,7 @@ export default class PickTheSymbolsChooser {
 
     this.buttonRemoveBlank = document.createElement('button');
     this.buttonRemoveBlank.classList.add('h5p-joubelui-button');
+    this.buttonRemoveBlank.classList.add('h5p-pick-the-symbols-none');
     this.buttonRemoveBlank.innerHTML = '-';
     this.buttonRemoveBlank.setAttribute('title', this.params.l10n.removeBlank);
     this.buttonRemoveBlank.addEventListener('click', () => {
@@ -47,6 +48,7 @@ export default class PickTheSymbolsChooser {
 
     this.buttonAddBlank = document.createElement('button');
     this.buttonAddBlank.classList.add('h5p-joubelui-button');
+    this.buttonAddBlank.classList.add('h5p-pick-the-symbols-none');
     this.buttonAddBlank.innerHTML = '+';
     this.buttonAddBlank.setAttribute('title', this.params.l10n.addBlank);
     this.buttonAddBlank.addEventListener('click', () => {

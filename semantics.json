@@ -143,6 +143,15 @@
         "optional": true
       },
       {
+        "name": "showAllBlanks",
+        "label": "Show all blanks",
+        "description": "Show all blanks for groups of symbols in advance.",
+        "type": "boolean",
+        "importance": "low",
+        "default": false,
+        "optional": true
+      },
+      {
         "name": "colorBackground",
         "type": "text",
         "label": "Blanks background color",

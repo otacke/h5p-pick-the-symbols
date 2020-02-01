@@ -30,31 +30,45 @@ export default class PickTheSymbolsBlankGroup {
   /**
    * Add blank to the end of the group.
    * @param {object} params Parameters.
-   * @param {string} [params.answer] Preset answer.
-   * @param {boolean} [params.provideDefaultSpace=false] If true and solution is 'space', preset it
+   * @param {string[]} [params.answer=[]] Preset answers.
+   * @param {boolean} [params.provideDefaultSpace=false] If true and solution is 'space', preset it.
+   * @param {number} [params.amount=1] Number of blanks to add.
    */
   addBlank(params = {}) {
-    const solution = this.params.solution.slice(this.blanks.length, this.blanks.length + 1);
+    params.amount = Math.max(1, params.amount || 1);
 
-    // Given answer takes precedence over provideDefaultSpace option
-    let answer = (params.answer) ? params.answer.slice(0, 1) : null;
-    if (params.provideDefaultSpace && !answer && solution === ' ') {
-      answer = ' ';
+    // Sanitize answer
+    if (params.answer) {
+      params.answer = (typeof params.answer === 'string') ? [params.answer] : params.answer;
     }
 
-    const blank = new PickTheSymbolsBlank({
-      callbacks: {
-        onClick: (blank) => {
-          this.handleOpenOverlay(blank);
-        }
-      },
-      color: this.params.colorBackground,
-      answer: answer,
-      solution: solution,
-    });
+    for (let i = 0; i < params.amount; i++) {
+      const solution = this.params.solution.slice(this.blanks.length, this.blanks.length + 1);
 
-    this.blanks.push(blank);
-    this.content.appendChild(blank.getDOM());
+      let answer = (params.answer) ? params.answer.slice(this.blanks.length, this.blanks.length + 1) : null;
+      if (answer && answer.length > 0) {
+        answer = answer[0].slice(0, 1);
+      }
+
+      // Given answer takes precedence over provideDefaultSpace option
+      if (params.provideDefaultSpace && !answer && solution === ' ') {
+        answer = ' ';
+      }
+
+      const blank = new PickTheSymbolsBlank({
+        callbacks: {
+          onClick: (blank) => {
+            this.handleOpenOverlay(blank);
+          }
+        },
+        color: this.params.colorBackground,
+        answer: answer,
+        solution: solution,
+      });
+
+      this.blanks.push(blank);
+      this.content.appendChild(blank.getDOM());
+    }
   }
 
   /**
@@ -136,9 +150,10 @@ export default class PickTheSymbolsBlankGroup {
   /**
    * Reset blanks.
    * @param {boolean} [full=true] If false, won't remove obsolete blanks.
+   * @param {boolean} [keepBlanks=false] If true, won't remove obsolete blanks.
    */
-  reset(full = true) {
-    if (full) {
+  reset(full = true, keepBlanks = false) {
+    if (full && !keepBlanks) {
       // Remove all obsolete blanks
       while (this.blanks.length > 1) {
         this.removeBlank();

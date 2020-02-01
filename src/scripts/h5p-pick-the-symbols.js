@@ -40,7 +40,8 @@ export default class PickTheSymbols extends H5P.Question {
         enableSolutionsButton: true,
         enableRetry: true,
         colorBackground: '#e0e0e0',
-        infiniteChecking: true
+        infiniteChecking: true,
+        showAllBlanks: false
       },
       l10n: {
         checkAnswer: 'Check answer',
@@ -61,6 +62,7 @@ export default class PickTheSymbols extends H5P.Question {
         text: this.params.text,
         symbols: Util.htmlDecode(this.params.symbols),
         colorBackground: this.params.behaviour.colorBackground,
+        showAllBlanks: this.params.behaviour.showAllBlanks,
         callbacks: {
           onContentInteraction: () => {
             this.handleContentInteraction();

@@ -70,7 +70,7 @@ export default class PickTheSymbolsContent {
     this.chooser = new PickTheSymbolsChooser({
       symbols: ['&nbsp;', ...params.symbols],
       l10n: {
-        addBlank: 'Add new blank',
+        addBlank: 'Add new blank', // TODO: Semantics
         addSymbol: 'Fill blank with @symbol',
         blank: 'blank',
         removeBlank: 'Remove blank'
@@ -113,8 +113,15 @@ export default class PickTheSymbolsContent {
       });
       this.blankGroups.push(blankGroup);
 
-      // Add initial blank to blank group
-      blankGroup.addBlank();
+      if (this.params.showAllBlanks) {
+        blankGroup.addBlank({
+          amount: textBlankGroups[index].length
+        });
+      }
+      else {
+        // Add initial blank to blank group
+        blankGroup.addBlank();
+      }
 
       placeholder.parentNode.replaceChild(blankGroup.getDOM(), placeholder);
     });
@@ -149,10 +156,9 @@ export default class PickTheSymbolsContent {
 
     this.chooser.activateButton(blank.getAnswer());
 
-    const isFirstBlank = this.currentBlankGroup.getBlank(0) === this.currentBlank;
-    const isLastBlank = this.currentBlankGroup.getBlank(Infinity) === this.currentBlank;
-
-    if (!this.onlySimpleBlanks) {
+    if (!this.onlySimpleBlanks && !this.params.showAllBlanks) {
+      const isFirstBlank = this.currentBlankGroup.getBlank(0) === this.currentBlank;
+      const isLastBlank = this.currentBlankGroup.getBlank(Infinity) === this.currentBlank;
       this.chooser.toggleAddButtonRemoveBlank(isLastBlank && !isFirstBlank);
       this.chooser.toggleAddButtonAddBlank(isLastBlank);
     }
@@ -219,7 +225,7 @@ export default class PickTheSymbolsContent {
    */
   reset(full = true) {
     this.blankGroups.forEach(blankGroup => {
-      blankGroup.reset(full);
+      blankGroup.reset(full, this.params.showAllBlanks);
     });
   }
 

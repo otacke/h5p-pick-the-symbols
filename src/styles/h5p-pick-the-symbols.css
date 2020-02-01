@@ -16,7 +16,7 @@
 
 .h5p-pick-the-symbols-text-container {
   width: 100%;
-  padding: 0.5em 0;
+  padding: 0.5em 0 0 0;
   position: relative;
 }
 
@@ -130,6 +130,13 @@
 
 .h5p-pick-the-symbols-overlay-outer-wrapper button.active {
   background-color: #104888;
+}
+
+.h5p-pick-the-symbols-chooses-blank-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding-top: 0.25em;
 }
 
 .h5p-pick-the-symbols-invisible {

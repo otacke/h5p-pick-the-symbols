@@ -26,8 +26,8 @@ const config = {
     dist: './src/entries/h5p-pick-the-symbols.js'
   },
   output: {
-    filename: 'h5p-pick-the-symbols.js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'h5p-pick-the-symbols.js'
   },
   module: {
     rules: [

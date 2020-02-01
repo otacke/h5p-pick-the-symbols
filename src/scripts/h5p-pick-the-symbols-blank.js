@@ -28,7 +28,7 @@ export default class PickTheSymbolsBlank {
 
     this.answerInput = document.createElement('span');
     this.answerInput.classList.add('h5p-pick-the-symbols-blank-answer');
-    this.answerInput.innerHTML = this.answer || '&nbsp;';
+    this.answerInput.innerHTML = (!this.answer || this.answer === ' ') ? '&nbsp;' : this.answer;
     this.blank.appendChild(this.answerInput);
 
     this.correctAnswer = document.createElement('span');
@@ -81,8 +81,12 @@ export default class PickTheSymbolsBlank {
    * @param {string} symbol Answer given.
    */
   setAnswer(symbol) {
-    if (!symbol || symbol === '&nbsp;') {
+    if (!symbol) {
       this.answer = null;
+      this.answerInput.innerHTML = '&nbsp;';
+    }
+    else if (symbol === '&nbsp;' || symbol === ' ') {
+      this.answer = ' ';
       this.answerInput.innerHTML = '&nbsp;';
     }
     else {
@@ -100,22 +104,18 @@ export default class PickTheSymbolsBlank {
   }
 
   /**
-   * Check if blank contains correct answer.
-   * @return {boolean} True, if answer is correct.
-   */
-  isCorrect() {
-    return (this.solution === ' ') ?
-      this.answer === null :
-      this.answer === this.solution;
-  }
-
-  /**
    * Get score for this answer.
    * @return {number} Score for this answer.
    */
   getScore() {
+    // No score if no answer given
     if (this.answer === null) {
       return 0;
+    }
+
+    // For original blank, accept explicit "space" as neutral
+    if (this.answer === ' ') {
+      return (this.solution.trim() === '') ? 0 : -1;
     }
 
     return (this.solution === this.answer) ? 1 : -1;
@@ -129,34 +129,33 @@ export default class PickTheSymbolsBlank {
    * @param {boolean} [params.score] If true, show score, else remove.
    */
   showSolution(params = {}) {
-    if (this.solution === ' ' && !this.answer) {
-      return;
-    }
-
     this.showHighlight(params.highlight);
-    if (!this.isCorrect()) {
+
+    if (this.getScore() === -1 || this.getScore() === 0 && this.solution.trim() !== '') {
       this.showAnswer(params.answer);
     }
 
-    if (this.answer) {
-      this.showScore(params.score);
-    }
+    this.showScoreExplanation(params.score);
   }
 
   /**
    * Show score explanations.
    * @param {boolean} [show] If true, show score, else remove.
    */
-  showScore(show) {
+  showScoreExplanation(show) {
     if (show) {
       if (this.scoreExplanation) {
         return; // Already showing
       }
 
-      const scorePoints = new H5P.Question.ScorePoints();
-      this.scoreExplanation = scorePoints.getElement(this.isCorrect());
-      if (this.scoreExplanation) {
-        this.blank.appendChild(this.scoreExplanation);
+      const score = this.getScore();
+
+      if (score !== 0) {
+        const scorePoints = new H5P.Question.ScorePoints();
+        this.scoreExplanation = scorePoints.getElement(score === 1);
+        if (this.scoreExplanation) {
+          this.blank.appendChild(this.scoreExplanation);
+        }
       }
     }
     else {
@@ -189,19 +188,16 @@ export default class PickTheSymbolsBlank {
       return;
     }
 
-    if (this.isCorrect()) {
-      if (option === PickTheSymbolsBlank.HIGHLIGHT_ALL || option === PickTheSymbolsBlank.HIGHLIGHT_CORRECT) {
-        this.blank.style.backgroundColor = '';
-        this.blank.classList.add('h5p-pick-the-symbols-blank-state-correct');
-      }
+    if (this.getScore() === 1) {
+      this.blank.style.backgroundColor = '';
+      this.blank.classList.add('h5p-pick-the-symbols-blank-state-correct');
     }
-    else {
-      if (option === PickTheSymbolsBlank.HIGHLIGHT_ALL || option === PickTheSymbolsBlank.HIGHLIGHT_WRONG) {
-        this.blank.style.backgroundColor = '';
-        this.blank.classList.add('h5p-pick-the-symbols-blank-state-wrong');
-        if (!this.answer) {
-          this.blank.classList.add('h5p-pick-the-symbols-empty-answer');
-        }
+
+    if (this.getScore() === -1) {
+      this.blank.style.backgroundColor = '';
+      this.blank.classList.add('h5p-pick-the-symbols-blank-state-wrong');
+      if (!this.answer) {
+        this.blank.classList.add('h5p-pick-the-symbols-empty-answer');
       }
     }
   }
@@ -211,27 +207,31 @@ export default class PickTheSymbolsBlank {
    * @param {boolean} show If true, show answer.
    */
   showAnswer(show) {
-    if (this.solution === ' ') {
-      return;
-    }
-
     if (show) {
-      this.correctAnswer.innerHTML = this.solution;
+      this.correctAnswer.innerHTML = this.solution === '' ? '&nbsp;' : this.solution;
       this.correctAnswer.style.display = 'inherit';
+    }
+    else {
+      this.correctAnswer.innerHTML = '';
+      this.correctAnswer.style.display = '';
     }
   }
 
   /**
    * Reset blank.
+   * @param {boolean} [full=true] If false, won't clean answers, just visuals.
    */
-  reset() {
-    this.answer = null;
-    this.answerInput.innerHTML = '&nbsp;';
+  reset(full = true) {
+    if (full) {
+      this.answer = this.params.answer || null;
+      this.answerInput.innerHTML = '&nbsp;';
 
-    this.correctAnswer.style.display = 'none';
-    this.correctAnswer.innerHTML = '';
+      this.correctAnswer.style.display = 'none';
+      this.correctAnswer.innerHTML = '';
+    }
 
-    this.showScore();
+    this.showAnswer();
+    this.showScoreExplanation();
     this.showHighlight();
   }
 }

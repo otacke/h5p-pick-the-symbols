@@ -134,6 +134,15 @@
         "optional": true
       },
       {
+        "name": "infiniteChecking",
+        "label": "Allow continuous checking",
+        "description": "Allow students to continuously check their answers without resetting their previous choices.",
+        "type": "boolean",
+        "importance": "low",
+        "default": true,
+        "optional": true
+      },
+      {
         "name": "colorBackground",
         "type": "text",
         "label": "Blanks background color",
@@ -165,10 +174,10 @@
       },
       {
         "name": "tryAgain",
-        "label": "Text for \"Retry\" button",
+        "label": "Text for \"Reset\" button",
         "type": "text",
         "importance": "low",
-        "default": "Retry"
+        "default": "Reset"
       },
       {
         "name": "showSolution",

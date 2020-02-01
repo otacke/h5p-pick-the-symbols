@@ -16,6 +16,9 @@ export default class PickTheSymbolsContent {
   constructor(params) {
     this.params = params;
 
+    this.params.callbacks = this.params.callbacks || {};
+    this.params.callbacks.onContentInteraction = this.params.callbacks.onContentInteraction || (() => {});
+
     // Space can't be a symbol
     params.symbols = params.symbols.replace(/ /g, '');
 
@@ -30,7 +33,7 @@ export default class PickTheSymbolsContent {
     let textBlankGroups = textDeconstructed.blanks;
 
     // No need to add blanks for single characters
-    textBlankGroups = textBlankGroups.map(group => (group.length > 1) ? group.trim() : group);
+    textBlankGroups = textBlankGroups.map(group => group.trim());
 
     this.enabled = true;
 
@@ -128,6 +131,12 @@ export default class PickTheSymbolsContent {
    * @param {PickTheSymbolsBlank} blank Calling blank.
    */
   handleOpenOverlay(blankGroup, blank) {
+    // Hide previous entries/visuals
+    this.reset(false);
+
+    // Hide buttons
+    this.params.callbacks.onContentInteraction();
+
     if (!this.enabled) {
       return;
     }
@@ -166,19 +175,19 @@ export default class PickTheSymbolsContent {
   }
 
   /**
-   * Handle click on chooser option.
-   * @param {string} symbol Symbol that was clicked.
+   * Add new Blank as requested by user.
    */
   handleChooserAddBlank() {
     if (this.currentBlankGroup.getBlank() === this.currentBlank) {
-      this.currentBlankGroup.addBlank();
+      this.currentBlankGroup.addBlank({
+        provideDefaultSpace: true
+      });
     }
     this.handleCloseOverlay();
   }
 
   /**
-   * Handle click on chooser option.
-   * @param {string} symbol Symbol that was clicked.
+   * Remove blank as requested by user.
    */
   handleChooserRemoveBlank() {
     if (this.currentBlankGroup.getBlank() === this.currentBlank) {
@@ -201,12 +210,11 @@ export default class PickTheSymbolsContent {
 
   /**
    * Reset blanks.
+   * @param {boolean} [full=true] If false, won't remove obsolete blanks/answers
    */
-  reset() {
-    this.toggleEnabled(true);
-
+  reset(full = true) {
     this.blankGroups.forEach(blankGroup => {
-      blankGroup.reset();
+      blankGroup.reset(full);
     });
   }
 

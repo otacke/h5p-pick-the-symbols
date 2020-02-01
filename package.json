@@ -21,9 +21,9 @@
   "author": "Oliver Tacke",
   "license": "MIT",
   "devDependencies": {
-    "@babel/cli": "^7.7.7",
-    "@babel/core": "^7.7.7",
-    "@babel/preset-env": "^7.7.7",
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.8.4",
+    "@babel/preset-env": "^7.8.4",
     "babel-loader": "^8.0.6",
     "babel-minify-webpack-plugin": "^0.3.1",
     "cross-env": "^5.2.1",

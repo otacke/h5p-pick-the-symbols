@@ -29,8 +29,19 @@ export default class PickTheSymbolsBlankGroup {
 
   /**
    * Add blank to the end of the group.
+   * @param {object} params Parameters.
+   * @param {string} [params.answer] Preset answer.
+   * @param {boolean} [params.provideDefaultSpace=false] If true and solution is 'space', preset it
    */
-  addBlank() {
+  addBlank(params = {}) {
+    const solution = this.params.solution.slice(this.blanks.length, this.blanks.length + 1);
+
+    // Given answer takes precedence over provideDefaultSpace option
+    let answer = (params.answer) ? params.answer.slice(0, 1) : null;
+    if (params.provideDefaultSpace && !answer && solution === ' ') {
+      answer = ' ';
+    }
+
     const blank = new PickTheSymbolsBlank({
       callbacks: {
         onClick: (blank) => {
@@ -38,7 +49,8 @@ export default class PickTheSymbolsBlankGroup {
         }
       },
       color: this.params.colorBackground,
-      solution: this.params.solution.slice(this.blanks.length, this.blanks.length + 1),
+      answer: answer,
+      solution: solution,
     });
 
     this.blanks.push(blank);
@@ -80,7 +92,7 @@ export default class PickTheSymbolsBlankGroup {
    * @return {number} Maximum score for group.
    */
   getMaxScore() {
-    return this.params.solution.trim().length;
+    return this.params.solution.replace(/ /g, '').length;
   }
 
   /**
@@ -106,11 +118,13 @@ export default class PickTheSymbolsBlankGroup {
         this.addBlank();
       }
 
-      while (this.blanks.length > this.params.solution.length) {
-        if (this.getBlank(Infinity).getAnswer() !== null) {
-          break; // Useless blank has been filled
+      if (this.blanks.length > 0 && this.params.solution.length > 0) {
+        while (this.blanks.length > this.params.solution.length) {
+          if (this.getBlank(Infinity).getAnswer() !== null) {
+            break; // Useless blank has been filled
+          }
+          this.removeBlank();
         }
-        this.removeBlank();
       }
     }
 
@@ -121,15 +135,18 @@ export default class PickTheSymbolsBlankGroup {
 
   /**
    * Reset blanks.
+   * @param {boolean} [full=true] If false, won't remove obsolete blanks.
    */
-  reset() {
-    // Remove all obsolete blanks
-    while (this.blanks.length > 1) {
-      this.removeBlank();
+  reset(full = true) {
+    if (full) {
+      // Remove all obsolete blanks
+      while (this.blanks.length > 1) {
+        this.removeBlank();
+      }
     }
 
     this.blanks.forEach(blank => {
-      blank.reset();
+      blank.reset(full);
     });
   }
 }

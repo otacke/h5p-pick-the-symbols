@@ -6,11 +6,8 @@ import Util from './h5p-pick-the-symbols-util';
 /**
  * Class holding a full PickTheSymbols.
  *
- * TODO: View: Replace punctuation symbols (by list) with dropdown menu with options according to checked items in list, not blocking
- * TODO: View: Check
- * TODO: View: Show Solution
- * TODO: View: Retry
  * TODO: xAPI ('multiple choice')
+ * TODO: a11y
  */
 export default class PickTheSymbols extends H5P.Question {
   /**
@@ -42,7 +39,8 @@ export default class PickTheSymbols extends H5P.Question {
       behaviour: {
         enableSolutionsButton: true,
         enableRetry: true,
-        colorBackground: '#e0e0e0'
+        colorBackground: '#e0e0e0',
+        infiniteChecking: true
       },
       l10n: {
         checkAnswer: 'Check answer',
@@ -62,7 +60,12 @@ export default class PickTheSymbols extends H5P.Question {
         taskDescription: this.params.taskDescription,
         text: this.params.text,
         symbols: Util.htmlDecode(this.params.symbols),
-        colorBackground: this.params.behaviour.colorBackground
+        colorBackground: this.params.behaviour.colorBackground,
+        callbacks: {
+          onContentInteraction: () => {
+            this.handleContentInteraction();
+          }
+        }
       });
 
       // Register content with H5P.Question
@@ -83,7 +86,14 @@ export default class PickTheSymbols extends H5P.Question {
     this.addButtons = () => {
       // Check answer button
       this.addButton('check-answer', this.params.l10n.checkAnswer, () => {
-        this.content.toggleEnabled(false);
+        if (!this.params.behaviour.infiniteChecking) {
+          this.content.toggleEnabled(false);
+        }
+
+        if (!this.params.behaviour.infiniteChecking) {
+          this.hideButton('check-answer');
+        }
+
         this.content.handleCloseOverlay();
 
         // Highlight answers depending on settings
@@ -101,8 +111,6 @@ export default class PickTheSymbols extends H5P.Question {
           this.getMaxScore()
         );
 
-        this.hideButton('check-answer');
-
         if (this.params.behaviour.enableSolutionsButton) {
           this.showButton('show-solution');
         }
@@ -119,11 +127,18 @@ export default class PickTheSymbols extends H5P.Question {
 
       // Retry button
       this.addButton('try-again', this.params.l10n.tryAgain, () => {
-        this.showButton('check-answer');
+        if (!this.params.behaviour.infiniteChecking) {
+          this.showButton('check-answer');
+        }
+
         this.hideButton('show-solution');
         this.hideButton('try-again');
 
         this.resetTask();
+
+        if (!this.params.behaviour.infiniteChecking) {
+          this.content.toggleEnabled(true);
+        }
 
         this.trigger('resize');
       }, false, {}, {});
@@ -152,6 +167,14 @@ export default class PickTheSymbols extends H5P.Question {
      * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-3}
      */
     this.getMaxScore = () => this.content.getMaxScore();
+
+    /**
+     * Handle content interaction.
+     */
+    this.handleContentInteraction = () => {
+      this.hideButton('show-solution');
+      this.hideButton('try-again');
+    };
 
     /**
      * Show solutions.

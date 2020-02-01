@@ -97,6 +97,11 @@ export default class PickTheSymbolsContent {
     });
     this.content.appendChild(this.overlay.getDOM());
 
+    // Need for buttons to add/remove blanks
+    if (!this.onlySimpleBlanks && !this.params.showAllBlanks) {
+      this.chooser.toggleBlankButtonsContainer(true);
+    }
+
     // Replace placeholders with blank group objects
     const placeholders = this.content.querySelectorAll('.h5p-pick-the-symbols-placeholder');
     placeholders.forEach((placeholder, index) => {

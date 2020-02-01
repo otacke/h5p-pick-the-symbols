@@ -132,11 +132,41 @@
   background-color: #104888;
 }
 
-.h5p-pick-the-symbols-chooses-blank-buttons {
+.h5p-pick-the-symbols-chooser-blank-buttons {
   display: flex;
   flex-direction: row;
   justify-content: center;
   padding-top: 0.25em;
+}
+
+.h5p-pick-the-symbols-chooser-blanks-button {
+  background: #60c285;
+}
+
+.h5p-pick-the-symbols-chooser-blanks-button:hover,
+.h5p-pick-the-symbols-chooser-blanks-button:focus {
+  background: #54a36e;
+}
+
+.h5p-pick-the-symbols-chooser-blanks-button:active {
+  background: #4e8441;
+  box-shadow: inset 0 4px 0 #477d38;
+}
+
+.h5p-pick-the-symbols-chooser-blanks-button.h5p-pick-the-symbols-disabled {
+  color: #bbbbbb;
+  background: #666666;
+  cursor: inherit;
+}
+
+.h5p-pick-the-symbols-chooser-blanks-button.h5p-pick-the-symbols-disabled:hover,
+.h5p-pick-the-symbols-chooser-blanks-button.h5p-pick-the-symbols-disabled:focus {
+  background: #666666;
+}
+
+.h5p-pick-the-symbols-chooser-blanks-button.h5p-pick-the-symbols-disabled:active {
+  background: #666666;
+  box-shadow: inset 0 4px 0 #666666;
 }
 
 .h5p-pick-the-symbols-invisible {

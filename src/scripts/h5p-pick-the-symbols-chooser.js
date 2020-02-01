@@ -36,35 +36,41 @@ export default class PickTheSymbolsChooser {
       this.content.appendChild(button);
     });
 
-    const ruler = document.createElement('div');
-    ruler.classList.add('h5p-pick-the-symbols-ruler');
-    this.content.appendChild(ruler);
+    // TODO: Handle this via params, not via toggling
 
-    const blankButtonsContainer = document.createElement('div');
-    blankButtonsContainer.classList.add('h5p-pick-the-symbols-chooses-blank-buttons');
-    this.content.appendChild(blankButtonsContainer);
+    this.ruler = document.createElement('div');
+    this.ruler.classList.add('h5p-pick-the-symbols-ruler');
+    this.ruler.classList.add('h5p-pick-the-symbols-none');
+    this.content.appendChild(this.ruler);
+
+    this.blankButtonsContainer = document.createElement('div');
+    this.blankButtonsContainer.classList.add('h5p-pick-the-symbols-chooser-blank-buttons');
+    this.blankButtonsContainer.classList.add('h5p-pick-the-symbols-none');
+    this.content.appendChild(this.blankButtonsContainer);
 
     // Button for removing current blank
     this.buttonRemoveBlank = document.createElement('button');
     this.buttonRemoveBlank.classList.add('h5p-joubelui-button');
-    this.buttonRemoveBlank.classList.add('h5p-pick-the-symbols-none');
+    this.buttonRemoveBlank.classList.add('h5p-pick-the-symbols-chooser-blanks-button');
+    this.buttonRemoveBlank.classList.add('h5p-pick-the-symbols-disabled');
     this.buttonRemoveBlank.innerHTML = '-';
     this.buttonRemoveBlank.setAttribute('title', this.params.l10n.removeBlank);
     this.buttonRemoveBlank.addEventListener('click', () => {
       this.params.callbacks.onRemoveBlank();
     });
-    blankButtonsContainer.appendChild(this.buttonRemoveBlank);
+    this.blankButtonsContainer.appendChild(this.buttonRemoveBlank);
 
     // Button for adding current blank
     this.buttonAddBlank = document.createElement('button');
     this.buttonAddBlank.classList.add('h5p-joubelui-button');
-    this.buttonAddBlank.classList.add('h5p-pick-the-symbols-none');
+    this.buttonAddBlank.classList.add('h5p-pick-the-symbols-chooser-blanks-button');
+    this.buttonAddBlank.classList.add('h5p-pick-the-symbols-disabled');
     this.buttonAddBlank.innerHTML = '+';
     this.buttonAddBlank.setAttribute('title', this.params.l10n.addBlank);
     this.buttonAddBlank.addEventListener('click', () => {
       this.params.callbacks.onAddBlank();
     });
-    blankButtonsContainer.appendChild(this.buttonAddBlank);
+    this.blankButtonsContainer.appendChild(this.buttonAddBlank);
   }
 
   /**
@@ -83,10 +89,12 @@ export default class PickTheSymbolsChooser {
     state = (typeof state === 'boolean') ? state : !this.hasButtonAddBlank;
 
     if (state) {
-      this.buttonAddBlank.classList.remove('h5p-pick-the-symbols-none');
+      this.buttonAddBlank.classList.remove('h5p-pick-the-symbols-disabled');
+      this.buttonAddBlank.removeAttribute('disabled');
     }
     else {
-      this.buttonAddBlank.classList.add('h5p-pick-the-symbols-none');
+      this.buttonAddBlank.classList.add('h5p-pick-the-symbols-disabled');
+      this.buttonAddBlank.setAttribute('disabled', true);
     }
   }
 
@@ -97,10 +105,28 @@ export default class PickTheSymbolsChooser {
     state = (typeof state === 'boolean') ? state : !this.hasButtonRemoveBlank;
 
     if (state) {
-      this.buttonRemoveBlank.classList.remove('h5p-pick-the-symbols-none');
+      this.buttonRemoveBlank.classList.remove('h5p-pick-the-symbols-disabled');
+      this.buttonRemoveBlank.removeAttribute('disabled');
     }
     else {
-      this.buttonRemoveBlank.classList.add('h5p-pick-the-symbols-none');
+      this.buttonRemoveBlank.classList.add('h5p-pick-the-symbols-disabled');
+      this.buttonRemoveBlank.setAttribute('disabled', true);
+    }
+  }
+
+  /**
+   * Toggle blank buttons container visibility
+   */
+  toggleBlankButtonsContainer(state) {
+    state = (typeof state === 'boolean') ? state : !this.hasBlankButtonsContainer;
+
+    if (state) {
+      this.ruler.classList.remove('h5p-pick-the-symbols-none');
+      this.blankButtonsContainer.classList.remove('h5p-pick-the-symbols-none');
+    }
+    else {
+      this.ruler.classList.add('h5p-pick-the-symbols-none');
+      this.blankButtonsContainer.classList.add('h5p-pick-the-symbols-none');
     }
   }
 

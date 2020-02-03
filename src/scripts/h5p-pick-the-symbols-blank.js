@@ -132,7 +132,7 @@ export default class PickTheSymbolsBlank {
     this.showHighlight(params.highlight);
 
     if (this.getScore() === -1 || this.getScore() === 0 && this.solution.trim() !== '') {
-      this.showAnswer(params.answer);
+      this.showCorrectSolution(params.answer);
     }
 
     this.showScoreExplanation(params.score);
@@ -206,32 +206,41 @@ export default class PickTheSymbolsBlank {
    * Show answer.
    * @param {boolean} show If true, show answer.
    */
-  showAnswer(show) {
+  showCorrectSolution(show) {
     if (show) {
       this.correctAnswer.innerHTML = this.solution === '' ? '&nbsp;' : this.solution;
       this.correctAnswer.style.display = 'inherit';
     }
     else {
       this.correctAnswer.innerHTML = '';
-      this.correctAnswer.style.display = '';
+      this.correctAnswer.style.display = 'none';
     }
   }
 
   /**
    * Reset blank.
-   * @param {boolean} [full=true] If false, won't clean answers, just visuals.
+   * @param {object} Params.
+   * @param {boolean} [keepAnswers] If not true, will remove answers given.
+   * @param {boolean} [keepSolutions] If not true, will remove solutions.
+   * @param {boolean} [keepExplanations] If not true, will remove explanations.
+   * @param {boolean} [keepHighlights] If not true, will remove highlights.
    */
-  reset(full = true) {
-    if (full) {
+  reset(params = {}) {
+    if (params.keepAnswers !== true) {
       this.answer = this.params.answer || null;
       this.answerInput.innerHTML = '&nbsp;';
-
-      this.correctAnswer.style.display = 'none';
-      this.correctAnswer.innerHTML = '';
     }
 
-    this.showAnswer();
-    this.showScoreExplanation();
-    this.showHighlight();
+    if (params.keepSolutions !== true) {
+      this.showCorrectSolution();
+    }
+
+    if (params.keepExplanations !== true) {
+      this.showScoreExplanation();
+    }
+
+    if (params.keepHighlights !== true) {
+      this.showHighlight();
+    }
   }
 }

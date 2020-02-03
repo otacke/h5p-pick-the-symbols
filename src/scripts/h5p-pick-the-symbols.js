@@ -45,6 +45,7 @@ export default class PickTheSymbols extends H5P.Question {
       },
       l10n: {
         checkAnswer: 'Check answer',
+        continue: 'Continue',
         showSolution: 'Show solution',
         tryAgain: 'Retry',
         addBlank: 'Add new blank',
@@ -98,12 +99,11 @@ export default class PickTheSymbols extends H5P.Question {
     this.addButtons = () => {
       // Check answer button
       this.addButton('check-answer', this.params.l10n.checkAnswer, () => {
-        if (!this.params.behaviour.infiniteChecking) {
-          this.content.toggleEnabled(false);
-        }
+        this.content.toggleEnabled(false);
 
-        if (!this.params.behaviour.infiniteChecking) {
+        if (this.params.behaviour.infiniteChecking) {
           this.hideButton('check-answer');
+          this.showButton('continue');
         }
 
         this.content.handleCloseOverlay();
@@ -123,6 +123,10 @@ export default class PickTheSymbols extends H5P.Question {
           this.getMaxScore()
         );
 
+        if (!this.params.behaviour.infiniteChecking) {
+          this.content.toggleEnabled(false);
+        }
+
         if (this.params.behaviour.enableSolutionsButton) {
           this.showButton('show-solution');
         }
@@ -131,6 +135,19 @@ export default class PickTheSymbols extends H5P.Question {
           this.showButton('try-again');
         }
       }, true, {}, {});
+
+      // Continue button
+      this.addButton('continue', this.params.l10n.continue, () => {
+        this.content.toggleEnabled(true);
+        this.content.reset({
+          keepAnswers: true
+        });
+
+        this.showButton('check-answer');
+        this.hideButton('continue');
+        this.hideButton('show-solution');
+        this.hideButton('try-again');
+      }, false, {}, {});
 
       // Show solution button
       this.addButton('show-solution', this.params.l10n.showSolution, () => {
@@ -181,14 +198,6 @@ export default class PickTheSymbols extends H5P.Question {
     this.getMaxScore = () => this.content.getMaxScore();
 
     /**
-     * Handle content interaction.
-     */
-    this.handleContentInteraction = () => {
-      this.hideButton('show-solution');
-      this.hideButton('try-again');
-    };
-
-    /**
      * Show solutions.
      *
      * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-4}
@@ -208,7 +217,6 @@ export default class PickTheSymbols extends H5P.Question {
      * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-5}
      */
     this.resetTask = () => {
-      // TODO: Reset what needs to be reset
       this.removeFeedback();
       this.content.reset();
     };

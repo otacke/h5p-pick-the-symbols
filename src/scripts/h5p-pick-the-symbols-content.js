@@ -146,12 +146,6 @@ export default class PickTheSymbolsContent {
    * @param {PickTheSymbolsBlank} blank Calling blank.
    */
   handleOpenOverlay(blankGroup, blank) {
-    // Hide previous entries/visuals
-    this.reset(false);
-
-    // Hide buttons
-    this.params.callbacks.onContentInteraction();
-
     if (!this.enabled) {
       return;
     }
@@ -226,11 +220,13 @@ export default class PickTheSymbolsContent {
 
   /**
    * Reset blanks.
-   * @param {boolean} [full=true] If false, won't remove obsolete blanks/answers
+   * @param {object} [params] Params.
    */
-  reset(full = true) {
+  reset(params = {}) {
+    params.keepBlanks = this.params.showAllBlanks;
+
     this.blankGroups.forEach(blankGroup => {
-      blankGroup.reset(full, this.params.showAllBlanks);
+      blankGroup.reset(params);
     });
   }
 

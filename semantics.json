@@ -182,11 +182,11 @@
         "default": "Check"
       },
       {
-        "name": "tryAgain",
-        "label": "Text for \"Reset\" button",
+        "name": "continue",
         "type": "text",
+        "label": "Text for \"Continue\" button",
         "importance": "low",
-        "default": "Reset"
+        "default": "Continue"
       },
       {
         "name": "showSolution",
@@ -194,6 +194,13 @@
         "label": "Text for \"Show solution\" button",
         "importance": "low",
         "default": "Show solution"
+      },
+      {
+        "name": "tryAgain",
+        "label": "Text for \"Reset\" button",
+        "type": "text",
+        "importance": "low",
+        "default": "Reset"
       },
       {
         "name": "addBlank",

@@ -25,6 +25,7 @@ export default class PickTheSymbolsContent {
     this.blankGroups = [];
     this.nextBlankId = 0;
     this.answerGiven = false;
+    this.overlayIsOpen = false;
 
     // DOM nodes need to be created first
     const textDeconstructed = PickTheSymbolsContent.deconstructText(params.text, params.symbols);
@@ -97,6 +98,22 @@ export default class PickTheSymbolsContent {
     });
     this.content.appendChild(this.overlay.getDOM());
 
+    // TODO: Use top window
+    window.addEventListener('click', event => {
+      if (!this.overlayIsOpen) {
+        return;
+      }
+
+      const closeOverlayTriggers = event.path
+        .filter(segment => segment.classList !== undefined)
+        .filter(segment => segment.classList.contains('h5p-pick-the-symbols-overlay-outer-wrapper') ||
+            segment.classList.contains('h5p-pick-the-symbols-blank-group'));
+
+      if (closeOverlayTriggers.length === 0) {
+        this.handleCloseOverlay();
+      }
+    });
+
     // Need for buttons to add/remove blanks
     if (!this.onlySimpleBlanks && !this.params.showAllBlanks) {
       this.chooser.toggleBlankButtonsContainer(true);
@@ -164,12 +181,14 @@ export default class PickTheSymbolsContent {
 
     this.overlay.moveTo(blank.getBlankDOM());
     this.overlay.show();
+    this.overlayIsOpen = true;
   }
 
   /**
    * Handle closing the overlay.
    */
   handleCloseOverlay() {
+    this.overlayIsOpen = false;
     this.overlay.hide();
   }
 

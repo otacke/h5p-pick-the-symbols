@@ -107,6 +107,15 @@
   z-index: 10;
 }
 
+.h5p-pick-the-symbols-overlay-outer-wrapper.h5p-pick-the-symbols-narrow-screen {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
+}
+
 .h5p-pick-the-symbols-chooser-symbol-buttons button {
   background: linear-gradient(to bottom,#fff 0,#f2f2f2 100%);
   border: 1px solid #ccc;
@@ -142,6 +151,10 @@
   flex-wrap: wrap;
   font-size: 0.8em;
   padding-top: 0.25em;
+}
+
+.h5p-pick-the-symbols-overlay-outer-wrapper.h5p-pick-the-symbols-narrow-screen .h5p-pick-the-symbols-chooser-blank-buttons {
+  justify-content: space-between;
 }
 
 .h5p-pick-the-symbols-chooser-blank-buttons button.h5p-joubelui-button {

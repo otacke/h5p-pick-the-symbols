@@ -68,6 +68,7 @@ export default class PickTheSymbols extends H5P.Question {
         symbols: Util.htmlDecode(this.params.symbols),
         colorBackground: this.params.behaviour.colorBackground,
         showAllBlanks: this.params.behaviour.showAllBlanks,
+        narrowScreenLimitWidth: PickTheSymbols.NARROW_SCREEN_WIDTH_LIMIT,
         callbacks: {
           onContentInteraction: () => {
             this.handleContentInteraction();
@@ -357,3 +358,6 @@ export default class PickTheSymbols extends H5P.Question {
 
 /** @constant {string} */
 PickTheSymbols.DEFAULT_DESCRIPTION = 'Pick the Symbols';
+
+/** @constant {number} */
+PickTheSymbols.NARROW_SCREEN_WIDTH_LIMIT = 768;

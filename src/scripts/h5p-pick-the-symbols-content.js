@@ -248,19 +248,28 @@ export default class PickTheSymbolsContent {
    * @param {boolean} [params.bubblingDown] If true, won't bubble up.
    */
   resize(params = {}) {
+    const isNarrowScreen = this.content.offsetWidth < this.params.narrowScreenLimitWidth;
+    this.overlay.setNarrowScreen(isNarrowScreen);
+
     if (this.overlayIsOpen) {
       // Resize chooser content to fit buttons
-      const pos = this.overlay.moveTo(this.currentBlank.getBlankDOM());
+      const pos = parseFloat(this.overlay.moveTo(this.currentBlank.getBlankDOM()).left);
+
       this.chooser.resize({
-        maxWidth: this.content.offsetWidth - parseFloat(pos.left)
+        maxWidth: this.content.offsetWidth - pos
       });
 
-      // Resize for overlay adjustments
-      const computedStyle = window.getComputedStyle(this.overlay.getDOM());
-      const overlayTop = parseFloat(computedStyle.getPropertyValue('top'));
-      const overlayHeight = parseFloat(computedStyle.getPropertyValue('height'));
+      if (!isNarrowScreen) {
+        // Resize for overlay adjustments
+        const computedStyle = window.getComputedStyle(this.overlay.getDOM());
+        const overlayTop = parseFloat(computedStyle.getPropertyValue('top'));
+        const overlayHeight = parseFloat(computedStyle.getPropertyValue('height'));
 
-      this.content.style.height = `${overlayTop + overlayHeight}px`;
+        this.content.style.height = `${overlayTop + overlayHeight}px`;
+      }
+      else {
+        this.content.style.removeProperty('height');
+      }
     }
     else {
       this.content.style.removeProperty('height');

@@ -125,10 +125,16 @@ export default class Overlay {
    * @return {object} Position.
    */
   moveTo(element) {
-    // Content has to be set before getting the coordinates
-    const coordinates = this.getOverlayCoordinates(element, this.overlay, this.params.position);
-    this.overlay.style.left = Math.round(coordinates.left) + 'px';
-    this.overlay.style.top = Math.round(coordinates.top) + 'px';
+    if (this.isNarrowScreen) {
+      this.overlay.style.left = '0';
+      this.overlay.style.top = '0';
+    }
+    else {
+      // Content has to be set before getting the coordinates
+      const coordinates = this.getOverlayCoordinates(element, this.overlay, this.params.position);
+      this.overlay.style.left = Math.round(coordinates.left) + 'px';
+      this.overlay.style.top = Math.round(coordinates.top) + 'px';
+    }
 
     return {left: this.overlay.style.left, top: this.overlay.style.top};
   }
@@ -142,6 +148,19 @@ export default class Overlay {
       this.overlay.removeChild(this.overlay.firstChild);
     }
     this.overlay.appendChild(content);
+  }
+
+  /**
+   *
+   */
+  setNarrowScreen(enable = true) {
+    this.isNarrowScreen = enable;
+    if (enable) {
+      this.overlay.classList.add('h5p-pick-the-symbols-narrow-screen');
+    }
+    else {
+      this.overlay.classList.remove('h5p-pick-the-symbols-narrow-screen');
+    }
   }
 
   /**

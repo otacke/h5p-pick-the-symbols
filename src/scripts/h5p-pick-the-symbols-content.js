@@ -19,6 +19,7 @@ export default class PickTheSymbolsContent {
 
     this.params.callbacks = this.params.callbacks || {};
     this.params.callbacks.onContentInteraction = this.params.callbacks.onContentInteraction || (() => {});
+    this.params.callbacks.onResize = this.params.callbacks.onResize || (() => {});
 
     // Space can't be a symbol
     params.symbols = params.symbols.replace(/ /g, '');
@@ -173,9 +174,11 @@ export default class PickTheSymbolsContent {
       this.chooser.toggleAddButtonAddBlank(isLastBlank);
     }
 
-    this.overlay.moveTo(blank.getBlankDOM());
+    this.overlay.moveTo(this.currentBlank.getBlankDOM());
     this.overlay.show();
     this.overlayIsOpen = true;
+
+    this.resize();
   }
 
   /**
@@ -184,6 +187,8 @@ export default class PickTheSymbolsContent {
   handleCloseOverlay() {
     this.overlayIsOpen = false;
     this.overlay.hide();
+
+    this.resize();
   }
 
   /**
@@ -235,6 +240,30 @@ export default class PickTheSymbolsContent {
       this.currentBlankGroup.removeBlank();
     }
     this.handleCloseOverlay();
+  }
+
+  /**
+   * Resize content.
+   * @param {object} params Parameters.
+   * @param {boolean} [params.bubblingDown] If true, won't bubble up.
+   */
+  resize(params = {}) {
+    if (this.overlayIsOpen) {
+      this.overlay.moveTo(this.currentBlank.getBlankDOM());
+
+      const computedStyle = window.getComputedStyle(this.overlay.getDOM());
+      const overlayTop = parseFloat(computedStyle.getPropertyValue('top'));
+      const overlayHeight = parseFloat(computedStyle.getPropertyValue('height'));
+
+      this.content.style.height = `${overlayTop + overlayHeight}px`;
+    }
+    else {
+      this.content.style.removeProperty('height');
+    }
+
+    if (!params.bubblingDown) {
+      this.params.callbacks.onResize();
+    }
   }
 
   /**

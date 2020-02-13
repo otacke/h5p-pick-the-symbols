@@ -71,6 +71,11 @@ export default class PickTheSymbols extends H5P.Question {
         callbacks: {
           onContentInteraction: () => {
             this.handleContentInteraction();
+          },
+          onResize: () => {
+            this.resize({
+              bubblingUp: true
+            });
           }
         },
         l10n: {
@@ -171,6 +176,24 @@ export default class PickTheSymbols extends H5P.Question {
 
         this.trigger('resize');
       }, false, {}, {});
+    };
+
+    this.on('resize', () => {
+      this.resize();
+    });
+
+    /**
+     * Resize.
+     * @param {object} params Parameters.
+     * @param {boolean} [params.bubblingUp] If true, won't bubble down.
+     */
+    this.resize = (params = {}) => {
+      if (params.bubblingUp) {
+        this.trigger('resize');
+      }
+      else {
+        this.content.resize({bubblingDown: true});
+      }
     };
 
     /**

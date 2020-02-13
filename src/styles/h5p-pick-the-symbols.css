@@ -135,10 +135,16 @@
   background-color: #104888;
 }
 
+.h5p-pick-the-symbols-chooser-symbol-buttons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
 .h5p-pick-the-symbols-chooser-blank-buttons {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   padding-top: 0.25em;
 }
 

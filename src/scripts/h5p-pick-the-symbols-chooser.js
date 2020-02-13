@@ -23,6 +23,10 @@ export default class PickTheSymbolsChooser {
     this.content = document.createElement('div');
     this.content.classList.add('h5p-pick-the-symbols-chooser');
 
+    this.symbolButtonsContainer = document.createElement('div');
+    this.symbolButtonsContainer.classList.add('h5p-pick-the-symbols-chooser-symbol-buttons');
+    this.content.appendChild(this.symbolButtonsContainer);
+
     params.symbols.forEach(symbol => {
       const button = document.createElement('button');
       button.classList.add('h5p-joubelui-button');
@@ -33,7 +37,7 @@ export default class PickTheSymbolsChooser {
       });
 
       this.buttons.push(button);
-      this.content.appendChild(button);
+      this.symbolButtonsContainer.appendChild(button);
     });
 
     // TODO: Handle this via params, not via toggling

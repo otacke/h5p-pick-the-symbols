@@ -148,6 +148,10 @@
   padding-top: 0.25em;
 }
 
+.h5p-pick-the-symbols-chooser-symbol-buttons button.h5p-pick-the-symbols-chooser-button-trailing {
+  margin-right: 0;
+}
+
 .h5p-pick-the-symbols-overlay-outer-wrapper button.h5p-pick-the-symbols-add-blank {
   background: #60c285;
 }

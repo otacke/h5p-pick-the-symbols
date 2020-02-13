@@ -122,12 +122,15 @@ export default class Overlay {
   /**
    * Visually attach to parent element.
    * @param {HTMLElement} element Element to attach to.
+   * @return {object} Position.
    */
   moveTo(element) {
     // Content has to be set before getting the coordinates
     const coordinates = this.getOverlayCoordinates(element, this.overlay, this.params.position);
     this.overlay.style.left = Math.round(coordinates.left) + 'px';
     this.overlay.style.top = Math.round(coordinates.top) + 'px';
+
+    return {left: this.overlay.style.left, top: this.overlay.style.top};
   }
 
   /**

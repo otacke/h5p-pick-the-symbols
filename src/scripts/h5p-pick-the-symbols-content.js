@@ -95,7 +95,8 @@ export default class PickTheSymbolsContent {
       content: this.chooser.getDOM(),
       position: {
         horizontal: 'left',
-        noOverflowX: true
+        noOverflowX: true,
+        offsetVertical: 4
       }
     });
     this.content.appendChild(this.overlay.getDOM());
@@ -174,7 +175,6 @@ export default class PickTheSymbolsContent {
       this.chooser.toggleAddButtonAddBlank(isLastBlank);
     }
 
-    this.overlay.moveTo(this.currentBlank.getBlankDOM());
     this.overlay.show();
     this.overlayIsOpen = true;
 
@@ -249,8 +249,13 @@ export default class PickTheSymbolsContent {
    */
   resize(params = {}) {
     if (this.overlayIsOpen) {
-      this.overlay.moveTo(this.currentBlank.getBlankDOM());
+      // Resize chooser content to fit buttons
+      const pos = this.overlay.moveTo(this.currentBlank.getBlankDOM());
+      this.chooser.resize({
+        maxWidth: this.content.offsetWidth - parseFloat(pos.left)
+      });
 
+      // Resize for overlay adjustments
       const computedStyle = window.getComputedStyle(this.overlay.getDOM());
       const overlayTop = parseFloat(computedStyle.getPropertyValue('top'));
       const overlayHeight = parseFloat(computedStyle.getPropertyValue('height'));

@@ -87,6 +87,33 @@ export default class PickTheSymbolsChooser {
   }
 
   /**
+   * Resize.
+   * @param {object} [params={}] Parameters.
+   * @param {number} [params.maxWidth] Maximum width available.
+   */
+  resize(params = {}) {
+    params.maxWidth = params.maxWidth || Infinity;
+
+    // Get current button property values
+    const buttonComputedStyle = window.getComputedStyle(this.buttons[0]);
+    const buttonWidth = parseFloat(buttonComputedStyle.getPropertyValue('width'));
+    const buttonMarginRight = parseFloat(buttonComputedStyle.getPropertyValue('margin-right'));
+
+    // Compute number of buttons in row
+    const maxButtonsFitting = Math.floor((params.maxWidth + buttonMarginRight) / (buttonWidth + buttonMarginRight));
+    const maxButtonsInRow = Math.max(Math.min(this.buttons.length, maxButtonsFitting), 2); // At least two buttons
+
+    this.content.style.width = `${maxButtonsInRow * buttonWidth + (maxButtonsInRow - 1) * buttonMarginRight}px`;
+
+    this.buttons.forEach((button, index) => {
+      button.classList.remove('h5p-pick-the-symbols-chooser-button-trailing');
+      if ((index + 1) % maxButtonsInRow === 0) {
+        button.classList.add('h5p-pick-the-symbols-chooser-button-trailing');
+      }
+    });
+  }
+
+  /**
    * Toggle visibility of button for removing blank.
    */
   toggleAddButtonAddBlank(state) {

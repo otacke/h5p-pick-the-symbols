@@ -11,7 +11,7 @@ export default class PickTheSymbolsChooser {
     this.callbacks = this.params.callbacks || {};
     this.callbacks.onAddBlank = this.callbacks.onAddBlank || (() => {});
     this.callbacks.onPickSymbol = this.callbacks.onPickSymbol || (() => {});
-    this.callbacks.onRemoveBlank = this.callbacks.onremoveBlank || (() => {});
+    this.callbacks.onRemoveBlank = this.callbacks.onRemoveBlank || (() => {});
     this.callbacks.onResize = this.callbacks.onResize || (() => {});
 
     this.buttons = [];

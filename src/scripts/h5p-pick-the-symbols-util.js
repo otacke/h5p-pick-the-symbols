@@ -30,6 +30,35 @@ class Util {
     var dparser = new DOMParser().parseFromString(input, 'text/html');
     return dparser.documentElement.textContent.replace(/(\r\n|\n|\r)/gm, '');
   }
+
+  /** Get top DOM Window object.
+	 * @param {Window} [startWindow=window] Window to start looking from.
+   * @param {number} [maxLevel=Infinity];
+	 * @return {Window|false} Top window.
+	 */
+  static getTopWindow(startWindow = window, maxLevel = Infinity) {
+    if (maxLevel === 0) {
+      return startWindow;
+    }
+
+    let sameOrigin;
+    try {
+      sameOrigin = startWindow.parent.location.host === window.location.host;
+    }
+    catch (error) {
+      sameOrigin = false;
+    }
+
+    if (!sameOrigin) {
+      return startWindow;
+    }
+
+    if (startWindow.parent === startWindow || !startWindow.parent) {
+      return startWindow;
+    }
+
+    return Util.getTopWindow(startWindow.parent, maxLevel - 1);
+  }
 }
 
 export default Util;

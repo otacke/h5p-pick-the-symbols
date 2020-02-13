@@ -1,6 +1,7 @@
 import Overlay from './h5p-pick-the-symbols-overlay';
 import PickTheSymbolsBlankGroup from './h5p-pick-the-symbols-blank-group';
 import PickTheSymbolsChooser from './h5p-pick-the-symbols-chooser';
+import Util from './h5p-pick-the-symbols-util';
 
 /** Class representing the content */
 export default class PickTheSymbolsContent {
@@ -98,20 +99,13 @@ export default class PickTheSymbolsContent {
     });
     this.content.appendChild(this.overlay.getDOM());
 
-    // TODO: Use top window
+    // Close overlay on outside click (iframe window and 1st level parent)
+    const topWindow = Util.getTopWindow(window, 1);
+    topWindow.addEventListener('click', event => {
+      this.handleCloseOverlayExternal(event);
+    });
     window.addEventListener('click', event => {
-      if (!this.overlayIsOpen) {
-        return;
-      }
-
-      const closeOverlayTriggers = event.path
-        .filter(segment => segment.classList !== undefined)
-        .filter(segment => segment.classList.contains('h5p-pick-the-symbols-overlay-outer-wrapper') ||
-            segment.classList.contains('h5p-pick-the-symbols-blank-group'));
-
-      if (closeOverlayTriggers.length === 0) {
-        this.handleCloseOverlay();
-      }
+      this.handleCloseOverlayExternal(event);
     });
 
     // Need for buttons to add/remove blanks
@@ -190,6 +184,24 @@ export default class PickTheSymbolsContent {
   handleCloseOverlay() {
     this.overlayIsOpen = false;
     this.overlay.hide();
+  }
+
+  /**
+   * Handle closing the overlay from outside click.
+   */
+  handleCloseOverlayExternal() {
+    if (!this.overlayIsOpen) {
+      return;
+    }
+
+    const closeOverlayTriggers = event.path
+      .filter(segment => segment.classList !== undefined)
+      .filter(segment => segment.classList.contains('h5p-pick-the-symbols-overlay-outer-wrapper') ||
+          segment.classList.contains('h5p-pick-the-symbols-blank-group'));
+
+    if (closeOverlayTriggers.length === 0) {
+      this.handleCloseOverlay();
+    }
   }
 
   /**

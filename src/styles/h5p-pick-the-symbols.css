@@ -9,11 +9,6 @@
   width: 100%;
 }
 
-.h5p-pick-the-symbols-ruler {
-  border-bottom: 2px solid #eee;
-  width: 100%;
-}
-
 .h5p-pick-the-symbols-text-container {
   width: 100%;
   padding: 0.5em 0 0 0;
@@ -112,7 +107,7 @@
   z-index: 10;
 }
 
-.h5p-pick-the-symbols-overlay-outer-wrapper button {
+.h5p-pick-the-symbols-chooser-symbol-buttons button {
   background: linear-gradient(to bottom,#fff 0,#f2f2f2 100%);
   border: 1px solid #ccc;
   border-radius: 0.25em;
@@ -123,11 +118,11 @@
   width: 2em;
 }
 
-.h5p-pick-the-symbols-overlay-outer-wrapper button:first-child {
+.h5p-pick-the-symbols-chooser-symbol-buttons button:first-child {
   margin: 0 0.25em 0.25em 0;
 }
 
-.h5p-pick-the-symbols-overlay-outer-wrapper button:last-child {
+.h5p-pick-the-symbols-chooser-symbol-buttons button:last-child {
   margin: 0 0 0.25em 0;
 }
 
@@ -144,52 +139,39 @@
 .h5p-pick-the-symbols-chooser-blank-buttons {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  font-size: 0.8em;
   padding-top: 0.25em;
+}
+
+.h5p-pick-the-symbols-chooser-blank-buttons button.h5p-joubelui-button {
+  margin: 0 0.5em 0 0;
+}
+
+.h5p-pick-the-symbols-chooser-blank-buttons button.h5p-joubelui-button:last-child {
+  margin: 0;
 }
 
 .h5p-pick-the-symbols-chooser-symbol-buttons button.h5p-pick-the-symbols-chooser-button-trailing {
   margin-right: 0;
 }
 
-.h5p-pick-the-symbols-overlay-outer-wrapper button.h5p-pick-the-symbols-add-blank {
-  background: #60c285;
+.h5p-pick-the-symbols-chooser-blank-buttons button.h5p-pick-the-symbols-add-blank:disabled {
+  background: #cccccc;
+  cursor: auto;
 }
 
-.h5p-pick-the-symbols-overlay-outer-wrapper button.h5p-pick-the-symbols-add-blank:focus,
-.h5p-pick-the-symbols-overlay-outer-wrapper button.h5p-pick-the-symbols-add-blank:hover {
-  background: #40a265;
+.h5p-pick-the-symbols-chooser-blank-buttons button.h5p-pick-the-symbols-remove-blank:disabled {
+  background: #cccccc;
+  cursor: auto;
 }
 
-.h5p-pick-the-symbols-overlay-outer-wrapper button.h5p-pick-the-symbols-add-blank:active {
-  background: #309255;
-  box-shadow: inset 0 4px 0 #209245;
+.h5p-pick-the-symbols-chooser-blank-buttons button.h5p-pick-the-symbols-add-blank::before {
+  content: "\f067";
 }
 
-.h5p-pick-the-symbols-overlay-outer-wrapper button.h5p-pick-the-symbols-add-blank:disabled {
-  color: #dddddd;
-  background: #999999;
-  cursor: inherit;
-}
-
-.h5p-pick-the-symbols-overlay-outer-wrapper button.h5p-pick-the-symbols-remove-blank {
-  background: #c26085;
-}
-
-.h5p-pick-the-symbols-overlay-outer-wrapper button.h5p-pick-the-symbols-remove-blank:focus,
-.h5p-pick-the-symbols-overlay-outer-wrapper button.h5p-pick-the-symbols-remove-blank:hover {
-  background: #a24065;
-}
-
-.h5p-pick-the-symbols-overlay-outer-wrapper button.h5p-pick-the-symbols-remove-blank:active {
-  background: #822045;
-  box-shadow: inset 0 4px 0 #923055;
-}
-
-.h5p-pick-the-symbols-overlay-outer-wrapper button.h5p-pick-the-symbols-remove-blank:disabled {
-  color: #dddddd;
-  background: #999999;
-  cursor: inherit;
+.h5p-pick-the-symbols-chooser-blank-buttons button.h5p-pick-the-symbols-remove-blank::before {
+  content: "\f068";
 }
 
 .h5p-pick-the-symbols-invisible {

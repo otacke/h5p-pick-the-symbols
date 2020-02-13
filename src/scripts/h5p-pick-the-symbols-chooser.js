@@ -42,11 +42,6 @@ export default class PickTheSymbolsChooser {
 
     // TODO: Handle this via params, not via toggling
 
-    this.ruler = document.createElement('div');
-    this.ruler.classList.add('h5p-pick-the-symbols-ruler');
-    this.ruler.classList.add('h5p-pick-the-symbols-none');
-    this.content.appendChild(this.ruler);
-
     this.blankButtonsContainer = document.createElement('div');
     this.blankButtonsContainer.classList.add('h5p-pick-the-symbols-chooser-blank-buttons');
     this.blankButtonsContainer.classList.add('h5p-pick-the-symbols-none');
@@ -57,7 +52,7 @@ export default class PickTheSymbolsChooser {
     this.buttonRemoveBlank.classList.add('h5p-joubelui-button');
     this.buttonRemoveBlank.classList.add('h5p-pick-the-symbols-remove-blank');
     this.buttonRemoveBlank.classList.add('h5p-pick-the-symbols-disabled');
-    this.buttonRemoveBlank.innerHTML = '-';
+    this.buttonRemoveBlank.innerHTML = this.params.l10n.removeBlank;
     this.buttonRemoveBlank.setAttribute('title', this.params.l10n.removeBlank);
     this.buttonRemoveBlank.addEventListener('click', () => {
       this.callbacks.onRemoveBlank();
@@ -69,7 +64,7 @@ export default class PickTheSymbolsChooser {
     this.buttonAddBlank.classList.add('h5p-joubelui-button');
     this.buttonAddBlank.classList.add('h5p-pick-the-symbols-add-blank');
     this.buttonAddBlank.classList.add('h5p-pick-the-symbols-disabled');
-    this.buttonAddBlank.innerHTML = '+';
+    this.buttonAddBlank.innerHTML = this.params.l10n.addBlank;
     this.buttonAddBlank.setAttribute('title', this.params.l10n.addBlank);
     this.buttonAddBlank.addEventListener('click', () => {
       this.callbacks.onAddBlank();
@@ -103,7 +98,9 @@ export default class PickTheSymbolsChooser {
     const maxButtonsFitting = Math.floor((params.maxWidth + buttonMarginRight) / (buttonWidth + buttonMarginRight));
     const maxButtonsInRow = Math.max(Math.min(this.buttons.length, maxButtonsFitting), 2); // At least two buttons
 
-    this.content.style.width = `${maxButtonsInRow * buttonWidth + (maxButtonsInRow - 1) * buttonMarginRight}px`;
+    // Fit content to number of buttons
+    const maxWidth = maxButtonsInRow * buttonWidth + (maxButtonsInRow - 1) * buttonMarginRight;
+    this.content.style.width = `${maxWidth}px`;
 
     this.buttons.forEach((button, index) => {
       button.classList.remove('h5p-pick-the-symbols-chooser-button-trailing');
@@ -111,6 +108,8 @@ export default class PickTheSymbolsChooser {
         button.classList.add('h5p-pick-the-symbols-chooser-button-trailing');
       }
     });
+
+    this.resizeButtons(maxWidth);
   }
 
   /**
@@ -152,15 +151,17 @@ export default class PickTheSymbolsChooser {
     state = (typeof state === 'boolean') ? state : !this.hasBlankButtonsContainer;
 
     if (state) {
-      this.ruler.classList.remove('h5p-pick-the-symbols-none');
       this.blankButtonsContainer.classList.remove('h5p-pick-the-symbols-none');
     }
     else {
-      this.ruler.classList.add('h5p-pick-the-symbols-none');
       this.blankButtonsContainer.classList.add('h5p-pick-the-symbols-none');
     }
   }
 
+  /**
+   * Activate buttons that contain a symbol.
+   * @param {string} symbol Symbol.
+   */
   activateButton(symbol) {
     this.buttons.forEach(button => {
       if (button.innerHTML === symbol) {
@@ -170,5 +171,81 @@ export default class PickTheSymbolsChooser {
         button.classList.remove('active');
       }
     });
+  }
+
+  /**
+   * Resize blank buttons to fit container.
+   * @param {number} containerWidth Container width to fit in.
+   */
+  resizeButtons(containerWidth) {
+    this.buttonRemoveBlankWidths = this.buttonRemoveBlankWidths || this.computeButtonWidths(this.buttonRemoveBlank);
+    this.buttonAddBlankWidths = this.buttonAddBlankWidths || this.computeButtonWidths(this.buttonAddBlank);
+
+    if (this.buttonRemoveBlankWidths.max + this.buttonAddBlankWidths.max < containerWidth) {
+      this.untruncate(this.buttonRemoveBlank);
+      this.untruncate(this.buttonAddBlank);
+    }
+    else if (this.buttonRemoveBlankWidths.max + this.buttonAddBlankWidths.min < containerWidth) {
+      this.untruncate(this.buttonRemoveBlank);
+      this.truncate(this.buttonAddBlank);
+    }
+    else {
+      this.truncate(this.buttonRemoveBlank);
+      this.truncate(this.buttonAddBlank);
+    }
+  }
+
+  /**
+   * Truncate a button.
+   * @param {Button} button Button HTMLElement.
+   */
+  truncate(button) {
+    button.classList.add('truncated');
+    button.innerHTML = '';
+  }
+
+  /**
+   * Untruncate a button.
+   * @param {Button} button Button HTMLElement.
+   */
+  untruncate(button) {
+    button.classList.remove('truncated');
+    button.innerHTML = button.getAttribute('title'); // Duplicate for a11y
+  }
+
+  /**
+   * Compute min and max width of a blank button.
+   * @param {Button} button Button HTMLElement.
+   * @return {object} MinWidth and MaxWidth.
+   */
+  computeButtonWidths(button) {
+    const widths = {min: 0, max: 0};
+    const wasTruncated = button.classList.contains('truncated');
+
+    button.classList.add('truncated');
+    widths.min = this.getComputedWidth(button);
+
+    button.classList.remove('truncated');
+    widths.max = this.getComputedWidth(button);
+
+    if (wasTruncated) {
+      button.classList.add('truncated');
+    }
+
+    return widths;
+  }
+
+  /**
+   * Get computed width of an element.
+   * @param {HTMLElement} element Element.
+   * @return {number} Width.
+   */
+  getComputedWidth(element) {
+    const style = window.getComputedStyle(element);
+    const border = parseFloat(style.getPropertyValue('border-left')) + parseFloat(style.getPropertyValue('border-right'));
+    const margin = parseFloat(style.getPropertyValue('margin-left')) + parseFloat(style.getPropertyValue('margin-right'));
+    const width = parseFloat(style.getPropertyValue('width'));
+
+    return width + margin + border;
   }
 }

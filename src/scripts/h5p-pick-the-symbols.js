@@ -48,7 +48,7 @@ export default class PickTheSymbols extends H5P.Question {
         continue: 'Continue',
         showSolution: 'Show solution',
         tryAgain: 'Retry',
-        addBlank: 'Add new blank',
+        addBlank: 'Add blank',
         addSymbol: 'Fill blank with @symbol',
         space: 'space',
         removeBlank: 'Remove blank'

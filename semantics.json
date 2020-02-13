@@ -207,14 +207,14 @@
         "type": "text",
         "label": "Text for \"Add blank\" button",
         "importance": "low",
-        "default": "Append a new blank"
+        "default": "Append blank"
       },
       {
         "name": "removeBlank",
         "type": "text",
         "label": "Text for \"Remove blank\" button",
         "importance": "low",
-        "default": "Remove current blank"
+        "default": "Remove blank"
       },
       {
         "name": "addSymbol",

@@ -1,5 +1,3 @@
-import Util from './h5p-pick-the-symbols-util';
-
 /** Class representing the content */
 export default class PickTheSymbolsChooser {
   /**
@@ -7,12 +5,14 @@ export default class PickTheSymbolsChooser {
    *
    * @param {object} params Parameters.
    */
-  constructor(params) {
-    this.params = Util.extend({
-      callbacks: {
-        click: () => {}
-      }
-    }, params);
+  constructor(params = {}) {
+    this.params = params;
+
+    this.callbacks = this.params.callbacks || {};
+    this.callbacks.onAddBlank = this.callbacks.onAddBlank || (() => {});
+    this.callbacks.onPickSymbol = this.callbacks.onPickSymbol || (() => {});
+    this.callbacks.onRemoveBlank = this.callbacks.onremoveBlank || (() => {});
+    this.callbacks.onResize = this.callbacks.onResize || (() => {});
 
     this.buttons = [];
 
@@ -29,7 +29,7 @@ export default class PickTheSymbolsChooser {
       button.innerHTML = symbol;
       button.setAttribute('title', this.params.l10n.addSymbol.replace(/@symbol/g, symbol.replace('&nbsp;', this.params.l10n.space)));
       button.addEventListener('click', () => {
-        this.params.callbacks.onPickSymbol(button.innerHTML);
+        this.callbacks.onPickSymbol(button.innerHTML);
       });
 
       this.buttons.push(button);
@@ -56,7 +56,7 @@ export default class PickTheSymbolsChooser {
     this.buttonRemoveBlank.innerHTML = '-';
     this.buttonRemoveBlank.setAttribute('title', this.params.l10n.removeBlank);
     this.buttonRemoveBlank.addEventListener('click', () => {
-      this.params.callbacks.onRemoveBlank();
+      this.callbacks.onRemoveBlank();
     });
     this.blankButtonsContainer.appendChild(this.buttonRemoveBlank);
 
@@ -68,7 +68,7 @@ export default class PickTheSymbolsChooser {
     this.buttonAddBlank.innerHTML = '+';
     this.buttonAddBlank.setAttribute('title', this.params.l10n.addBlank);
     this.buttonAddBlank.addEventListener('click', () => {
-      this.params.callbacks.onAddBlank();
+      this.callbacks.onAddBlank();
     });
     this.blankButtonsContainer.appendChild(this.buttonAddBlank);
   }

@@ -144,15 +144,9 @@ export default class PickTheSymbols extends H5P.Question {
 
       // Continue button
       this.addButton('continue', this.params.l10n.continue, () => {
-        this.content.toggleEnabled(true);
-        this.content.reset({
+        this.reset({
           keepAnswers: true
         });
-
-        this.showButton('check-answer');
-        this.hideButton('continue');
-        this.hideButton('show-solution');
-        this.hideButton('try-again');
       }, false, {}, {});
 
       // Show solution button
@@ -241,8 +235,17 @@ export default class PickTheSymbols extends H5P.Question {
      * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-5}
      */
     this.resetTask = () => {
+      this.reset(params);
+
+    };
+
+    /**
+     * Reset task.
+     * @param {object} params Parameters.
+     */
+    this.reset = (params) => {
       this.removeFeedback();
-      this.content.reset();
+      this.content.reset(params);
       this.content.toggleEnabled(true);
 
       this.showButton('check-answer');

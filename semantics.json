@@ -161,8 +161,7 @@
         "widget": "colorSelector",
         "spectrum": {
           "showInput": true,
-          "showInitial": true,
-          "showPalette": true
+          "showInitial": true
         }
       }
     ]

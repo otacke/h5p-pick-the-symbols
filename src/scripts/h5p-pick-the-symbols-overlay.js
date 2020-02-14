@@ -17,7 +17,15 @@ export default class Overlay {
     this.overlay = document.createElement('div');
     this.overlay.classList.add(`${this.params.styleBase}-outer-wrapper`);
     this.overlay.classList.add('h5p-pick-the-symbols-invisible');
-    this.overlay.appendChild(this.params.content);
+
+    this.marker = document.createElement('div');
+    this.marker.classList.add(`${this.params.styleBase}-marker`);
+    this.overlay.appendChild(this.marker);
+
+    this.content = document.createElement('div');
+    this.content.classList.add(`${this.params.styleBase}-content`);
+    this.content.appendChild(this.params.content);
+    this.overlay.appendChild(this.content);
   }
 
   /**
@@ -120,15 +128,34 @@ export default class Overlay {
   }
 
   /**
+   * Get coordinates for marker.
+   * @param {HTMLElement} element Element to fix to.
+   * @param {HTMLElement} marker Marker.
+   * @param {number} [overlayOffset=0] Vertical offset.
+   */
+  getMarkerCoordinates(element, marker, overlayPosition = 0) {
+    const elementRect = element.getBoundingClientRect();
+    const markerRect = marker.getBoundingClientRect();
+
+    let left = - overlayPosition + elementRect.left + (elementRect.width - markerRect.width) / 2;
+    let top = marker.style.top || 0;
+
+    return {left: left, top: top};
+  }
+
+  /**
    * Visually attach to parent element.
    * @param {HTMLElement} element Element to attach to.
    * @return {object} Position.
    */
   moveTo(element) {
     // Content has to be set before getting the coordinates
-    const coordinates = this.getOverlayCoordinates(element, this.overlay, this.params.position);
+    let coordinates = this.getOverlayCoordinates(element, this.overlay, this.params.position);
     this.overlay.style.left = Math.round(coordinates.left) + 'px';
     this.overlay.style.top = Math.round(coordinates.top) + 'px';
+
+    coordinates = this.getMarkerCoordinates(element, this.marker, Math.round(coordinates.left));
+    this.marker.style.left = Math.round(coordinates.left) + 'px';
 
     return {left: this.overlay.style.left, top: this.overlay.style.top};
   }

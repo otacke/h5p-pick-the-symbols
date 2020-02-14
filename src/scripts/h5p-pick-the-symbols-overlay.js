@@ -7,12 +7,16 @@ export default class Overlay {
    *
    * @param {object} params Parameters.
    * @param {HTMLElement} params.content Content to set.
+   * @param {object} callbacks, Callbacks.
    */
-  constructor(params) {
+  constructor(params, callbacks = {}) {
     this.params = Util.extend({
       container: document.body,
       styleBase: 'h5p-pick-the-symbols-overlay'
     }, params);
+
+    this.callbacks = callbacks;
+    this.callbacks.onClose = callbacks.onClose || (() => {});
 
     this.overlay = document.createElement('div');
     this.overlay.classList.add(`${this.params.styleBase}-outer-wrapper`);
@@ -26,6 +30,14 @@ export default class Overlay {
     this.content.classList.add(`${this.params.styleBase}-content`);
     this.content.appendChild(this.params.content);
     this.overlay.appendChild(this.content);
+
+    const buttonClose = document.createElement('button');
+    buttonClose.classList.add(`${this.params.styleBase}-button-close`);
+    buttonClose.setAttribute('title', this.params.l10n.closeWindow);
+    buttonClose.addEventListener('click', () => {
+      this.callbacks.onClose();
+    });
+    this.overlay.appendChild(buttonClose);
   }
 
   /**

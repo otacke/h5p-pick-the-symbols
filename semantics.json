@@ -229,6 +229,13 @@
         "label": "Name of \"space\" character",
         "importance": "low",
         "default": "space"
+      },
+      {
+        "name": "closeWindow",
+        "type": "text",
+        "label": "Text for close window button",
+        "importance": "low",
+        "default": "Close window"
       }
     ]
   }

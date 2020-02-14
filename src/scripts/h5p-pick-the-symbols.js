@@ -45,6 +45,7 @@ export default class PickTheSymbols extends H5P.Question {
       },
       l10n: {
         checkAnswer: 'Check answer',
+        closeWindow: 'Close window',
         continue: 'Continue',
         showSolution: 'Show solution',
         tryAgain: 'Retry',
@@ -81,6 +82,7 @@ export default class PickTheSymbols extends H5P.Question {
         l10n: {
           addBlank: this.params.l10n.addBlank,
           addSymbol: this.params.l10n.addSymbol,
+          closeWindow: this.params.l10n.closeWindow,
           space: this.params.l10n.space,
           removeBlank: this.params.l10n.removeBlank
         }

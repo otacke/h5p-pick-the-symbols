@@ -91,14 +91,24 @@ export default class PickTheSymbolsContent {
       }
     });
 
-    this.overlay = new Overlay({
-      content: this.chooser.getDOM(),
-      position: {
-        horizontal: 'left',
-        noOverflowX: true,
-        offsetVertical: 4
+    this.overlay = new Overlay(
+      {
+        content: this.chooser.getDOM(),
+        l10n: {
+          closeWindow: this.params.l10n.closeWindow
+        },
+        position: {
+          horizontal: 'left',
+          noOverflowX: true,
+          offsetVertical: 4
+        }
+      },
+      {
+        onClose: () => {
+          this.handleCloseOverlay();
+        }
       }
-    });
+    );
     this.content.appendChild(this.overlay.getDOM());
 
     // Close overlay on outside click (iframe window and 1st level parent)

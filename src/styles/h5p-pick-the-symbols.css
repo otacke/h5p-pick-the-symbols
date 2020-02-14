@@ -126,6 +126,32 @@
   z-index: -1;
 }
 
+.h5p-pick-the-symbols-overlay-button-close {
+  background: #fff;
+  position: absolute;
+  top: -1.1em;
+  right: -1.1em;
+  cursor: pointer;
+  border-radius: 50%;
+  border: none;
+  padding: 3px;
+  line-height: 1;
+  color: #bd3e3e;
+  z-index: 3;
+}
+
+.h5p-pick-the-symbols-overlay-button-close:before {
+  font-family: 'H5PFontAwesome4';
+  content: '\f00d';
+  border: 1px solid #bd3e3e;
+  text-align: center;
+  border-radius: 50%;
+  width: 1.5em;
+  height: 1.5em;
+  display: inline-block;
+  line-height: 1.5;
+}
+
 .h5p-pick-the-symbols-chooser-symbol-buttons button {
   background: linear-gradient(to bottom,#fff 0,#f2f2f2 100%);
   border: 1px solid #ccc;

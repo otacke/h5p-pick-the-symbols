@@ -1,10 +1,44 @@
 {
   "semantics": [
     {
+      "label": "Task description",
+      "description": "Describe your task here."
+    },
+    {
       "label": "Text",
-      "placeholder": "Hello world",
-      "default": "Hello %username",
-      "description": "Says hello to someone"
+      "description": "Enter the text that contains symbols to be picked."
+    },
+    {
+      "label": "Symbols",
+      "description": "Enter the symbols that the student needs to pick from.",
+      "default": ".?!,:;'\""
+    },
+    {
+      "label": "Overall Feedback",
+      "fields": [
+        {
+          "widgets": [
+            {
+              "label": "Default"
+            }
+          ],
+          "label": "Define custom feedback for any score range",
+          "description": "Click the \"Add range\" button to add as many ranges as you need. Example: 0-20% Bad score, 21-91% Average Score, 91-100% Great Score!",
+          "entity": "range",
+          "field": {
+            "fields": [
+              {
+                "label": "Score Range"
+              },
+              {},
+              {
+                "label": "Feedback for defined score range",
+                "placeholder": "Fill in the feedback"
+              }
+            ]
+          }
+        }
+      ]
     },
     {
       "label": "Behavioural settings",
@@ -15,6 +49,19 @@
         },
         {
           "label": "Enable \"Solution\""
+        },
+        {
+          "label": "Allow continuous checking",
+          "description": "Allow students to continuously check their answers without resetting their previous choices."
+        },
+        {
+          "label": "Show all blanks",
+          "description": "Show all blanks for groups of symbols in advance."
+        },
+        {
+          "label": "Blanks background color",
+          "default": "#e0e0e0",
+          "spectrum": {}
         }
       ]
     },
@@ -26,12 +73,37 @@
           "default": "Check"
         },
         {
-          "label": "Text for \"Retry\" button",
-          "default": "Retry"
+          "label": "Text for \"Continue\" button",
+          "default": "Continue"
         },
         {
           "label": "Text for \"Show solution\" button",
           "default": "Show solution"
+        },
+        {
+          "label": "Text for \"Reset\" button",
+          "default": "Reset"
+        },
+        {
+          "label": "Text for \"Add blank\" button",
+          "default": "Append blank"
+        },
+        {
+          "label": "Text for \"Remove blank\" button",
+          "default": "Remove blank"
+        },
+        {
+          "label": "Text for \"Add symbol\" button",
+          "description": "@symbol will be replaced with the symbol that was picked.",
+          "default": "Fill blank with @symbol"
+        },
+        {
+          "label": "Name of \"space\" character",
+          "default": "space"
+        },
+        {
+          "label": "Text for close window button",
+          "default": "Close window"
         }
       ]
     }

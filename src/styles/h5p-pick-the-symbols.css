@@ -183,3 +183,7 @@
 .h5p-pick-the-symbols-none {
   display: none;
 }
+
+.h5p-question-continue:before {
+  content: "\F0E2";
+}

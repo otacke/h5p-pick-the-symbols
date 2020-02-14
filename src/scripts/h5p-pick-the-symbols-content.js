@@ -260,7 +260,9 @@ export default class PickTheSymbolsContent {
       const overlayTop = parseFloat(computedStyle.getPropertyValue('top'));
       const overlayHeight = parseFloat(computedStyle.getPropertyValue('height'));
 
-      this.content.style.height = `${overlayTop + overlayHeight}px`;
+      if (this.content.offsetHeight < overlayTop + overlayHeight) {
+        this.content.style.height = `${overlayTop + overlayHeight}px`;
+      }
     }
     else {
       this.content.style.removeProperty('height');

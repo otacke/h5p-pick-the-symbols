@@ -185,10 +185,6 @@ export default class PickTheSymbolsChooser {
       this.untruncate(this.buttonRemoveBlank);
       this.untruncate(this.buttonAddBlank);
     }
-    else if (this.buttonRemoveBlankWidths.max + this.buttonAddBlankWidths.min < containerWidth) {
-      this.untruncate(this.buttonRemoveBlank);
-      this.truncate(this.buttonAddBlank);
-    }
     else {
       this.truncate(this.buttonRemoveBlank);
       this.truncate(this.buttonAddBlank);

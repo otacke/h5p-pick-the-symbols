@@ -106,8 +106,9 @@ export default class PickTheSymbols extends H5P.Question {
       this.addButton('check-answer', this.params.l10n.checkAnswer, () => {
         this.content.toggleEnabled(false);
 
-        if (this.params.behaviour.infiniteChecking) {
-          this.hideButton('check-answer');
+        this.hideButton('check-answer');
+
+        if (this.params.behaviour.infiniteChecking && this.getScore() < this.getMaxScore()) {
           this.showButton('continue');
         }
 
@@ -132,7 +133,7 @@ export default class PickTheSymbols extends H5P.Question {
           this.content.toggleEnabled(false);
         }
 
-        if (this.params.behaviour.enableSolutionsButton) {
+        if (this.params.behaviour.enableSolutionsButton && this.getScore() < this.getMaxScore()) {
           this.showButton('show-solution');
         }
 
@@ -242,6 +243,12 @@ export default class PickTheSymbols extends H5P.Question {
     this.resetTask = () => {
       this.removeFeedback();
       this.content.reset();
+      this.content.toggleEnabled(true);
+
+      this.showButton('check-answer');
+      this.hideButton('continue');
+      this.hideButton('show-solution');
+      this.hideButton('try-again');
     };
 
     /**

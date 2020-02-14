@@ -165,10 +165,10 @@ export default class Overlay {
    * @param {HTMLElement} content Content to set.
    */
   setContent(content) {
-    while (this.overlay.firstChild) {
-      this.overlay.removeChild(this.overlay.firstChild);
+    while (this.content.firstChild) {
+      this.content.removeChild(this.content.firstChild);
     }
-    this.overlay.appendChild(content);
+    this.content.appendChild(content);
   }
 
   /**

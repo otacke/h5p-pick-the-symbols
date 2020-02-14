@@ -243,4 +243,12 @@ export default class PickTheSymbolsBlank {
       this.showHighlight();
     }
   }
+
+  /**
+   * Answer call to return the current state.
+   * @return {object} Current state.
+   */
+  getCurrentState() {
+    return this.getAnswer();
+  }
 }

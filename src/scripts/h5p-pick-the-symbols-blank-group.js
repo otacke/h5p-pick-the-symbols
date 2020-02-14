@@ -39,19 +39,20 @@ export default class PickTheSymbolsBlankGroup {
 
     // Sanitize answer
     if (params.answer) {
-      params.answer = (typeof params.answer === 'string') ? [params.answer] : params.answer;
+      params.answer = (typeof params.answer === 'string' || params.answer === null) ? [params.answer] : params.answer;
     }
 
     for (let i = 0; i < params.amount; i++) {
       const solution = this.params.solution.slice(this.blanks.length, this.blanks.length + 1);
 
       let answer = (params.answer) ? params.answer.slice(this.blanks.length, this.blanks.length + 1) : null;
+
       if (answer && answer.length > 0) {
-        answer = answer[0].slice(0, 1);
+        answer = (answer[0] !== null) ? answer[0].slice(0, 1) : null;
       }
 
       // Given answer takes precedence over provideDefaultSpace option
-      if (params.provideDefaultSpace && !answer && solution === ' ') {
+      if (params.provideDefaultSpace && (typeof answer === 'undefined') && solution === ' ') {
         answer = ' ';
       }
 
@@ -155,9 +156,6 @@ export default class PickTheSymbolsBlankGroup {
     if (params.keepBlanks !== true) {
       // Remove all obsolete blanks
       while (this.blanks.length > 1) {
-        if (this.getBlank(Infinity).getAnswer() !== null) {
-          break; // Useless blank has been filled
-        }
         this.removeBlank();
       }
     }
@@ -165,5 +163,13 @@ export default class PickTheSymbolsBlankGroup {
     this.blanks.forEach(blank => {
       blank.reset(params);
     });
+  }
+
+  /**
+   * Answer call to return the current state.
+   * @return {object} Current state.
+   */
+  getCurrentState() {
+    return this.blanks.map(blank => blank.getCurrentState());
   }
 }

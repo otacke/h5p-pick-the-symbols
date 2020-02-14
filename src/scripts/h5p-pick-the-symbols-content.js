@@ -141,10 +141,13 @@ export default class PickTheSymbolsContent {
       });
       this.blankGroups.push(blankGroup);
 
-      if (this.params.showAllBlanks) {
-        blankGroup.addBlank({
-          amount: textBlankGroups[index].length
-        });
+      if (this.params.showAllBlanks || params.previousState) {
+        const config = {};
+        if (params.previousState && params.previousState.length > index) {
+          config.answer = params.previousState[index];
+        }
+        config.amount = (config.answer) ? params.previousState[index].length : textBlankGroups[index].length;
+        blankGroup.addBlank(config);
       }
       else {
         // Add initial blank to blank group
@@ -300,7 +303,7 @@ export default class PickTheSymbolsContent {
    * @param {object} [params] Params.
    */
   reset(params = {}) {
-    params.keepBlanks = this.params.showAllBlanks;
+    params.keepBlanks = this.params.showAllBlanks || params.keepAnswers;
 
     this.blankGroups.forEach(blankGroup => {
       blankGroup.reset(params);
@@ -347,6 +350,14 @@ export default class PickTheSymbolsContent {
   getScore() {
     const score = this.blankGroups.reduce((score, blankGroup) => score + blankGroup.getScore(), 0);
     return Math.max(0, score);
+  }
+
+  /**
+   * Answer call to return the current state.
+   * @return {object} Current state.
+   */
+  getCurrentState() {
+    return this.blankGroups.map(group => group.getCurrentState());
   }
 
   /**

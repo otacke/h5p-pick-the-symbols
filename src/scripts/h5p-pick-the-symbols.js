@@ -69,6 +69,7 @@ export default class PickTheSymbols extends H5P.Question {
         symbols: Util.htmlDecode(this.params.symbols),
         colorBackground: this.params.behaviour.colorBackground,
         showAllBlanks: this.params.behaviour.showAllBlanks,
+        previousState: this.previousState.answers,
         callbacks: {
           onContentInteraction: () => {
             this.handleContentInteraction();
@@ -237,8 +238,7 @@ export default class PickTheSymbols extends H5P.Question {
      * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-5}
      */
     this.resetTask = () => {
-      this.reset(params);
-
+      this.reset();
     };
 
     /**
@@ -356,12 +356,8 @@ export default class PickTheSymbols extends H5P.Question {
      * @return {object} Current state.
      */
     this.getCurrentState = () => {
-      /*
-       * TODO: Return any data object that will indicate the state that should
-       * be loaded on start, here it's a random number
-       */
       return {
-        random: Math.random(100)
+        answers: this.content.getCurrentState()
       };
     };
   }

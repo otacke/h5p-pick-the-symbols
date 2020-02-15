@@ -328,6 +328,10 @@ export default class PickTheSymbolsContent {
     this.enabled = state;
   }
 
+  /**
+   * Get correct responses pattern for reporting.
+   * @return {string} Correct responses pattern.
+   */
   getXAPICorrectResponsesPatterns() {
     return [this.blankGroups
       .map(group => group.getXAPICorrectResponsesPattern())
@@ -335,6 +339,10 @@ export default class PickTheSymbolsContent {
       .join('[,]')];
   }
 
+  /**
+   * Get response for reporting.
+   * @return {string} Response.
+   */
   getXAPIResponses() {
     return this.blankGroups
       .map(group => group.getXAPIResponse())
@@ -342,6 +350,10 @@ export default class PickTheSymbolsContent {
       .join('[,]');
   }
 
+  /**
+   * Get gaps for reporting.
+   * @return {string} Gaps.
+   */
   getXAPIGaps() {
     const placeholderText = PickTheSymbolsContent.getPlaceholderText();
 

@@ -191,12 +191,15 @@ export default class PickTheSymbolsBlankGroup {
 
   /**
    * Reset blanks.
-   * @param {boolean} [keepBlanks] If not true, will remove blanks.
+   * @param {boolean} [keepAllBlanks] If not true, will remove blanks.
    */
   reset(params = {}) {
-    if (params.keepBlanks !== true) {
+    if (params.keepAllBlanks !== true) {
       // Remove all obsolete blanks
       while (this.blanks.length > 1) {
+        if (params.keepAnsweredBlanks === true && this.getBlank(Infinity).getAnswer() !== null) {
+          break; // Useless blank has been filled
+        }
         this.removeBlank();
       }
     }

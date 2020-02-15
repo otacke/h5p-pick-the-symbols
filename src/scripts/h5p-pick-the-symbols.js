@@ -156,7 +156,9 @@ export default class PickTheSymbols extends H5P.Question {
       // Continue button
       this.addButton('continue', this.params.l10n.continue, () => {
         this.reset({
-          keepAnswers: true
+          keepAnswers: true,
+          keepAnsweredBlanks: this.content.isSolutionShowing(),
+          keepAllBlanks: !this.content.isSolutionShowing()
         });
       }, false, {}, {});
 

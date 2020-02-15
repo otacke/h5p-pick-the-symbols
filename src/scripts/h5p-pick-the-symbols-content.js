@@ -297,9 +297,21 @@ export default class PickTheSymbolsContent {
    * @param {boolean} [params.answer] If true, show answer, else hide.
    */
   showSolutions(params = {}) {
+    if (params && params.score === false) {
+      this.solutionShowing = true;
+    }
+
     this.blankGroups.forEach(blankGroup => {
       blankGroup.showSolutions(params);
     });
+  }
+
+  /**
+   * Determine if a solution is displayed.
+   * @return {boolean} True if solution is displayed.
+   */
+  isSolutionShowing() {
+    return this.solutionShowing || false;
   }
 
   /**
@@ -307,11 +319,13 @@ export default class PickTheSymbolsContent {
    * @param {object} [params] Params.
    */
   reset(params = {}) {
-    params.keepBlanks = this.params.showAllBlanks || params.keepAnswers;
+    params.keepAllBlanks = params.keepAllBlanks || this.params.showAllBlanks;
 
     this.blankGroups.forEach(blankGroup => {
       blankGroup.reset(params);
     });
+
+    this.solutionShowing = false;
   }
 
   /**

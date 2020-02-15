@@ -63,43 +63,43 @@ export default class PickTheSymbols extends H5P.Question {
      * Register the DOM elements with H5P.Question
      */
     this.registerDomElements = () => {
-      this.content = new PickTheSymbolsContent({
-        taskDescription: this.params.taskDescription,
-        text: this.params.text,
-        symbols: Util.htmlDecode(this.params.symbols),
-        colorBackground: this.params.behaviour.colorBackground,
-        showAllBlanks: this.params.behaviour.showAllBlanks,
-        previousState: this.previousState.answers,
-        xAPIPlaceholder: PickTheSymbols.XAPI_PLACEHOLDER,
-        callbacks: {
-          onContentInteraction: () => {
-            this.handleContentInteraction();
+      if (this.params.text !== '') {
+        this.content = new PickTheSymbolsContent({
+          taskDescription: this.params.taskDescription,
+          text: this.params.text,
+          symbols: Util.htmlDecode(this.params.symbols),
+          colorBackground: this.params.behaviour.colorBackground,
+          showAllBlanks: this.params.behaviour.showAllBlanks,
+          previousState: this.previousState.answers,
+          xAPIPlaceholder: PickTheSymbols.XAPI_PLACEHOLDER,
+          callbacks: {
+            onContentInteraction: () => {
+              this.handleContentInteraction();
+            },
+            onResize: () => {
+              this.resize({
+                bubblingUp: true
+              });
+            }
           },
-          onResize: () => {
-            this.resize({
-              bubblingUp: true
-            });
+          l10n: {
+            addBlank: this.params.l10n.addBlank,
+            addSymbol: this.params.l10n.addSymbol,
+            closeWindow: this.params.l10n.closeWindow,
+            space: this.params.l10n.space,
+            removeBlank: this.params.l10n.removeBlank
           }
-        },
-        l10n: {
-          addBlank: this.params.l10n.addBlank,
-          addSymbol: this.params.l10n.addSymbol,
-          closeWindow: this.params.l10n.closeWindow,
-          space: this.params.l10n.space,
-          removeBlank: this.params.l10n.removeBlank
-        }
-      });
+        });
 
-      // Register content with H5P.Question
-      this.setContent(this.content.getDOM());
+        // Register content with H5P.Question
+        this.setContent(this.content.getDOM());
 
-      // Register Buttons
-      this.addButtons();
-
-      /*
-       * H5P.Question also offers some more functions that could be used.
-       * Consult https://github.com/h5p/h5p-question for details
-       */
+        // Register Buttons
+        this.addButtons();
+      }
+      else {
+        this.setContent('<p>You forgot to enter text.<p>');
+      }
     };
 
     /**
@@ -188,6 +188,10 @@ export default class PickTheSymbols extends H5P.Question {
      * @param {boolean} [params.bubblingUp] If true, won't bubble down.
      */
     this.resize = (params = {}) => {
+      if (!this.content) {
+        return;
+      }
+
       if (params.bubblingUp) {
         this.trigger('resize');
       }

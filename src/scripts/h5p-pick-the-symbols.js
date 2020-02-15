@@ -70,6 +70,7 @@ export default class PickTheSymbols extends H5P.Question {
         colorBackground: this.params.behaviour.colorBackground,
         showAllBlanks: this.params.behaviour.showAllBlanks,
         previousState: this.previousState.answers,
+        xAPIPlaceholder: PickTheSymbols.XAPI_PLACEHOLDER,
         callbacks: {
           onContentInteraction: () => {
             this.handleContentInteraction();
@@ -108,6 +109,7 @@ export default class PickTheSymbols extends H5P.Question {
       // Check answer button
       this.addButton('check-answer', this.params.l10n.checkAnswer, () => {
         this.content.toggleEnabled(false);
+        this.trigger(this.getXAPIAnswerEvent());
 
         this.hideButton('check-answer');
 
@@ -196,7 +198,6 @@ export default class PickTheSymbols extends H5P.Question {
 
     /**
      * Check if result has been submitted or input has been given.
-     *
      * @return {boolean} True, if answer was given.
      * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-1}
      */
@@ -204,7 +205,6 @@ export default class PickTheSymbols extends H5P.Question {
 
     /**
      * Get latest score.
-     *
      * @return {number} latest score.
      * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-2}
      */
@@ -212,7 +212,6 @@ export default class PickTheSymbols extends H5P.Question {
 
     /**
      * Get maximum possible score.
-     *
      * @return {number} Score necessary for mastering.
      * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-3}
      */
@@ -220,7 +219,6 @@ export default class PickTheSymbols extends H5P.Question {
 
     /**
      * Show solutions.
-     *
      * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-4}
      */
     this.showSolutions = () => {
@@ -234,7 +232,6 @@ export default class PickTheSymbols extends H5P.Question {
 
     /**
      * Reset task.
-     *
      * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-5}
      */
     this.resetTask = () => {
@@ -276,12 +273,7 @@ export default class PickTheSymbols extends H5P.Question {
 
       xAPIEvent.setScoredResult(this.getScore(), this.getMaxScore(), this,
         true, this.isPassed());
-
-      /*
-       * TODO: Add other properties here as required, e.g. xAPIEvent.data.statement.result.response
-       * https://github.com/adlnet/xAPI-Spec/blob/master/xAPI-Data.md#245-result
-       */
-
+      xAPIEvent.data.statement.result.response = this.content.getXAPIResponses();
       return xAPIEvent;
     };
 
@@ -307,28 +299,24 @@ export default class PickTheSymbols extends H5P.Question {
     this.getxAPIDefinition = () => {
       const definition = {};
       definition.name = {'en-US': this.getTitle()};
-      definition.description = {'en-US': this.getDescription()};
+      definition.description = {
+        'en-US': `${this.getDescription()}${this.content.getXAPIGaps()}`
+      };
       definition.type = 'http://adlnet.gov/expapi/activities/cmi.interaction';
-      definition.interactionType = 'choice';
-
-      /*
-       * TODO: Add other object properties as required, e.g. definition.correctResponsesPattern
-       * cmp. https://github.com/adlnet/xAPI-Spec/blob/master/xAPI-Data.md#244-object
-       */
+      definition.interactionType = 'fill-in';
+      definition.correctResponsesPattern = this.content.getXAPICorrectResponsesPatterns();
 
       return definition;
     };
 
     /**
      * Determine whether the task has been passed by the user.
-     *
      * @return {boolean} True if user passed or task is not scored.
      */
     this.isPassed = () => this.getScore() === this.getMaxScore();
 
     /**
      * Get tasks title.
-     *
      * @return {string} Title.
      */
     this.getTitle = () => {
@@ -344,15 +332,12 @@ export default class PickTheSymbols extends H5P.Question {
 
     /**
      * Get tasks description.
-     *
      * @return {string} Description.
      */
-    // TODO: Have a field for a task description in the editor if you need one.
     this.getDescription = () => this.params.taskDescription || PickTheSymbols.DEFAULT_DESCRIPTION;
 
     /**
      * Answer call to return the current state.
-     *
      * @return {object} Current state.
      */
     this.getCurrentState = () => {
@@ -365,3 +350,6 @@ export default class PickTheSymbols extends H5P.Question {
 
 /** @constant {string} */
 PickTheSymbols.DEFAULT_DESCRIPTION = 'Pick the Symbols';
+
+/** @constant {string} */
+PickTheSymbols.XAPI_PLACEHOLDER = '__________';

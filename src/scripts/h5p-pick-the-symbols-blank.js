@@ -227,7 +227,7 @@ export default class PickTheSymbolsBlank {
    */
   reset(params = {}) {
     if (params.keepAnswers !== true) {
-      this.answer = this.params.answer || null;
+      this.answer = null;
       this.answerInput.innerHTML = '&nbsp;';
     }
 

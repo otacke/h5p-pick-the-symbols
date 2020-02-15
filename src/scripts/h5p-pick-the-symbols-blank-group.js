@@ -115,8 +115,49 @@ export default class PickTheSymbolsBlankGroup {
    * @return {number} Score for group.
    */
   getScore() {
-    const score = this.blanks.reduce((score, blank) => score + blank.getScore(), 0);
-    return Math.max(0, score);
+    return this.blanks.reduce((score, blank) => score + blank.getScore(), 0);
+  }
+
+  /**
+   * Get correct responses pattern for reporting.
+   * @return {string} Correct responses pattern.
+   */
+  getXAPICorrectResponsesPattern() {
+    return this.blanks
+      .map(blank => {
+        if (blank.getScore() === 0) {
+          return null;
+        }
+        else if (blank.getSolution() === '') {
+          return '';
+        }
+        else {
+          return blank.getSolution();
+        }
+      })
+      .filter(blank => blank !== null)
+      .join('[,]');
+  }
+
+  /**
+   * Get response for reporting.
+   * @return {string} Response.
+   */
+  getXAPIResponse() {
+    return this.blanks
+      .map(blank => (blank.getScore() !== 0) ? blank.getAnswer() : null)
+      .filter(blank => blank !== null)
+      .join('[,]');
+  }
+
+  /**
+   * Get gaps for reporting.
+   * @return {string} Gaps.
+   */
+  getXAPIGap() {
+    return this.blanks.reduce((gaps, blank) => {
+      return `${gaps}${(blank.getScore() !== 0) ? this.params.xAPIPlaceholder : '&nbsp;'}`;
+    }, '');
   }
 
   /**

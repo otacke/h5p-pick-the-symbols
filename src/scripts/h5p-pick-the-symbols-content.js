@@ -32,14 +32,14 @@ export default class PickTheSymbolsContent {
     // DOM nodes need to be created first
     const textDeconstructed = PickTheSymbolsContent.deconstructText(params.text, params.symbols);
 
-    const textTemplate = textDeconstructed.sentence;
-    let textBlankGroups = textDeconstructed.blanks;
+    this.textTemplate = textDeconstructed.sentence;
+    this.textBlankGroups = textDeconstructed.blanks;
 
     // No need to add blanks for single characters
-    textBlankGroups = textBlankGroups.map(group => group.trim());
+    this.textBlankGroups = this.textBlankGroups.map(group => group.trim());
 
     // Check if there are "complicated" blanks
-    this.onlySimpleBlanks = textBlankGroups.every(group => group.length < 2);
+    this.onlySimpleBlanks = this.textBlankGroups.every(group => group.length < 2);
 
     this.enabled = true;
 
@@ -65,7 +65,7 @@ export default class PickTheSymbolsContent {
 
     // Textfield
     this.textfield = document.createElement('div');
-    this.textfield.innerHTML = textTemplate;
+    this.textfield.innerHTML = this.textTemplate;
     this.textfield.classList.add('h5p-pick-the-symbols-text');
     this.textContainer.appendChild(this.textfield);
 
@@ -137,7 +137,8 @@ export default class PickTheSymbolsContent {
           }
         },
         colorBackground: params.colorBackground,
-        solution: textBlankGroups[index]
+        solution: this.textBlankGroups[index],
+        xAPIPlaceholder: this.params.xAPIPlaceholder
       });
       this.blankGroups.push(blankGroup);
 
@@ -146,7 +147,7 @@ export default class PickTheSymbolsContent {
         if (params.previousState && params.previousState.length > index) {
           config.answer = params.previousState[index];
         }
-        config.amount = (config.answer) ? params.previousState[index].length : textBlankGroups[index].length;
+        config.amount = (config.answer) ? params.previousState[index].length : this.textBlankGroups[index].length;
         blankGroup.addBlank(config);
       }
       else {
@@ -327,6 +328,28 @@ export default class PickTheSymbolsContent {
     this.enabled = state;
   }
 
+  getXAPICorrectResponsesPatterns() {
+    return [this.blankGroups
+      .map(group => group.getXAPICorrectResponsesPattern())
+      .filter(group => group !== '')
+      .join('[,]')];
+  }
+
+  getXAPIResponses() {
+    return this.blankGroups
+      .map(group => group.getXAPIResponse())
+      .filter(group => group !== '')
+      .join('[,]');
+  }
+
+  getXAPIGaps() {
+    const placeholderText = PickTheSymbolsContent.getPlaceholderText();
+
+    return this.blankGroups.reduce((text, group) => {
+      return text.replace(placeholderText, group.getXAPIGap());
+    }, this.textTemplate);
+  }
+
   /**
    * Detect whether an answer has been given.
    * @return {boolean} True, if answer was given.
@@ -377,7 +400,6 @@ export default class PickTheSymbolsContent {
       .replace(/[ ]{2,}/g, ' ')                // Only keep one blank between words
       .replace(/<p> <\/p>/g, '<p>\u200C</p>'); // Prevent blanks in empty paragraphs
 
-    const placeholder = `<span class="h5p-pick-the-symbols-placeholder"></span>`;
     const chars = [...text];
 
     let htmlMode = false;
@@ -405,7 +427,7 @@ export default class PickTheSymbolsContent {
 
       if (currentBlank !== '' && chars[i] !== ' ' && symbols.indexOf(chars[i]) === -1) {
         blanks.push(currentBlank);
-        output = `${output}${placeholder}${chars[i]}`;
+        output = `${output}${PickTheSymbolsContent.getPlaceholderText()}${chars[i]}`;
         currentBlank = '';
         continue;
       }
@@ -416,7 +438,7 @@ export default class PickTheSymbolsContent {
         // Check if was last symbol
         if (i === chars.length - 1) {
           blanks.push(currentBlank);
-          output = `${output}${placeholder}`;
+          output = `${output}${PickTheSymbolsContent.getPlaceholderText()}`;
         }
         continue;
       }
@@ -425,5 +447,13 @@ export default class PickTheSymbolsContent {
     }
 
     return {sentence: output, blanks: blanks};
+  }
+
+  /**
+   * Get placeholder text.
+   * @return {string} Placeholder text.
+   */
+  static getPlaceholderText() {
+    return '<span class="h5p-pick-the-symbols-placeholder"></span>';
   }
 }

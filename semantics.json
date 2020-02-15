@@ -204,7 +204,7 @@
       {
         "name": "addBlank",
         "type": "text",
-        "label": "Text for \"Add blank\" button",
+        "label": "Text for \"Append blank\" button",
         "importance": "low",
         "default": "Append blank"
       },
@@ -218,8 +218,8 @@
       {
         "name": "addSymbol",
         "type": "text",
-        "label": "Text for \"Add symbol\" button",
-        "description": "@symbol will be replaced with the symbol that was picked.",
+        "label": "Tooltip for \"Choose symbol\" button",
+        "description": "@symbol will be replaced with the symbol that would be picked.",
         "importance": "low",
         "default": "Fill blank with @symbol"
       },
@@ -233,7 +233,7 @@
       {
         "name": "closeWindow",
         "type": "text",
-        "label": "Text for close window button",
+        "label": "Text for \"Close window\" button",
         "importance": "low",
         "default": "Close window"
       }

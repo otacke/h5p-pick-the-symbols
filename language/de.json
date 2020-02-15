@@ -1,0 +1,109 @@
+{
+  "semantics": [
+    {
+      "label": "Aufgabenbeschreibung",
+      "description": "Beschreibe hier die Aufgabe."
+    },
+    {
+      "label": "Text",
+      "description": "Gib hier den Text mit Symbolen ein, die ausgewählt werden sollen."
+    },
+    {
+      "label": "Symbole",
+      "description": "Gib hier die Symbole ein, aus denen die Lernenden wählen sollen.",
+      "default": ".?!,:;'\""
+    },
+    {
+      "label": "Gesamtrückmeldung",
+      "fields": [
+        {
+          "widgets": [
+            {
+              "label": "Eingabemaske"
+            }
+          ],
+          "label": "Lege Rückmeldungen für einzelne Punktebereiche fest",
+          "description": "Klicke auf den \"Bereich hinzufügen\"-Button, um so viele Bereiche hinzuzufügen, wie du brauchst. Beispiel: 0-20% Schlechte Punktzahl, 21-91% Durchschnittliche Punktzahl, 91-100% Großartige Punktzahl!",
+          "entity": "Bereich",
+          "field": {
+            "fields": [
+              {
+                "label": "Punktebereich"
+              },
+              {},
+              {
+                "label": "Rückmeldung für jeweiligen Punktebereich",
+                "placeholder": "Trage die Rückmeldung ein"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Verhaltenseinstellungen",
+      "description": "Diese Optionen kontrollieren, wie sich die Aufgabe verhält.",
+      "fields": [
+        {
+          "label": "\"Wiederholen\" zulassen"
+        },
+        {
+          "label": "\"Lösung anzeigen\" ermöglichen"
+        },
+        {
+          "label": "Kontinuierliches überprüfen erlauben",
+          "description": "Erlaube Lernenden, kontinuierlich ihre Antworten zu überprüfen, ohne ihre bisherigen Antworten zurückzusetzen."
+        },
+        {
+          "label": "Zeige alle Lücken",
+          "description": "Zeige alle Lücken bereits von Anfang an."
+        },
+        {
+          "label": "Hintergrundfarbe der Lücken"
+        }
+      ]
+    },
+    {
+      "label": "Bezeichnungen und Beschriftungen",
+      "fields": [
+        {
+          "label": "Beschriftung des \"Überprüfen\"-Buttons",
+          "default": "Überprüfen"
+        },
+        {
+          "label": "Beschriftung des \"Fortfahren\"-Buttons",
+          "default": "Fortfahren"
+        },
+        {
+          "label": "Beschriftung des \"Lösung zeigen\"-Buttons",
+          "default": "Lösung zeigen"
+        },
+        {
+          "label": "Beschriftung des \"Wiederholen\"-Buttons",
+          "default": "Wiederholen"
+        },
+        {
+          "label": "Beschriftung des \"Lücke anfügen\"-Buttons",
+          "default": "Lücke anfügen"
+        },
+        {
+          "label": "Beschriftung des \"Lücke löschen\"-Buttons",
+          "default": "Lücke löschen"
+        },
+        {
+          "label": "Hilfstext des \"Symbol wählen\"-Buttons",
+          "description": "@symbol wird durch das Symbol ersetzt, das ausgewählt würde.",
+          "default": "Setze @symbol in die Lücke"
+        },
+        {
+          "label": "Bezeichnung für das \"Leerzeichens\"",
+          "default": "Leerzeichen"
+        },
+        {
+          "label": "Beschriftung des \"Fenster schließen\"-Buttons",
+          "default": "Schließe Fenster"
+        }
+      ]
+    }
+  ]
+}

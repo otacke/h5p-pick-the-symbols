@@ -85,7 +85,7 @@
           "default": "Reset"
         },
         {
-          "label": "Text for \"Add blank\" button",
+          "label": "Text for \"Append blank\" button",
           "default": "Append blank"
         },
         {
@@ -93,8 +93,8 @@
           "default": "Remove blank"
         },
         {
-          "label": "Text for \"Add symbol\" button",
-          "description": "@symbol will be replaced with the symbol that was picked.",
+          "label": "Tooltip \"Choose symbol\" button",
+          "description": "@symbol will be replaced with the symbol that would be picked.",
           "default": "Fill blank with @symbol"
         },
         {
@@ -102,7 +102,7 @@
           "default": "space"
         },
         {
-          "label": "Text for close window button",
+          "label": "Text for \"Close window\" button",
           "default": "Close window"
         }
       ]

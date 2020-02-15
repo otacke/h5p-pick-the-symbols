@@ -26,7 +26,10 @@ export default class PickTheSymbolsContent {
 
     this.blankGroups = [];
     this.nextBlankId = 0;
-    this.answerGiven = false;
+
+    this.answerGiven = (this.params.previousState && this.params.previousState.filter(state => {
+      return state.length > 1 || (state.length === 1 && state[0] !== null);
+    }).length > 0);
     this.overlayIsOpen = false;
 
     // DOM nodes need to be created first

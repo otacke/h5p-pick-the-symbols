@@ -56,6 +56,12 @@ export default class PickTheSymbols extends H5P.Question {
       },
     }, this.params);
 
+    this.params.symbols = Util.htmlDecode(this.params.symbols)
+      .split('')
+      .reduce((symbols, current) => {
+        return (symbols.indexOf(current) === -1) ? `${symbols}${current}` : symbols;
+      }, '');
+
     // this.previousState now holds the saved content state of the previous session
     this.previousState = this.extras.previousState || {};
 
@@ -67,7 +73,7 @@ export default class PickTheSymbols extends H5P.Question {
         this.content = new PickTheSymbolsContent({
           taskDescription: this.params.taskDescription,
           text: this.params.text,
-          symbols: Util.htmlDecode(this.params.symbols),
+          symbols: this.params.symbols,
           colorBackground: this.params.behaviour.colorBackground,
           showAllBlanks: this.params.behaviour.showAllBlanks,
           previousState: this.previousState.answers,

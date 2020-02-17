@@ -167,12 +167,15 @@ export default class Overlay {
   moveTo(element) {
     // Content has to be set before getting the coordinates
 
+    const closeButtonOffset = parseFloat(window.getComputedStyle(this.buttonClose).getPropertyValue('width')) +
+      parseFloat(window.getComputedStyle(this.buttonClose).getPropertyValue('right'));
+
     let coordinates = this.getOverlayCoordinates(element, this.overlay, this.params.position);
-    this.overlay.style.left = Math.round(coordinates.left) + 'px';
-    this.overlay.style.top = Math.round(coordinates.top) + 'px';
+    this.overlay.style.left = `${Math.round(coordinates.left - closeButtonOffset)}px`;
+    this.overlay.style.top = `${Math.round(coordinates.top)}px`;
 
     coordinates = this.getMarkerCoordinates(element, this.marker, Math.round(coordinates.left));
-    this.marker.style.left = Math.round(coordinates.left) + 'px';
+    this.marker.style.left = `${Math.round(coordinates.left + closeButtonOffset)}px`;
 
     return {left: this.overlay.style.left, top: this.overlay.style.top};
   }

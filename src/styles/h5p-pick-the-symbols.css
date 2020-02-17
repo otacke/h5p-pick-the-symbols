@@ -114,9 +114,9 @@
 .h5p-pick-the-symbols-overlay-marker {
   background: #fff;
   box-shadow: 0 0 0.5em 0 rgba(105, 105, 105, 0.4);
-  height: 8px;
+  height: 10px;
   position: absolute;
-  top: -4px;
+  top: -5px;
   -webkit-transform: rotate(45deg);
   -moz-transform: rotate(45deg);
   -ms-transform: rotate(45deg);

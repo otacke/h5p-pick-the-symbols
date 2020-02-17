@@ -103,7 +103,7 @@ export default class PickTheSymbolsContent {
         position: {
           horizontal: 'left',
           noOverflowX: true,
-          offsetVertical: 4
+          offsetVertical: 5
         }
       },
       {

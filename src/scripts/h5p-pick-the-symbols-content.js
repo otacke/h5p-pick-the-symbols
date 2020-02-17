@@ -21,9 +21,6 @@ export default class PickTheSymbolsContent {
     this.params.callbacks.onContentInteraction = this.params.callbacks.onContentInteraction || (() => {});
     this.params.callbacks.onResize = this.params.callbacks.onResize || (() => {});
 
-    // Space can't be a symbol
-    params.symbols = params.symbols.replace(/ /g, '');
-
     this.blankGroups = [];
     this.nextBlankId = 0;
 
@@ -73,8 +70,9 @@ export default class PickTheSymbolsContent {
     this.textContainer.appendChild(this.textfield);
 
     // Overlay
+    const symbols = ['&nbsp;'].concat(this.params.symbols.split(''));
     this.chooser = new PickTheSymbolsChooser({
-      symbols: ['&nbsp;', ...params.symbols],
+      symbols: symbols,
       l10n: {
         addBlank: this.params.l10n.addBlank,
         addSymbol: this.params.l10n.addSymbol,
@@ -126,6 +124,11 @@ export default class PickTheSymbolsContent {
     // Need for buttons to add/remove blanks
     if (!this.onlySimpleBlanks && !this.params.showAllBlanks) {
       this.chooser.toggleBlankButtonsContainer(true);
+    }
+
+    // Polyfill for IE11
+    if (typeof NodeList !== 'undefined' && NodeList.prototype && !NodeList.prototype.forEach) {
+      NodeList.prototype.forEach = Array.prototype.forEach;
     }
 
     // Replace placeholders with blank group objects
@@ -211,17 +214,26 @@ export default class PickTheSymbolsContent {
   /**
    * Handle closing the overlay from outside click.
    */
-  handleCloseOverlayExternal() {
+  handleCloseOverlayExternal(event) {
     if (!this.overlayIsOpen) {
       return;
     }
 
-    const closeOverlayTriggers = event.path
-      .filter(segment => segment.classList !== undefined)
-      .filter(segment => segment.classList.contains('h5p-pick-the-symbols-overlay-outer-wrapper') ||
-          segment.classList.contains('h5p-pick-the-symbols-blank-group'));
+    let close = true;
 
-    if (closeOverlayTriggers.length === 0) {
+    let foo = event.target;
+    while (foo.parentNode) {
+      if (
+        foo.classList.contains('h5p-pick-the-symbols-overlay-outer-wrapper') ||
+        foo.classList.contains('h5p-pick-the-symbols-blank-group')
+      ) {
+        close = false;
+        break;
+      }
+      foo = foo.parentNode;
+    }
+
+    if (close) {
       this.handleCloseOverlay();
     }
   }
@@ -422,14 +434,14 @@ export default class PickTheSymbolsContent {
     if (!text || !symbols) {
       return;
     }
-    symbols = [...symbols];
+    symbols = symbols.split('');
 
     text = text
       .replace(/&nbsp;/g, ' ')                 // CKeditor creates &nbsp;s
       .replace(/[ ]{2,}/g, ' ')                // Only keep one blank between words
       .replace(/<p> <\/p>/g, '<p>\u200C</p>'); // Prevent blanks in empty paragraphs
 
-    const chars = [...text];
+    const chars = text.split('');
 
     let htmlMode = false;
     let currentBlank = '';

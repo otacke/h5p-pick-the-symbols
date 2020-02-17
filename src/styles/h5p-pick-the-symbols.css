@@ -20,7 +20,7 @@
 }
 
 .h5p-pick-the-symbols-blank-group {
-  display: inline;
+  display: inline-block;
 }
 
 .h5p-pick-the-symbols-blank-group .h5p-pick-the-symbols-blank-container:first-child {

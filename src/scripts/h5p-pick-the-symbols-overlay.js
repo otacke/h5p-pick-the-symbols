@@ -12,7 +12,11 @@ export default class Overlay {
   constructor(params, callbacks = {}) {
     this.params = Util.extend({
       container: document.body,
-      styleBase: 'h5p-pick-the-symbols-overlay'
+      styleBase: 'h5p-pick-the-symbols-overlay',
+      position: {
+        offsetHorizontal : 0,
+        offsetVertical : 0
+      }
     }, params);
 
     this.callbacks = callbacks;
@@ -31,13 +35,13 @@ export default class Overlay {
     this.content.appendChild(this.params.content);
     this.overlay.appendChild(this.content);
 
-    const buttonClose = document.createElement('button');
-    buttonClose.classList.add(`${this.params.styleBase}-button-close`);
-    buttonClose.setAttribute('title', this.params.l10n.closeWindow);
-    buttonClose.addEventListener('click', () => {
+    this.buttonClose = document.createElement('button');
+    this.buttonClose.classList.add(`${this.params.styleBase}-button-close`);
+    this.buttonClose.setAttribute('title', this.params.l10n.closeWindow);
+    this.buttonClose.addEventListener('click', () => {
       this.callbacks.onClose();
     });
-    this.overlay.appendChild(buttonClose);
+    this.overlay.appendChild(this.buttonClose);
   }
 
   /**
@@ -162,8 +166,12 @@ export default class Overlay {
    */
   moveTo(element) {
     // Content has to be set before getting the coordinates
+
+    const closeButtonOffset = parseFloat(window.getComputedStyle(this.buttonClose).getPropertyValue('width')) +
+      parseFloat(window.getComputedStyle(this.buttonClose).getPropertyValue('right'));
+
     let coordinates = this.getOverlayCoordinates(element, this.overlay, this.params.position);
-    this.overlay.style.left = Math.round(coordinates.left) + 'px';
+    this.overlay.style.left = Math.round(coordinates.left - closeButtonOffset) + 'px';
     this.overlay.style.top = Math.round(coordinates.top) + 'px';
 
     coordinates = this.getMarkerCoordinates(element, this.marker, Math.round(coordinates.left));

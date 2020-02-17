@@ -140,7 +140,7 @@
   z-index: 3;
 }
 
-.h5p-pick-the-symbols-overlay-button-close:before {
+.h5p-pick-the-symbols-overlay-button-close:after {
   font-family: 'H5PFontAwesome4';
   content: '\f00d';
   border: 1px solid #bd3e3e;

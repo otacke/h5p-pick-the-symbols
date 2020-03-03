@@ -126,7 +126,7 @@ export default class PickTheSymbols extends H5P.Question {
           this.showButton('continue');
         }
 
-        this.content.handleCloseOverlay();
+        this.content.handleCloseOverlay({keepFocus: true});
 
         // Highlight answers depending on settings
         this.content.showSolutions({

@@ -22,9 +22,14 @@ export default class Overlay {
     this.callbacks = callbacks;
     this.callbacks.onClose = callbacks.onClose || (() => {});
 
+    this.isVisible = false;
+    this.focusableElements = [];
+
     this.overlay = document.createElement('div');
     this.overlay.classList.add(`${this.params.styleBase}-outer-wrapper`);
     this.overlay.classList.add('h5p-pick-the-symbols-invisible');
+    this.overlay.setAttribute('role', 'dialog');
+    this.overlay.setAttribute('aria-modal', 'true');
 
     this.marker = document.createElement('div');
     this.marker.classList.add(`${this.params.styleBase}-marker`);
@@ -42,6 +47,28 @@ export default class Overlay {
       this.callbacks.onClose();
     });
     this.overlay.appendChild(this.buttonClose);
+
+    // Trap focus if overlay is visible
+    document.addEventListener('focus', event => {
+      if (!this.isVisible || this.focusableElements.length === 0) {
+        return;
+      }
+
+      this.trapFocus(event);
+
+      if (this.isChild(event.target)) {
+        this.currentFocusElement = event.target;
+        return;
+      }
+
+      if (this.currentFocusElement === this.focusableElements[0]) {
+        this.currentFocusElement = this.focusableElements[this.focusableElements.length - 1];
+      }
+      else {
+        this.currentFocusElement = this.focusableElements[0];
+      }
+      this.currentFocusElement.focus();
+    }, true);
   }
 
   /**
@@ -192,16 +219,70 @@ export default class Overlay {
   }
 
   /**
+   * Trap focus in overlay.
+   * @param {Event} event Focus event.
+   */
+  trapFocus(event) {
+    if (this.isChild(event.target)) {
+      this.currentFocusElement = event.target;
+      return; // Focus is inside overlay
+    }
+
+    // Focus was either on first or last overlay element
+    if (this.currentFocusElement === this.focusableElements[0]) {
+      this.currentFocusElement = this.focusableElements[this.focusableElements.length - 1];
+    }
+    else {
+      this.currentFocusElement = this.focusableElements[0];
+    }
+    this.currentFocusElement.focus();
+  }
+
+  /**
+   * Check whether an HTML element is a child of the overlay.
+   * @param {HTMLElement} element.
+   * @return {boolean} True, if element is a child.
+   */
+  isChild(element) {
+    const parent = element.parentNode;
+
+    if (!parent) {
+      return false;
+    }
+
+    if (parent === this.overlay) {
+      return true;
+    }
+
+    return this.isChild(parent);
+  }
+
+  /**
+   * Update list of focusable elements.
+   */
+  updateFocusableElements() {
+    this.focusableElements = []
+      .slice.call(this.overlay.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'))
+      .filter(element => element.getAttribute('disabled') !== 'true' && element.getAttribute('disabled') !== true);
+  }
+
+  /**
    * Show overlay.
    */
   show() {
     this.overlay.classList.remove('h5p-pick-the-symbols-invisible');
+    this.updateFocusableElements();
+    if (this.focusableElements.length > 0) {
+      this.focusableElements[0].focus();
+    }
+    this.isVisible = true;
   }
 
   /**
    * Hide overlay.
    */
   hide() {
+    this.isVisible = false;
     this.overlay.classList.add('h5p-pick-the-symbols-invisible');
   }
 }

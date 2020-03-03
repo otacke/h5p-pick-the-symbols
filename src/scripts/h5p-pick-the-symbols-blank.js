@@ -70,6 +70,13 @@ export default class PickTheSymbolsBlank {
   }
 
   /**
+   * Set focus to blank.
+   */
+  focus() {
+    this.blank.focus();
+  }
+
+  /**
    * Get solution for this blank.
    */
   getSolution() {

@@ -207,10 +207,16 @@ export default class PickTheSymbolsContent {
 
   /**
    * Handle closing the overlay.
+   * @params {object} [params] Parameters.
+   * @params {boolean} [params.keepFocus] If true, don't set focus to current blank.
    */
-  handleCloseOverlay() {
+  handleCloseOverlay(params = {}) {
     this.overlayIsOpen = false;
     this.overlay.hide();
+
+    if (params.keepFocus !== true) {
+      this.currentBlank.focus();
+    }
 
     this.resize();
   }
@@ -270,6 +276,9 @@ export default class PickTheSymbolsContent {
         provideDefaultSpace: true
       });
     }
+
+    this.currentBlank = this.currentBlankGroup.getBlank();
+
     this.handleCloseOverlay();
   }
 
@@ -280,6 +289,9 @@ export default class PickTheSymbolsContent {
     if (this.currentBlankGroup.getBlank() === this.currentBlank) {
       this.currentBlankGroup.removeBlank();
     }
+
+    this.currentBlank = this.currentBlankGroup.getBlank();
+
     this.handleCloseOverlay();
   }
 

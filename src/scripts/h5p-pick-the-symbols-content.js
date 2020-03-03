@@ -224,8 +224,10 @@ export default class PickTheSymbolsContent {
     }
 
     // Close overlay on escape key
-    if (event.type === 'keydown' && event.key === 'Escape') {
-      this.handleCloseOverlay();
+    if (event.type === 'keydown') {
+      if (event.key === 'Escape') {
+        this.handleCloseOverlay();
+      }
       return;
     }
 

@@ -121,6 +121,9 @@ export default class PickTheSymbolsContent {
     window.addEventListener('click', event => {
       this.handleCloseOverlayExternal(event);
     });
+    window.addEventListener('keydown', event => {
+      this.handleCloseOverlayExternal(event);
+    });
 
     // Need for buttons to add/remove blanks
     if (!this.onlySimpleBlanks && !this.params.showAllBlanks) {
@@ -220,18 +223,24 @@ export default class PickTheSymbolsContent {
       return;
     }
 
+    // Close overlay on escape key
+    if (event.type === 'keydown' && event.key === 'Escape') {
+      this.handleCloseOverlay();
+      return;
+    }
+
     let close = true;
 
-    let foo = event.target;
-    while (foo.parentNode) {
+    let target = event.target;
+    while (target.parentNode) {
       if (
-        foo.classList.contains('h5p-pick-the-symbols-overlay-outer-wrapper') ||
-        foo.classList.contains('h5p-pick-the-symbols-blank-group')
+        target.classList.contains('h5p-pick-the-symbols-overlay-outer-wrapper') ||
+        target.classList.contains('h5p-pick-the-symbols-blank-group')
       ) {
         close = false;
         break;
       }
-      foo = foo.parentNode;
+      target = target.parentNode;
     }
 
     if (close) {

@@ -319,14 +319,14 @@ export default class PickTheSymbols extends H5P.Question {
      * @param {object} params Parameters.
      */
     this.reset = (params) => {
-      this.removeFeedback();
-      this.content.reset(params);
-      this.content.toggleEnabled(true);
-
       this.showButton('check-answer');
       this.hideButton('continue');
       this.hideButton('show-solution');
       this.hideButton('try-again');
+
+      this.removeFeedback();
+      this.content.reset(params);
+      this.content.toggleEnabled(true);
     };
 
     /**

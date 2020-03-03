@@ -460,6 +460,10 @@ export default class PickTheSymbolsContent {
     this.relabelBlanks();
 
     this.solutionShowing = false;
+
+    setTimeout(() => {
+      this.blankGroups[0].focus();
+    }, 0);
   }
 
   /**

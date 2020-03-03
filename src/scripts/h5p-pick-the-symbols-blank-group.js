@@ -235,4 +235,11 @@ export default class PickTheSymbolsBlankGroup {
   getCurrentState() {
     return this.blanks.map(blank => blank.getCurrentState());
   }
+
+  /**
+   * Focus first button.
+   */
+  focus() {
+    this.blanks[0].focus();
+  }
 }

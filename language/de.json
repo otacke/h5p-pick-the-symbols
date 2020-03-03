@@ -84,7 +84,7 @@
         },
         {
           "label": "Hilfstext für die Buttons für eine Lücke",
-          "default": "Pick a symbol"
+          "default": "Wähle das Satzzeichen"
         },
         {
           "label": "Titeltext für die Symbolauswahl",

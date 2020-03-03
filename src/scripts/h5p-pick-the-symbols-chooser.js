@@ -174,10 +174,7 @@ export default class PickTheSymbolsChooser {
   activateButton(symbol) {
     this.buttons.forEach(button => {
       if (button.innerHTML === symbol) {
-        button.classList.add('active');
-      }
-      else {
-        button.classList.remove('active');
+        button.focus();
       }
     });
   }

@@ -243,8 +243,6 @@ export default class PickTheSymbolsContent {
     this.currentBlankGroup = blankGroup || this.currentBlankGroup;
     this.currentBlank = blank || this.currentBlank;
 
-    this.chooser.activateButton(blank.getAnswer());
-
     if (!this.onlySimpleBlanks && !this.params.showAllBlanks) {
       const isFirstBlank = this.currentBlankGroup.getBlank(0) === this.currentBlank;
       const isLastBlank = this.currentBlankGroup.getBlank(Infinity) === this.currentBlank;
@@ -254,6 +252,8 @@ export default class PickTheSymbolsContent {
 
     this.overlay.show();
     this.overlayIsOpen = true;
+
+    this.chooser.activateButton(blank.getAnswer());
 
     this.resize();
   }

@@ -186,10 +186,6 @@
   margin: 0 0 0.25em 0;
 }
 
-.h5p-pick-the-symbols-overlay-outer-wrapper button.active {
-  background-color: #104888;
-}
-
 .h5p-pick-the-symbols-chooser-symbol-buttons {
   display: flex;
   flex-direction: row;

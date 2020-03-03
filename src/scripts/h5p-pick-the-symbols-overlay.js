@@ -259,10 +259,12 @@ export default class Overlay {
    */
   show() {
     this.overlay.classList.remove('h5p-pick-the-symbols-invisible');
+
     this.updateFocusableElements();
     if (this.focusableElements.length > 0) {
       this.focusableElements[0].focus();
     }
+
     this.isVisible = true;
   }
 

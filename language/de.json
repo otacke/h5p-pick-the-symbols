@@ -113,6 +113,10 @@
       "label": "Vorlesewerkzeuge",
       "fields": [
         {
+          "label": "Anzeigetext der Punkteleiste für Vorlesewerkzeuge (Barrierefreiheit)",
+          "default": "Du hast :num von :total Punkten erreicht."
+        },
+        {
           "label": "Lücke",
           "default": "Lücke"
         },

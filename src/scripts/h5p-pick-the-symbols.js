@@ -56,6 +56,7 @@ export default class PickTheSymbols extends H5P.Question {
         removeBlank: 'Remove blank'
       },
       a11y: {
+        scoreBarLabel: 'You got :num out of :total points',
         inputBlank: 'blank input',
         of: 'of',
         answeredCorrectly: 'answered correctly',
@@ -194,7 +195,8 @@ export default class PickTheSymbols extends H5P.Question {
         this.setFeedback(
           textScore,
           this.getScore(),
-          this.getMaxScore()
+          this.getMaxScore(),
+          this.params.a11y.scoreBarLabel
         );
 
         if (!this.params.behaviour.infiniteChecking) {

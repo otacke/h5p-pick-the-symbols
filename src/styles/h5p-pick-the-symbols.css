@@ -33,11 +33,16 @@
 }
 
 .h5p-pick-the-symbols-blank {
+  border: none;
   border-radius: 0.25em;
+  box-sizing: inherit;
   display: inline-block;
+  font-size: inherit;
+  line-height: inherit;
   margin-bottom: 0.5em;
   padding: .15em;
   position: relative;
+  text-align: inherit;
   width: 1em;
 }
 

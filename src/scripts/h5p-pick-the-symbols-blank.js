@@ -19,7 +19,7 @@ export default class PickTheSymbolsBlank {
     this.content = document.createElement('span');
     this.content.classList.add('h5p-pick-the-symbols-blank-container');
 
-    this.blank = document.createElement('span');
+    this.blank = document.createElement('button');
     this.blank.classList.add('h5p-pick-the-symbols-blank');
 
     this.blank.setAttribute('tabindex', 0);

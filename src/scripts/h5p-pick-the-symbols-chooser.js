@@ -1,3 +1,5 @@
+import Util from './h5p-pick-the-symbols-util';
+
 /** Class representing the content */
 export default class PickTheSymbolsChooser {
   /**
@@ -26,7 +28,7 @@ export default class PickTheSymbolsChooser {
     if (this.params.l10n.title) {
       const title = document.createElement('div');
       title.classList.add('h5p-pick-the-symbols-chooser-title');
-      title.innerText = this.params.l10n.title;
+      title.innerText = Util.htmlDecode(this.params.l10n.title);
       this.content.appendChild(title);
     }
 

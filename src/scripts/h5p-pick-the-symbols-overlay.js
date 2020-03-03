@@ -55,19 +55,6 @@ export default class Overlay {
       }
 
       this.trapFocus(event);
-
-      if (this.isChild(event.target)) {
-        this.currentFocusElement = event.target;
-        return;
-      }
-
-      if (this.currentFocusElement === this.focusableElements[0]) {
-        this.currentFocusElement = this.focusableElements[this.focusableElements.length - 1];
-      }
-      else {
-        this.currentFocusElement = this.focusableElements[0];
-      }
-      this.currentFocusElement.focus();
     }, true);
   }
 

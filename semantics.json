@@ -202,11 +202,18 @@
         "default": "Reset"
       },
       {
+        "name": "blankButtonTitle",
+        "type": "text",
+        "label": "Title text for blank button",
+        "importance": "low",
+        "default": "Pick a symbol"
+      },
+      {
         "name": "chooserTitle",
         "type": "text",
         "label": "Title text for symbol picker",
         "importance": "low",
-        "default": "Pick the symbol"
+        "default": "Pick a symbol"
       },
       {
         "name": "addBlank",
@@ -231,6 +238,22 @@
         "default": "Fill blank with @symbol"
       },
       {
+        "name": "closeWindow",
+        "type": "text",
+        "label": "Text for \"Close window\" button",
+        "importance": "low",
+        "default": "Close window"
+      }
+    ]
+  },
+  {
+    "name": "a11y",
+    "type": "group",
+    "common": true,
+    "label": "Readspeaker",
+    "importance": "low",
+    "fields": [
+      {
         "name": "space",
         "type": "text",
         "label": "Name of \"space\" character",
@@ -238,11 +261,277 @@
         "default": "space"
       },
       {
-        "name": "closeWindow",
+        "name": "period",
         "type": "text",
-        "label": "Text for \"Close window\" button",
+        "label": "Period",
         "importance": "low",
-        "default": "Close window"
+        "default": "period"
+      },
+      {
+        "name": "exclamationPoint",
+        "type": "text",
+        "label": "Exclamation point",
+        "importance": "low",
+        "default": "exclamation point"
+      },
+      {
+        "name": "questionMark",
+        "type": "text",
+        "label": "Question mark",
+        "importance": "low",
+        "default": "question mark"
+      },
+      {
+        "name": "comma",
+        "type": "text",
+        "label": "Comma",
+        "importance": "low",
+        "default": "comma"
+      },
+      {
+        "name": "singleQuote",
+        "type": "text",
+        "label": "Single quote",
+        "importance": "low",
+        "default": "single quote"
+      },
+      {
+        "name": "doubleQuote",
+        "type": "text",
+        "label": "Double quote",
+        "importance": "low",
+        "default": "double quote"
+      },
+      {
+        "name": "colon",
+        "type": "text",
+        "label": "Colon",
+        "importance": "low",
+        "default": "colon"
+      },
+      {
+        "name": "semicolon",
+        "type": "text",
+        "label": "Semicolon",
+        "importance": "low",
+        "default": "semicolon"
+      },
+      {
+        "name": "plus",
+        "type": "text",
+        "label": "Plus",
+        "importance": "low",
+        "default": "plus"
+      },
+      {
+        "name": "minus",
+        "type": "text",
+        "label": "Minus",
+        "importance": "low",
+        "default": "minus"
+      },
+      {
+        "name": "asterisk",
+        "type": "text",
+        "label": "Asterisk",
+        "importance": "low",
+        "default": "asterisk"
+      },
+      {
+        "name": "forwardSlash",
+        "type": "text",
+        "label": "Forward slash",
+        "importance": "low",
+        "default": "forward slash"
+      },
+      {
+        "name": "backwardSlash",
+        "type": "text",
+        "label": "Backward slash",
+        "importance": "low",
+        "default": "backward slash"
+      },
+      {
+        "name": "tilde",
+        "type": "text",
+        "label": "Tilde",
+        "importance": "low",
+        "default": "tilde"
+      },
+      {
+        "name": "invertedExclamationPoint",
+        "type": "text",
+        "label": "Inverted exclamation point",
+        "importance": "low",
+        "default": "inverted exclamation point"
+      },
+      {
+        "name": "invertedQuestionMark",
+        "type": "text",
+        "label": "Inverted question mark",
+        "importance": "low",
+        "default": "inverted question mark"
+      },
+      {
+        "name": "poundSign",
+        "type": "text",
+        "label": "Pound sign",
+        "importance": "low",
+        "default": "pound sign"
+      },
+      {
+        "name": "leftParanthesis",
+        "type": "text",
+        "label": "Left paranthesis",
+        "importance": "low",
+        "default": "left paranthesis"
+      },
+      {
+        "name": "rightParanthesis",
+        "type": "text",
+        "label": "Right paranthesis",
+        "importance": "low",
+        "default": "right paranthesis"
+      },
+      {
+        "name": "caret",
+        "type": "text",
+        "label": "Caret",
+        "importance": "low",
+        "default": "caret"
+      },
+      {
+        "name": "underscore",
+        "type": "text",
+        "label": "Underscore",
+        "importance": "low",
+        "default": "underscore"
+      },
+      {
+        "name": "verticalBar",
+        "type": "text",
+        "label": "Vertical bar",
+        "importance": "low",
+        "default": "vertical bar"
+      },
+      {
+        "name": "leftSingleQuotationMark",
+        "type": "text",
+        "label": "Left single quotation mark",
+        "importance": "low",
+        "default": "left single quotation mark"
+      },
+      {
+        "name": "rightSingleQuotationMark",
+        "type": "text",
+        "label": "Right single quotation mark",
+        "importance": "low",
+        "default": "right single quotation mark"
+      },
+      {
+        "name": "leftDoubleQuotationMark",
+        "type": "text",
+        "label": "Left double quotation mark",
+        "importance": "low",
+        "default": "left double quotation mark"
+      },
+      {
+        "name": "rightDoubleQuotationMark",
+        "type": "text",
+        "label": "Right double quotation mark",
+        "importance": "low",
+        "default": "right double quotation mark"
+      },
+      {
+        "name": "leftSingleAngleBracket",
+        "type": "text",
+        "label": "Left single angle bracket",
+        "importance": "low",
+        "default": "left single angle bracket"
+      },
+      {
+        "name": "rightSingleAngleBracket",
+        "type": "text",
+        "label": "Right single angle bracket",
+        "importance": "low",
+        "default": "right single angle bracket"
+      },
+      {
+        "name": "leftDoubleAngleBracket",
+        "type": "text",
+        "label": "Left double angle bracket",
+        "importance": "low",
+        "default": "left double angle bracket"
+      },
+      {
+        "name": "rightDoubleAngleBracket",
+        "type": "text",
+        "label": "Right double angle bracket",
+        "importance": "low",
+        "default": "right double angle bracket"
+      },
+      {
+        "name": "leftBrace",
+        "type": "text",
+        "label": "Left brace",
+        "importance": "low",
+        "default": "left brace"
+      },
+      {
+        "name": "rightBrace",
+        "type": "text",
+        "label": "Right brace",
+        "importance": "low",
+        "default": "right brace"
+      },
+      {
+        "name": "leftBracket",
+        "type": "text",
+        "label": "Left bracket",
+        "importance": "low",
+        "default": "left bracket"
+      },
+      {
+        "name": "rightBracket",
+        "type": "text",
+        "label": "Right bracket",
+        "importance": "low",
+        "default": "right bracket"
+      },
+      {
+        "name": "section",
+        "type": "text",
+        "label": "Section",
+        "importance": "low",
+        "default": "section"
+      },
+      {
+        "name": "dividedBy",
+        "type": "text",
+        "label": "Divided by",
+        "importance": "low",
+        "default": "divided by"
+      },
+      {
+        "name": "multipliedBy",
+        "type": "text",
+        "label": "Multiplied by",
+        "importance": "low",
+        "default": "multiplied by"
+      },
+      {
+        "name": "lessThan",
+        "type": "text",
+        "label": "Less Than",
+        "importance": "low",
+        "default": "less than"
+      },
+      {
+        "name": "greaterThan",
+        "type": "text",
+        "label": "Greater Than",
+        "importance": "low",
+        "default": "greater than"
       }
     ]
   }

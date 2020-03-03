@@ -29,6 +29,7 @@ export default class Overlay {
     this.overlay.classList.add(`${this.params.styleBase}-outer-wrapper`);
     this.overlay.classList.add('h5p-pick-the-symbols-invisible');
     this.overlay.setAttribute('role', 'dialog');
+    this.overlay.setAttribute('aria-label', this.params.l10n.title);
     this.overlay.setAttribute('aria-modal', 'true');
 
     this.marker = document.createElement('div');

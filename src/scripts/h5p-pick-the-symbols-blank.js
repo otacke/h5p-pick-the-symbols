@@ -13,22 +13,28 @@ export default class PickTheSymbolsBlank {
   constructor(params) {
     this.params = params;
     this.answer = params.answer || null;
-    this.callbacks = params.callbacks;
+    this.callbacks = params.callbacks || {};
+    this.callbacks.onClick = this.callbacks.onClick || (() => {});
+    this.callbacks.onGetVerboseSymbol = this.callbacks.onGetVerboseSymbol || (symbol => symbol);
+
     this.solution = params.solution;
 
     this.content = document.createElement('span');
     this.content.classList.add('h5p-pick-the-symbols-blank-container');
 
+    const symbol = (!this.answer || this.answer === ' ') ? '&nbsp;' : this.answer;
+
     this.blank = document.createElement('button');
     this.blank.classList.add('h5p-pick-the-symbols-blank');
-
     this.blank.setAttribute('tabindex', 0);
+    this.blank.setAttribute('title', this.params.l10n.title);
+    this.blank.setAttribute('aria-label', this.callbacks.onGetVerboseSymbol(symbol));
     this.blank.style.backgroundColor = params.color;
     this.content.appendChild(this.blank);
 
     this.answerInput = document.createElement('span');
     this.answerInput.classList.add('h5p-pick-the-symbols-blank-answer');
-    this.answerInput.innerHTML = (!this.answer || this.answer === ' ') ? '&nbsp;' : this.answer;
+    this.answerInput.innerHTML = symbol;
     this.blank.appendChild(this.answerInput);
 
     this.correctAnswer = document.createElement('span');
@@ -93,6 +99,7 @@ export default class PickTheSymbolsBlank {
       this.answerInput.innerHTML = '&nbsp;';
     }
     else if (symbol === '&nbsp;' || symbol === ' ') {
+      symbol = '&nbsp;';
       this.answer = ' ';
       this.answerInput.innerHTML = '&nbsp;';
     }
@@ -100,6 +107,8 @@ export default class PickTheSymbolsBlank {
       this.answer = symbol;
       this.answerInput.innerHTML = symbol;
     }
+
+    this.blank.setAttribute('aria-label', this.callbacks.onGetVerboseSymbol(symbol));
   }
 
   /**

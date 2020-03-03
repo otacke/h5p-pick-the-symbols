@@ -21,6 +21,49 @@ export default class PickTheSymbolsContent {
     this.params.callbacks.onContentInteraction = this.params.callbacks.onContentInteraction || (() => {});
     this.params.callbacks.onResize = this.params.callbacks.onResize || (() => {});
 
+    this.verboseSymbolMapping = {
+      '&nbsp;': this.params.a11y.space,
+      '.': this.params.a11y.period,
+      '!': this.params.a11y.exclamationPoint,
+      '?': this.params.a11y.questionMark,
+      ',': this.params.a11y.comma,
+      '\'': this.params.a11y.singleQuote,
+      '"': this.params.a11y.doubleQuote,
+      ':': this.params.a11y.colon,
+      ';': this.params.a11y.semicolon,
+      '+': this.params.a11y.plus,
+      '-': this.params.a11y.minus,
+      '*': this.params.a11y.asterisk,
+      '/': this.params.a11y.forwardSlash,
+      '\\': this.params.a11y.backwardSlash,
+      '~': this.params.a11y.tilde,
+      '¡': this.params.a11y.invertedExclamationPoint,
+      '¿': this.params.a11y.invertedQuestionMark,
+      '#': this.params.a11y.poundSign,
+      '(': this.params.a11y.leftParanthesis,
+      ')': this.params.a11y.rightParanthesis,
+      '^': this.params.a11y.caret,
+      '_': this.params.a11y.underscore,
+      '|': this.params.a11y.verticalBar,
+      '‘': this.params.a11y.leftSingleQuotationMark,
+      '’': this.params.a11y.rightSingleQuotationMark,
+      '”': this.params.a11y.leftDoubleQuotationMark,
+      '“': this.params.a11y.rightDoubleQuotationMark,
+      '‹': this.params.a11y.leftSingleAngleBracket,
+      '›': this.params.a11y.rightSingleAngleBracket,
+      '«': this.params.a11y.leftDoubleAngleBracket,
+      '»': this.params.a11y.rightDoubleAngleBracket,
+      '{': this.params.a11y.leftBrace,
+      '}': this.params.a11y.rightBrace,
+      '[': this.params.a11y.leftBracket,
+      ']': this.params.a11y.rightBracket,
+      '§': this.params.a11y.section,
+      '÷': this.params.a11y.dividedBy,
+      '×': this.params.a11y.multipliedBy,
+      '<': this.params.a11y.lessThan,
+      '>': this.params.a11y.greaterThan,
+    };
+
     this.blankGroups = [];
     this.nextBlankId = 0;
 
@@ -77,9 +120,9 @@ export default class PickTheSymbolsContent {
         title: this.params.l10n.chooserTitle,
         addBlank: this.params.l10n.addBlank,
         addSymbol: this.params.l10n.addSymbol,
-        space: this.params.l10n.space,
         removeBlank: this.params.l10n.removeBlank
       },
+      a11y: this.params.a11y,
       callbacks: {
         onPickSymbol: (symbol) => {
           this.handleChooserPickSymbol(symbol);
@@ -89,6 +132,9 @@ export default class PickTheSymbolsContent {
         },
         onRemoveBlank: () => {
           this.handleChooserRemoveBlank();
+        },
+        onGetVerboseSymbol: symbol => {
+          return this.getVerboseSymbol(symbol);
         }
       }
     });
@@ -97,6 +143,7 @@ export default class PickTheSymbolsContent {
       {
         content: this.chooser.getDOM(),
         l10n: {
+          title: this.params.l10n.chooserTitle,
           closeWindow: this.params.l10n.closeWindow
         },
         position: {
@@ -144,11 +191,17 @@ export default class PickTheSymbolsContent {
         callbacks: {
           onOpenOverlay: (blankGroup, blank) => {
             this.handleOpenOverlay(blankGroup, blank);
+          },
+          onGetVerboseSymbol: symbol => {
+            return this.getVerboseSymbol(symbol);
           }
         },
         colorBackground: params.colorBackground,
         solution: this.textBlankGroups[index],
-        xAPIPlaceholder: this.params.xAPIPlaceholder
+        xAPIPlaceholder: this.params.xAPIPlaceholder,
+        l10n: {
+          title: this.params.l10n.blankButtonTitle
+        }
       });
       this.blankGroups.push(blankGroup);
 
@@ -446,6 +499,15 @@ export default class PickTheSymbolsContent {
    */
   getCurrentState() {
     return this.blankGroups.map(group => group.getCurrentState());
+  }
+
+  /**
+   * Get readable character description.
+   * @param {string} symbol Symbol to make readable.
+   * @return {string} Readable character.
+   */
+  getVerboseSymbol(symbol) {
+    return this.verboseSymbolMapping[symbol] || symbol;
   }
 
   /**

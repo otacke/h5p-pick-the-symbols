@@ -12,6 +12,7 @@ export default class PickTheSymbolsBlankGroup {
 
     this.params.callbacks = this.params.callbacks || {};
     this.params.callbacks.onOpenOverlay = this.params.callbacks.onOpenOverlay || (() => {});
+    this.params.callbacks.onGetVerboseSymbol = this.params.callbacks.onGetVerboseSymbol || (symbol => symbol);
 
     this.blanks = [];
 
@@ -60,11 +61,15 @@ export default class PickTheSymbolsBlankGroup {
         callbacks: {
           onClick: (blank) => {
             this.handleOpenOverlay(blank);
+          },
+          onGetVerboseSymbol: (symbol) => {
+            return this.params.callbacks.onGetVerboseSymbol(symbol);
           }
         },
         color: this.params.colorBackground,
         answer: answer,
         solution: solution,
+        l10n: this.params.l10n
       });
 
       this.blanks.push(blank);

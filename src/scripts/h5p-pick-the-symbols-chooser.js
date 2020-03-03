@@ -15,6 +15,7 @@ export default class PickTheSymbolsChooser {
     this.callbacks.onPickSymbol = this.callbacks.onPickSymbol || (() => {});
     this.callbacks.onRemoveBlank = this.callbacks.onRemoveBlank || (() => {});
     this.callbacks.onResize = this.callbacks.onResize || (() => {});
+    this.callbacks.onGetVerboseSymbol = this.callbacks.onGetVerboseSymbol || (symbol => symbol);
 
     this.buttons = [];
 
@@ -40,7 +41,8 @@ export default class PickTheSymbolsChooser {
       const button = document.createElement('button');
       button.classList.add('h5p-joubelui-button');
       button.innerHTML = symbol;
-      button.setAttribute('title', this.params.l10n.addSymbol.replace(/@symbol/g, symbol.replace('&nbsp;', this.params.l10n.space)));
+      button.setAttribute('title', this.params.l10n.addSymbol.replace(/@symbol/g, (symbol === '&nbsp;') ? this.callbacks.onGetVerboseSymbol(symbol) : symbol));
+      button.setAttribute('aria-label', this.callbacks.onGetVerboseSymbol(symbol));
       button.addEventListener('click', () => {
         this.callbacks.onPickSymbol(button.innerHTML);
       });
@@ -48,8 +50,6 @@ export default class PickTheSymbolsChooser {
       this.buttons.push(button);
       this.symbolButtonsContainer.appendChild(button);
     });
-
-    // TODO: Handle this via params, not via toggling
 
     this.blankButtonsContainer = document.createElement('div');
     this.blankButtonsContainer.classList.add('h5p-pick-the-symbols-chooser-blank-buttons');

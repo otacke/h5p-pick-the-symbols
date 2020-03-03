@@ -49,12 +49,15 @@ export default class PickTheSymbols extends H5P.Question {
         continue: 'Continue',
         showSolution: 'Show solution',
         tryAgain: 'Retry',
+        blankButtonTitle: 'Pick the symbol',
         chooserTitle: 'Pick the symbol',
         addBlank: 'Add blank',
         addSymbol: 'Fill blank with @symbol',
-        space: 'space',
         removeBlank: 'Remove blank'
       },
+      a11y: {
+        space: 'space'
+      }
     }, this.params);
 
     this.params.symbols = Util.htmlDecode(this.params.symbols)
@@ -91,13 +94,14 @@ export default class PickTheSymbols extends H5P.Question {
             }
           },
           l10n: {
+            blankButtonTitle: this.params.l10n.blankButtonTitle,
             chooserTitle: this.params.l10n.chooserTitle,
             addBlank: this.params.l10n.addBlank,
             addSymbol: this.params.l10n.addSymbol,
             closeWindow: this.params.l10n.closeWindow,
-            space: this.params.l10n.space,
             removeBlank: this.params.l10n.removeBlank
-          }
+          },
+          a11y: this.params.a11y
         });
 
         // Register content with H5P.Question

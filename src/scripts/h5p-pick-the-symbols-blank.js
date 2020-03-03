@@ -39,7 +39,7 @@ export default class PickTheSymbolsBlank {
 
     this.correctAnswer = document.createElement('span');
     this.correctAnswer.classList.add('h5p-pick-the-symbols-blank-correct-answer');
-    this.correctAnswer.innerHTML = this.solution;
+    this.correctAnswer.innerHTML = '';
     this.content.appendChild(this.correctAnswer);
 
     this.blank.addEventListener('click', () => {

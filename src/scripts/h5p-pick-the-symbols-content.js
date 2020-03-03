@@ -186,9 +186,6 @@ export default class PickTheSymbolsContent {
         callbacks: {
           onOpenOverlay: (blankGroup, blank) => {
             this.handleOpenOverlay(blankGroup, blank);
-          },
-          onGetVerboseSymbol: symbol => {
-            return this.getVerboseSymbol(symbol);
           }
         },
         colorBackground: params.colorBackground,
@@ -215,6 +212,8 @@ export default class PickTheSymbolsContent {
 
       placeholder.parentNode.replaceChild(blankGroup.getDOM(), placeholder);
     });
+
+    this.relabelBlanks();
   }
 
   /**
@@ -265,6 +264,8 @@ export default class PickTheSymbolsContent {
     if (params.keepFocus !== true) {
       this.currentBlank.focus();
     }
+
+    this.relabelBlanks();
 
     this.resize();
   }
@@ -390,6 +391,53 @@ export default class PickTheSymbolsContent {
     });
   }
 
+  relabelBlanks(params = {}) {
+    const total = this.blankGroups.reduce((result, current) => result + current.getLength(), 0);
+    let counter = 1;
+
+    this.blankGroups.forEach(group => {
+      group.blanks.forEach(blank => {
+        const position = `${counter} ${this.params.a11y.of} ${total}.`;
+
+        const score = blank.getScore();
+
+        // correct answer
+        let correctAnswer = '';
+        if (params.correctAnswer === true && score !== 1) {
+          const solution = (blank.getSolution() || '&nbsp;').replace(' ', '&nbsp;');
+          correctAnswer = ` ${this.params.a11y.correctAnswer}: ${this.getVerboseSymbol(solution)}.`;
+        }
+
+        // add result
+        let result = '';
+        if (params.result === true) {
+          if (score === -1) {
+            result = ` ${this.params.a11y.answeredIncorrectly}`;
+          }
+          else if (score === 1) {
+            result = ` ${this.params.a11y.answeredCorrectly}`;
+          }
+          else {
+            result = ` ${this.params.a11y.notAnswered}`;
+          }
+        }
+
+        // append . for readspeaker pause
+        if (result !== '' && result.slice(-1) !== '.') {
+          result = `${result}.`;
+        }
+
+        // button label
+        const label = ` ${this.getVerboseSymbol(blank.getAnswer())}`;
+
+        blank.setAriaLabel(`${this.params.a11y.inputBlank} ${position}${correctAnswer}${result}${label}`);
+
+        counter++;
+      });
+    });
+
+  }
+
   /**
    * Determine if a solution is displayed.
    * @return {boolean} True if solution is displayed.
@@ -409,6 +457,8 @@ export default class PickTheSymbolsContent {
       blankGroup.reset(params);
     });
 
+    this.relabelBlanks();
+
     this.solutionShowing = false;
   }
 
@@ -425,6 +475,10 @@ export default class PickTheSymbolsContent {
     else {
       this.textContainer.classList.add('h5p-pick-the-symbols-disabled');
     }
+
+    this.blankGroups.forEach(group => {
+      group.setEnabled(state);
+    });
 
     this.enabled = state;
   }
@@ -502,6 +556,7 @@ export default class PickTheSymbolsContent {
    * @return {string} Readable character.
    */
   getVerboseSymbol(symbol) {
+    symbol = symbol || '&nbsp;';
     return this.verboseSymbolMapping[symbol] || symbol;
   }
 

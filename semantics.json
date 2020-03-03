@@ -254,9 +254,51 @@
     "importance": "low",
     "fields": [
       {
+        "name": "inputBlank",
+        "type": "text",
+        "label": "Blank input",
+        "importance": "low",
+        "default": "blank input"
+      },
+      {
+        "name": "of",
+        "type": "text",
+        "label": "Of",
+        "importance": "low",
+        "default": "of"
+      },
+      {
+        "name": "answeredCorrectly",
+        "type": "text",
+        "label": "Feedback for correct answer",
+        "importance": "low",
+        "default": "answered correctly"
+      },
+      {
+        "name": "answeredIncorrectly",
+        "type": "text",
+        "label": "Feedback for incorrect answer",
+        "importance": "low",
+        "default": "answered incorrectly"
+      },
+      {
+        "name": "notAnswered",
+        "type": "text",
+        "label": "Feedback for no given answer",
+        "importance": "low",
+        "default": "not answered"
+      },
+      {
+        "name": "correctAnswer",
+        "type": "text",
+        "label": "Correct answer",
+        "importance": "low",
+        "default": "Correct answer"
+      },
+      {
         "name": "space",
         "type": "text",
-        "label": "Name of \"space\" character",
+        "label": "Space",
         "importance": "low",
         "default": "space"
       },

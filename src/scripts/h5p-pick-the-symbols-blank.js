@@ -15,7 +15,6 @@ export default class PickTheSymbolsBlank {
     this.answer = params.answer || null;
     this.callbacks = params.callbacks || {};
     this.callbacks.onClick = this.callbacks.onClick || (() => {});
-    this.callbacks.onGetVerboseSymbol = this.callbacks.onGetVerboseSymbol || (symbol => symbol);
 
     this.solution = params.solution;
 
@@ -28,7 +27,6 @@ export default class PickTheSymbolsBlank {
     this.blank.classList.add('h5p-pick-the-symbols-blank');
     this.blank.setAttribute('tabindex', 0);
     this.blank.setAttribute('title', this.params.l10n.title);
-    this.blank.setAttribute('aria-label', this.callbacks.onGetVerboseSymbol(symbol));
     this.blank.style.backgroundColor = params.color;
     this.content.appendChild(this.blank);
 
@@ -39,6 +37,7 @@ export default class PickTheSymbolsBlank {
 
     this.correctAnswer = document.createElement('span');
     this.correctAnswer.classList.add('h5p-pick-the-symbols-blank-correct-answer');
+    this.correctAnswer.setAttribute('aria-hidden', 'true');
     this.correctAnswer.innerHTML = '';
     this.content.appendChild(this.correctAnswer);
 
@@ -107,8 +106,6 @@ export default class PickTheSymbolsBlank {
       this.answer = symbol;
       this.answerInput.innerHTML = symbol;
     }
-
-    this.blank.setAttribute('aria-label', this.callbacks.onGetVerboseSymbol(symbol));
   }
 
   /**
@@ -135,6 +132,27 @@ export default class PickTheSymbolsBlank {
     }
 
     return (this.solution === this.answer) ? 1 : -1;
+  }
+
+  /**
+   * Set aria-label.
+   * @param {string} label Aria-label.
+   */
+  setAriaLabel(label) {
+    this.blank.setAttribute('aria-label', label);
+  }
+
+  /**
+   * Toggle enabled state.
+   * @param {boolean} state If true, will be enabled, else disabled.
+   */
+  setEnabled(state) {
+    if (state) {
+      this.blank.removeAttribute('disabled');
+    }
+    else {
+      this.blank.setAttribute('disabled', 'disabled');
+    }
   }
 
   /**

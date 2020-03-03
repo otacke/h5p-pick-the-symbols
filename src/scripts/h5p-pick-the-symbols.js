@@ -56,6 +56,12 @@ export default class PickTheSymbols extends H5P.Question {
         removeBlank: 'Remove blank'
       },
       a11y: {
+        inputBlank: 'blank input',
+        of: 'of',
+        answeredCorrectly: 'answered correctly',
+        answeredIncorrectly: 'answered incorrectly',
+        notAnswered: 'not answered',
+        correctAnswer: 'correct answer',
         space: 'space',
         period: 'period',
         exclamationPoint: 'exclamation point',
@@ -171,6 +177,11 @@ export default class PickTheSymbols extends H5P.Question {
 
         this.content.handleCloseOverlay({keepFocus: true});
 
+        // Show result in aria label
+        this.content.relabelBlanks({
+          result: true
+        });
+
         // Highlight answers depending on settings
         this.content.showSolutions({
           highlight: PickTheSymbolsBlank.HIGHLIGHT_CORRECT,
@@ -284,6 +295,11 @@ export default class PickTheSymbols extends H5P.Question {
         highlight: PickTheSymbolsBlank.HIGHLIGHT_ALL,
         answer: true,
         score: false
+      });
+
+      this.content.relabelBlanks({
+        result: true,
+        correctAnswer: true
       });
       this.trigger('resize');
     };

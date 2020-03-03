@@ -12,7 +12,6 @@ export default class PickTheSymbolsBlankGroup {
 
     this.params.callbacks = this.params.callbacks || {};
     this.params.callbacks.onOpenOverlay = this.params.callbacks.onOpenOverlay || (() => {});
-    this.params.callbacks.onGetVerboseSymbol = this.params.callbacks.onGetVerboseSymbol || (symbol => symbol);
 
     this.blanks = [];
 
@@ -61,9 +60,6 @@ export default class PickTheSymbolsBlankGroup {
         callbacks: {
           onClick: (blank) => {
             this.handleOpenOverlay(blank);
-          },
-          onGetVerboseSymbol: (symbol) => {
-            return this.params.callbacks.onGetVerboseSymbol(symbol);
           }
         },
         color: this.params.colorBackground,
@@ -97,6 +93,14 @@ export default class PickTheSymbolsBlankGroup {
   getBlank(index = Infinity) {
     index = Math.min(Math.max(0, index), this.blanks.length - 1);
     return this.blanks[index];
+  }
+
+  /**
+   * Get number of blanks in group.
+   * @return {number} Number of blanks in group.
+   */
+  getLength() {
+    return this.blanks.length;
   }
 
   /**
@@ -211,6 +215,16 @@ export default class PickTheSymbolsBlankGroup {
 
     this.blanks.forEach(blank => {
       blank.reset(params);
+    });
+  }
+
+  /**
+   * Toggle enabled state.
+   * @param {boolean} state If true, will be enabled, else disabled.
+   */
+  setEnabled(state) {
+    this.blanks.forEach(blank => {
+      blank.setEnabled(state);
     });
   }
 

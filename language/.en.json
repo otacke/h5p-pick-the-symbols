@@ -113,6 +113,30 @@
       "label": "Readspeaker",
       "fields": [
         {
+          "label": "Blank input",
+          "default": "blank input"
+        },
+        {
+          "label": "Of",
+          "default": "of"
+        },
+        {
+          "label": "Feedback for correct answer",
+          "default": "answered correctly"
+        },
+        {
+          "label": "Feedback for incorrect answer",
+          "default": "answered incorrectly"
+        },
+        {
+          "label": "Feedback for no given answer",
+          "default": "not answered"
+        },
+        {
+          "label": "Correct answer",
+          "default": "Correct answer"
+        },
+        {
           "label": "Space",
           "default": "space"
         },

@@ -113,6 +113,30 @@
       "label": "Vorlesewerkzeuge",
       "fields": [
         {
+          "label": "Lücke",
+          "default": "Lücke"
+        },
+        {
+          "label": "Von",
+          "default": "von"
+        },
+        {
+          "label": "Rückmeldung für richtige Antwort",
+          "default": "Korrekt beantwortet"
+        },
+        {
+          "label": "Rückmeldung für falsche Antwort",
+          "default": "Falsch beantwortet"
+        },
+        {
+          "label": "Rückmeldung bei keiner Antwort",
+          "default": "Nicht beantwortet"
+        },
+        {
+          "label": "Richtige Antwort",
+          "default": "Richtige Antwort"
+        },
+        {
           "label": "Leerzeichen",
           "default": "Leerzeichen"
         },

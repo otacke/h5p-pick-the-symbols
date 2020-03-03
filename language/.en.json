@@ -85,6 +85,10 @@
           "default": "Reset"
         },
         {
+          "label": "Title text for symbol picker",
+          "default": "Pick the symbol"
+        },
+        {
           "label": "Text for \"Append blank\" button",
           "default": "Append blank"
         },

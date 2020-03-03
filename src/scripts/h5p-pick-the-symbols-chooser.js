@@ -23,6 +23,13 @@ export default class PickTheSymbolsChooser {
     this.content = document.createElement('div');
     this.content.classList.add('h5p-pick-the-symbols-chooser');
 
+    if (this.params.l10n.title) {
+      const title = document.createElement('div');
+      title.classList.add('h5p-pick-the-symbols-chooser-title');
+      title.innerText = this.params.l10n.title;
+      this.content.appendChild(title);
+    }
+
     this.symbolButtonsContainer = document.createElement('div');
     this.symbolButtonsContainer.classList.add('h5p-pick-the-symbols-chooser-symbol-buttons');
     this.content.appendChild(this.symbolButtonsContainer);

@@ -74,6 +74,7 @@ export default class PickTheSymbolsContent {
     this.chooser = new PickTheSymbolsChooser({
       symbols: symbols,
       l10n: {
+        title: this.params.l10n.chooserTitle,
         addBlank: this.params.l10n.addBlank,
         addSymbol: this.params.l10n.addSymbol,
         space: this.params.l10n.space,

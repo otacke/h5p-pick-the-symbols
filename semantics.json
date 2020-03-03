@@ -202,6 +202,13 @@
         "default": "Reset"
       },
       {
+        "name": "chooserTitle",
+        "type": "text",
+        "label": "Title text for symbol picker",
+        "importance": "low",
+        "default": "Pick the symbol"
+      },
+      {
         "name": "addBlank",
         "type": "text",
         "label": "Text for \"Append blank\" button",

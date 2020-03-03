@@ -83,6 +83,10 @@
           "default": "Wiederholen"
         },
         {
+          "label": "Titeltext für die Symbolauswahl",
+          "default": "Wähle das Satzzeichen"
+        },
+        {
           "label": "Beschriftung des \"Lücke anfügen\"-Buttons",
           "default": "Lücke anfügen"
         },

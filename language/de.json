@@ -83,6 +83,10 @@
           "default": "Wiederholen"
         },
         {
+          "label": "Hilfstext für die Buttons für eine Lücke",
+          "default": "Pick a symbol"
+        },
+        {
           "label": "Titeltext für die Symbolauswahl",
           "default": "Wähle das Satzzeichen"
         },
@@ -100,12 +104,173 @@
           "default": "Setze @symbol in die Lücke"
         },
         {
-          "label": "Bezeichnung für das \"Leerzeichens\"",
+          "label": "Beschriftung des \"Fenster schließen\"-Buttons",
+          "default": "Schließe Fenster"
+        }
+      ]
+    },
+    {
+      "label": "Vorlesewerkzeuge",
+      "fields": [
+        {
+          "label": "Leerzeichen",
           "default": "Leerzeichen"
         },
         {
-          "label": "Beschriftung des \"Fenster schließen\"-Buttons",
-          "default": "Schließe Fenster"
+          "label": "Punkt",
+          "default": "Punkt"
+        },
+        {
+          "label": "Ausrufezeichen",
+          "default": "Ausrufezeichen"
+        },
+        {
+          "label": "Fragezeichen",
+          "default": "Fragezeichen"
+        },
+        {
+          "label": "Komma",
+          "default": "Komma"
+        },
+        {
+          "label": "Einfaches Anführungszeichen",
+          "default": "einfaches Anführungszeichen"
+        },
+        {
+          "label": "Doppeltes Anführungszeichen",
+          "default": "doppeltes Anführungszeichen"
+        },
+        {
+          "label": "Doppelpunkt",
+          "default": "Doppelpunkt"
+        },
+        {
+          "label": "Semikolon",
+          "default": "Semikolon"
+        },
+        {
+          "label": "Plus",
+          "default": "Plus"
+        },
+        {
+          "label": "Minus",
+          "default": "Minus"
+        },
+        {
+          "label": "Sternchen",
+          "default": "Sternchen"
+        },
+        {
+          "label": "Schrägstrich vorwärts",
+          "default": "Schrägstrich vorwärts"
+        },
+        {
+          "label": "Schrägstrich rückwärts",
+          "default": "Schrägstrich rückwärts"
+        },
+        {
+          "label": "Tilde",
+          "default": "Tilde"
+        },
+        {
+          "label": "Umgedrehtes Ausrufezeichen",
+          "default": "umgedrehtes Ausrufezeichen"
+        },
+        {
+          "label": "Umgedrehtes Fragezeichen",
+          "default": "umgedrehtes Fragezeichen"
+        },
+        {
+          "label": "Raute",
+          "default": "Raute"
+        },
+        {
+          "label": "Klammer links",
+          "default": "Klammer links"
+        },
+        {
+          "label": "Klammer rechts",
+          "default": "Klammer rechts"
+        },
+        {
+          "label": "Caret-Zeichen",
+          "default": "Caret-Zeichen"
+        },
+        {
+          "label": "Unterstrich",
+          "default": "Unterstrich"
+        },
+        {
+          "label": "Vertikaler Strich",
+          "default": "vertikaler Strich"
+        },
+        {
+          "label": "Einfaches Anführungszeichen links",
+          "default": "einfaches Anführungszeichen links"
+        },
+        {
+          "label": "Einfaches Anführungszeichen rechts",
+          "default": "einfaches Anführungszeichen rechts"
+        },
+        {
+          "label": "Doppeltes Anführungszeichen links",
+          "default": "doppeltes Anführungszeichen links"
+        },
+        {
+          "label": "Doppeltes Anführungszeichen rechts",
+          "default": "doppeltes Anführungszeichen rechts"
+        },
+        {
+          "label": "Einfache spitze Klammer links",
+          "default": "einfachs spitze Klammer links"
+        },
+        {
+          "label": "Einfache spitze Klammer rechts",
+          "default": "einfache spitze Klammer rechts"
+        },
+        {
+          "label": "Doppelte spitze Klammer links",
+          "default": "doppelte spitze Klammer links"
+        },
+        {
+          "label": "Doppelte spitze Klammer rechts",
+          "default": "doppelte spitze Klammer rechts"
+        },
+        {
+          "label": "Geschweifte Klammer links",
+          "default": "geschweifte Klammer links"
+        },
+        {
+          "label": "Geschweifte Klammer rechts",
+          "default": "geschweifte Klammer rechts"
+        },
+        {
+          "label": "Eckige Klammer links",
+          "default": "eckige Klammer links"
+        },
+        {
+          "label": "Eckige Klammer rechts",
+          "default": "eckige Klammer rechts"
+        },
+        {
+          "label": "Paragraph",
+          "default": "Paragraph"
+        },
+        {
+          "label": "Geteilt durch",
+          "default": "geteilt durch"
+        },
+        {
+          "label": "Multipliziert mit",
+          "default": "multipliziert mit"
+        },
+        {
+          "label": "Kleiner als",
+          "default": "kleiner als"
+        },
+        {
+          "label": "Größer als",
+          "default": "größer als"
         }
       ]
     }

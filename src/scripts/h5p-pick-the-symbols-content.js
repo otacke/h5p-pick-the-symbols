@@ -61,7 +61,7 @@ export default class PickTheSymbolsContent {
       '÷': this.params.a11y.dividedBy,
       '×': this.params.a11y.multipliedBy,
       '<': this.params.a11y.lessThan,
-      '>': this.params.a11y.greaterThan,
+      '>': this.params.a11y.greaterThan
     };
 
     this.blankGroups = [];

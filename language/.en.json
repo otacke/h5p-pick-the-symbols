@@ -59,9 +59,7 @@
           "description": "Show all blanks for groups of symbols in advance."
         },
         {
-          "label": "Blanks background color",
-          "default": "#e0e0e0",
-          "spectrum": {}
+          "label": "Blanks background color"
         }
       ]
     },
@@ -85,8 +83,12 @@
           "default": "Reset"
         },
         {
+          "label": "Title text for blank button",
+          "default": "Pick a symbol"
+        },
+        {
           "label": "Title text for symbol picker",
-          "default": "Pick the symbol"
+          "default": "Pick a symbol"
         },
         {
           "label": "Text for \"Append blank\" button",
@@ -97,17 +99,178 @@
           "default": "Remove blank"
         },
         {
-          "label": "Tooltip \"Choose symbol\" button",
+          "label": "Tooltip for \"Choose symbol\" button",
           "description": "@symbol will be replaced with the symbol that would be picked.",
           "default": "Fill blank with @symbol"
         },
         {
-          "label": "Name of \"space\" character",
+          "label": "Text for \"Close window\" button",
+          "default": "Close window"
+        }
+      ]
+    },
+    {
+      "label": "Readspeaker",
+      "fields": [
+        {
+          "label": "Space",
           "default": "space"
         },
         {
-          "label": "Text for \"Close window\" button",
-          "default": "Close window"
+          "label": "Period",
+          "default": "period"
+        },
+        {
+          "label": "Exclamation point",
+          "default": "exclamation point"
+        },
+        {
+          "label": "Question mark",
+          "default": "question mark"
+        },
+        {
+          "label": "Comma",
+          "default": "comma"
+        },
+        {
+          "label": "Single quote",
+          "default": "single quote"
+        },
+        {
+          "label": "Double quote",
+          "default": "double quote"
+        },
+        {
+          "label": "Colon",
+          "default": "colon"
+        },
+        {
+          "label": "Semicolon",
+          "default": "semicolon"
+        },
+        {
+          "label": "Plus",
+          "default": "plus"
+        },
+        {
+          "label": "Minus",
+          "default": "minus"
+        },
+        {
+          "label": "Asterisk",
+          "default": "asterisk"
+        },
+        {
+          "label": "Forward slash",
+          "default": "forward slash"
+        },
+        {
+          "label": "Backward slash",
+          "default": "backward slash"
+        },
+        {
+          "label": "Tilde",
+          "default": "tilde"
+        },
+        {
+          "label": "Inverted exclamation point",
+          "default": "inverted exclamation point"
+        },
+        {
+          "label": "Inverted question mark",
+          "default": "inverted question mark"
+        },
+        {
+          "label": "Pound sign",
+          "default": "pound sign"
+        },
+        {
+          "label": "Left paranthesis",
+          "default": "left paranthesis"
+        },
+        {
+          "label": "Right paranthesis",
+          "default": "right paranthesis"
+        },
+        {
+          "label": "Caret",
+          "default": "caret"
+        },
+        {
+          "label": "Underscore",
+          "default": "underscore"
+        },
+        {
+          "label": "Vertical bar",
+          "default": "vertical bar"
+        },
+        {
+          "label": "Left single quotation mark",
+          "default": "left single quotation mark"
+        },
+        {
+          "label": "Right single quotation mark",
+          "default": "right single quotation mark"
+        },
+        {
+          "label": "Left double quotation mark",
+          "default": "left double quotation mark"
+        },
+        {
+          "label": "Right double quotation mark",
+          "default": "right double quotation mark"
+        },
+        {
+          "label": "Left single angle bracket",
+          "default": "left single angle bracket"
+        },
+        {
+          "label": "Right single angle bracket",
+          "default": "right single angle bracket"
+        },
+        {
+          "label": "Left double angle bracket",
+          "default": "left double angle bracket"
+        },
+        {
+          "label": "Right double angle bracket",
+          "default": "right double angle bracket"
+        },
+        {
+          "label": "Left brace",
+          "default": "left brace"
+        },
+        {
+          "label": "Right brace",
+          "default": "right brace"
+        },
+        {
+          "label": "Left bracket",
+          "default": "left bracket"
+        },
+        {
+          "label": "Right bracket",
+          "default": "right bracket"
+        },
+        {
+          "label": "Section",
+          "default": "section"
+        },
+        {
+          "label": "Divided by",
+          "default": "divided by"
+        },
+        {
+          "label": "Multiplied by",
+          "default": "multiplied by"
+        },
+        {
+          "label": "Less Than",
+          "default": "less than"
+        },
+        {
+          "label": "Greater Than",
+          "default": "greater than"
         }
       ]
     }

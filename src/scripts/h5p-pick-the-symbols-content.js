@@ -96,11 +96,6 @@ export default class PickTheSymbolsContent {
     taskDescription.innerHTML = params.taskDescription;
     this.content.appendChild(taskDescription);
 
-    // Ruler
-    const ruler = document.createElement('div');
-    ruler.classList.add('h5p-pick-the-symbols-ruler');
-    this.content.appendChild(ruler);
-
     // Text container
     this.textContainer = document.createElement('div');
     this.textContainer.classList.add('h5p-pick-the-symbols-text-container');

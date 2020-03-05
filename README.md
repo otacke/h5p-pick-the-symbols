@@ -10,6 +10,8 @@ can donate to
 * **IBAN:** CH35 0076 9020 2108 8389 6
 * **BIC:** BLKBCH22
 
+If you have questions, please contact schulleitung@schulebubendorf.ch
+
 ## Getting started (for developers)
 Clone this repository with git and check out the branch that you are interested
 in (or choose the branch first and then download the archive, but learning

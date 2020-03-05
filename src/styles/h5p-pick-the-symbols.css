@@ -167,22 +167,23 @@
   white-space: nowrap;
 }
 
-.h5p-pick-the-symbols-chooser-symbol-buttons button {
+.h5p-pick-the-symbols-chooser-symbol-buttons-button {
   background: linear-gradient(to bottom,#fff 0,#f2f2f2 100%);
   border: 1px solid #ccc;
   border-radius: 0.25em;
   color: #494949;
+  font-weight: bold;
   height: 2em;
   margin: 0 0.25em 0.25em 0;
   padding: 0;
   width: 2em;
 }
 
-.h5p-pick-the-symbols-chooser-symbol-buttons button:first-child {
+.h5p-pick-the-symbols-chooser-symbol-buttons .h5p-pick-the-symbols-chooser-symbol-buttons-button:first-child {
   margin: 0 0.25em 0.25em 0;
 }
 
-.h5p-pick-the-symbols-chooser-symbol-buttons button:last-child {
+.h5p-pick-the-symbols-chooser-symbol-buttons .h5p-pick-the-symbols-chooser-symbol-buttons-button:last-child {
   margin: 0 0 0.25em 0;
 }
 
@@ -201,33 +202,33 @@
   padding-top: 0.5em;
 }
 
-.h5p-pick-the-symbols-chooser-blank-buttons button.h5p-joubelui-button {
+.h5p-pick-the-symbols-chooser-blank-buttons .h5p-pick-the-symbols-chooser-blank-buttons-button {
   margin: 0 0.5em 0 0;
 }
 
-.h5p-pick-the-symbols-chooser-blank-buttons button.h5p-joubelui-button:last-child {
+.h5p-pick-the-symbols-chooser-blank-buttons .h5p-pick-the-symbols-chooser-blank-buttons-button:last-child {
   margin: 0;
 }
 
-.h5p-pick-the-symbols-chooser-symbol-buttons button.h5p-pick-the-symbols-chooser-button-trailing {
+.h5p-pick-the-symbols-chooser-symbol-buttons .h5p-pick-the-symbols-chooser-blank-buttons-button.h5p-pick-the-symbols-chooser-button-trailing {
   margin-right: 0;
 }
 
-.h5p-pick-the-symbols-chooser-blank-buttons button.h5p-pick-the-symbols-add-blank:disabled {
+.h5p-pick-the-symbols-chooser-blank-buttons .h5p-pick-the-symbols-chooser-blank-buttons-button.h5p-pick-the-symbols-add-blank:disabled {
   background: #cccccc;
   cursor: auto;
 }
 
-.h5p-pick-the-symbols-chooser-blank-buttons button.h5p-pick-the-symbols-remove-blank:disabled {
+.h5p-pick-the-symbols-chooser-blank-buttons .h5p-pick-the-symbols-chooser-blank-buttons-button.h5p-pick-the-symbols-remove-blank:disabled {
   background: #cccccc;
   cursor: auto;
 }
 
-.h5p-pick-the-symbols-chooser-blank-buttons button.h5p-pick-the-symbols-add-blank::before {
+.h5p-pick-the-symbols-chooser-blank-buttons .h5p-pick-the-symbols-chooser-blank-buttons-button.h5p-pick-the-symbols-add-blank::before {
   content: "\f067";
 }
 
-.h5p-pick-the-symbols-chooser-blank-buttons button.h5p-pick-the-symbols-remove-blank::before {
+.h5p-pick-the-symbols-chooser-blank-buttons .h5p-pick-the-symbols-chooser-blank-buttons-button.h5p-pick-the-symbols-remove-blank::before {
   content: "\f068";
 }
 

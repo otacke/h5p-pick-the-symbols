@@ -40,6 +40,7 @@ export default class PickTheSymbolsChooser {
     params.symbols.forEach(symbol => {
       const button = document.createElement('button');
       button.classList.add('h5p-joubelui-button');
+      button.classList.add('h5p-pick-the-symbols-chooser-symbol-buttons-button');
       button.innerHTML = symbol;
       button.setAttribute('title', this.params.l10n.addSymbol.replace(/@symbol/g, (symbol === '&nbsp;') ? this.callbacks.onGetVerboseSymbol(symbol) : symbol));
       button.setAttribute('aria-label', this.callbacks.onGetVerboseSymbol(symbol));
@@ -59,6 +60,7 @@ export default class PickTheSymbolsChooser {
     // Button for removing current blank
     this.buttonRemoveBlank = document.createElement('button');
     this.buttonRemoveBlank.classList.add('h5p-joubelui-button');
+    this.buttonRemoveBlank.classList.add('h5p-pick-the-symbols-chooser-blank-buttons-button');
     this.buttonRemoveBlank.classList.add('h5p-pick-the-symbols-remove-blank');
     this.buttonRemoveBlank.classList.add('h5p-pick-the-symbols-disabled');
     this.buttonRemoveBlank.innerHTML = this.params.l10n.removeBlank;
@@ -71,6 +73,7 @@ export default class PickTheSymbolsChooser {
     // Button for adding current blank
     this.buttonAddBlank = document.createElement('button');
     this.buttonAddBlank.classList.add('h5p-joubelui-button');
+    this.buttonAddBlank.classList.add('h5p-pick-the-symbols-chooser-blank-buttons-button');
     this.buttonAddBlank.classList.add('h5p-pick-the-symbols-add-blank');
     this.buttonAddBlank.classList.add('h5p-pick-the-symbols-disabled');
     this.buttonAddBlank.innerHTML = this.params.l10n.addBlank;

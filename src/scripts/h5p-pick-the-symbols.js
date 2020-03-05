@@ -5,9 +5,6 @@ import Util from './h5p-pick-the-symbols-util';
 
 /**
  * Class holding a full PickTheSymbols.
- *
- * TODO: xAPI ('multiple choice')
- * TODO: a11y
  */
 export default class PickTheSymbols extends H5P.Question {
   /**

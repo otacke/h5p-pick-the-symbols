@@ -1,7 +1,16 @@
 # H5P Pick the Symbols
 Let your student put the correct symbols into sentences.
 
-## Getting started
+## Support the development!
+This free and openly licensed H5P content type was sponsored by
+"Schule Bubendorf" in Switzerland. If you want to fund further development, you
+can donate to
+
+* **Recipient:** Schule Bubendorf
+* **IBAN:** CH35 0076 9020 2108 8389 6
+* **BIC:** BLKBCH22
+
+## Getting started (for developers)
 Clone this repository with git and check out the branch that you are interested
 in (or choose the branch first and then download the archive, but learning
 how to use git really makes sense).

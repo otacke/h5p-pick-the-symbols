@@ -244,3 +244,7 @@
 .h5p-question-continue:before {
   content: "\F0E2";
 }
+
+.h5p-pick-the-symbols-word-group {
+  display: inline-block;
+}

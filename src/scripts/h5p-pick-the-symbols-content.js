@@ -566,6 +566,9 @@ export default class PickTheSymbolsContent {
 
   /**
    * Initialize blanks and text.
+   * Will parse the text and break it down into chunks for words and blanks
+   * This might need a little refactoring love, it grew over time as new
+   * requirements popped in.
    * @param {string} text Characters of text.
    * @param {string[]} symbols Symbols to replace.
    * @return {object} Blanks and HTML text to display.
@@ -606,9 +609,15 @@ export default class PickTheSymbolsContent {
         continue;
       }
 
+      // Words and the following blank group should wrap together
+      if (output.indexOf(PickTheSymbolsContent.getWordGroupMarkerStart()) === -1) {
+        output = `${output}${PickTheSymbolsContent.getWordGroupMarkerStart()}`;
+      }
+
+      // Working on blank and next symbol signals it ends
       if (currentBlank !== '' && chars[i] !== ' ' && symbols.indexOf(chars[i]) === -1) {
         blanks.push(currentBlank);
-        output = `${output}${PickTheSymbolsContent.getPlaceholderText()}${chars[i]}`;
+        output = `${output}${PickTheSymbolsContent.getPlaceholderText()}${PickTheSymbolsContent.getWordGroupMarkerEnd()}${PickTheSymbolsContent.getWordGroupMarkerStart()}${chars[i]}`;
         currentBlank = '';
         continue;
       }
@@ -619,12 +628,28 @@ export default class PickTheSymbolsContent {
         // Check if was last symbol
         if (i === chars.length - 1) {
           blanks.push(currentBlank);
-          output = `${output}${PickTheSymbolsContent.getPlaceholderText()}`;
+          output = `${output}${PickTheSymbolsContent.getPlaceholderText()}${PickTheSymbolsContent.getWordGroupMarkerEnd()}`;
         }
         continue;
       }
 
       output = output + chars[i];
+    }
+
+    // Remove trailing end marker that appears when output ends with HTML tag, can happen as < may be a symbol to check
+    if (output.lastIndexOf(PickTheSymbolsContent.getWordGroupMarkerStart()) > output.lastIndexOf(PickTheSymbolsContent.getWordGroupMarkerEnd())) {
+      output = output.split('');
+      output.splice(output.lastIndexOf(PickTheSymbolsContent.getWordGroupMarkerStart()), 1);
+      output = output.join('');
+    }
+
+    // Replace markers with actual span, can't use those before as </span> might be in input
+    while (output.indexOf(PickTheSymbolsContent.getWordGroupMarkerStart()) !== -1) {
+      output = output.replace(PickTheSymbolsContent.getWordGroupMarkerStart(), '<span class="h5p-pick-the-symbols-word-group">');
+    }
+
+    while (output.indexOf(PickTheSymbolsContent.getWordGroupMarkerEnd()) !== -1) {
+      output = output.replace(PickTheSymbolsContent.getWordGroupMarkerEnd(), '</span>');
     }
 
     return {sentence: output, blanks: blanks};
@@ -636,5 +661,21 @@ export default class PickTheSymbolsContent {
    */
   static getPlaceholderText() {
     return '<span class="h5p-pick-the-symbols-placeholder"></span>';
+  }
+
+  /**
+   * Get text for word group start marker.
+   * @return {string} Word group start marker text.
+   */
+  static getWordGroupMarkerStart() {
+    return '[[[wordgroupstart]]]';
+  }
+
+  /**
+   * Get text for word group start marker.
+   * @return {string} Word group start marker text.
+   */
+  static getWordGroupMarkerEnd() {
+    return '[[[wordgroupend]]]';
   }
 }

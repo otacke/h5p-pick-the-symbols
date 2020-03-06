@@ -46,8 +46,10 @@ export default class PickTheSymbolsContent {
       '_': this.params.a11y.underscore,
       '|': this.params.a11y.verticalBar,
       '‘': this.params.a11y.leftSingleQuotationMark,
+      '‚': this.params.a11y.leftSingleLowQuotationMark,
       '’': this.params.a11y.rightSingleQuotationMark,
       '”': this.params.a11y.leftDoubleQuotationMark,
+      '„': this.params.a11y.leftDoubleLowQuotationMark,
       '“': this.params.a11y.rightDoubleQuotationMark,
       '‹': this.params.a11y.leftSingleAngleBracket,
       '›': this.params.a11y.rightSingleAngleBracket,
@@ -561,6 +563,9 @@ export default class PickTheSymbolsContent {
    */
   getVerboseSymbol(symbol) {
     symbol = symbol || '&nbsp;';
+
+    console.log(symbol, this.verboseSymbolMapping[symbol] || symbol);
+
     return this.verboseSymbolMapping[symbol] || symbol;
   }
 

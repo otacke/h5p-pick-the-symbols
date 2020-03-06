@@ -237,12 +237,20 @@
           "default": "einfaches Anführungszeichen links"
         },
         {
+          "label": "Einfaches Anführungszeichen links unten",
+          "default": "einfaches Anführungszeichen links unten"
+        },
+        {
           "label": "Einfaches Anführungszeichen rechts",
           "default": "einfaches Anführungszeichen rechts"
         },
         {
           "label": "Doppeltes Anführungszeichen links",
           "default": "doppeltes Anführungszeichen links"
+        },
+        {
+          "label": "Doppeltes Anführungszeichen links unten",
+          "default": "doppeltes Anführungszeichen links unten"
         },
         {
           "label": "Doppeltes Anführungszeichen rechts",

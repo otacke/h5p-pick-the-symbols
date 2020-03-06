@@ -471,6 +471,13 @@
         "default": "left single quotation mark"
       },
       {
+        "name": "leftSingleLowQuotationMark",
+        "type": "text",
+        "label": "Left single low quotation mark",
+        "importance": "low",
+        "default": "left single low quotation mark"
+      },
+      {
         "name": "rightSingleQuotationMark",
         "type": "text",
         "label": "Right single quotation mark",
@@ -483,6 +490,13 @@
         "label": "Left double quotation mark",
         "importance": "low",
         "default": "left double quotation mark"
+      },
+      {
+        "name": "leftDoubleLowQuotationMark",
+        "type": "text",
+        "label": "Left double low quotation mark",
+        "importance": "low",
+        "default": "left double low quotation mark"
       },
       {
         "name": "rightDoubleQuotationMark",

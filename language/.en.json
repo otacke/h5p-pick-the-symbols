@@ -237,12 +237,20 @@
           "default": "left single quotation mark"
         },
         {
+          "label": "Left single low quotation mark",
+          "default": "left single low quotation mark"
+        },
+        {
           "label": "Right single quotation mark",
           "default": "right single quotation mark"
         },
         {
           "label": "Left double quotation mark",
           "default": "left double quotation mark"
+        },
+        {
+          "label": "Left double low quotation mark",
+          "default": "left double low quotation mark"
         },
         {
           "label": "Right double quotation mark",

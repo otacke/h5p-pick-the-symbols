@@ -563,9 +563,6 @@ export default class PickTheSymbolsContent {
    */
   getVerboseSymbol(symbol) {
     symbol = symbol || '&nbsp;';
-
-    console.log(symbol, this.verboseSymbolMapping[symbol] || symbol);
-
     return this.verboseSymbolMapping[symbol] || symbol;
   }
 

@@ -229,8 +229,8 @@
           "default": "trattino basso"
         },
         {
-          "label": "Barra vertical",
-          "default": "barra vertical"
+          "label": "Barra verticale",
+          "default": "barra verticale"
         },
         {
           "label": "Apice di sinistra",
@@ -245,32 +245,32 @@
           "default": "apice di destra"
         },
         {
-          "label": "Left double quotation mark",
-          "default": "left double quotation mark"
+          "label": "Virgolette di sinistra",
+          "default": "virgolette di sinistra"
         },
         {
-          "label": "Virgolette basse a sinistra",
-          "default": "virgolette basse a sinistra"
+          "label": "Virgolette basse di sinistra",
+          "default": "virgolette basse di sinistra"
         },
         {
           "label": "Virgolette di destra",
           "default": "Virgolette di destra"
         },
         {
-          "label": "Parentesi ad angolo sinistra",
-          "default": "parentesi ad angolo sinistra"
+          "label": "Caporale singolo di sinistra",
+          "default": "caporale singolo di sinistra"
         },
         {
-          "label": "Parentesi ad angolo destra",
-          "default": "parentesi ad angolo destra"
+          "label": "Caporale singolo di destra",
+          "default": "caporale singolo di destra"
         },
         {
-          "label": "Doppia parentesi ad angolo sinistra",
-          "default": "doppia parentesi ad angolo sinistra"
+          "label": "Caporale di sinistra",
+          "default": "caporale di sinistra"
         },
         {
-          "label": "Doppia parentesi ad angolo destra",
-          "default": "doppia parentesi ad angolo destra"
+          "label": "Caporale di destra",
+          "default": "caporale di destra"
         },
         {
           "label": "Parentesi graffa sinistra",

@@ -31,6 +31,17 @@ class Util {
     return dparser.documentElement.textContent.replace(/(\r\n|\n|\r)/gm, '');
   }
 
+  /**
+   * Retrieve string without HTML tags.
+   * @param {string} input Input string.
+   * @return {string} Output string.
+   */
+  static stripHTML(html) {
+    const div = document.createElement('div');
+    div.innerHTML = html;
+    return div.textContent || div.innerText || '';
+  }
+
   /** Get top DOM Window object.
 	 * @param {Window} [startWindow=window] Window to start looking from.
    * @param {number} [maxLevel=Infinity];

@@ -105,6 +105,18 @@ export default class PickTheSymbols extends H5P.Question {
       }
     }, this.params);
 
+    // decode HTML for titles/aria-labels
+    for (const prop in this.params.l10n) {
+      this.params.l10n[prop] = Util.htmlDecode(this.params.l10n[prop]);
+      this.params.l10n[prop] = Util.stripHTML(this.params.l10n[prop]);
+    }
+
+    // decode HTML for titles/aria-labels
+    for (const prop in this.params.a11y) {
+      this.params.a11y[prop] = Util.htmlDecode(this.params.a11y[prop]);
+      this.params.l10n[prop] = Util.stripHTML(this.params.l10n[prop]);
+    }
+
     this.params.symbols = Util.htmlDecode(this.params.symbols)
       .replace(/ /g, '')
       .split('')
@@ -195,7 +207,7 @@ export default class PickTheSymbols extends H5P.Question {
           textScore,
           this.getScore(),
           this.getMaxScore(),
-          this.params.a11y.scoreBarLabel
+          Util.stripHTML(this.params.a11y.scoreBarLabel)
         );
 
         if (!this.params.behaviour.infiniteChecking) {

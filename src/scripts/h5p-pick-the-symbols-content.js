@@ -77,8 +77,8 @@ export default class PickTheSymbolsContent {
     // DOM nodes need to be created first
     const textDeconstructed = PickTheSymbolsContent.deconstructText(params.text, params.symbols);
 
-    this.textTemplate = textDeconstructed.sentence;
     this.textBlankGroups = textDeconstructed.blanks;
+    this.placeholderTemplate = textDeconstructed.placeholder;
 
     // No need to add blanks for single characters
     this.textBlankGroups = this.textBlankGroups.map(group => group.trim());
@@ -105,7 +105,7 @@ export default class PickTheSymbolsContent {
 
     // Textfield
     this.textfield = document.createElement('div');
-    this.textfield.innerHTML = this.textTemplate;
+    this.textfield.innerHTML = textDeconstructed.sentence;
     this.textfield.classList.add('h5p-pick-the-symbols-text');
     this.textContainer.appendChild(this.textfield);
 
@@ -520,7 +520,7 @@ export default class PickTheSymbolsContent {
 
     return this.blankGroups.reduce((text, group) => {
       return text.replace(placeholderText, group.getXAPIGap());
-    }, this.textTemplate);
+    }, this.placeholderTemplate);
   }
 
   /**
@@ -645,16 +645,20 @@ export default class PickTheSymbolsContent {
       output = output.join('');
     }
 
+    let placeholder = output;
+
     // Replace markers with actual span, can't use those before as </span> might be in input
     while (output.indexOf(PickTheSymbolsContent.getWordGroupMarkerStart()) !== -1) {
       output = output.replace(PickTheSymbolsContent.getWordGroupMarkerStart(), '<span class="h5p-pick-the-symbols-word-group">');
+      placeholder = placeholder.replace(PickTheSymbolsContent.getWordGroupMarkerStart(), '');
     }
 
     while (output.indexOf(PickTheSymbolsContent.getWordGroupMarkerEnd()) !== -1) {
       output = output.replace(PickTheSymbolsContent.getWordGroupMarkerEnd(), '</span>');
+      placeholder = placeholder.replace(PickTheSymbolsContent.getWordGroupMarkerEnd(), '');
     }
 
-    return {sentence: output, blanks: blanks};
+    return {sentence: output, blanks: blanks, placeholder: placeholder};
   }
 
   /**

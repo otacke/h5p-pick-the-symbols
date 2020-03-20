@@ -1,0 +1,314 @@
+{
+  "semantics": [
+    {
+      "label": "Taakomschrijving",
+      "description": "Beschrijf hier je taak."
+    },
+    {
+      "label": "Tekst",
+      "description": "Voer de tekst in die de te kiezen leestekens bevat."
+    },
+    {
+      "label": "Leestekens",
+      "description": "Voer de leestekens in waaruit de gebruiker moet kiezen.",
+      "default": ".?!,:;'\""
+    },
+    {
+      "label": "Algehele feedback",
+      "fields": [
+        {
+          "widgets": [
+            {
+              "label": "Standaard"
+            }
+          ],
+          "label": "Definieer aangepaste feedback voor elke scorereeks",
+          "description": "Druk op de knop \"Voeg scorereeks toe\" om zoveel reeksen toe te voegen als nodig is. Voorbeeld: 0-20% Onvoldoende score, 21-91% Gemiddelde score, 91-100% Uitstekende score!",
+          "entity": "reeks",
+          "field": {
+            "fields": [
+              {
+                "label": "Scorereeks"
+              },
+              {},
+              {
+                "label": "Feedback voor de gedefinieerde scorereeks",
+                "placeholder": "Vul de aangepaste feedback in"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Gedragsinstellingen",
+      "description": "Met deze opties kun je bepalen hoe de taak zich gedraagt.",
+      "fields": [
+        {
+          "label": "Schakel \"Opnieuw\" in"
+        },
+        {
+          "label": "Schakel \"Oplossing\" in"
+        },
+        {
+          "label": "Sta voortdurende controle toe",
+          "description": "Sta toe dat de gebruikers hun antwoorden voortdurend controleren zonder hun vorige keuzes te resetten."
+        },
+        {
+          "label": "Toon alle lege plekken",
+          "description": "Toon vooraf alle lege plekken voor groepen leestekens."
+        },
+        {
+          "label": "Achtergrondkleur lege plekken"
+        }
+      ]
+    },
+    {
+      "label": "Gebruikersinterface",
+      "fields": [
+        {
+          "label": "Tekst voor de \"Controleer\" -knop",
+          "default": "Controleer"
+        },
+        {
+          "label": "Tekst voor de \"Doorgaan\" -knop",
+          "default": "Doorgaan"
+        },
+        {
+          "label": "Tekst voor de \"Toon oplossing\" -knop",
+          "default": "Toon oplossing"
+        },
+        {
+          "label": "Tekst voor de \"Reset\" -knop",
+          "default": "Reset"
+        },
+        {
+          "label": "Tekst voor de lege plek knop",
+          "default": "Kies een leesteken"
+        },
+        {
+          "label": "Tekst om een een leesteken te kiezen",
+          "default": "Kies een leesteken"
+        },
+        {
+          "label": "Tekst voor de \"Lege plek toevoegen\" -knop",
+          "default": "Voeg een lege plek toe"
+        },
+        {
+          "label": "Tekst voor de \"Verwijder lege plek\" -knop",
+          "default": "Verwijder lege plek"
+        },
+        {
+          "label": "Tooltip voor de \"Kies leesteken\" -knop",
+          "description": "@symbol zal worden vervangen door het te kiezen leesteken.",
+          "default": "Vul de lege plek met @symbol"
+        },
+        {
+          "label": "Tekst voor de \"Sluit scherm\" -knop",
+          "default": "Sluit scherm"
+        }
+      ]
+    },
+    {
+      "label": "Voorleesapparaat",
+      "fields": [
+        {
+          "label": "Tekstuele weergave van de scorebalk voor degenen die een voorleesapparaat gebruiken",
+          "default": "Je hebt :num van de :total punten"
+        },
+        {
+          "label": "Lege plek invoer",
+          "default": "Voer lege plek in"
+        },
+        {
+          "label": "Of",
+          "default": "of"
+        },
+        {
+          "label": "Feedback voor het juiste antwoord",
+          "default": "Juist geantwoord"
+        },
+        {
+          "label": "Feedback voor het onjuiste antwoord",
+          "default": "Onjuist geantwoord"
+        },
+        {
+          "label": "Feedback voor het niet gegeven antwoord",
+          "default": "Niet geantwoord"
+        },
+        {
+          "label": "Juist antwoord",
+          "default": "Juist antwoord"
+        },
+        {
+          "label": "Spatie",
+          "default": "spatie"
+        },
+        {
+          "label": "Punt",
+          "default": "punt"
+        },
+        {
+          "label": "Uitroepteken",
+          "default": "uitroepteken"
+        },
+        {
+          "label": "Vraagteken",
+          "default": "vraagteken"
+        },
+        {
+          "label": "Komma",
+          "default": "komma"
+        },
+        {
+          "label": "Enkel aanhalingsteken",
+          "default": "enkel aanhalingsteken"
+        },
+        {
+          "label": "Dubbele aanhalingstekens",
+          "default": "dubbele aanhalingstekens"
+        },
+        {
+          "label": "Dubbele punt",
+          "default": "dubbele punt"
+        },
+        {
+          "label": "Puntkomma",
+          "default": "puntkomma"
+        },
+        {
+          "label": "Plus",
+          "default": "plus"
+        },
+        {
+          "label": "Min",
+          "default": "min"
+        },
+        {
+          "label": "Asterisk",
+          "default": "asterisk"
+        },
+        {
+          "label": "Voorwaartse schuine streep",
+          "default": "voorwaartse schuine streep"
+        },
+        {
+          "label": "Achterwaartse schuine streep",
+          "default": "achterwaartse schuine streep"
+        },
+        {
+          "label": "Tilde",
+          "default": "tilde"
+        },
+        {
+          "label": "Omgekeerd uitroepteken",
+          "default": "omgekeerd uitroepteken"
+        },
+        {
+          "label": "Omgekeerd vraagteken",
+          "default": "omgekeerd vraagteken"
+        },
+        {
+          "label": "Pondteken",
+          "default": "pondteken"
+        },
+        {
+          "label": "Haakje openen",
+          "default": "haakje openen"
+        },
+        {
+          "label": "Haakje sluiten",
+          "default": "haakje sluiten"
+        },
+        {
+          "label": "Dakje",
+          "default": "dakje"
+        },
+        {
+          "label": "Onderstrepingsteken",
+          "default": "onderstrepingsteken"
+        },
+        {
+          "label": "Verticale streep",
+          "default": "verticale streep"
+        },
+        {
+          "label": "Links één aanhalingsteken",
+          "default": "links één aanhalingsteken"
+        },
+        {
+          "label": "Links laag één aanhalingsteken",
+          "default": "links laag één aanhalingsteken"
+        },
+        {
+          "label": "Rechts laag één aanhalingsteken",
+          "default": "rechts laag één aanhalingsteken"
+        },
+        {
+          "label": "Dubbele aanhalingstekens links",
+          "default": "dubbele aanhalingstekens links"
+        },
+        {
+          "label": "Dubbel aanhalingstekens links laag",
+          "default": "dubbel aanhalingsteken links laag"
+        },
+        {
+          "label": "Dubbele aanhalingstekens rechts",
+          "default": "dubbele aanhalingstekens rechts"
+        },
+        {
+          "label": "Enkel punthaakje links",
+          "default": "enkel punthaakje links"
+        },
+        {
+          "label": "Enkel punthaakje rechts",
+          "default": "enkel punthaakje rechts"
+        },
+        {
+          "label": "Dubbele punthaakjes links",
+          "default": "dubbele punthaakjes links"
+        },
+        {
+          "label": "Dubbele punthaakjes rechts",
+          "default": "dubbele punthaakjes rechts"
+        },
+        {
+          "label": "Rechthoekige haak links",
+          "default": "rechthoekige haak links"
+        },
+        {
+          "label": "Rechthoekige haak rechts",
+          "default": "rechthoekige haak rechts"
+        },
+        {
+          "label": "Gekrulde haak links",
+          "default": "gekrulde haak links"
+        },
+        {
+          "label": "Gekrulde haak rechts",
+          "default": "gekrulde haak rechts"
+        },
+        {
+          "label": "Paragraaf",
+          "default": "paragraaf"
+        },
+        {
+          "label": "Gedeeld door",
+          "default": "gedeeld door"
+        },
+        {
+          "label": "Vermenigvuldigd met",
+          "default": "vermenigvuldigd met"
+        },
+        {
+          "label": "Kleiner dan",
+          "default": "kleiner dan"
+        },
+        {
+          "label": "Groter dan",
+          "default": "groter dan"
+        }
+      ]
+    }
+  ]
+}

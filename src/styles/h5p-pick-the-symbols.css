@@ -93,6 +93,7 @@
 }
 
 .h5p-pick-the-symbols-text-container:not(.h5p-pick-the-symbols-disabled) .h5p-pick-the-symbols-blank:hover {
+  border-color: #cccccc;
   cursor: pointer;
 }
 

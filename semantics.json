@@ -157,7 +157,7 @@
         "label": "Blanks background color",
         "importance": "medium",
         "optional": true,
-        "default": "#f5f0c9",
+        "default": "#ffffff",
         "widget": "colorSelector",
         "spectrum": {
           "showInput": true,

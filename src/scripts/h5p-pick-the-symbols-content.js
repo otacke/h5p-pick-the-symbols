@@ -464,7 +464,9 @@ export default class PickTheSymbolsContent {
     this.solutionShowing = false;
 
     setTimeout(() => {
-      this.blankGroups[0].focus();
+      if (this.blankGroups && this.blankGroups.length > 0) {
+        this.blankGroups[0].focus();
+      }
     }, 0);
   }
 

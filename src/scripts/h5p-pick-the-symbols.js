@@ -118,7 +118,7 @@ export default class PickTheSymbols extends H5P.Question {
     }
 
     this.params.symbols = Util.htmlDecode(this.params.symbols)
-      .replace(/ /g, '')
+      .replace(/\s/g, '')
       .split('')
       .reduce((symbols, current) => {
         return (symbols.indexOf(current) === -1) ? `${symbols}${current}` : symbols;

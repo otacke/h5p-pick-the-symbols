@@ -583,6 +583,7 @@ export default class PickTheSymbolsContent {
 
     text = text
       .replace(/&nbsp;/g, ' ')                 // CKeditor creates &nbsp;s
+      .replace(/\n/g, '')                      // new lines could mess up things
       .replace(/[ ]{2,}/g, ' ')                // Only keep one blank between words
       .replace(/<p> <\/p>/g, '<p>\u200C</p>'); // Prevent blanks in empty paragraphs
 

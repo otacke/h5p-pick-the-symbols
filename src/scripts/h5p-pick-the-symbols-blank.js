@@ -121,14 +121,9 @@ export default class PickTheSymbolsBlank {
    * @return {number} Score for this answer.
    */
   getScore() {
-    // No score if no answer given
-    if (this.answer === null) {
+    // No score if no answer given or explicit space which is neutral
+    if (this.answer === null || this.answer === ' ') {
       return 0;
-    }
-
-    // For original blank, accept explicit "space" as neutral
-    if (this.answer === ' ') {
-      return (this.solution.trim() === '') ? 0 : -1;
     }
 
     return (this.solution === this.answer) ? 1 : -1;

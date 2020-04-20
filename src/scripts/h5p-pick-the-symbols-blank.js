@@ -169,6 +169,11 @@ export default class PickTheSymbolsBlank {
       this.showCorrectSolution(params.answer);
     }
 
+    // Hide all empty blanks
+    if (params.answer && this.getScore() === 0) {
+      this.hide();
+    }
+
     this.showScoreExplanation(params.score);
   }
 
@@ -252,6 +257,20 @@ export default class PickTheSymbolsBlank {
   }
 
   /**
+   * Hide blank input field in DOM, will have space character width.
+   */
+  hide() {
+    this.blank.classList.add('h5p-pick-the-symbols-blank-solution');
+  }
+
+  /**
+   * Show blank input field in DOM.
+   */
+  show() {
+    this.blank.classList.remove('h5p-pick-the-symbols-blank-solution');
+  }
+
+  /**
    * Reset blank.
    * @param {object} Params.
    * @param {boolean} [keepAnswers] If not true, will remove answers given.
@@ -260,6 +279,8 @@ export default class PickTheSymbolsBlank {
    * @param {boolean} [keepHighlights] If not true, will remove highlights.
    */
   reset(params = {}) {
+    this.show();
+
     if (params.keepAnswers !== true) {
       this.answer = null;
       this.answerInput.innerHTML = '&nbsp;';

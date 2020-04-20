@@ -597,18 +597,30 @@ export default class PickTheSymbolsContent {
     for (let i = 0; i < chars.length; i++) {
 
       // Skip HTML tags, so they won't be touched by replacement procedure
-      if (currentBlank === '' && !htmlMode && chars[i] === '<') {
+      if (!htmlMode && chars[i] === '<') {
+        // Need to close previous blank first
+        if (currentBlank !== '') {
+          blanks.push(currentBlank);
+          output = `${output}${PickTheSymbolsContent.getPlaceholderText()}${PickTheSymbolsContent.getWordGroupMarkerEnd()}`;
+          currentBlank = '';
+        }
         htmlMode = true;
-        output = output + chars[i];
+        output = `${output}${chars[i]}`;
         continue;
       }
       else if (htmlMode && chars[i] === '>') {
         htmlMode = false;
-        output = output + chars[i];
+        output = `${output}${chars[i]}`;
+
+        // Start new group if not followed by another HTML tag
+        if (i + 1 < chars.length && chars[i + 1] !== '<') {
+          output = `${output}${PickTheSymbolsContent.getWordGroupMarkerStart()}`;
+        }
+
         continue;
       }
       else if (htmlMode) {
-        output = output + chars[i];
+        output = `${output}${chars[i]}`;
         continue;
       }
 
@@ -625,6 +637,7 @@ export default class PickTheSymbolsContent {
         continue;
       }
 
+      // Check for regular blank or symbol
       if (chars[i] === ' ' || symbols.indexOf(chars[i]) !== -1) {
         currentBlank += chars[i];
 

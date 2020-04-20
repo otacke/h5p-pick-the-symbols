@@ -36,7 +36,7 @@ export default class PickTheSymbols extends H5P.Question {
       behaviour: {
         enableSolutionsButton: true,
         enableRetry: true,
-        colorBackground: '#e0e0e0',
+        colorBackground: '#ffffff',
         infiniteChecking: true,
         showAllBlanks: false
       },

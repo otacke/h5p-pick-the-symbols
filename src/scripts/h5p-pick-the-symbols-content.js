@@ -583,85 +583,71 @@ export default class PickTheSymbolsContent {
     }
     symbols = symbols.split('');
 
-    text = text
-      .replace(/&nbsp;/g, ' ')                 // CKeditor creates &nbsp;s
-      .replace(/\n/g, '')                      // new lines could mess up things
-      .replace(/[ ]{2,}/g, ' ')                // Only keep one blank between words
-      .replace(/<p> <\/p>/g, '<p>\u200C</p>'); // Prevent blanks in empty paragraphs
-
-    const chars = text.split('');
-
-    let htmlMode = false;
-    let currentBlank = '';
+    /*
+     * output will contain the text with placeholders
+     * blanks will be array containing groups of spaces/symbols as strings
+     */
     let output = '';
     const blanks = [];
 
-    for (let i = 0; i < chars.length; i++) {
+    // Sanitize input for HTML elements
+    const tmp = document.createElement('div');
+    tmp.innerHTML = text;
+    const paragraphs = Array.prototype.slice
+      .call(tmp.querySelectorAll('p'))
+      .map(p => p.innerText);
 
-      // Skip HTML tags, so they won't be touched by replacement procedure
-      if (!htmlMode && chars[i] === '<') {
-        // Need to close previous blank first
-        if (currentBlank !== '') {
-          blanks.push(currentBlank);
-          output = `${output}${PickTheSymbolsContent.getPlaceholderText()}${PickTheSymbolsContent.getWordGroupMarkerEnd()}`;
-          currentBlank = '';
+    paragraphs.forEach(text => {
+      if (text === '') {
+        return;
+      }
+
+      const blocks = [];
+      let blank;
+      let block;
+
+      /*
+       * Parse paragraph.
+       * Each paragraph contains word groups that should be wrapped together
+       * later.
+       */
+      const chars = text.split('');
+      for (let i = 0; i < chars.length; i++) {
+        blank = blank || '';
+        block = block || '';
+
+        const currentChar = chars[i];
+        if (currentChar !== ' ' && symbols.indexOf(currentChar) === -1) {
+          // Regular character to simply be displayed
+          if (blank !== '') {
+            // Previous group had blank symbols, can be pushed
+            blanks.push(blank);
+            blocks.push(`${PickTheSymbolsContent.getWordGroupMarkerStart()}${block}${PickTheSymbolsContent.getPlaceholderText()}${PickTheSymbolsContent.getWordGroupMarkerEnd()}`);
+            blank = '';
+            block = '';
+          }
+          block = `${block}${currentChar}`;
         }
-        htmlMode = true;
-        output = `${output}${chars[i]}`;
-        continue;
-      }
-      else if (htmlMode && chars[i] === '>') {
-        htmlMode = false;
-        output = `${output}${chars[i]}`;
-
-        // Start new group if not followed by another HTML tag
-        if (i + 1 < chars.length && chars[i + 1] !== '<') {
-          output = `${output}${PickTheSymbolsContent.getWordGroupMarkerStart()}`;
+        else {
+          blank = `${blank}${currentChar}`;
         }
-
-        continue;
-      }
-      else if (htmlMode) {
-        output = `${output}${chars[i]}`;
-        continue;
       }
 
-      // Words and the following blank group should wrap together
-      if (output.indexOf(PickTheSymbolsContent.getWordGroupMarkerStart()) === -1) {
-        output = `${output}${PickTheSymbolsContent.getWordGroupMarkerStart()}`;
+      // Finish remaining group
+      if (block !== '') {
+        const placeholder = (blank !== '') ? PickTheSymbolsContent.getPlaceholderText() : '';
+        blocks.push(`${PickTheSymbolsContent.getWordGroupMarkerStart()}${block}${placeholder}${PickTheSymbolsContent.getWordGroupMarkerEnd()}`);
+      }
+      if (blank !== '') {
+        blanks.push(blank);
       }
 
-      // Working on blank and next symbol signals it ends
-      if (currentBlank !== '' && chars[i] !== ' ' && symbols.indexOf(chars[i]) === -1) {
-        blanks.push(currentBlank);
-        output = `${output}${PickTheSymbolsContent.getPlaceholderText()}${PickTheSymbolsContent.getWordGroupMarkerEnd()}${PickTheSymbolsContent.getWordGroupMarkerStart()}${chars[i]}`;
-        currentBlank = '';
-        continue;
-      }
-
-      // Check for regular blank or symbol
-      if (chars[i] === ' ' || symbols.indexOf(chars[i]) !== -1) {
-        currentBlank += chars[i];
-
-        // Check if was last symbol
-        if (i === chars.length - 1) {
-          blanks.push(currentBlank);
-          output = `${output}${PickTheSymbolsContent.getPlaceholderText()}${PickTheSymbolsContent.getWordGroupMarkerEnd()}`;
-        }
-        continue;
-      }
-
-      output = output + chars[i];
-    }
-
-    // Remove trailing end marker that appears when output ends with HTML tag, can happen as < may be a symbol to check
-    if (output.lastIndexOf(PickTheSymbolsContent.getWordGroupMarkerStart()) > output.lastIndexOf(PickTheSymbolsContent.getWordGroupMarkerEnd())) {
-      output = output.split('');
-      output.splice(output.lastIndexOf(PickTheSymbolsContent.getWordGroupMarkerStart()), 1);
-      output = output.join('');
-    }
+      output = `${output}<p>${blocks.join('')}</p>`;
+    });
 
     let placeholder = output;
+
+    // TODO: This could go away ...
 
     // Replace markers with actual span, can't use those before as </span> might be in input
     while (output.indexOf(PickTheSymbolsContent.getWordGroupMarkerStart()) !== -1) {

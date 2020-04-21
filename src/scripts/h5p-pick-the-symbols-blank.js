@@ -1,3 +1,5 @@
+import Util from './h5p-pick-the-symbols-util';
+
 /** Class representing the content */
 export default class PickTheSymbolsBlank {
   /**
@@ -98,11 +100,11 @@ export default class PickTheSymbolsBlank {
       this.answerInput.innerHTML = '&nbsp;';
     }
     else if (symbol === '&nbsp;' || symbol === ' ') {
-      symbol = '&nbsp;';
       this.answer = ' ';
       this.answerInput.innerHTML = '&nbsp;';
     }
     else {
+      symbol = Util.htmlDecode(symbol);
       this.answer = symbol;
       this.answerInput.innerHTML = symbol;
     }

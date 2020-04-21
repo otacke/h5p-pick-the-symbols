@@ -29,19 +29,8 @@
     "widget": "html",
     "importance": "high",
     "description": "Enter the text that contains symbols to be picked.",
-    "enterMode": "div",
+    "enterMode": "p",
     "tags": [
-      "strong",
-      "em",
-      "u",
-      "a",
-      "ul",
-      "ol",
-      "h2",
-      "h3",
-      "hr",
-      "pre",
-      "code"
     ]
   },
   {

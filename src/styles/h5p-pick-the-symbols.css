@@ -23,7 +23,7 @@
   display: inline-block;
 }
 
-.h5p-pick-the-symbols-blank-group .h5p-pick-the-symbols-blank-container:first-child {
+.h5p-pick-the-symbols-blank-group .h5p-pick-the-symbols-blank-container:not(:first-child) .h5p-pick-the-symbols-blank {
   margin-left: 0;
 }
 

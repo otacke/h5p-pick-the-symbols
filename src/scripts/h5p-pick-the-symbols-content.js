@@ -634,12 +634,13 @@ export default class PickTheSymbolsContent {
       }
 
       // Finish remaining group
-      if (block !== '') {
-        const placeholder = (blank !== '') ? PickTheSymbolsContent.getPlaceholderText() : '';
+      if (block !== '' || blank !== '') {
+        let placeholder = '';
+        if (blank !== '') {
+          placeholder = PickTheSymbolsContent.getPlaceholderText();
+          blanks.push(blank);
+        }
         blocks.push(`${PickTheSymbolsContent.getWordGroupMarkerStart()}${block}${placeholder}${PickTheSymbolsContent.getWordGroupMarkerEnd()}`);
-      }
-      if (blank !== '') {
-        blanks.push(blank);
       }
 
       output = `${output}<p>${blocks.join('')}</p>`;

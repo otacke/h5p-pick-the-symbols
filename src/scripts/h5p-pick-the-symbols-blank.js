@@ -29,7 +29,7 @@ export default class PickTheSymbolsBlank {
     this.blank.classList.add('h5p-pick-the-symbols-blank');
     this.blank.setAttribute('tabindex', 0);
     this.blank.setAttribute('title', this.params.l10n.title);
-    this.blank.style.backgroundColor = params.color;
+    this.blank.style.backgroundColor = this.params.color;
     this.content.appendChild(this.blank);
 
     this.answerInput = document.createElement('span');
@@ -258,6 +258,7 @@ export default class PickTheSymbolsBlank {
    */
   hide() {
     this.blank.classList.add('h5p-pick-the-symbols-blank-solution');
+    this.blank.style.backgroundColor = '';
   }
 
   /**
@@ -265,6 +266,7 @@ export default class PickTheSymbolsBlank {
    */
   show() {
     this.blank.classList.remove('h5p-pick-the-symbols-blank-solution');
+    this.blank.style.backgroundColor = this.params.color;
   }
 
   /**

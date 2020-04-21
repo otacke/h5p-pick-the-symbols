@@ -595,7 +595,7 @@ export default class PickTheSymbolsContent {
     tmp.innerHTML = text;
     const paragraphs = Array.prototype.slice
       .call(tmp.querySelectorAll('p'))
-      .map(p => p.innerText);
+      .map(p => Util.stripHTML(p.innerText));
 
     paragraphs.forEach(text => {
       if (text === '') {

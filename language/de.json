@@ -60,6 +60,10 @@
         },
         {
           "label": "Hintergrundfarbe der Lücken"
+        },
+        {
+          "label": "Benutze schmale Lücken",
+          "description": "Wenn diese Option aktiviert ist, haben die Lücken keinen Rand und sind schmaler, um den Text natürlicher aussehen zu lassen."
         }
       ]
     },

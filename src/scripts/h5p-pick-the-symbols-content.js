@@ -191,6 +191,7 @@ export default class PickTheSymbolsContent {
           }
         },
         colorBackground: params.colorBackground,
+        slimBlanks: params.slimBlanks,
         solution: this.textBlankGroups[index],
         xAPIPlaceholder: this.params.xAPIPlaceholder,
         l10n: {

@@ -60,6 +60,10 @@
         },
         {
           "label": "Blanks background color"
+        },
+        {
+          "label": "Use slim blanks",
+          "description": "If activated, the blanks won't have a border and be slimmer in order to make the text look more natural."
         }
       ]
     },

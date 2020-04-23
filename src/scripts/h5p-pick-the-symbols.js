@@ -37,6 +37,7 @@ export default class PickTheSymbols extends H5P.Question {
         enableSolutionsButton: true,
         enableRetry: true,
         colorBackground: '#ffffff',
+        slimBlanks: false,
         infiniteChecking: true,
         showAllBlanks: false
       },
@@ -137,6 +138,7 @@ export default class PickTheSymbols extends H5P.Question {
           text: this.params.text,
           symbols: this.params.symbols,
           colorBackground: this.params.behaviour.colorBackground,
+          slimBlanks: this.params.behaviour.slimBlanks,
           showAllBlanks: this.params.behaviour.showAllBlanks,
           previousState: this.previousState.answers,
           xAPIPlaceholder: PickTheSymbols.XAPI_PLACEHOLDER,

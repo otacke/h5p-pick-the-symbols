@@ -63,6 +63,7 @@ export default class PickTheSymbolsBlankGroup {
           }
         },
         color: this.params.colorBackground,
+        slimBlanks: this.params.slimBlanks,
         answer: answer,
         solution: solution,
         l10n: this.params.l10n

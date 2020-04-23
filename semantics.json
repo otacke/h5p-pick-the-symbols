@@ -152,6 +152,15 @@
           "showInput": true,
           "showInitial": true
         }
+      },
+      {
+        "name": "slimBlanks",
+        "type": "boolean",
+        "label": "Use slim blanks",
+        "description": "If activated, the blanks won't have a border and be slimmer in order to make the text look more natural.",
+        "importance": "medium",
+        "optional": true,
+        "default": false
       }
     ]
   },

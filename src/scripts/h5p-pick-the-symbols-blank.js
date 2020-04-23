@@ -30,6 +30,9 @@ export default class PickTheSymbolsBlank {
     this.blank.setAttribute('tabindex', 0);
     this.blank.setAttribute('title', this.params.l10n.title);
     this.blank.style.backgroundColor = this.params.color;
+    if (this.params.slimBlanks) {
+      this.blank.classList.add('h5p-pick-the-symbol-blank-no-border');
+    }
     this.content.appendChild(this.blank);
 
     this.answerInput = document.createElement('span');

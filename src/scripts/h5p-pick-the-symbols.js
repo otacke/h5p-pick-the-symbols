@@ -125,6 +125,9 @@ export default class PickTheSymbols extends H5P.Question {
         return (symbols.indexOf(current) === -1) ? `${symbols}${current}` : symbols;
       }, '');
 
+    const defaultLanguage = (extras.metadata) ? extras.metadata.defaultLanguage || 'en' : 'en';
+    this.languageTag = Util.formatLanguageCode(defaultLanguage);
+
     // this.previousState now holds the saved content state of the previous session
     this.previousState = this.extras.previousState || {};
 
@@ -387,10 +390,10 @@ export default class PickTheSymbols extends H5P.Question {
      */
     this.getxAPIDefinition = () => {
       const definition = {};
-      definition.name = {'en-US': this.getTitle()};
-      definition.description = {
-        'en-US': `${this.getDescription()}${this.content.getXAPIGaps()}`
-      };
+      definition.name = {};
+      definition.name[this.languageTag] = this.getTitle();
+      definition.description = {};
+      definition.description[this.languageTag] = `${this.getDescription()}${this.content.getXAPIGaps()}`;
       definition.type = 'http://adlnet.gov/expapi/activities/cmi.interaction';
       definition.interactionType = 'fill-in';
       definition.correctResponsesPattern = this.content.getXAPICorrectResponsesPatterns();

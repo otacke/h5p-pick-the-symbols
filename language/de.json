@@ -19,7 +19,7 @@
         {
           "widgets": [
             {
-              "label": "Eingabemaske"
+              "label": "Voreinstellung"
             }
           ],
           "label": "Lege Rückmeldungen für einzelne Punktebereiche fest",
@@ -42,7 +42,7 @@
     },
     {
       "label": "Verhaltenseinstellungen",
-      "description": "Diese Optionen kontrollieren, wie sich die Aufgabe verhält.",
+      "description": "Diese Optionen legen fest, wie die Aufgabe im Detail funktioniert.",
       "fields": [
         {
           "label": "\"Wiederholen\" zulassen"
@@ -68,7 +68,7 @@
       ]
     },
     {
-      "label": "Bezeichnungen und Beschriftungen",
+      "label": "Bedienoberfläche",
       "fields": [
         {
           "label": "Beschriftung des \"Überprüfen\"-Buttons",
@@ -114,7 +114,7 @@
       ]
     },
     {
-      "label": "Vorlesewerkzeuge",
+      "label": "Vorlesewerkzeug (Barrierefreiheit)",
       "fields": [
         {
           "label": "Anzeigetext der Punkteleiste für Vorlesewerkzeuge (Barrierefreiheit)",

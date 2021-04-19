@@ -1,0 +1,318 @@
+{
+  "semantics": [
+    {
+      "label": "Descripción del trabajo",
+      "description": "Describa aquí su trabajo."
+    },
+    {
+      "label": "Texto",
+      "description": "Escriba el texto que contiene símbolos a ser seleccionados."
+    },
+    {
+      "label": "Símbolos",
+      "description": "Escriba los símbolos entre los cuales el estudiante necesita elegir.",
+      "default": ".?!,:;'\""
+    },
+    {
+      "label": "Retroalimentación Global",
+      "fields": [
+        {
+          "widgets": [
+            {
+              "label": "Predeterminado"
+            }
+          ],
+          "label": "Definir retroalimentación personalizada para cualquier rango de puntaje",
+          "description": "Haga clic en el botón \"Añadir rango\" para añadir cuantos rangos necesite. Ejemplo: 0-20% Mal puntaje, 21-91% Puntaje Promedio, 91-100% ¡Magnífico Puntaje!",
+          "entity": "rango",
+          "field": {
+            "fields": [
+              {
+                "label": "Rango de Puntaje"
+              },
+              {},
+              {
+                "label": "Retroalimentación para rango de puntaje definido",
+                "placeholder": "Complete la retroalimentación"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Configuraciones del comportamiento",
+      "description": "Estas opciones le permitirán controlar como se comporta el trabajo.",
+      "fields": [
+        {
+          "label": "Habilitar \"Reintentar\""
+        },
+        {
+          "label": "Habilitar \"Solución\""
+        },
+        {
+          "label": "Permitir comprobación continua",
+          "description": "Permitirle a los estudiantes comprobar continuamente sus respuestas sin reiniciar sus elecciones anteriores."
+        },
+        {
+          "label": "Mostrar todos los huecos",
+          "description": "Mostrar todos los huecos para grupos de símbolos por anticipado."
+        },
+        {
+          "label": "Color de fondo de huecos"
+        },
+        {
+          "label": "Usar huecos angostos",
+          "description": "Si se activa, los huecos no tendrán un borde y serán más angostos para hacer que el texto se vea más natural."
+        }
+      ]
+    },
+    {
+      "label": "Interfaz del usuario",
+      "fields": [
+        {
+          "label": "Texto para botón \"Comprobar\"",
+          "default": "Comprobar"
+        },
+        {
+          "label": "Texto para botón \"Continuar\"",
+          "default": "Continuar"
+        },
+        {
+          "label": "Texto para botón \"Mostrar solución\"",
+          "default": "Mostrar solución"
+        },
+        {
+          "label": "Texto para botón \"Reiniciar\"",
+          "default": "Reiniciar"
+        },
+        {
+          "label": "Texto del título para botón vacío",
+          "default": "Elija un símbolo"
+        },
+        {
+          "label": "Texto del título para selector de símbolo",
+          "default": "Elija un símbolo"
+        },
+        {
+          "label": "Texto para botón \"Añadir hueco\"",
+          "default": "Añadir hueco"
+        },
+        {
+          "label": "Texto para botón \"Eliminar hueco\"",
+          "default": "Eliminar hueco"
+        },
+        {
+          "label": "Herramientita para botón \"Elegir símbolo\"",
+          "description": "@symbolserá remplazado con el símbolo que sería elegido.",
+          "default": "LLenar hueco con @symbol"
+        },
+        {
+          "label": "Texto para botón \"Cerrar ventana\"",
+          "default": "Cerrar ventana"
+        }
+      ]
+    },
+    {
+      "label": "Lector de texto en voz alta",
+      "fields": [
+        {
+          "label": "Representación textual de la barra de puntaje para aquellos que usan un lector de texto en voz alta",
+          "default": "Obtuvo :num de un total de :total puntos"
+        },
+        {
+          "label": "Entrada vacía",
+          "default": "entrada vacía"
+        },
+        {
+          "label": "De",
+          "default": "de"
+        },
+        {
+          "label": "Retroalimentación para respuesta correcta",
+          "default": "contestada correctamente"
+        },
+        {
+          "label": "Retroalimentación para respuesta incorrecta",
+          "default": "contestada incorrectamente"
+        },
+        {
+          "label": "Retroalimentación para cuando no se dio respuesta",
+          "default": "no contestada"
+        },
+        {
+          "label": "Respuesta correcta",
+          "default": "Respuesta correcta"
+        },
+        {
+          "label": "Espacio",
+          "default": "espacio"
+        },
+        {
+          "label": "Punto",
+          "default": "punto"
+        },
+        {
+          "label": "Signo de exclamación",
+          "default": "signo de exclamación"
+        },
+        {
+          "label": "Signo de interrogación",
+          "default": "signo de interrogación"
+        },
+        {
+          "label": "Coma",
+          "default": "coma"
+        },
+        {
+          "label": "Comilla",
+          "default": "comilla"
+        },
+        {
+          "label": "Comillas dobles",
+          "default": "comillas dobles"
+        },
+        {
+          "label": "Dos puntos",
+          "default": "dos puntos"
+        },
+        {
+          "label": "Punto y coma",
+          "default": "punto y coma"
+        },
+        {
+          "label": "Más",
+          "default": "más"
+        },
+        {
+          "label": "Menos",
+          "default": "menos"
+        },
+        {
+          "label": "Asterisco",
+          "default": "asterisco"
+        },
+        {
+          "label": "Diagonal",
+          "default": "diagonal"
+        },
+        {
+          "label": "Diagonal invertida",
+          "default": "diagonal invertida"
+        },
+        {
+          "label": "Tilde",
+          "default": "tilde"
+        },
+        {
+          "label": "Signo de exclamación invertido",
+          "default": "signo de exclamación invertido"
+        },
+        {
+          "label": "Signo de interrogación invertido",
+          "default": "signo de interrogación invertido"
+        },
+        {
+          "label": "Signo de libras",
+          "default": "signo de libras"
+        },
+        {
+          "label": "Paréntesis izquierdo",
+          "default": "paréntesis izquierdo"
+        },
+        {
+          "label": "Paréntesis derecho",
+          "default": "paréntesis derecho"
+        },
+        {
+          "label": "Caret",
+          "default": "caret"
+        },
+        {
+          "label": "Guión bajo",
+          "default": "guión bajo"
+        },
+        {
+          "label": "Barra vertical",
+          "default": "barra vertical"
+        },
+        {
+          "label": "Comilla izquierda",
+          "default": "comilla izquierda"
+        },
+        {
+          "label": "Comilla baja izquierda",
+          "default": "comilla baja izquierda"
+        },
+        {
+          "label": "Comilla derecha",
+          "default": "comilla derecha"
+        },
+        {
+          "label": "Comillas dobles izquierdas",
+          "default": "comillas dobles izquierdas"
+        },
+        {
+          "label": "Comillas bajas dobles izquierdas",
+          "default": "comillas bajas dobles izquierdas"
+        },
+        {
+          "label": "Comillas bajas dobles derechas",
+          "default": "comillas bajas dobles derechas"
+        },
+        {
+          "label": "Paréntesis anguloso izquierdo",
+          "default": "Paréntesis anguloso izquierdo"
+        },
+        {
+          "label": "Paréntesis anguloso derecho",
+          "default": "paréntesis anguloso derecho"
+        },
+        {
+          "label": "Paréntesis anguloso doble izquierdo",
+          "default": "paréntesis anguloso doble izquierdo"
+        },
+        {
+          "label": "Paréntesis anguloso doble derecho",
+          "default": "paréntesis anguloso doble derecho"
+        },
+        {
+          "label": "Paréntesis ondulado izquierdo",
+          "default": "Paréntesis ondulado izquierdo"
+        },
+        {
+          "label": "Paréntesis ondulado derecho",
+          "default": "paréntesis ondulado derecho"
+        },
+        {
+          "label": "Paréntesis izquierdo",
+          "default": "paréntesis izquierdo"
+        },
+        {
+          "label": "Paréntesis derecho",
+          "default": "paréntesis derecho"
+        },
+        {
+          "label": "Sección",
+          "default": "sección"
+        },
+        {
+          "label": "Dividido entre",
+          "default": "dividido entre"
+        },
+        {
+          "label": "Multiplicado por",
+          "default": "multiplicado por"
+        },
+        {
+          "label": "Menor Que",
+          "default": "menor que"
+        },
+        {
+          "label": "Mayor Que",
+          "default": "mayor que"
+        }
+      ]
+    }
+  ]
+}

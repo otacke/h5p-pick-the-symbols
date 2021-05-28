@@ -442,6 +442,13 @@ export default class PickTheSymbols extends H5P.Question {
         answers: this.content.getCurrentState()
       };
     };
+
+    /**
+     * Handle user interacted.
+     */
+    this.handleInteracted = () => {
+      this.triggerXAPI('interacted');
+    };
   }
 }
 

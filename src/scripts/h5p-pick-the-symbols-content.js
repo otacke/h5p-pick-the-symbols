@@ -323,6 +323,8 @@ export default class PickTheSymbolsContent {
 
     this.handleCloseOverlay();
     this.answerGiven = true;
+
+    this.callbacks.onInteracted();
   }
 
   /**

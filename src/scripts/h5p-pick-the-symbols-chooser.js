@@ -6,16 +6,18 @@ export default class PickTheSymbolsChooser {
    * @constructor
    *
    * @param {object} params Parameters.
+   * @param {object} [callbacks={}] Callbacks.
    */
-  constructor(params = {}) {
+  constructor(params = {}, callbacks = {}) {
     this.params = params;
 
-    this.callbacks = this.params.callbacks || {};
-    this.callbacks.onAddBlank = this.callbacks.onAddBlank || (() => {});
-    this.callbacks.onPickSymbol = this.callbacks.onPickSymbol || (() => {});
-    this.callbacks.onRemoveBlank = this.callbacks.onRemoveBlank || (() => {});
-    this.callbacks.onResize = this.callbacks.onResize || (() => {});
-    this.callbacks.onGetVerboseSymbol = this.callbacks.onGetVerboseSymbol || (symbol => symbol);
+    this.callbacks = Util.extend({
+      onAddBlank: () => {},
+      onPickSymbol: () => {},
+      onRemoveBlank: () => {},
+      onResize: () => {},
+      onGetVerboseSymbol: () => {}
+    }, callbacks);
 
     this.buttons = [];
 

@@ -1,4 +1,5 @@
 import PickTheSymbolsBlank from './h5p-pick-the-symbols-blank';
+import Util from './h5p-pick-the-symbols-util';
 
 /** Class representing a group of blanks */
 export default class PickTheSymbolsBlankGroup {
@@ -6,12 +7,14 @@ export default class PickTheSymbolsBlankGroup {
    * @constructor
    *
    * @param {object} params Parameters.
+   * @param {object} [callbacks={}] Callbacks.
    */
-  constructor(params) {
+  constructor(params, callbacks = {}) {
     this.params = params;
 
-    this.params.callbacks = this.params.callbacks || {};
-    this.params.callbacks.onOpenOverlay = this.params.callbacks.onOpenOverlay || (() => {});
+    this.callbacks = Util.extend({
+      onOpenOverlay: () => {},
+    }, callbacks);
 
     this.blanks = [];
 
@@ -56,18 +59,20 @@ export default class PickTheSymbolsBlankGroup {
         answer = ' ';
       }
 
-      const blank = new PickTheSymbolsBlank({
-        callbacks: {
+      const blank = new PickTheSymbolsBlank(
+        {
+          color: this.params.colorBackground,
+          slimBlanks: this.params.slimBlanks,
+          answer: answer,
+          solution: solution,
+          l10n: this.params.l10n
+        },
+        {
           onClick: (blank) => {
             this.handleOpenOverlay(blank);
           }
-        },
-        color: this.params.colorBackground,
-        slimBlanks: this.params.slimBlanks,
-        answer: answer,
-        solution: solution,
-        l10n: this.params.l10n
-      });
+        }
+      );
 
       this.blanks.push(blank);
       this.content.appendChild(blank.getDOM());
@@ -109,7 +114,7 @@ export default class PickTheSymbolsBlankGroup {
    * @param {PickTheSymbolsBlank} Blank.
    */
   handleOpenOverlay(blank) {
-    this.params.callbacks.onOpenOverlay(this, blank);
+    this.callbacks.onOpenOverlay(this, blank);
   }
 
   /**

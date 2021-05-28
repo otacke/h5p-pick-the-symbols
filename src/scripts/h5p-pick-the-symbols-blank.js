@@ -11,12 +11,15 @@ export default class PickTheSymbolsBlank {
    * @param {boolean} params.isFirst If true, is first, undeletable blank.
    * @param {object} params.callbacks Callbacks.
    * @param {function} params.callbacks.openOverlay Open overlay.
+   * @param {object} [callbacks={}] Callbacks.
    */
-  constructor(params) {
+  constructor(params, callbacks = {}) {
     this.params = params;
     this.answer = params.answer || null;
-    this.callbacks = params.callbacks || {};
-    this.callbacks.onClick = this.callbacks.onClick || (() => {});
+
+    this.callbacks = Util.extend({
+      onClick: () => {}
+    }, callbacks);
 
     this.solution = params.solution;
 

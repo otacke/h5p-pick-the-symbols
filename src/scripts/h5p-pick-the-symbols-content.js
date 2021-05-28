@@ -13,13 +13,15 @@ export default class PickTheSymbolsContent {
    * @param {string} params.text Text to parse.
    * @param {string} params.symbols Symbols to replace and pick from.
    * @param {string} params.colorBackground Background color of blanks.
+   * @param {object} [callbacks={}] Callbacks.
    */
-  constructor(params) {
+  constructor(params, callbacks = {}) {
     this.params = params;
 
-    this.params.callbacks = this.params.callbacks || {};
-    this.params.callbacks.onContentInteraction = this.params.callbacks.onContentInteraction || (() => {});
-    this.params.callbacks.onResize = this.params.callbacks.onResize || (() => {});
+    this.callbacks = Util.extend({
+      onInteracted: () => {},
+      onResize: () => {}
+    }, callbacks);
 
     this.verboseSymbolMapping = {
       '&nbsp;': this.params.a11y.space,
@@ -111,16 +113,18 @@ export default class PickTheSymbolsContent {
 
     // Overlay
     const symbols = ['&nbsp;'].concat(this.params.symbols.split(''));
-    this.chooser = new PickTheSymbolsChooser({
-      symbols: symbols,
-      l10n: {
-        title: this.params.l10n.chooserTitle,
-        addBlank: this.params.l10n.addBlank,
-        addSymbol: this.params.l10n.addSymbol,
-        removeBlank: this.params.l10n.removeBlank
+    this.chooser = new PickTheSymbolsChooser(
+      {
+        symbols: symbols,
+        l10n: {
+          title: this.params.l10n.chooserTitle,
+          addBlank: this.params.l10n.addBlank,
+          addSymbol: this.params.l10n.addSymbol,
+          removeBlank: this.params.l10n.removeBlank
+        },
+        a11y: this.params.a11y
       },
-      a11y: this.params.a11y,
-      callbacks: {
+      {
         onPickSymbol: (symbol) => {
           this.handleChooserPickSymbol(symbol);
         },
@@ -134,7 +138,7 @@ export default class PickTheSymbolsContent {
           return this.getVerboseSymbol(symbol);
         }
       }
-    });
+    );
 
     this.overlay = new Overlay(
       {
@@ -184,20 +188,22 @@ export default class PickTheSymbolsContent {
     placeholders.forEach((placeholder, index) => {
 
       // New Blank Group
-      const blankGroup = new PickTheSymbolsBlankGroup({
-        callbacks: {
+      const blankGroup = new PickTheSymbolsBlankGroup(
+        {
+          colorBackground: params.colorBackground,
+          slimBlanks: params.slimBlanks,
+          solution: this.textBlankGroups[index],
+          xAPIPlaceholder: this.params.xAPIPlaceholder,
+          l10n: {
+            title: this.params.l10n.blankButtonTitle
+          }
+        },
+        {
           onOpenOverlay: (blankGroup, blank) => {
             this.handleOpenOverlay(blankGroup, blank);
           }
-        },
-        colorBackground: params.colorBackground,
-        slimBlanks: params.slimBlanks,
-        solution: this.textBlankGroups[index],
-        xAPIPlaceholder: this.params.xAPIPlaceholder,
-        l10n: {
-          title: this.params.l10n.blankButtonTitle
         }
-      });
+      );
       this.blankGroups.push(blankGroup);
 
       if (this.params.showAllBlanks || params.previousState) {
@@ -374,7 +380,7 @@ export default class PickTheSymbolsContent {
     }
 
     if (!params.bubblingDown) {
-      this.params.callbacks.onResize();
+      this.callbacks.onResize();
     }
   }
 

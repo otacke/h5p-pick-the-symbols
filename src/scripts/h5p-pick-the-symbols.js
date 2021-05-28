@@ -145,16 +145,6 @@ export default class PickTheSymbols extends H5P.Question {
           showAllBlanks: this.params.behaviour.showAllBlanks,
           previousState: this.previousState.answers,
           xAPIPlaceholder: PickTheSymbols.XAPI_PLACEHOLDER,
-          callbacks: {
-            onContentInteraction: () => {
-              this.handleContentInteraction();
-            },
-            onResize: () => {
-              this.resize({
-                bubblingUp: true
-              });
-            }
-          },
           l10n: {
             blankButtonTitle: this.params.l10n.blankButtonTitle,
             chooserTitle: this.params.l10n.chooserTitle,
@@ -164,7 +154,18 @@ export default class PickTheSymbols extends H5P.Question {
             removeBlank: this.params.l10n.removeBlank
           },
           a11y: this.params.a11y
-        });
+        },
+        {
+          onInteracted: () => {
+            this.handleInteracted();
+          },
+          onResize: () => {
+            this.resize({
+              bubblingUp: true
+            });
+          }
+        }
+      );
 
         // Register content with H5P.Question
         this.setContent(this.content.getDOM());

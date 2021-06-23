@@ -213,7 +213,7 @@ export default class PickTheSymbols extends H5P.Question {
           textScore,
           this.getScore(),
           this.getMaxScore(),
-          Util.stripHTML(this.params.a11y.scoreBarLabel)
+          Util.stripHTML(this.params.a11y.scoreBarLabel.replace('@score', ':num').replace('@total', ':total'))
         );
 
         if (!this.params.behaviour.infiniteChecking) {

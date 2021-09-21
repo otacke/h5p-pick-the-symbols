@@ -42,7 +42,7 @@
     },
     {
       "label": "Impostazioni di esecuzione",
-      "description": "Queste opzioni ti permettono di controllare il comportamento dell'attività",
+      "description": "Queste opzioni permettono di controllare il comportamento dell'esercizio.",
       "fields": [
         {
           "label": "Attiva \"Riprova\""

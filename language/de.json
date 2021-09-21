@@ -2,7 +2,7 @@
   "semantics": [
     {
       "label": "Aufgabenbeschreibung",
-      "description": "Beschreibe hier die Aufgabe."
+      "description": "Beschreibe deine Aufgabe hier."
     },
     {
       "label": "Text",
@@ -19,7 +19,7 @@
         {
           "widgets": [
             {
-              "label": "Voreinstellung"
+              "label": "Eingabemaske"
             }
           ],
           "label": "Lege Rückmeldungen für einzelne Punktebereiche fest",
@@ -80,7 +80,7 @@
         },
         {
           "label": "Beschriftung des \"Lösung zeigen\"-Buttons",
-          "default": "Lösung zeigen"
+          "default": "Lösung anzeigen"
         },
         {
           "label": "Beschriftung des \"Wiederholen\"-Buttons",

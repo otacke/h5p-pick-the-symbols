@@ -1,0 +1,318 @@
+{
+  "semantics": [
+    {
+      "label": "Lanaren deskribapena",
+      "description": "Deskribatu ezazu hemen zure lana."
+    },
+    {
+      "label": "Testua",
+      "description": "Idatzi ezazu aukeratu beharreko sinboloak dauzkan testua"
+    },
+    {
+      "label": "Sinboloak",
+      "description": "Idatzi itzazu ikasleak aukeratu beharko dituen sinboloak.",
+      "default": ".?!,:;'\""
+    },
+    {
+      "label": "Feedback Orokorra",
+      "fields": [
+        {
+          "widgets": [
+            {
+              "label": "Lehenetsitakoa"
+            }
+          ],
+          "label": "Zehaztu ezazu edozein puntuazio-tarterako feedback pertsonalizatua",
+          "description": "Egin klik \"Gehitu tartea\" botoian behar dituzun tarte guztiak gehitzeko. Adibidez: 0-20% Puntuazio eskasa, 21-91% Batez besteko puntuazioa, 91-100% Puntuazio bikaina!",
+          "entity": "tartea",
+          "field": {
+            "fields": [
+              {
+                "label": "Puntuazio tartea"
+              },
+              {},
+              {
+                "label": "Zehaztutako tartearentzako feedbacka",
+                "placeholder": "Idatzi ezazu feedbacka"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Portaeraren ezarpenak",
+      "description": "Aukera hauek lanaren portaera kontrolatzea ahalbidetzen dizute.",
+      "fields": [
+        {
+          "label": "Gaitu \"Berriz saiatu\""
+        },
+        {
+          "label": "Gaitu \"Erantzuna\""
+        },
+        {
+          "label": "Baimendu etengabeko egiaztapena",
+          "description": "Utzi ikasleei beren erantzunak etengabe egiaztatzen, aurreko aukerak berrezarri gabe."
+        },
+        {
+          "label": "Hutsune guztiak erakutsi",
+          "description": ""
+        },
+        {
+          "label": "Hutsuneen atzeko planoaren kolorea"
+        },
+        {
+          "label": "Erabili hutsune finak",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "label": "Erabiltzaile-interfazea",
+      "fields": [
+        {
+          "label": "\"Egiaztatu\" botoiarentzako testua",
+          "default": "Egiaztatu"
+        },
+        {
+          "label": "\"Jarraitu\" botoiaren testua",
+          "default": "Jarraitu"
+        },
+        {
+          "label": "\"Erakutsi erantzuna\" botoiaren testua",
+          "default": "Erakutsi erantzuna"
+        },
+        {
+          "label": "\"Berrabiarazi\" botoiaren testua",
+          "default": "Berrabiarazi"
+        },
+        {
+          "label": "",
+          "default": "Aukeratu ezazu sinbolo bat"
+        },
+        {
+          "label": "Sinbolo hautatzailearen izenburuaren testua",
+          "default": "Aukeratu ezazu sinbolo bat"
+        },
+        {
+          "label": "",
+          "default": "Gehitu hutsunea"
+        },
+        {
+          "label": "",
+          "default": "Kendu hutsunea"
+        },
+        {
+          "label": "",
+          "description": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": "Itxi leihoa"
+        }
+      ]
+    },
+    {
+      "label": "",
+      "fields": [
+        {
+          "label": "",
+          "default": ":total puntutik :num puntu lortu duzu"
+        },
+        {
+          "label": "Sarrera hutsa",
+          "default": ""
+        },
+        {
+          "label": "Hauetatik",
+          "default": "hauetatik"
+        },
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": "erantzunik gabe"
+        },
+        {
+          "label": "Erantzun zuzena",
+          "default": "Erantzun zuzena"
+        },
+        {
+          "label": "Hutsunea",
+          "default": "hutsunea"
+        },
+        {
+          "label": "Puntua",
+          "default": "puntua"
+        },
+        {
+          "label": "Harridura ikurra",
+          "default": "harridura ikurra"
+        },
+        {
+          "label": "Galdera ikurra",
+          "default": "galdera ikurra"
+        },
+        {
+          "label": "Koma",
+          "default": "koma"
+        },
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "Gehi",
+          "default": "gehi"
+        },
+        {
+          "label": "Ken",
+          "default": "ken"
+        },
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "Atala",
+          "default": "atala"
+        },
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": ""
+        }
+      ]
+    }
+  ]
+}

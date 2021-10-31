@@ -14,7 +14,7 @@
       "default": ".?!,:;'\""
     },
     {
-      "label": "Retroalimentación Global",
+      "label": "Retroalimentación global",
       "fields": [
         {
           "widgets": [
@@ -104,7 +104,7 @@
         },
         {
           "label": "Herramientita para botón \"Elegir símbolo\"",
-          "description": "@symbolserá remplazado con el símbolo que sería elegido.",
+          "description": "@symbol será remplazado con el símbolo que sería elegido.",
           "default": "LLenar hueco con @symbol"
         },
         {

@@ -45,7 +45,7 @@
       "description": "Aukera hauek lanaren portaera kontrolatzea ahalbidetzen dizute.",
       "fields": [
         {
-          "label": "Gaitu \"Berriz saiatu\""
+          "label": "Gaitu \"Saiatu berriro\""
         },
         {
           "label": "Gaitu \"Erantzuna\""
@@ -56,14 +56,14 @@
         },
         {
           "label": "Hutsune guztiak erakutsi",
-          "description": ""
+          "description": "Erakutsi aldez aurretik ikur taldeen hutsuneak."
         },
         {
           "label": "Hutsuneen atzeko planoaren kolorea"
         },
         {
           "label": "Erabili hutsune finak",
-          "description": ""
+          "description": "Aktibatzen bada, hutsuneek ez dute ertzik izango eta finagoak izango dira testua naturalagoa ikus dadin."
         }
       ]
     },
@@ -79,15 +79,15 @@
           "default": "Jarraitu"
         },
         {
-          "label": "\"Erakutsi erantzuna\" botoiaren testua",
-          "default": "Erakutsi erantzuna"
+          "label": "\"Erakutsi emaitza\" botoiaren testua",
+          "default": "Erakutsi emaitza"
         },
         {
           "label": "\"Berrabiarazi\" botoiaren testua",
           "default": "Berrabiarazi"
         },
         {
-          "label": "",
+          "label": "Botoi hutsaren izenburuaren testua",
           "default": "Aukeratu ezazu sinbolo bat"
         },
         {
@@ -99,7 +99,7 @@
           "default": "Gehitu hutsunea"
         },
         {
-          "label": "",
+          "label": "\"Kendu hutsunea\" botoiaren testua",
           "default": "Kendu hutsunea"
         },
         {
@@ -173,8 +173,8 @@
           "default": ""
         },
         {
-          "label": "",
-          "default": ""
+          "label": "Bi puntu",
+          "default": "bi puntu"
         },
         {
           "label": "",

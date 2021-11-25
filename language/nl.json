@@ -62,8 +62,8 @@
           "label": "Achtergrondkleur lege plekken"
         },
         {
-          "label": "Use slim blanks",
-          "description": "If activated, the blanks won't have a border and be slimmer in order to make the text look more natural."
+          "label": "Gebruik smalle blanco's",
+          "description": "Indien geactiveerd, hebben de blanco's geen rand en zijn ze smaller om de tekst natuurlijker te laten lijken."
         }
       ]
     },
@@ -114,7 +114,7 @@
       ]
     },
     {
-      "label": "Voorleesapparaat",
+      "label": "Voorlezer",
       "fields": [
         {
           "label": "Tekstuele weergave van de scorebalk voor degenen die een voorleesapparaat gebruiken",

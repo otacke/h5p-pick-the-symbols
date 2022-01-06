@@ -1,0 +1,318 @@
+{
+  "semantics": [
+    {
+      "label": "Uzdevuma apraksts",
+      "description": "Aprakstiet savu uzdevumu šeit."
+    },
+    {
+      "label": "Teksts",
+      "description": "Ievadiet tekstu, kas satur atlasāmos simbolus."
+    },
+    {
+      "label": "Simboli",
+      "description": "Ievadiet simbolus, no kuriem izglītojamajam jāizvēlas.",
+      "default": ".?!,:;'\""
+    },
+    {
+      "label": "Kopējā atgriezeniskā saite",
+      "fields": [
+        {
+          "widgets": [
+            {
+              "label": "Pēc noklusējuma"
+            }
+          ],
+          "entity": "diapazons",
+          "field": {
+            "fields": [
+              {
+                "label": "Rezultātu diapazons"
+              },
+              {},
+              {
+                "label": "Norādītā diapazona atgriezeniskā saite",
+                "placeholder": "Aizpildiet atgriezenisko saiti"
+              }
+            ]
+          },
+          "label": "Iestatiet pielāgotu atgriezenisko saiti katram rezultātu diapazonam",
+          "description": "Klikšķiniet pogu \"Pievienot diapazonu\", lai pievienotu tik diapazonus cik vēlaties. Piemēram, 0-20% Slikts rezultāts, 21-91% Viduvējs rezultāts, 91-100% Lielisks rezultāts!"
+        }
+      ]
+    },
+    {
+      "description": "Šie iestatījumi ļaus jums kontrolēt uzdevuma uzvedību.",
+      "label": "Uzvedības iestatījumi",
+      "fields": [
+        {
+          "label": "Atļaut pogu \"Mēģināt vēlreiz\""
+        },
+        {
+          "label": "Iespējot \"Risinājums\""
+        },
+        {
+          "label": "Atļaut nepārtrauktu pārbaudi",
+          "description": "Ļaut izglītojamajiem nepārtraukti pārbaudīt savas atbildes, bez iepriekšējo izvēļu atiestatīšanas."
+        },
+        {
+          "label": "Rādīt visas tukšās vietas",
+          "description": "Jau uzreiz parāda visas simbolu grupu tukšās vietas."
+        },
+        {
+          "label": "Tukšo lauku fona krāsa"
+        },
+        {
+          "label": "Izmantot plānus laukus",
+          "description": "Ja aktivizēts, tukšajiem laukiem nebūs apmales un tie būs plānāki, lai teksts izskatītos dabiskāks."
+        }
+      ]
+    },
+    {
+      "label": "Lietotāja saskarne",
+      "fields": [
+        {
+          "label": "Pogas \"Pārbaudīt\" teksts",
+          "default": "Pārbaudīt"
+        },
+        {
+          "label": "Teksts pogai \"Turpināt\"",
+          "default": "Turpināt"
+        },
+        {
+          "label": "Pogas \"Parādīt risinājumu\" teksts",
+          "default": "Parādīt risinājumu"
+        },
+        {
+          "label": "Teksts pogai \"Atiestatīt\"",
+          "default": "Atiestatīt"
+        },
+        {
+          "label": "Tukšas pogas virsraksta teksts",
+          "default": "Izvēlēties simbolu"
+        },
+        {
+          "label": "Virsraksta teksts simbolu atlasītājam",
+          "default": "Izvēlieties simbolu"
+        },
+        {
+          "label": "Teksts pogai \"Pievienot tukšu lauku\"",
+          "default": "Pievienot tukšu lauku"
+        },
+        {
+          "label": "Teksts pogai \"Noņemt tukšo lauku\"",
+          "default": "Noņemiet tukšo lauku"
+        },
+        {
+          "default": "Aizpildīt tukšo lauku ar @symbol",
+          "label": "Paskaidre pogai “Izvēlēties simbolu”",
+          "description": "@symbol tiks aizstāts ar simbolu, kas tiktu izvēlēts."
+        },
+        {
+          "label": "Teksts pogai \"Aizvērt logu\"",
+          "default": "Aizvērt logu"
+        }
+      ]
+    },
+    {
+      "label": "Ekrāna lasītājs",
+      "fields": [
+        {
+          "default": "Tu saņēmi :num no :total punktiem",
+          "label": "Rezultātu skalas tekstuālais atspoguļojums tiem, kas izmanto asistīvās tehnoloģijas"
+        },
+        {
+          "label": "Tukša lauka ievade",
+          "default": "tukša lauka ievade"
+        },
+        {
+          "label": "No",
+          "default": "no"
+        },
+        {
+          "label": "Atgriezeniskā saite par pareizo atbildi",
+          "default": "atbildēts pareizi"
+        },
+        {
+          "label": "Atgriezeniskā saite par nepareizu atbildi",
+          "default": "atbildēts nepareizi"
+        },
+        {
+          "default": "nav atbildēts",
+          "label": "Atgriezeniskā saite par nesniegtu atbildi"
+        },
+        {
+          "label": "Pareiza atbilde",
+          "default": "Pareiza atbilde"
+        },
+        {
+          "label": "Atstarpe",
+          "default": "atstarpe"
+        },
+        {
+          "label": "Punkts",
+          "default": "punkts"
+        },
+        {
+          "label": "Izsaukuma zīme",
+          "default": "izsaukuma zīme"
+        },
+        {
+          "label": "Jautājuma zīme",
+          "default": "jautājuma zīme"
+        },
+        {
+          "label": "Komats",
+          "default": "komats"
+        },
+        {
+          "default": "vienpēdiņas",
+          "label": "Vienpēdiņas"
+        },
+        {
+          "label": "Pēdiņas",
+          "default": "pēdiņas"
+        },
+        {
+          "label": "Kols",
+          "default": "kols"
+        },
+        {
+          "label": "Semikols",
+          "default": "semikols"
+        },
+        {
+          "label": "Pluszīme",
+          "default": "pluszīme"
+        },
+        {
+          "label": "Mīnuss",
+          "default": "Mīnuss"
+        },
+        {
+          "label": "Zvaigznīte",
+          "default": "zvaigznīte"
+        },
+        {
+          "label": "Slīpsvītra",
+          "default": "slīpsvītra"
+        },
+        {
+          "default": "atpakaļvērstā slīpsvītra",
+          "label": "Atpakaļvērstā slīpsvītra"
+        },
+        {
+          "label": "Tilde",
+          "default": "tilde"
+        },
+        {
+          "default": "apgriezta izsaukuma zīme",
+          "label": "Apgriezta izsaukuma zīme"
+        },
+        {
+          "label": "Apgriezta jautājuma zīme",
+          "default": "apgriezta jautājuma zīme"
+        },
+        {
+          "label": "Mārciņas zīme",
+          "default": "mārciņas zīme"
+        },
+        {
+          "label": "Kreisā pusiekava",
+          "default": "kreisā pusiekava"
+        },
+        {
+          "label": "Labā pusiekava",
+          "default": "labā pusiekava"
+        },
+        {
+          "label": "Karets (kursors)",
+          "default": "karets (kursors)"
+        },
+        {
+          "label": "Pasvītrojums",
+          "default": "pasvītrojums"
+        },
+        {
+          "label": "Vertikālā svītra",
+          "default": "vertikālā svītra"
+        },
+        {
+          "label": "Kreisā vienpēdiņa",
+          "default": "kreisā vienpēdiņa"
+        },
+        {
+          "default": "kreisā atvērējvienpēdiņa",
+          "label": "Kreisā atvērējvienpēdiņa"
+        },
+        {
+          "label": "Labā vienpēdiņa",
+          "default": "labā vienpēdiņa"
+        },
+        {
+          "label": "Kreisā apaļā pēdiņa",
+          "default": "kreisā apaļā pēdiņa"
+        },
+        {
+          "default": "kreisā apaļā atvērējpēdiņa",
+          "label": "Kreisā apaļā atvērējpēdiņa"
+        },
+        {
+          "label": "Labās apaļās pēdiņas",
+          "default": "labās apaļās pēdiņas"
+        },
+        {
+          "label": "Kreisās stūrainās vienpēdiņas",
+          "default": "kreisās stūrainās vienpēdiņas"
+        },
+        {
+          "label": "Labās stūrainās vienpēdiņas",
+          "default": "labās stūrainās vienpēdiņas"
+        },
+        {
+          "default": "kreisās stūrainās dubultpēdiņas",
+          "label": "Kreisās stūrainās dubultpēdiņas"
+        },
+        {
+          "label": "Labās stūrainās dubultpēdiņas",
+          "default": "labās stūrainās dubultpēdiņas"
+        },
+        {
+          "label": "Kreisā skava",
+          "default": "kreisā skava"
+        },
+        {
+          "label": "Labā skava",
+          "default": "labā skava"
+        },
+        {
+          "default": "kreisā iekava",
+          "label": "Kreisā iekava"
+        },
+        {
+          "label": "Labā iekava",
+          "default": "labā iekava"
+        },
+        {
+          "label": "Paragrāfs",
+          "default": "paragrāfs"
+        },
+        {
+          "label": "Dalīšanas zīme",
+          "default": "dalīšanas zīme"
+        },
+        {
+          "label": "Reizināšanas zīme",
+          "default": "reizināšanas zīme"
+        },
+        {
+          "label": "Mazāks par",
+          "default": "mazāks par"
+        },
+        {
+          "label": "Lielāks par",
+          "default": "lielāks par"
+        }
+      ]
+    }
+  ]
+}

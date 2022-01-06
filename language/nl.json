@@ -23,7 +23,7 @@
             }
           ],
           "label": "Definieer aangepaste feedback voor elke scorereeks",
-          "description": "Druk op de knop \"Voeg scorereeks toe\" om zoveel reeksen toe te voegen als nodig is. Voorbeeld: 0-20% Onvoldoende score, 21-91% Gemiddelde score, 91-100% Uitstekende score!",
+          "description": "Druk op de \"Voeg scorereeks\"-knop om zoveel reeksen toe te voegen als nodig. Voorbeeld: 0-20% Onvoldoende, 21-91% Gemiddelde score, 91-100% Uitstekende score!",
           "entity": "reeks",
           "field": {
             "fields": [
@@ -33,7 +33,7 @@
               {},
               {
                 "label": "Feedback voor de gedefinieerde scorereeks",
-                "placeholder": "Vul de aangepaste feedback in"
+                "placeholder": "Vul de feedback in"
               }
             ]
           }
@@ -42,7 +42,7 @@
     },
     {
       "label": "Gedragsinstellingen",
-      "description": "Met deze opties kun je bepalen hoe de taak zich gedraagt.",
+      "description": "Met deze opties kun je bepalen hoe de opgave zich gedraagt.",
       "fields": [
         {
           "label": "Schakel \"Opnieuw\" in"
@@ -62,8 +62,8 @@
           "label": "Achtergrondkleur lege plekken"
         },
         {
-          "label": "Gebruik smalle blanco's",
-          "description": "Indien geactiveerd, hebben de blanco's geen rand en zijn ze smaller om de tekst natuurlijker te laten lijken."
+          "label": "Gebruik smalle lege plekken",
+          "description": "Indien geactiveerd, hebben de lege plekken geen rand en zijn ze smaller om de tekst natuurlijker te laten lijken."
         }
       ]
     },
@@ -71,23 +71,23 @@
       "label": "Gebruikersinterface",
       "fields": [
         {
-          "label": "Tekst voor de \"Controleer\" -knop",
+          "label": "Tekst voor \"Controleer\"-knop",
           "default": "Controleer"
         },
         {
-          "label": "Tekst voor de \"Doorgaan\" -knop",
+          "label": "Tekst voor \"Doorgaan\"-knop",
           "default": "Doorgaan"
         },
         {
-          "label": "Tekst voor de \"Toon oplossing\" -knop",
+          "label": "Tekst voor \"Toon oplossing\"-knop",
           "default": "Toon oplossing"
         },
         {
-          "label": "Tekst voor de \"Reset\" -knop",
+          "label": "Tekst voor \"Reset\"-knop",
           "default": "Reset"
         },
         {
-          "label": "Tekst voor de lege plek knop",
+          "label": "Tekst voor knop voor lege plek",
           "default": "Kies een leesteken"
         },
         {
@@ -95,50 +95,50 @@
           "default": "Kies een leesteken"
         },
         {
-          "label": "Tekst voor de \"Lege plek toevoegen\" -knop",
-          "default": "Voeg een lege plek toe"
+          "label": "Tekst voor \"Lege plek toevoegen\"-knop",
+          "default": "Lege plek toevoegen"
         },
         {
-          "label": "Tekst voor de \"Verwijder lege plek\" -knop",
+          "label": "Tekst voor \"Verwijder lege plek\"-knop",
           "default": "Verwijder lege plek"
         },
         {
-          "label": "Tooltip voor de \"Kies leesteken\" -knop",
+          "label": "Tooltip voor de \"Kies leesteken\"-knop",
           "description": "@symbol zal worden vervangen door het te kiezen leesteken.",
           "default": "Vul de lege plek met @symbol"
         },
         {
-          "label": "Tekst voor de \"Sluit scherm\" -knop",
+          "label": "Tekst voor de \"Sluit scherm\"-knop",
           "default": "Sluit scherm"
         }
       ]
     },
     {
-      "label": "Voorlezer",
+      "label": "Schermlezer",
       "fields": [
         {
-          "label": "Tekstuele weergave van de scorebalk voor degenen die een voorleesapparaat gebruiken",
+          "label": "Tekstuele weergave van de scorebalk voor degene die een schermlezer gebruiken",
           "default": "Je hebt :num van de :total punten"
         },
         {
           "label": "Lege plek invoer",
-          "default": "Voer lege plek in"
+          "default": "lege plek invoer"
         },
         {
           "label": "Of",
           "default": "of"
         },
         {
-          "label": "Feedback voor het juiste antwoord",
-          "default": "Juist geantwoord"
+          "label": "Feedback voor juiste antwoord",
+          "default": "juist geantwoord"
         },
         {
-          "label": "Feedback voor het onjuiste antwoord",
-          "default": "Onjuist geantwoord"
+          "label": "Feedback voor onjuiste antwoord",
+          "default": "onjuist geantwoord"
         },
         {
-          "label": "Feedback voor het niet gegeven antwoord",
-          "default": "Niet geantwoord"
+          "label": "Feedback voor niet gegeven antwoord",
+          "default": "niet geantwoord"
         },
         {
           "label": "Juist antwoord",
@@ -169,8 +169,8 @@
           "default": "enkel aanhalingsteken"
         },
         {
-          "label": "Dubbele aanhalingstekens",
-          "default": "dubbele aanhalingstekens"
+          "label": "Dubbel aanhalingsteken",
+          "default": "dubbel aanhalingsteken"
         },
         {
           "label": "Dubbele punt",
@@ -285,12 +285,12 @@
           "default": "rechthoekige haak rechts"
         },
         {
-          "label": "Gekrulde haak links",
-          "default": "gekrulde haak links"
+          "label": "Accolade links",
+          "default": "accolade links"
         },
         {
-          "label": "Gekrulde haak rechts",
-          "default": "gekrulde haak rechts"
+          "label": "Accolade rechts",
+          "default": "accolade rechts"
         },
         {
           "label": "Paragraaf",

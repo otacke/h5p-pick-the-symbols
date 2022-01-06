@@ -6,7 +6,7 @@
     },
     {
       "label": "Testua",
-      "description": "Idatzi ezazu aukeratu beharreko sinboloak dauzkan testua"
+      "description": "Idatzi ezazu aukeratu beharreko sinboloak dauzkan testua."
     },
     {
       "label": "Sinboloak",
@@ -95,50 +95,49 @@
           "default": "Aukeratu ezazu sinbolo bat"
         },
         {
-          "label": "",
-          "default": "Gehitu hutsunea"
+          "default": "Gehitu hutsunea",
+          "label": "\"Gehitu hutsunea\" botoiarentzako testua"
         },
         {
           "label": "\"Kendu hutsunea\" botoiaren testua",
           "default": "Kendu hutsunea"
         },
         {
-          "label": "",
-          "description": "",
-          "default": ""
+          "description": "@symbol gakoa aukeratzen den sinboloarekin ordezkatuko da.",
+          "default": "Bete hutsunea @symbol sinboloarekin",
+          "label": "\"Aukeratu sinboloa\" botoiarentzako laguntza"
         },
         {
-          "label": "",
-          "default": "Itxi leihoa"
+          "default": "Itxi leihoa",
+          "label": "\"Itxi leihoa\" botoiarentzako testua"
         }
       ]
     },
     {
-      "label": "",
       "fields": [
         {
-          "label": "",
-          "default": ":total puntutik :num puntu lortu duzu"
+          "default": ":total puntutik :num puntu lortu duzu",
+          "label": "Puntuazio-barraren testu bidezko errepresentazioa irakurtzen duen bozgorailua erabiltzen dutenentzako"
         },
         {
           "label": "Sarrera hutsa",
-          "default": ""
+          "default": "hutsik dagoen sarrera"
         },
         {
           "label": "Hauetatik",
           "default": "hauetatik"
         },
         {
-          "label": "",
-          "default": ""
+          "label": "Erantzun zuzenerako feedbacka",
+          "default": "zuzen erantzunda"
         },
         {
-          "label": "",
-          "default": ""
+          "label": "Erantzun okerrentzako feedbacka",
+          "default": "oker erantzunda"
         },
         {
-          "label": "",
-          "default": "erantzunik gabe"
+          "default": "erantzunik gabe",
+          "label": "Erantzun gabekoentzako feedbacka"
         },
         {
           "label": "Erantzun zuzena",
@@ -165,20 +164,20 @@
           "default": "koma"
         },
         {
-          "label": "",
-          "default": ""
+          "default": "kakotx sinplea",
+          "label": "Kakotx sinplea"
         },
         {
-          "label": "",
-          "default": ""
+          "label": "Kakotx bikoitza",
+          "default": "kakotx bikotza"
         },
         {
           "label": "Bi puntu",
           "default": "bi puntu"
         },
         {
-          "label": "",
-          "default": ""
+          "label": "Puntu eta koma",
+          "default": "puntu eta koma"
         },
         {
           "label": "Gehi",
@@ -189,130 +188,131 @@
           "default": "ken"
         },
         {
-          "label": "",
-          "default": ""
+          "label": "Izartxoa",
+          "default": "izartxoa"
         },
         {
-          "label": "",
-          "default": ""
+          "default": "zatikien barra",
+          "label": "Zatikien barra"
         },
         {
-          "label": "",
-          "default": ""
+          "label": "Alderantzizko barra",
+          "default": "alderantzizko barra"
         },
         {
-          "label": "",
-          "default": ""
+          "label": "Azentu-marka",
+          "default": "azentu-marka"
         },
         {
-          "label": "",
-          "default": ""
+          "label": "Hasierako harridura-ikurra",
+          "default": "hasierako harridura-ikurra"
         },
         {
-          "label": "",
-          "default": ""
+          "label": "Hasierako galdera-ikurra",
+          "default": "hasierako galdera-ikurra"
         },
         {
-          "label": "",
-          "default": ""
+          "label": "Libera-ikurra",
+          "default": "libera-ikurra"
         },
         {
-          "label": "",
-          "default": ""
+          "label": "Ezkerreko parentesia",
+          "default": "ezkerreko parentesia"
         },
         {
-          "label": "",
-          "default": ""
+          "label": "Eskuineko parentesia",
+          "default": "eskuineko parentesia"
         },
         {
-          "label": "",
-          "default": ""
+          "label": "Caret",
+          "default": "caret"
         },
         {
-          "label": "",
-          "default": ""
+          "label": "Beheko gidoia",
+          "default": "beheko gidoia"
         },
         {
-          "label": "",
-          "default": ""
+          "label": "Barra bertikala",
+          "default": "barra bertikala"
         },
         {
-          "label": "",
-          "default": ""
+          "label": "Ezkerreko kakotx sinplea",
+          "default": "ezkerreko kakotx sinplea"
         },
         {
-          "label": "",
-          "default": ""
+          "label": "Ezkerreko behe-kakotx sinplea",
+          "default": "ezkerreko behe-kakotx sinplea"
         },
         {
-          "label": "",
-          "default": ""
+          "label": "Eskuineko kakotx sinplea",
+          "default": "eskuineko kakotx sinplea"
         },
         {
-          "label": "",
-          "default": ""
+          "label": "Ezkerreko kakotx bikoitza",
+          "default": "ezkerreko kakotx bikoitza"
         },
         {
-          "label": "",
-          "default": ""
+          "label": "Ezkerreko behe-kakotx bikoitza",
+          "default": "ezkerreko behe-kakotx bikoitza"
         },
         {
-          "label": "",
-          "default": ""
+          "label": "Eskuineko kakotx bikoitza",
+          "default": "eskuineko kakotx bikoitza"
         },
         {
-          "label": "",
-          "default": ""
+          "label": "Ezkerreko puntadun parentesia",
+          "default": "ezkerreko puntadun parentesia"
         },
         {
-          "label": "",
-          "default": ""
+          "label": "Eskuineko puntadun parentesia",
+          "default": "eskuineko puntadun parentesia"
         },
         {
-          "label": "",
-          "default": ""
+          "label": "Ezkerreko puntadun parentesi bikoitza",
+          "default": "ezkerreko puntadun parentesi bikoitza"
         },
         {
-          "label": "",
-          "default": ""
+          "default": "eskuineko puntadun parentesi bikoitza",
+          "label": "Eskuineko puntadun parentesi bikoitza"
         },
         {
-          "label": "",
-          "default": ""
+          "label": "Ezkerreko giltza",
+          "default": "ezkerreko giltza"
         },
         {
-          "label": "",
-          "default": ""
+          "label": "Eskuineko giltza",
+          "default": "eskuineko giltza"
         },
         {
-          "label": "",
-          "default": ""
+          "label": "Ezkerreko kortxetea",
+          "default": "ezkerreko kortxetea"
         },
         {
-          "label": "",
-          "default": ""
+          "default": "eskuineko kortxetea",
+          "label": "Eskuineko kortxetea"
         },
         {
           "label": "Atala",
           "default": "atala"
         },
         {
-          "label": "",
-          "default": ""
+          "default": "honengatik zatitua",
+          "label": "Honengatik zatitua"
         },
         {
-          "label": "",
-          "default": ""
+          "default": "honengatik biderkatua",
+          "label": "Honengatik biderkatua"
         },
         {
-          "label": "",
-          "default": ""
+          "default": "hau baino txikiagoa",
+          "label": "Hau baino txikiagoa"
         },
         {
-          "label": "",
-          "default": ""
+          "default": "hau baino handiagoa",
+          "label": "Hau baino handiagoa"
         }
-      ]
+      ],
+      "label": "Irakurtzen duen bozgorailua"
     }
   ]
 }

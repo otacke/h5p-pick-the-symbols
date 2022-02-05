@@ -41,8 +41,8 @@
       ]
     },
     {
-      "label": "Gedragsinstellingen",
-      "description": "Met deze opties kun je bepalen hoe de opgave zich gedraagt.",
+      "label": "Gedragsinstelllingen",
+      "description": "Met deze opties kun je bepalen hoe de taak zich gedraagt.",
       "fields": [
         {
           "label": "Schakel \"Opnieuw\" in"
@@ -114,7 +114,7 @@
       ]
     },
     {
-      "label": "Schermlezer",
+      "label": "Voorlezer",
       "fields": [
         {
           "label": "Tekstuele weergave van de scorebalk voor degene die een schermlezer gebruiken",

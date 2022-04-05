@@ -1,0 +1,318 @@
+{
+  "semantics": [
+    {
+      "label": "Descrição da tarefa",
+      "description": "Descreva aqui a sua tarefa."
+    },
+    {
+      "label": "Texto",
+      "description": "Insira o texto que contém os símbolos a serem selecionados."
+    },
+    {
+      "label": "Símbolos",
+      "description": "Digite os símbolos que o aluno precisa escolher.",
+      "default": ".?!,:;'\""
+    },
+    {
+      "label": "Feedback Geral",
+      "fields": [
+        {
+          "widgets": [
+            {
+              "label": "Padrão"
+            }
+          ],
+          "label": "Definir feedback personalizado para qualquer faixa de pontuação",
+          "description": "Clique no botão \"Adicionar faixa\" para adicionar quantos intervalos você precisar. Exemplo: 0-20% Pontuação Ruim, 21-91% Pontuação Média, 91-100% Pontuação Ótima!",
+          "entity": "faixa",
+          "field": {
+            "fields": [
+              {
+                "label": "Faixa de Pontuação"
+              },
+              {},
+              {
+                "label": "Feedback para a faixa de pontuação definida",
+                "placeholder": "Preencha o feedback"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Configurações comportamentais",
+      "description": "Essas opções permitem controlar como a tarefa se comporta.",
+      "fields": [
+        {
+          "label": "Ativar \"Tentar Novamente\""
+        },
+        {
+          "label": "Ativar \"Solução\""
+        },
+        {
+          "label": "Permitir verificação contínua",
+          "description": "Permita que os alunos verifiquem continuamente suas respostas sem redefinir suas escolhas anteriores."
+        },
+        {
+          "label": "Mostrar todos os espaços em branco",
+          "description": "Mostre todos os espaços em branco para grupos de símbolos com antecedência."
+        },
+        {
+          "label": "Cor de fundo do espaço em branco"
+        },
+        {
+          "label": "Use espaços em branco finos",
+          "description": "Se ativado, os espaços em branco não terão borda e serão mais finos para tornar o texto mais natural."
+        }
+      ]
+    },
+    {
+      "label": "Interface de usuário",
+      "fields": [
+        {
+          "label": "Texto do botão \"Verificar\"",
+          "default": "Verificar"
+        },
+        {
+          "label": "Texto para o botão \"Continuar\"",
+          "default": "Continuar"
+        },
+        {
+          "label": "Texto para o botão \"Mostrar solução\"",
+          "default": "Mostrar solução"
+        },
+        {
+          "label": "Texto para o botão \"Redefinir\"",
+          "default": "Redefinir"
+        },
+        {
+          "label": "Texto do título para botão em branco",
+          "default": "Escolha um símbolo"
+        },
+        {
+          "label": "Texto do título para o seletor de símbolos",
+          "default": "Escolha um símbolo"
+        },
+        {
+          "label": "Texto para o botão \"Anexar em branco\"",
+          "default": "Anexar em branco"
+        },
+        {
+          "label": "Texto para o botão \"Remover em branco\"",
+          "default": "Remover em branco"
+        },
+        {
+          "label": "Dica de ferramenta para o botão \"Escolher símbolo\"",
+          "description": "@symbol será substituído pelo símbolo escolhido.",
+          "default": "Preencha espaços em branco com @symbol"
+        },
+        {
+          "label": "Texto para o botão \"Fechar janela\"",
+          "default": "Fechar janela"
+        }
+      ]
+    },
+    {
+      "fields": [
+        {
+          "label": "Representação textual da barra de pontuação para quem usa um leitor de tela",
+          "default": "Você conseguiu :num de :total pontos possíveis"
+        },
+        {
+          "label": "Entrada em branco",
+          "default": "entrada em branco"
+        },
+        {
+          "label": "De",
+          "default": "de"
+        },
+        {
+          "label": "Feedback para resposta correta",
+          "default": "respondeu corretamente"
+        },
+        {
+          "label": "Feedback para resposta incorreta",
+          "default": "respondeu incorretamente"
+        },
+        {
+          "label": "Feedback para sem resposta",
+          "default": "sem resposta"
+        },
+        {
+          "label": "Resposta correta",
+          "default": "Resposta correta"
+        },
+        {
+          "label": "Espaço",
+          "default": "espaço"
+        },
+        {
+          "label": "Ponto",
+          "default": "ponto"
+        },
+        {
+          "label": "Ponto de exclamação",
+          "default": "ponto de exclamação"
+        },
+        {
+          "label": "Ponto de interrogação",
+          "default": "ponto de interrogação"
+        },
+        {
+          "label": "Vírgula",
+          "default": "vírgula"
+        },
+        {
+          "label": "Aspa simples",
+          "default": "aspa simples"
+        },
+        {
+          "label": "Aspa dupla",
+          "default": "Aspa dupla"
+        },
+        {
+          "label": "Dois pontos",
+          "default": "dois pontos"
+        },
+        {
+          "label": "Ponto e vírgula",
+          "default": "ponto e vírgula"
+        },
+        {
+          "label": "Mais",
+          "default": "mais"
+        },
+        {
+          "label": "Menos",
+          "default": "menos"
+        },
+        {
+          "label": "Asterisco",
+          "default": "asterisco"
+        },
+        {
+          "label": "Barra",
+          "default": "barra"
+        },
+        {
+          "label": "Barra invertida",
+          "default": "barra invertida"
+        },
+        {
+          "label": "Til",
+          "default": "til"
+        },
+        {
+          "label": "Ponto de exclamação invertido",
+          "default": "ponto de exclamação invertido"
+        },
+        {
+          "label": "Ponto de interrogação invertido",
+          "default": "ponto de interrogação invertido"
+        },
+        {
+          "label": "Cifrão",
+          "default": "cifrão"
+        },
+        {
+          "label": "Parêntese esquerdo",
+          "default": "parêntese esquerdo"
+        },
+        {
+          "label": "Parêntese direito",
+          "default": "parêntese direito"
+        },
+        {
+          "label": "Acento circunflexo",
+          "default": "acento circunflexo"
+        },
+        {
+          "label": "Sublinhado",
+          "default": "sublinhado"
+        },
+        {
+          "label": "Barra vertical",
+          "default": "barra vertical"
+        },
+        {
+          "label": "Aspas simples esquerda",
+          "default": "aspas simples esquerda"
+        },
+        {
+          "label": "Aspas simples esquerda",
+          "default": "aspas simples esquerda"
+        },
+        {
+          "label": "Aspas simples direita",
+          "default": "aspas simples direita"
+        },
+        {
+          "label": "Aspas duplas esquerda",
+          "default": "aspas duplas esquerda"
+        },
+        {
+          "label": "Left double low quotation mark",
+          "default": "left double low quotation mark"
+        },
+        {
+          "label": "Right double quotation mark",
+          "default": "right double quotation mark"
+        },
+        {
+          "label": "Left single angle bracket",
+          "default": "left single angle bracket"
+        },
+        {
+          "label": "Right single angle bracket",
+          "default": "right single angle bracket"
+        },
+        {
+          "label": "Left double angle bracket",
+          "default": "left double angle bracket"
+        },
+        {
+          "label": "Right double angle bracket",
+          "default": "right double angle bracket"
+        },
+        {
+          "label": "Left brace",
+          "default": "left brace"
+        },
+        {
+          "label": "Right brace",
+          "default": "right brace"
+        },
+        {
+          "label": "Left bracket",
+          "default": "left bracket"
+        },
+        {
+          "label": "Right bracket",
+          "default": "right bracket"
+        },
+        {
+          "label": "Section",
+          "default": "section"
+        },
+        {
+          "label": "Divided by",
+          "default": "divided by"
+        },
+        {
+          "label": "Multiplied by",
+          "default": "multiplied by"
+        },
+        {
+          "label": "Less Than",
+          "default": "less than"
+        },
+        {
+          "label": "Greater Than",
+          "default": "greater than"
+        }
+      ],
+      "label": "Leitor de tela"
+    }
+  ]
+}

@@ -42,7 +42,7 @@
     },
     {
       "label": "Configurações comportamentais",
-      "description": "Essas opções permitem controlar como a tarefa se comporta.",
+      "description": "Estas opções lhe permitirão controlar como a tarefa se comporta.",
       "fields": [
         {
           "label": "Ativar \"Tentar Novamente\""
@@ -91,7 +91,7 @@
           "default": "Escolha um símbolo"
         },
         {
-          "label": "Texto do título para o seletor de símbolos",
+          "label": "Texto do título para seletor de símbolos",
           "default": "Escolha um símbolo"
         },
         {
@@ -237,7 +237,7 @@
         },
         {
           "label": "Aspas simples esquerda",
-          "default": "aspas simples esquerda"
+          "default": "aspa simples esquerda"
         },
         {
           "label": "Aspas simples esquerda",
@@ -252,67 +252,67 @@
           "default": "aspas duplas esquerda"
         },
         {
-          "label": "Left double low quotation mark",
-          "default": "left double low quotation mark"
+          "label": "Aspas duplas baixas à esquerda",
+          "default": "aspas duplas baixas à esquerda"
         },
         {
-          "label": "Right double quotation mark",
-          "default": "right double quotation mark"
+          "label": "Aspas duplas à direita",
+          "default": "Aspas duplas à direita"
         },
         {
-          "label": "Left single angle bracket",
-          "default": "left single angle bracket"
+          "label": "Colchete angular esquerdo \"<\"",
+          "default": "colchete angular esquerdo \"<\""
         },
         {
-          "label": "Right single angle bracket",
-          "default": "right single angle bracket"
+          "label": "Colchete angular direito \">\"",
+          "default": "Colchete angular direito \">\""
         },
         {
-          "label": "Left double angle bracket",
-          "default": "left double angle bracket"
+          "label": "Colchete angular esquerdo duplo \"<<\"",
+          "default": "colchete angular esquerdo duplo \"<<\""
         },
         {
-          "label": "Right double angle bracket",
-          "default": "right double angle bracket"
+          "label": "Colchete angular direito duplo \">>\"",
+          "default": "colchete angular direito duplo \">>\""
         },
         {
-          "label": "Left brace",
-          "default": "left brace"
+          "label": "Chave esquerda \"{\"",
+          "default": "chave esquerda \"{\""
         },
         {
-          "label": "Right brace",
-          "default": "right brace"
+          "label": "Chave direita \"}\"",
+          "default": "chave direita \"}\""
         },
         {
-          "label": "Left bracket",
-          "default": "left bracket"
+          "label": "Colchete esquerdo \"[\"",
+          "default": "colchete esquerdo \"[\""
         },
         {
-          "label": "Right bracket",
-          "default": "right bracket"
+          "label": "Colchete direito \"]\"",
+          "default": "colchete direito \"]\""
         },
         {
-          "label": "Section",
-          "default": "section"
+          "label": "Seção",
+          "default": "seção"
         },
         {
-          "label": "Divided by",
-          "default": "divided by"
+          "label": "Dividido por",
+          "default": "dividido por"
         },
         {
-          "label": "Multiplied by",
-          "default": "multiplied by"
+          "label": "Multiplicado por",
+          "default": "multiplicado por"
         },
         {
-          "label": "Less Than",
-          "default": "less than"
+          "label": "Menor Que",
+          "default": "menor que"
         },
         {
-          "label": "Greater Than",
-          "default": "greater than"
+          "label": "Maior Que",
+          "default": "menor que"
         }
       ],
-      "label": "Leitor de tela"
+      "label": "Leitor de Tela"
     }
   ]
 }

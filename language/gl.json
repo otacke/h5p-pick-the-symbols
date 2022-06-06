@@ -1,0 +1,318 @@
+{
+  "semantics": [
+    {
+      "label": "Descrición da tarefa",
+      "description": "Describe a túa tarefa aquí."
+    },
+    {
+      "label": "Texto",
+      "description": "Introduza o texto que contén os símbolos para escoller."
+    },
+    {
+      "label": "Símbolos",
+      "description": "Introduza os símbolos dos que o alumno debe escoller.",
+      "default": ".?!,:;'\""
+    },
+    {
+      "fields": [
+        {
+          "description": "Preme o botón \"Engadir rango\" para engadir tantos rangos como precises. Exemplo: 0-20% Mala Puntuación, 21-91% Puntuación Media, 91-100% Puntuación Xenial!",
+          "entity": "rango",
+          "field": {
+            "fields": [
+              {
+                "label": "Rango de Puntuación"
+              },
+              {},
+              {
+                "label": "Retroalimentación para rango de puntuación definido",
+                "placeholder": "Escribe a retroalimentación"
+              }
+            ]
+          },
+          "widgets": [
+            {
+              "label": "Por defecto"
+            }
+          ],
+          "label": "Define a retroalimentación por defecto para calquera rango de puntuación"
+        }
+      ],
+      "label": "Retroalimentación xeral"
+    },
+    {
+      "label": "Configuración do comportamento",
+      "description": "Estas opcións permitiranche controlar o comportamento da tarefa.",
+      "fields": [
+        {
+          "label": "Activar \"Tentar de novo\""
+        },
+        {
+          "label": "Activar \"Solución\""
+        },
+        {
+          "label": "Permitir a comprobación continua",
+          "description": "Permitir aos estudantes comprobar continuamente as súas respostas sen restablecer as súas escollas anteriores."
+        },
+        {
+          "label": "Amosar todos os espazos baleiros",
+          "description": "Amosar con antelación todos os espazos baleiros para grupos de símbolos."
+        },
+        {
+          "label": "Cor de fondo dos espazos baleiros"
+        },
+        {
+          "label": "Usar espazos baleiros finos",
+          "description": "Se está activado, os espazos baleiros non terán borde e serán máis finos para que o texto pareza máis natural."
+        }
+      ]
+    },
+    {
+      "fields": [
+        {
+          "label": "Texto para o botón \"Comprobar\"",
+          "default": "Comprobar"
+        },
+        {
+          "label": "Texto para o botón \"Continuar\"",
+          "default": "Continuar"
+        },
+        {
+          "label": "Texto para o botón \"Amosar solución\"",
+          "default": "Amosar Resposta"
+        },
+        {
+          "label": "Texto para o botón \"Restablecer\"",
+          "default": "Restablecer"
+        },
+        {
+          "label": "Texto do título para botón baleiro",
+          "default": "Escolle un símbolo"
+        },
+        {
+          "default": "Escolle un símbolo",
+          "label": "Texto do título para o selector de símbolos"
+        },
+        {
+          "label": "Texto para o botón \"Engadir baleiro\"",
+          "default": "Engadir espazo baleiro"
+        },
+        {
+          "label": "Texto para o botón \"Eliminar baleiro\"",
+          "default": "Eliminar o espazo baleiro"
+        },
+        {
+          "label": "Texto de axuda para o botón \"Escolle símbolo\"",
+          "description": "@symbol substituirase polo símbolo que se escollería.",
+          "default": "Enche o espazo baleiro con @symbol"
+        },
+        {
+          "label": "Texto para o botón \"Pechar xanela\"",
+          "default": "Pechar fiestra"
+        }
+      ],
+      "label": "Interface de usuario"
+    },
+    {
+      "label": "Lector de pantalla",
+      "fields": [
+        {
+          "label": "Representación textual da barra de puntuación cando se usa un lector de pantalla",
+          "default": "Conseguiches :num dun total de :total puntos"
+        },
+        {
+          "label": "Entrada baleira",
+          "default": "Entrada baleira"
+        },
+        {
+          "label": "De",
+          "default": "de"
+        },
+        {
+          "label": "Retroalimentación para resposta correcta",
+          "default": "contestado correctamente"
+        },
+        {
+          "label": "Retroalimentación para resposta incorrecta",
+          "default": "contestado incorrectamente"
+        },
+        {
+          "label": "Retroalimentación para resposta non fornecida",
+          "default": "non contestado"
+        },
+        {
+          "label": "Resposta Correcta",
+          "default": "Resposta correcta"
+        },
+        {
+          "label": "Espazo",
+          "default": "espazo"
+        },
+        {
+          "label": "Punto",
+          "default": "punto"
+        },
+        {
+          "label": "Signo de exclamación",
+          "default": "signo de exclamación"
+        },
+        {
+          "label": "Signo de interrogación",
+          "default": "signo de interrogación"
+        },
+        {
+          "label": "Coma",
+          "default": "coma"
+        },
+        {
+          "label": "Comiñas simples",
+          "default": "comiñas simples"
+        },
+        {
+          "label": "Comiñas",
+          "default": "comiñas"
+        },
+        {
+          "label": "Dous puntos",
+          "default": "dous puntos"
+        },
+        {
+          "label": "Punto e coma",
+          "default": "punto e coma"
+        },
+        {
+          "label": "Máis",
+          "default": "máis"
+        },
+        {
+          "label": "Menos",
+          "default": "menos"
+        },
+        {
+          "label": "Asterisco",
+          "default": "asterisco"
+        },
+        {
+          "label": "Barra inclinada",
+          "default": "barra inclinada"
+        },
+        {
+          "label": "Barra inclinada cara atrás",
+          "default": "Barra inclinada cara atrás"
+        },
+        {
+          "label": "Til",
+          "default": "til"
+        },
+        {
+          "label": "Signo de exclamación invertido",
+          "default": "signo de exclamación invertido"
+        },
+        {
+          "label": "Signo de interrogación invertido",
+          "default": "signo de interrogación invertido"
+        },
+        {
+          "label": "Símbolo da libra",
+          "default": "símbolo da libra"
+        },
+        {
+          "label": "Paréntese esquerda",
+          "default": "paréntese esquerda"
+        },
+        {
+          "label": "Paréntese dereita",
+          "default": "Paréntese dereita"
+        },
+        {
+          "label": "Caret",
+          "default": "caret"
+        },
+        {
+          "label": "Subliñado",
+          "default": "subliñado"
+        },
+        {
+          "label": "Barra vertical",
+          "default": "barra vertical"
+        },
+        {
+          "default": "comiña simple esquerda",
+          "label": "Comiña simple esquerda"
+        },
+        {
+          "label": "Comiñas baixas simples á esquerda",
+          "default": "comiñas baixas simples á esquerda"
+        },
+        {
+          "label": "Comiña simple dereita",
+          "default": "comiña simple dereita"
+        },
+        {
+          "label": "Comiña dobre á esquerda",
+          "default": "comiñas dobres á esquerda"
+        },
+        {
+          "label": "Comiñas baixas dobres á esquerda",
+          "default": "comiñas baixas dobres á esquerda"
+        },
+        {
+          "label": "Comiñas dobres á dereita",
+          "default": "comiñas dobres á dereita"
+        },
+        {
+          "label": "Soporte de ángulo único esquerdo",
+          "default": "soporte de ángulo único esquerdo"
+        },
+        {
+          "label": "Soporte de ángulo único dereito",
+          "default": "soporte de ángulo único dereito"
+        },
+        {
+          "label": "Soporte de ángulo dobre esquerdo",
+          "default": "soporte de ángulo dobre esquerdo"
+        },
+        {
+          "label": "Soporte de ángulo dobre dereito",
+          "default": "soporte de ángulo dobre dereito"
+        },
+        {
+          "label": "chave esquerda",
+          "default": "chave esquerda"
+        },
+        {
+          "label": "Chave dereita",
+          "default": "chave dereita"
+        },
+        {
+          "label": "Chave esquerda",
+          "default": "chave esquerda"
+        },
+        {
+          "label": "Chave dereita",
+          "default": "chave dereita"
+        },
+        {
+          "label": "Sección",
+          "default": "sección"
+        },
+        {
+          "label": "Dividido por",
+          "default": "dividido por"
+        },
+        {
+          "label": "Multiplicado por",
+          "default": "multiplicado por"
+        },
+        {
+          "label": "Menos de",
+          "default": "menos de"
+        },
+        {
+          "label": "Maior que",
+          "default": "maior que"
+        }
+      ]
+    }
+  ]
+}

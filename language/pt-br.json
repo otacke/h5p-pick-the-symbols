@@ -114,6 +114,7 @@
       ]
     },
     {
+      "label": "Leitor de Tela",
       "fields": [
         {
           "label": "Representação textual da barra de pontuação para quem usa um leitor de tela",
@@ -260,36 +261,36 @@
           "default": "Aspas duplas à direita"
         },
         {
-          "label": "Colchete angular esquerdo \"<\"",
-          "default": "colchete angular esquerdo \"<\""
+          "label": "Colchete angular esquerdo \"&lt;\"",
+          "default": "colchete angular esquerdo"
         },
         {
-          "label": "Colchete angular direito \">\"",
-          "default": "Colchete angular direito \">\""
+          "label": "Colchete angular direito \"&gt;\"",
+          "default": "Colchete angular direito"
         },
         {
-          "label": "Colchete angular esquerdo duplo \"<<\"",
-          "default": "colchete angular esquerdo duplo \"<<\""
+          "label": "Colchete angular esquerdo duplo \"&lt;&lt;\"",
+          "default": "colchete angular esquerdo duplo"
         },
         {
-          "label": "Colchete angular direito duplo \">>\"",
-          "default": "colchete angular direito duplo \">>\""
+          "label": "Colchete angular direito duplo \"&gt;&gt;\"",
+          "default": "colchete angular direito duplo"
         },
         {
           "label": "Chave esquerda \"{\"",
-          "default": "chave esquerda \"{\""
+          "default": "chave esquerda"
         },
         {
           "label": "Chave direita \"}\"",
-          "default": "chave direita \"}\""
+          "default": "chave direita"
         },
         {
           "label": "Colchete esquerdo \"[\"",
-          "default": "colchete esquerdo \"[\""
+          "default": "colchete esquerdo"
         },
         {
           "label": "Colchete direito \"]\"",
-          "default": "colchete direito \"]\""
+          "default": "colchete direito"
         },
         {
           "label": "Seção",
@@ -311,8 +312,7 @@
           "label": "Maior Que",
           "default": "menor que"
         }
-      ],
-      "label": "Leitor de Tela"
+      ]
     }
   ]
 }

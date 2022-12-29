@@ -1,0 +1,318 @@
+{
+  "semantics": [
+    {
+      "label": "Descrição da tarefa",
+      "description": "Descreva aqui a sua tarefa."
+    },
+    {
+      "label": "Texto",
+      "description": "Insira o texto que contém os símbolos a serem selecionados."
+    },
+    {
+      "label": "Símbolos",
+      "description": "Digite os símbolos que o aluno deve escolher.",
+      "default": ".?!,:;'\""
+    },
+    {
+      "label": "Feedback Geral",
+      "fields": [
+        {
+          "widgets": [
+            {
+              "label": "Padrão"
+            }
+          ],
+          "label": "Definir feedback personalizado para qualquer faixa de pontuação",
+          "description": "Clique no botão \"Adicionar faixa\" para adicionar quantos intervalos precisar. Exemplo: 0-20% Pontuação Péssima, 21-91% Pontuação Média, 91-100% Pontuação Óptima!",
+          "entity": "faixa",
+          "field": {
+            "fields": [
+              {
+                "label": "Faixa de Pontuação"
+              },
+              {},
+              {
+                "label": "Feedback para a faixa de pontuação definida",
+                "placeholder": "Preencha o feedback"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Configurações comportamentais",
+      "description": "Essas opções permitem controlar como a tarefa se comportará.",
+      "fields": [
+        {
+          "label": "Activar \"Tentar Novamente\""
+        },
+        {
+          "label": "Activar \"Solução\""
+        },
+        {
+          "label": "Permitir verificação contínua",
+          "description": "Permita que os alunos verifiquem continuamente suas respostas sem redefinir suas escolhas anteriores."
+        },
+        {
+          "label": "Mostrar todos os espaços em branco",
+          "description": "Mostrar todos os espaços em branco para grupos de símbolos com antecedência."
+        },
+        {
+          "label": "Cor de fundo do espaço em branco"
+        },
+        {
+          "label": "Use espaços em branco finos",
+          "description": "Se activado, os espaços em branco não terão borda e serão mais finos para tornar o texto mais natural."
+        }
+      ]
+    },
+    {
+      "label": "Interface de utilizador",
+      "fields": [
+        {
+          "label": "Texto do botão \"Verificar\"",
+          "default": "Verificar"
+        },
+        {
+          "label": "Texto para o botão \"Continuar\"",
+          "default": "Continuar"
+        },
+        {
+          "label": "Texto para o botão \"Mostrar solução\"",
+          "default": "Mostrar solução"
+        },
+        {
+          "label": "Texto para o botão \"Redefinir\"",
+          "default": "Redefinir"
+        },
+        {
+          "label": "Texto do título para botão em branco",
+          "default": "Escolha um símbolo"
+        },
+        {
+          "label": "Texto do título para seletor de símbolos",
+          "default": "Escolha um símbolo"
+        },
+        {
+          "label": "Texto para o botão \"Anexar em branco\"",
+          "default": "Anexar em branco"
+        },
+        {
+          "label": "Texto para o botão \"Remover em branco\"",
+          "default": "Remover em branco"
+        },
+        {
+          "label": "Dica de ferramenta para o botão \"Escolher símbolo\"",
+          "description": "@symbol será substituído pelo símbolo escolhido.",
+          "default": "Preencha espaços em branco com @symbol"
+        },
+        {
+          "label": "Texto para o botão \"Fechar janela\"",
+          "default": "Fechar janela"
+        }
+      ]
+    },
+    {
+      "label": "ReadSpeaker",
+      "fields": [
+        {
+          "label": "Representação textual da barra de pontuação para quem usa um Readspeaker",
+          "default": "Conseguiu :num de :total pontos possíveis"
+        },
+        {
+          "label": "Entrada em branco",
+          "default": "entrada em branco"
+        },
+        {
+          "label": "De",
+          "default": "de"
+        },
+        {
+          "label": "Feedback para resposta correcta",
+          "default": "respondeu correctamente"
+        },
+        {
+          "label": "Feedback para resposta incorrecta",
+          "default": "respondeu incorrectamente"
+        },
+        {
+          "label": "Feedback para sem resposta",
+          "default": "sem resposta"
+        },
+        {
+          "label": "Resposta correcta",
+          "default": "Resposta correcta"
+        },
+        {
+          "label": "Espaço",
+          "default": "espaço"
+        },
+        {
+          "label": "Ponto",
+          "default": "ponto"
+        },
+        {
+          "label": "Ponto de exclamação",
+          "default": "ponto de exclamação"
+        },
+        {
+          "label": "Ponto de interrogação",
+          "default": "ponto de interrogação"
+        },
+        {
+          "label": "Vírgula",
+          "default": "vírgula"
+        },
+        {
+          "label": "Aspa simples",
+          "default": "aspa simples"
+        },
+        {
+          "label": "Aspa dupla",
+          "default": "aspa dupla"
+        },
+        {
+          "label": "Dois pontos",
+          "default": "dois pontos"
+        },
+        {
+          "label": "Ponto e vírgula",
+          "default": "ponto e vírgula"
+        },
+        {
+          "label": "Mais",
+          "default": "mais"
+        },
+        {
+          "label": "Menos",
+          "default": "menos"
+        },
+        {
+          "label": "Asterisco",
+          "default": "asterisco"
+        },
+        {
+          "label": "Barra",
+          "default": "barra"
+        },
+        {
+          "label": "Barra invertida",
+          "default": "barra invertida"
+        },
+        {
+          "label": "Til",
+          "default": "til"
+        },
+        {
+          "label": "Ponto de exclamação invertido",
+          "default": "ponto de exclamação invertido"
+        },
+        {
+          "label": "Ponto de interrogação invertido",
+          "default": "ponto de interrogação invertido"
+        },
+        {
+          "label": "Cifrão",
+          "default": "cifrão"
+        },
+        {
+          "label": "Parênteses esquerdo",
+          "default": "parênteses esquerdo"
+        },
+        {
+          "label": "Parênteses direito",
+          "default": "parênteses direito"
+        },
+        {
+          "label": "Acento circunflexo",
+          "default": "acento circunflexo"
+        },
+        {
+          "label": "Sublinhado",
+          "default": "sublinhado"
+        },
+        {
+          "label": "Barra vertical",
+          "default": "barra vertical"
+        },
+        {
+          "label": "Aspas simples à esquerda",
+          "default": "aspas simples à esquerda"
+        },
+        {
+          "label": "Aspas simples baixas à esquerda",
+          "default": "aspas simples baixas à esquerda"
+        },
+        {
+          "label": "Aspas simples à direita",
+          "default": "aspas simples à direita"
+        },
+        {
+          "label": "Aspas duplas à esquerda",
+          "default": "aspas duplas à esquerda"
+        },
+        {
+          "label": "Aspas duplas baixas à esquerda",
+          "default": "aspas duplas baixas à esquerda"
+        },
+        {
+          "label": "Aspas duplas à direita",
+          "default": "aspas duplas à direita"
+        },
+        {
+          "label": "Suporte simples angular à esquerda",
+          "default": "suporte simples angular à esquerda"
+        },
+        {
+          "label": "Suporte simples angular à direita",
+          "default": "suporte simples angular à direita"
+        },
+        {
+          "label": "Suporte duplo angular à esquerda",
+          "default": "suporte duplo angular à esquerda"
+        },
+        {
+          "label": "Suporte duplo angular à direita",
+          "default": "suporte duplo angular à direita"
+        },
+        {
+          "label": "Chaveta esquerda",
+          "default": "chaveta esquerda"
+        },
+        {
+          "label": "Chaveta direita",
+          "default": "chaveta direita"
+        },
+        {
+          "label": "Suporte esquerdo",
+          "default": "suporte esquerdo"
+        },
+        {
+          "label": "Suporte direito",
+          "default": "suporte direito"
+        },
+        {
+          "label": "Secção",
+          "default": "secção"
+        },
+        {
+          "label": "Dividido por",
+          "default": "dividido por"
+        },
+        {
+          "label": "Multiplicado por",
+          "default": "multiplicado por"
+        },
+        {
+          "label": "Menor Que",
+          "default": "menor que"
+        },
+        {
+          "label": "Maior Que",
+          "default": "maior que"
+        }
+      ]
+    }
+  ]
+}

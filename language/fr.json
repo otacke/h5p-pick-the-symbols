@@ -1,0 +1,318 @@
+{
+  "semantics": [
+    {
+      "label": "Description de la tâche",
+      "description": "Décrivez votre tâche ici."
+    },
+    {
+      "label": "Texte",
+      "description": "Saisir le texte qui contient les symboles à sélectionner."
+    },
+    {
+      "label": "Symboles",
+      "description": "Saisir les symboles parmi lesquels l'élève doit choisir.",
+      "default": ".?!,:;'\""
+    },
+    {
+      "label": "Feedback général",
+      "fields": [
+        {
+          "widgets": [
+            {
+              "label": "Par défaut"
+            }
+          ],
+          "label": "Définir un feedback personnalisé pour n'importe quelle gamme de note",
+          "description": "Cliquez sur la touche « Ajouter une gamme » pour ajouter autant de gammes que nécessaire. Exemple : 0-20 % mauvaise note, 21-91 % note moyenne, 91-100 % excellente note !",
+          "entity": "gamme",
+          "field": {
+            "fields": [
+              {
+                "label": "Gamme de notes"
+              },
+              {},
+              {
+                "label": "Feedback pour une gamme de notes définie",
+                "placeholder": "Compléter le feedback"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Paramètres comportementaux",
+      "description": "Ces options vous permettront de contrôler le déroulement de la tâche.",
+      "fields": [
+        {
+          "label": "Activer « Réessayer »"
+        },
+        {
+          "label": "Activer « Solution »"
+        },
+        {
+          "label": "Autoriser une vérification continue",
+          "description": "Autoriser les élèves à vérifier continuellement leurs réponses sans réinitialiser leurs choix précédents."
+        },
+        {
+          "label": "Afficher tous les espaces à remplir",
+          "description": "Afficher à l'avance tous les espaces à remplir pour les groupes de symboles."
+        },
+        {
+          "label": "Couleur de fond des espaces à remplir"
+        },
+        {
+          "label": "Utiliser des espaces à remplir étroits",
+          "description": "Si cette option est activée, les espaces à remplir n'auront pas de bordure et seront plus étroits afin de donner au texte un aspect plus naturel."
+        }
+      ]
+    },
+    {
+      "label": "Interface utilisateur",
+      "fields": [
+        {
+          "label": "Texte pour la touche « Vérifier »",
+          "default": "Vérifier"
+        },
+        {
+          "label": "Texte pour la touche « Continuer »",
+          "default": "Continuer"
+        },
+        {
+          "label": "Texte pour la touche « Afficher la solution »",
+          "default": "Afficher la solution"
+        },
+        {
+          "label": "Texte pour la touche « Réinitialiser »",
+          "default": "Réinitialiser"
+        },
+        {
+          "label": "Texte du titre pour la touche de l’espace à remplir",
+          "default": "Choisir un symbole"
+        },
+        {
+          "label": "Texte du titre pour le sélecteur de symbole",
+          "default": "Choisir un symbole"
+        },
+        {
+          "label": "Texte pour la touche « Ajouter un espace à remplir »",
+          "default": "Ajouter un espace à remplir"
+        },
+        {
+          "label": "Texte pour la touche « Supprimer l’espace à remplir »",
+          "default": "Supprimer l’espace à remplir"
+        },
+        {
+          "label": "Info-bulle pour la touche « Choisir un symbole »",
+          "description": "@symbol sera remplacé par le symbole qui aura été choisi.",
+          "default": "Remplir l’espace à remplir avec @symbol"
+        },
+        {
+          "label": "Texte pour la touche « Fermer la fenêtre »",
+          "default": "Fermer la fenêtre"
+        }
+      ]
+    },
+    {
+      "label": "ReadSpeaker",
+      "fields": [
+        {
+          "label": "Représentation textuelle de la barre de notes pour les personnes utilisant un ReadSpeaker",
+          "default": "Vous avez obtenu :num sur :total points"
+        },
+        {
+          "label": "Espace à remplir vide",
+          "default": "espace à remplir vide"
+        },
+        {
+          "label": "Sur",
+          "default": "sur"
+        },
+        {
+          "label": "Feedback pour la réponse correcte",
+          "default": "a répondu correctement"
+        },
+        {
+          "label": "Feedback pour une réponse incorrecte",
+          "default": "a répondu incorrectement"
+        },
+        {
+          "label": "Feedback pour une réponse non donnée",
+          "default": "n’a pas répondu"
+        },
+        {
+          "label": "Réponse correcte",
+          "default": "Réponse correcte"
+        },
+        {
+          "label": "Espace",
+          "default": "espace"
+        },
+        {
+          "label": "Point final",
+          "default": "point final"
+        },
+        {
+          "label": "Point d’exclamation",
+          "default": "point d’exclamation"
+        },
+        {
+          "label": "Point d’interrogation",
+          "default": "point d’interrogation"
+        },
+        {
+          "label": "Virgule",
+          "default": "virgule"
+        },
+        {
+          "label": "Guillemet simple",
+          "default": "guillemet simple"
+        },
+        {
+          "label": "Guillemet double",
+          "default": "guillemet double"
+        },
+        {
+          "label": "Deux-points",
+          "default": "deux-points"
+        },
+        {
+          "label": "Point-virgule",
+          "default": "point-virgule"
+        },
+        {
+          "label": "Plus",
+          "default": "plus"
+        },
+        {
+          "label": "Moins",
+          "default": "moins"
+        },
+        {
+          "label": "Astérisque",
+          "default": "astérisque"
+        },
+        {
+          "label": "Barre oblique avant",
+          "default": "barre oblique avant"
+        },
+        {
+          "label": "Barre oblique inversée",
+          "default": "barre oblique inversée"
+        },
+        {
+          "label": "Tilde",
+          "default": "tilde"
+        },
+        {
+          "label": "Point d'exclamation inversé",
+          "default": "point d'exclamation inversé"
+        },
+        {
+          "label": "Point d'interrogation inversé",
+          "default": "point d'interrogation inversé"
+        },
+        {
+          "label": "Signe de la livre",
+          "default": "signe de la livre"
+        },
+        {
+          "label": "Parenthèse gauche",
+          "default": "parenthèse gauche"
+        },
+        {
+          "label": "Parenthèse droite",
+          "default": "parenthèse droite"
+        },
+        {
+          "label": "Accent circonflexe",
+          "default": "accent circonflexe"
+        },
+        {
+          "label": "Souligné",
+          "default": "souligné"
+        },
+        {
+          "label": "Barre verticale",
+          "default": "barre verticale"
+        },
+        {
+          "label": "Guillemet simple gauche",
+          "default": "guillemet simple gauche"
+        },
+        {
+          "label": "Guillemet bas simple gauche",
+          "default": "guillemet bas simple gauche"
+        },
+        {
+          "label": "Guillemet simple droite",
+          "default": "guillemet simple droite"
+        },
+        {
+          "label": "Double guillemet gauche",
+          "default": "double guillemet gauche"
+        },
+        {
+          "label": "Double guillemet bas gauche",
+          "default": "double guillemet bas gauche"
+        },
+        {
+          "label": "Double guillemet droite",
+          "default": "double guillemet droite"
+        },
+        {
+          "label": "Équerre simple gauche",
+          "default": "équerre simple gauche"
+        },
+        {
+          "label": "Équerre simple droite",
+          "default": "équerre simple droite"
+        },
+        {
+          "label": "Double équerre gauche",
+          "default": "double équerre gauche"
+        },
+        {
+          "label": "Double équerre droite",
+          "default": "double équerre droite"
+        },
+        {
+          "label": "Accolade gauche",
+          "default": "accolade gauche"
+        },
+        {
+          "label": "Accolade droite",
+          "default": "accolade droite"
+        },
+        {
+          "label": "Crochet gauche",
+          "default": "crochet gauche"
+        },
+        {
+          "label": "Crochet droit",
+          "default": "crochet droit"
+        },
+        {
+          "label": "Section",
+          "default": "section"
+        },
+        {
+          "label": "Divisé par",
+          "default": "divisé par"
+        },
+        {
+          "label": "Multiplié par",
+          "default": "multiplié par"
+        },
+        {
+          "label": "Inférieur à",
+          "default": "inférieur à"
+        },
+        {
+          "label": "Supérieur à",
+          "default": "supérieur à"
+        }
+      ]
+    }
+  ]
+}

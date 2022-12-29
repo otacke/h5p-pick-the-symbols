@@ -261,19 +261,19 @@
           "default": "Aspas duplas à direita"
         },
         {
-          "label": "Colchete angular esquerdo \"&lt;\"",
+          "label": "Colchete angular esquerdo",
           "default": "colchete angular esquerdo"
         },
         {
-          "label": "Colchete angular direito \"&gt;\"",
+          "label": "Colchete angular direito",
           "default": "Colchete angular direito"
         },
         {
-          "label": "Colchete angular esquerdo duplo \"&lt;&lt;\"",
+          "label": "Colchete angular esquerdo duplo",
           "default": "colchete angular esquerdo duplo"
         },
         {
-          "label": "Colchete angular direito duplo \"&gt;&gt;\"",
+          "label": "Colchete angular direito duplo",
           "default": "colchete angular direito duplo"
         },
         {

@@ -1,0 +1,318 @@
+{
+  "semantics": [
+    {
+      "label": "Maelezo ya kazi",
+      "description": "Elezea kazi yako hapa."
+    },
+    {
+      "label": "Maandishi",
+      "description": "Ingiza maandishi ambayo yana alama za kuchagua."
+    },
+    {
+      "label": "Alama",
+      "description": "Weka alama ambazo mwanafunzi anahitaji kuchagua kutoka.",
+      "default": ".?!,:;'\""
+    },
+    {
+      "label": "Maoni ya Jumla",
+      "fields": [
+        {
+          "widgets": [
+            {
+              "label": "Chaguo-msingi"
+            }
+          ],
+          "label": "Bainisha maoni maalum kwa masafa yoyote ya alama",
+          "description": "Bofya kitufe cha \"Ongeza masafa\" ili kuongeza masafa mengi unavyohitaji. Mfano: 0-20% Alama mbaya, 21-91% Alama ya Wastani, 91-100% Alama Nzuri!",
+          "entity": "masafa",
+          "field": {
+            "fields": [
+              {
+                "label": "Masafa ya Alama"
+              },
+              {},
+              {
+                "label": "Maoni kwa masafa ya alama yaliyofafanuliwa",
+                "placeholder": "Jaza maoni"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Mipangilio ya tabia",
+      "description": "Chaguzi hizi zitakuwezesha kudhibiti jinsi kazi inavyofanya.",
+      "fields": [
+        {
+          "label": "Wezesha \"Jaribu tena\""
+        },
+        {
+          "label": "Washa kitufe cha \"Suluhisho\""
+        },
+        {
+          "label": "Ruhusu uwekaji alama unaoendelea",
+          "description": "Ruhusu wanafunzi kuendelea kuweka alama majibu yao bila kuweka upya chaguo zao za awali."
+        },
+        {
+          "label": "Onyesha nafasi zote zilizoachwa wazi",
+          "description": "Onyesha nafasi zote zilizoachwa wazi kwa vikundi vya alama mapema."
+        },
+        {
+          "label": "Rangi ya Mandharinyuma ya nafasi zilizoachwa wazi"
+        },
+        {
+          "label": "Tumia nafasi nyembamba zilizoachwa wazi",
+          "description": "Ikiwashwa, nafasi zilizoachwa wazi hazitakuwa na mpaka na kuwa nyembamba zaidi ili kufanya maandishi yaonekane ya asili zaidi."
+        }
+      ]
+    },
+    {
+      "label": "Kiolesura cha mtumiaji",
+      "fields": [
+        {
+          "label": "Maandishi ya kitufe cha \"Weka alama\"",
+          "default": "Weka alama"
+        },
+        {
+          "label": "Maandishi ya kitufe cha \"Endelea\"",
+          "default": "Endelea"
+        },
+        {
+          "label": "Maandishi kwa kitufe cha \"Onyesha suluhisho\"",
+          "default": "Onyesha suluhisho"
+        },
+        {
+          "label": "Maandishi ya kitufe cha \"Weka upya\"",
+          "default": "Weka upya"
+        },
+        {
+          "label": "Maandishi ya mada kwa kitufe kitupu",
+          "default": "Chagua alama"
+        },
+        {
+          "label": "Maandishi ya mada kwa kiteua alama",
+          "default": "Chagua alama"
+        },
+        {
+          "label": "Maandishi ya kitufe cha \"Weka tupu\"",
+          "default": "Weka tupu"
+        },
+        {
+          "label": "Maandishi ya kitufe cha \"Ondoa tupu\"",
+          "default": "Ondoa tupu"
+        },
+        {
+          "label": "Kidokezo cha kitufe cha \"Chagua ishara\"",
+          "description": "@alama itabadilishwa na ishara ambayo ingechaguliwa.",
+          "default": "Jaza nafasi tupu na @ishara"
+        },
+        {
+          "label": "Maandishi kwa kitufe cha \"Funga dirisha\"",
+          "default": "Funga dirisha"
+        }
+      ]
+    },
+    {
+      "label": "Kisoma maandishi",
+      "fields": [
+        {
+          "label": "Uwakilishi wa maandishi wa upau wa alama kwa wale wanaotumia kisoma maandishi",
+          "default": "Umepata :num kati ya alama:total"
+        },
+        {
+          "label": "Ingizo tupu",
+          "default": "ingizo tupu"
+        },
+        {
+          "label": "Ya",
+          "default": "ya"
+        },
+        {
+          "label": "Maoni kwa jibu sahihi",
+          "default": "imejibiwa sahihi"
+        },
+        {
+          "label": "Maoni kwa jibu lisilo sahihi",
+          "default": "imejibiwa isivyo sahihi"
+        },
+        {
+          "label": "Maoni kwa jibu lisilotolewa",
+          "default": "haijajibiwa"
+        },
+        {
+          "label": "Jibu sahihi",
+          "default": "Jibu sahihi"
+        },
+        {
+          "label": "Nafasi",
+          "default": "nafasi"
+        },
+        {
+          "label": "Kipindi",
+          "default": "kipindi"
+        },
+        {
+          "label": "Alama ya mshangao",
+          "default": "alama ya mshangao"
+        },
+        {
+          "label": "Alama ya kuuliza",
+          "default": "alama ya kuuliza"
+        },
+        {
+          "label": "Mkato",
+          "default": "mkato"
+        },
+        {
+          "label": "Nukuu moja",
+          "default": "nukuu moja"
+        },
+        {
+          "label": "Nukuu mara mbili",
+          "default": "nukuu mara mbili"
+        },
+        {
+          "label": "Koloni",
+          "default": "koloni"
+        },
+        {
+          "label": "Nusu koloni",
+          "default": "nusu koloni"
+        },
+        {
+          "label": "Jumlisha",
+          "default": "jumlisha"
+        },
+        {
+          "label": "Toa",
+          "default": "toa"
+        },
+        {
+          "label": "Nyota",
+          "default": "nyota"
+        },
+        {
+          "label": "Mkwaju mbele",
+          "default": "mkwaju mbele"
+        },
+        {
+          "label": "Mkwaju nyuma",
+          "default": "mkwaju nyuma"
+        },
+        {
+          "label": "Mlazo",
+          "default": "mlazo"
+        },
+        {
+          "label": "Alama ya mshangao iliyogeuzwa",
+          "default": "alama ya mshangao iliyogeuzwa"
+        },
+        {
+          "label": "Alama ya kuuliza iliyogeuzwa",
+          "default": "alama ya kuuliza iliyogeuzwa"
+        },
+        {
+          "label": "Ishara ya paundi",
+          "default": "ishara ya pound"
+        },
+        {
+          "label": "Mabano ya kushoto",
+          "default": "mabano ya kushoto"
+        },
+        {
+          "label": "Mabano ya kulia",
+          "default": "mabano ya kulia"
+        },
+        {
+          "label": "Kareti",
+          "default": "kareti"
+        },
+        {
+          "label": "Mstari wa chini ya neno au kishazi kwa ajili ya kusisitiza",
+          "default": "mstari wa chini ya neno au kishazi kwa ajili ya kusisitiza"
+        },
+        {
+          "label": "Upau wima",
+          "default": "upau wima"
+        },
+        {
+          "label": "Alama moja ya nukuu ya kushoto",
+          "default": "alama moja ya nukuu ya kushoto"
+        },
+        {
+          "label": "Alama moja ya chini ya kunukuu kushoto",
+          "default": "alama moja ya chini ya kunukuu ya kushoto"
+        },
+        {
+          "label": "Alama moja ya nukuu ya kulia",
+          "default": "alama moja ya nukuu ya kulia"
+        },
+        {
+          "label": "Alama moja ya nukuu ya maradufu kushoto",
+          "default": "alama moja ya nukuu ya maradufu kushoto"
+        },
+        {
+          "label": "Alama ya nukuu ya chini maradufu ya kushoto",
+          "default": "alama moja ya nukuu ya maradufu kushoto"
+        },
+        {
+          "label": "Alama moja ya nukuu ya maradufu kulia",
+          "default": "alama moja ya nukuu ya maradufu kulia"
+        },
+        {
+          "label": "Mabano ya pembe moja ya kushoto",
+          "default": "mabano ya pembe moja ya kushoto"
+        },
+        {
+          "label": "Mabano ya pembe moja ya kulia",
+          "default": "mabano ya pembe moja ya kulia"
+        },
+        {
+          "label": "Mabano ya pembe maradufu ya kushoto",
+          "default": "mabano ya pembe maradufu ya kushoto"
+        },
+        {
+          "label": "Mabano ya pembe maradufu ya kulia",
+          "default": "mabano ya pembe maradufu ya kulia"
+        },
+        {
+          "label": "Brashi ya kushoto",
+          "default": "brashi ya kushoto"
+        },
+        {
+          "label": "Brashi ya kulia",
+          "default": "brashi ya kulia"
+        },
+        {
+          "label": "Mabano ya kushoto",
+          "default": "mabano ya kushoto"
+        },
+        {
+          "label": "Mabano ya kulia",
+          "default": "mabano ya kulia"
+        },
+        {
+          "label": "Sehemu",
+          "default": "sehemu"
+        },
+        {
+          "label": "Imegawanywa kwa",
+          "default": "imegawanywa kwa"
+        },
+        {
+          "label": "Imezidishwa kwa",
+          "default": "imezidishwa kwa"
+        },
+        {
+          "label": "Chini ya",
+          "default": "chini ya"
+        },
+        {
+          "label": "Kubwa Kuliko",
+          "default": "kubwa kuliko"
+        }
+      ]
+    }
+  ]
+}

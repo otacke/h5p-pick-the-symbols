@@ -1,0 +1,318 @@
+{
+  "semantics": [
+    {
+      "label": "Užduoties aprašymas",
+      "description": "Čia aprašykite savo užduotį."
+    },
+    {
+      "label": "Tekstas",
+      "description": "Įveskite tekstą, kuriame yra norimų pasirinkti simbolių."
+    },
+    {
+      "label": "Simboliai",
+      "description": "Įveskite simbolius, iš kurių besimokantysis turi pasirinkti.",
+      "default": ".?!,:;'\""
+    },
+    {
+      "label": "Bendras atsiliepimas",
+      "fields": [
+        {
+          "widgets": [
+            {
+              "label": "Numatytasis"
+            }
+          ],
+          "label": "Define custom feedback for any score range",
+          "description": "Click the \"Add range\" button to add as many ranges as you need. Example: 0-20% Bad score, 21-91% Average Score, 91-100% Great Score!",
+          "entity": "range",
+          "field": {
+            "fields": [
+              {
+                "label": "Score Range"
+              },
+              {},
+              {
+                "label": "Feedback for defined score range",
+                "placeholder": "Fill in the feedback"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Veikimo nustatymai",
+      "description": "Šios parinktys leidžia valdyti užduoties veikimą.",
+      "fields": [
+        {
+          "label": "Įjungti „Bandyti dar kartą“"
+        },
+        {
+          "label": "Įjungti „Sprendimas“"
+        },
+        {
+          "label": "Allow continuous checking",
+          "description": "Allow students to continuously check their answers without resetting their previous choices."
+        },
+        {
+          "label": "Show all blanks",
+          "description": "Show all blanks for groups of symbols in advance."
+        },
+        {
+          "label": "Blanks background color"
+        },
+        {
+          "label": "Use slim blanks",
+          "description": "If activated, the blanks won't have a border and be slimmer in order to make the text look more natural."
+        }
+      ]
+    },
+    {
+      "label": "User interface",
+      "fields": [
+        {
+          "label": "Text for \"Check\" button",
+          "default": "Check"
+        },
+        {
+          "label": "Text for \"Continue\" button",
+          "default": "Continue"
+        },
+        {
+          "label": "Text for \"Show solution\" button",
+          "default": "Show solution"
+        },
+        {
+          "label": "Text for \"Reset\" button",
+          "default": "Reset"
+        },
+        {
+          "label": "Title text for blank button",
+          "default": "Pick a symbol"
+        },
+        {
+          "label": "Title text for symbol picker",
+          "default": "Pick a symbol"
+        },
+        {
+          "label": "Text for \"Append blank\" button",
+          "default": "Append blank"
+        },
+        {
+          "label": "Text for \"Remove blank\" button",
+          "default": "Remove blank"
+        },
+        {
+          "label": "Tooltip for \"Choose symbol\" button",
+          "description": "@symbol will be replaced with the symbol that would be picked.",
+          "default": "Fill blank with @symbol"
+        },
+        {
+          "label": "Text for \"Close window\" button",
+          "default": "Close window"
+        }
+      ]
+    },
+    {
+      "label": "Readspeaker",
+      "fields": [
+        {
+          "label": "Textual representation of the score bar for those using a readspeaker",
+          "default": "You got :num out of :total points"
+        },
+        {
+          "label": "Blank input",
+          "default": "blank input"
+        },
+        {
+          "label": "Of",
+          "default": "of"
+        },
+        {
+          "label": "Feedback for correct answer",
+          "default": "answered correctly"
+        },
+        {
+          "label": "Feedback for incorrect answer",
+          "default": "answered incorrectly"
+        },
+        {
+          "label": "Feedback for no given answer",
+          "default": "not answered"
+        },
+        {
+          "label": "Correct answer",
+          "default": "Correct answer"
+        },
+        {
+          "label": "Space",
+          "default": "space"
+        },
+        {
+          "label": "Period",
+          "default": "period"
+        },
+        {
+          "label": "Exclamation point",
+          "default": "exclamation point"
+        },
+        {
+          "label": "Question mark",
+          "default": "question mark"
+        },
+        {
+          "label": "Comma",
+          "default": "comma"
+        },
+        {
+          "label": "Single quote",
+          "default": "single quote"
+        },
+        {
+          "label": "Double quote",
+          "default": "double quote"
+        },
+        {
+          "label": "Colon",
+          "default": "colon"
+        },
+        {
+          "label": "Semicolon",
+          "default": "semicolon"
+        },
+        {
+          "label": "Plus",
+          "default": "plus"
+        },
+        {
+          "label": "Minus",
+          "default": "minus"
+        },
+        {
+          "label": "Asterisk",
+          "default": "asterisk"
+        },
+        {
+          "label": "Forward slash",
+          "default": "forward slash"
+        },
+        {
+          "label": "Backward slash",
+          "default": "backward slash"
+        },
+        {
+          "label": "Tilde",
+          "default": "tilde"
+        },
+        {
+          "label": "Inverted exclamation point",
+          "default": "inverted exclamation point"
+        },
+        {
+          "label": "Inverted question mark",
+          "default": "inverted question mark"
+        },
+        {
+          "label": "Pound sign",
+          "default": "pound sign"
+        },
+        {
+          "label": "Left paranthesis",
+          "default": "left paranthesis"
+        },
+        {
+          "label": "Right paranthesis",
+          "default": "right paranthesis"
+        },
+        {
+          "label": "Caret",
+          "default": "caret"
+        },
+        {
+          "label": "Underscore",
+          "default": "underscore"
+        },
+        {
+          "label": "Vertical bar",
+          "default": "vertical bar"
+        },
+        {
+          "label": "Left single quotation mark",
+          "default": "left single quotation mark"
+        },
+        {
+          "label": "Left single low quotation mark",
+          "default": "left single low quotation mark"
+        },
+        {
+          "label": "Right single quotation mark",
+          "default": "right single quotation mark"
+        },
+        {
+          "label": "Left double quotation mark",
+          "default": "left double quotation mark"
+        },
+        {
+          "label": "Left double low quotation mark",
+          "default": "left double low quotation mark"
+        },
+        {
+          "label": "Right double quotation mark",
+          "default": "right double quotation mark"
+        },
+        {
+          "label": "Left single angle bracket",
+          "default": "left single angle bracket"
+        },
+        {
+          "label": "Right single angle bracket",
+          "default": "right single angle bracket"
+        },
+        {
+          "label": "Left double angle bracket",
+          "default": "left double angle bracket"
+        },
+        {
+          "label": "Right double angle bracket",
+          "default": "right double angle bracket"
+        },
+        {
+          "label": "Left brace",
+          "default": "left brace"
+        },
+        {
+          "label": "Right brace",
+          "default": "right brace"
+        },
+        {
+          "label": "Left bracket",
+          "default": "left bracket"
+        },
+        {
+          "label": "Right bracket",
+          "default": "right bracket"
+        },
+        {
+          "label": "Section",
+          "default": "section"
+        },
+        {
+          "label": "Divided by",
+          "default": "divided by"
+        },
+        {
+          "label": "Multiplied by",
+          "default": "multiplied by"
+        },
+        {
+          "label": "Less Than",
+          "default": "less than"
+        },
+        {
+          "label": "Greater Than",
+          "default": "greater than"
+        }
+      ]
+    }
+  ]
+}

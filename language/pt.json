@@ -10,7 +10,7 @@
     },
     {
       "label": "Símbolos",
-      "description": "Digite os símbolos que o aluno precisa escolher.",
+      "description": "Digite os símbolos que o aluno deve escolher.",
       "default": ".?!,:;'\""
     },
     {
@@ -23,7 +23,7 @@
             }
           ],
           "label": "Definir feedback personalizado para qualquer faixa de pontuação",
-          "description": "Clique no botão \"Adicionar faixa\" para adicionar quantos intervalos você precisar. Exemplo: 0-20% Pontuação Ruim, 21-91% Pontuação Média, 91-100% Pontuação Ótima!",
+          "description": "Clique no botão \"Adicionar faixa\" para adicionar quantos intervalos precisar. Exemplo: 0-20% Pontuação Péssima, 21-91% Pontuação Média, 91-100% Pontuação Óptima!",
           "entity": "faixa",
           "field": {
             "fields": [
@@ -42,13 +42,13 @@
     },
     {
       "label": "Configurações comportamentais",
-      "description": "Estas opções lhe permitirão controlar como a tarefa se comporta.",
+      "description": "Essas opções permitem controlar como a tarefa se comportará.",
       "fields": [
         {
-          "label": "Ativar \"Tentar Novamente\""
+          "label": "Activar \"Tentar Novamente\""
         },
         {
-          "label": "Ativar \"Solução\""
+          "label": "Activar \"Solução\""
         },
         {
           "label": "Permitir verificação contínua",
@@ -56,19 +56,19 @@
         },
         {
           "label": "Mostrar todos os espaços em branco",
-          "description": "Mostre todos os espaços em branco para grupos de símbolos com antecedência."
+          "description": "Mostrar todos os espaços em branco para grupos de símbolos com antecedência."
         },
         {
           "label": "Cor de fundo do espaço em branco"
         },
         {
           "label": "Use espaços em branco finos",
-          "description": "Se ativado, os espaços em branco não terão borda e serão mais finos para tornar o texto mais natural."
+          "description": "Se activado, os espaços em branco não terão borda e serão mais finos para tornar o texto mais natural."
         }
       ]
     },
     {
-      "label": "Interface de usuário",
+      "label": "Interface de utilizador",
       "fields": [
         {
           "label": "Texto do botão \"Verificar\"",
@@ -114,11 +114,11 @@
       ]
     },
     {
-      "label": "Leitor de Tela",
+      "label": "ReadSpeaker",
       "fields": [
         {
-          "label": "Representação textual da barra de pontuação para quem usa um leitor de tela",
-          "default": "Você conseguiu :num de :total pontos possíveis"
+          "label": "Representação textual da barra de pontuação para quem usa um Readspeaker",
+          "default": "Conseguiu :num de :total pontos possíveis"
         },
         {
           "label": "Entrada em branco",
@@ -129,20 +129,20 @@
           "default": "de"
         },
         {
-          "label": "Feedback para resposta correta",
-          "default": "respondeu corretamente"
+          "label": "Feedback para resposta correcta",
+          "default": "respondeu correctamente"
         },
         {
-          "label": "Feedback para resposta incorreta",
-          "default": "respondeu incorretamente"
+          "label": "Feedback para resposta incorrecta",
+          "default": "respondeu incorrectamente"
         },
         {
           "label": "Feedback para sem resposta",
           "default": "sem resposta"
         },
         {
-          "label": "Resposta correta",
-          "default": "Resposta correta"
+          "label": "Resposta correcta",
+          "default": "Resposta correcta"
         },
         {
           "label": "Espaço",
@@ -170,7 +170,7 @@
         },
         {
           "label": "Aspa dupla",
-          "default": "Aspa dupla"
+          "default": "aspa dupla"
         },
         {
           "label": "Dois pontos",
@@ -217,12 +217,12 @@
           "default": "cifrão"
         },
         {
-          "label": "Parêntese esquerdo",
-          "default": "parêntese esquerdo"
+          "label": "Parênteses esquerdo",
+          "default": "parênteses esquerdo"
         },
         {
-          "label": "Parêntese direito",
-          "default": "parêntese direito"
+          "label": "Parênteses direito",
+          "default": "parênteses direito"
         },
         {
           "label": "Acento circunflexo",
@@ -237,20 +237,20 @@
           "default": "barra vertical"
         },
         {
-          "label": "Aspas simples esquerda",
-          "default": "aspa simples esquerda"
+          "label": "Aspas simples à esquerda",
+          "default": "aspas simples à esquerda"
         },
         {
-          "label": "Aspas simples esquerda",
-          "default": "aspas simples esquerda"
+          "label": "Aspas simples baixas à esquerda",
+          "default": "aspas simples baixas à esquerda"
         },
         {
-          "label": "Aspas simples direita",
-          "default": "aspas simples direita"
+          "label": "Aspas simples à direita",
+          "default": "aspas simples à direita"
         },
         {
-          "label": "Aspas duplas esquerda",
-          "default": "aspas duplas esquerda"
+          "label": "Aspas duplas à esquerda",
+          "default": "aspas duplas à esquerda"
         },
         {
           "label": "Aspas duplas baixas à esquerda",
@@ -258,43 +258,43 @@
         },
         {
           "label": "Aspas duplas à direita",
-          "default": "Aspas duplas à direita"
+          "default": "aspas duplas à direita"
         },
         {
-          "label": "Colchete angular esquerdo",
-          "default": "colchete angular esquerdo"
+          "label": "Suporte simples angular à esquerda",
+          "default": "suporte simples angular à esquerda"
         },
         {
-          "label": "Colchete angular direito",
-          "default": "Colchete angular direito"
+          "label": "Suporte simples angular à direita",
+          "default": "suporte simples angular à direita"
         },
         {
-          "label": "Colchete angular esquerdo duplo",
-          "default": "colchete angular esquerdo duplo"
+          "label": "Suporte duplo angular à esquerda",
+          "default": "suporte duplo angular à esquerda"
         },
         {
-          "label": "Colchete angular direito duplo",
-          "default": "colchete angular direito duplo"
+          "label": "Suporte duplo angular à direita",
+          "default": "suporte duplo angular à direita"
         },
         {
-          "label": "Chave esquerda \"{\"",
-          "default": "chave esquerda"
+          "label": "Chaveta esquerda",
+          "default": "chaveta esquerda"
         },
         {
-          "label": "Chave direita \"}\"",
-          "default": "chave direita"
+          "label": "Chaveta direita",
+          "default": "chaveta direita"
         },
         {
-          "label": "Colchete esquerdo \"[\"",
-          "default": "colchete esquerdo"
+          "label": "Suporte esquerdo",
+          "default": "suporte esquerdo"
         },
         {
-          "label": "Colchete direito \"]\"",
-          "default": "colchete direito"
+          "label": "Suporte direito",
+          "default": "suporte direito"
         },
         {
-          "label": "Seção",
-          "default": "seção"
+          "label": "Secção",
+          "default": "secção"
         },
         {
           "label": "Dividido por",
@@ -310,7 +310,7 @@
         },
         {
           "label": "Maior Que",
-          "default": "menor que"
+          "default": "maior que"
         }
       ]
     }

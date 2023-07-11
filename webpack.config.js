@@ -1,38 +1,46 @@
 const path = require('path');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 
-const nodeEnv = process.env.NODE_ENV || 'development';
-const isProd = (nodeEnv === 'production');
+const mode = process.argv.includes('--mode=production') ?
+  'production' : 'development';
+const libraryName = process.env.npm_package_name;
 
 module.exports = {
-  mode: nodeEnv,
+  mode: mode,
+  resolve: {
+    alias: {
+      '@scripts': path.resolve(__dirname, 'src/scripts'),
+      '@services': path.resolve(__dirname, 'src/scripts/services'),
+      '@styles': path.resolve(__dirname, 'src/styles')
+    }
+  },
   optimization: {
-    minimize: isProd,
+    minimize: mode === 'production',
     minimizer: [
       new TerserPlugin({
         terserOptions: {
-          compress:{
+          compress: {
             drop_console: true,
           }
         }
-      }),
-    ],
+      })
+    ]
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: 'h5p-pick-the-symbols.css'
+      filename: `${libraryName}.css`
     })
   ],
   entry: {
-    dist: './src/entries/h5p-pick-the-symbols.js'
+    dist: './src/entries/dist.js'
   },
   output: {
-    filename: 'h5p-pick-the-symbols.js',
+    filename: `${libraryName}.js`,
     path: path.resolve(__dirname, 'dist'),
-    assetModuleFilename: 'assets/[name][ext][query]'
+    clean: true
   },
-  target: ['web', 'es5'], // Damn you, IE11!
+  target: ['browserslist'],
   module: {
     rules: [
       {
@@ -49,20 +57,17 @@ module.exports = {
               publicPath: ''
             }
           },
-          { loader: "css-loader" },
           {
-            loader: "sass-loader"
+            loader: 'css-loader'
+          },
+          {
+            loader: 'sass-loader'
           }
         ]
       },
       {
         test: /\.svg|\.jpg|\.png$/,
         include: path.join(__dirname, 'src/images'),
-        type: 'asset/resource'
-      },
-      {
-        test: /\.mp3|\.wav$/,
-        include: path.join(__dirname, 'src/audio'),
         type: 'asset/resource'
       },
       {
@@ -75,5 +80,5 @@ module.exports = {
   stats: {
     colors: true
   },
-  devtool: (isProd) ? undefined : 'eval-cheap-module-source-map'
+  ...(mode !== 'production' && { devtool: 'eval-cheap-module-source-map' })
 };

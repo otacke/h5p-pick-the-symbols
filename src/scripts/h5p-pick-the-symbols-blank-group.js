@@ -4,10 +4,9 @@ import Util from './h5p-pick-the-symbols-util';
 /** Class representing a group of blanks */
 export default class PickTheSymbolsBlankGroup {
   /**
-   * @constructor
-   *
+   * @class
    * @param {object} params Parameters.
-   * @param {object} [callbacks={}] Callbacks.
+   * @param {object} [callbacks] Callbacks.
    */
   constructor(params, callbacks = {}) {
     this.params = params;
@@ -24,7 +23,7 @@ export default class PickTheSymbolsBlankGroup {
 
   /**
    * Return the DOM for this class.
-   * @return {HTMLElement} DOM for this class.
+   * @returns {HTMLElement} DOM for this class.
    */
   getDOM() {
     return this.content;
@@ -33,9 +32,9 @@ export default class PickTheSymbolsBlankGroup {
   /**
    * Add blank to the end of the group.
    * @param {object} params Parameters.
-   * @param {string[]} [params.answer=[]] Preset answers.
-   * @param {boolean} [params.provideDefaultSpace=false] If true and solution is 'space', preset it.
-   * @param {number} [params.amount=1] Number of blanks to add.
+   * @param {string[]} [params.answer] Preset answers.
+   * @param {boolean} [params.provideDefaultSpace] If true and solution is 'space', preset it.
+   * @param {number} [params.amount] Number of blanks to add.
    */
   addBlank(params = {}) {
     params.amount = Math.max(1, params.amount || 1);
@@ -93,8 +92,8 @@ export default class PickTheSymbolsBlankGroup {
 
   /**
    * Get blank.
-   * @param {number} [index=Infinity] Index of blank.
-   * @return {PickTheSymbolsBlank} Blank.
+   * @param {number} [index] Index of blank.
+   * @returns {PickTheSymbolsBlank} Blank.
    */
   getBlank(index = Infinity) {
     index = Math.min(Math.max(0, index), this.blanks.length - 1);
@@ -103,7 +102,7 @@ export default class PickTheSymbolsBlankGroup {
 
   /**
    * Get number of blanks in group.
-   * @return {number} Number of blanks in group.
+   * @returns {number} Number of blanks in group.
    */
   getLength() {
     return this.blanks.length;
@@ -111,7 +110,7 @@ export default class PickTheSymbolsBlankGroup {
 
   /**
    * Handle opening overlay by blank.
-   * @param {PickTheSymbolsBlank} Blank.
+   * @param {PickTheSymbolsBlank} blank Blank.
    */
   handleOpenOverlay(blank) {
     this.callbacks.onOpenOverlay(this, blank);
@@ -119,7 +118,7 @@ export default class PickTheSymbolsBlankGroup {
 
   /**
    * Get maximum score for group.
-   * @return {number} Maximum score for group.
+   * @returns {number} Maximum score for group.
    */
   getMaxScore() {
     return this.params.solution.replace(/ /g, '').length;
@@ -127,7 +126,7 @@ export default class PickTheSymbolsBlankGroup {
 
   /**
    * Get score for group.
-   * @return {number} Score for group.
+   * @returns {number} Score for group.
    */
   getScore() {
     return this.blanks.reduce((score, blank) => score + blank.getScore(), 0);
@@ -135,11 +134,11 @@ export default class PickTheSymbolsBlankGroup {
 
   /**
    * Get correct responses pattern for reporting.
-   * @return {string} Correct responses pattern.
+   * @returns {string} Correct responses pattern.
    */
   getXAPICorrectResponsesPattern() {
     return this.blanks
-      .map(blank => {
+      .map((blank) => {
         if (blank.getScore() === 0) {
           return null;
         }
@@ -150,24 +149,24 @@ export default class PickTheSymbolsBlankGroup {
           return blank.getSolution();
         }
       })
-      .filter(blank => blank !== null)
+      .filter((blank) => blank !== null)
       .join('[,]');
   }
 
   /**
    * Get response for reporting.
-   * @return {string} Response.
+   * @returns {string} Response.
    */
   getXAPIResponse() {
     return this.blanks
-      .map(blank => (blank.getScore() !== 0) ? blank.getAnswer() : null)
-      .filter(blank => blank !== null)
+      .map((blank) => (blank.getScore() !== 0) ? blank.getAnswer() : null)
+      .filter((blank) => blank !== null)
       .join('[,]');
   }
 
   /**
    * Get gaps for reporting.
-   * @return {string} Gaps.
+   * @returns {string} Gaps.
    */
   getXAPIGap() {
     return this.blanks.reduce((gaps, blank) => {
@@ -177,7 +176,7 @@ export default class PickTheSymbolsBlankGroup {
 
   /**
    * Mark visual state of blanks.
-   * @param {object} [params={}] Parameters.
+   * @param {object} [params] Parameters.
    * @param {boolean} [params.highlight] If true, mark state, else reset.
    * @param {boolean} [params.answer] If true, show answer, else hide.
    */
@@ -199,14 +198,15 @@ export default class PickTheSymbolsBlankGroup {
       }
     }
 
-    this.blanks.forEach(blank => {
+    this.blanks.forEach((blank) => {
       blank.showSolution(params);
     });
   }
 
   /**
    * Reset blanks.
-   * @param {boolean} [keepAllBlanks] If not true, will remove blanks.
+   * @param {object} [params] Parameters.
+   * @param {boolean} [params.keepAllBlanks] If not true, will remove blanks.
    */
   reset(params = {}) {
     if (params.keepAllBlanks !== true) {
@@ -219,7 +219,7 @@ export default class PickTheSymbolsBlankGroup {
       }
     }
 
-    this.blanks.forEach(blank => {
+    this.blanks.forEach((blank) => {
       blank.reset(params);
     });
   }
@@ -229,17 +229,17 @@ export default class PickTheSymbolsBlankGroup {
    * @param {boolean} state If true, will be enabled, else disabled.
    */
   setEnabled(state) {
-    this.blanks.forEach(blank => {
+    this.blanks.forEach((blank) => {
       blank.setEnabled(state);
     });
   }
 
   /**
    * Answer call to return the current state.
-   * @return {object} Current state.
+   * @returns {object} Current state.
    */
   getCurrentState() {
-    return this.blanks.map(blank => blank.getCurrentState());
+    return this.blanks.map((blank) => blank.getCurrentState());
   }
 
   /**

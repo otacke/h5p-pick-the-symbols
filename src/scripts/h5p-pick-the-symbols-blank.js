@@ -3,15 +3,14 @@ import Util from './h5p-pick-the-symbols-util';
 /** Class representing the content */
 export default class PickTheSymbolsBlank {
   /**
-   * @constructor
-   *
+   * @class
    * @param {object} params Parameters.
    * @param {string} params.color CSS color for background.
    * @param {string} params.solution Solution characters.
    * @param {boolean} params.isFirst If true, is first, undeletable blank.
    * @param {object} params.callbacks Callbacks.
    * @param {function} params.callbacks.openOverlay Open overlay.
-   * @param {object} [callbacks={}] Callbacks.
+   * @param {object} [callbacks] Callbacks.
    */
   constructor(params, callbacks = {}) {
     this.params = params;
@@ -68,7 +67,7 @@ export default class PickTheSymbolsBlank {
 
   /**
    * Return the DOM for this class.
-   * @return {HTMLElement} DOM for this class.
+   * @returns {HTMLElement} DOM for this class.
    */
   getDOM() {
     return this.content;
@@ -76,7 +75,7 @@ export default class PickTheSymbolsBlank {
 
   /**
    * Return the DOM for the blank.
-   * @return {HTMLElement} DOM for this blank.
+   * @returns {HTMLElement} DOM for this blank.
    */
   getBlankDOM() {
     return this.blank;
@@ -91,6 +90,7 @@ export default class PickTheSymbolsBlank {
 
   /**
    * Get solution for this blank.
+   * @returns {string} Solution.
    */
   getSolution() {
     return this.solution;
@@ -118,7 +118,7 @@ export default class PickTheSymbolsBlank {
 
   /**
    * Get answer for this blank.
-   * @return {null|string} symbol Answer given.
+   * @returns {null|string} symbol Answer given.
    */
   getAnswer() {
     return this.answer;
@@ -126,7 +126,7 @@ export default class PickTheSymbolsBlank {
 
   /**
    * Get score for this answer.
-   * @return {number} Score for this answer.
+   * @returns {number} Score for this answer.
    */
   getScore() {
     // No score if no answer given or explicit space which is neutral
@@ -160,7 +160,7 @@ export default class PickTheSymbolsBlank {
 
   /**
    * Show solution.
-   * @param {object} [params={}] Parameters.
+   * @param {object} [params] Parameters.
    * @param {boolean} [params.highlight] If true, mark state, else reset.
    * @param {boolean} [params.answer] If true, show answer, else hide.
    * @param {boolean} [params.score] If true, show score, else remove.
@@ -203,10 +203,10 @@ export default class PickTheSymbolsBlank {
     else {
       // Remove Score Explanations
       const selectorsExplainers = ['.h5p-question-plus-one', '.h5p-question-minus-one'];
-      selectorsExplainers.forEach(selector => {
+      selectorsExplainers.forEach((selector) => {
         const nodes = this.blank.querySelectorAll(selector);
         if (nodes) {
-          nodes.forEach(node => {
+          nodes.forEach((node) => {
             node.parentNode.removeChild(node);
           });
         }
@@ -277,11 +277,11 @@ export default class PickTheSymbolsBlank {
 
   /**
    * Reset blank.
-   * @param {object} Params.
-   * @param {boolean} [keepAnswers] If not true, will remove answers given.
-   * @param {boolean} [keepSolutions] If not true, will remove solutions.
-   * @param {boolean} [keepExplanations] If not true, will remove explanations.
-   * @param {boolean} [keepHighlights] If not true, will remove highlights.
+   * @param {object} [params] Parameters,
+   * @param {boolean} [params.keepAnswers] If not true, will remove answers given.
+   * @param {boolean} [params.keepSolutions] If not true, will remove solutions.
+   * @param {boolean} [params.keepExplanations] If not true, will remove explanations.
+   * @param {boolean} [params.keepHighlights] If not true, will remove highlights.
    */
   reset(params = {}) {
     this.show();
@@ -306,7 +306,7 @@ export default class PickTheSymbolsBlank {
 
   /**
    * Answer call to return the current state.
-   * @return {object} Current state.
+   * @returns {object} Current state.
    */
   getCurrentState() {
     return this.getAnswer();

@@ -1,4 +1,5 @@
 import Overlay from './h5p-pick-the-symbols-overlay';
+import PickTheSymbolsBlank from './h5p-pick-the-symbols-blank';
 import PickTheSymbolsBlankGroup from './h5p-pick-the-symbols-blank-group';
 import PickTheSymbolsChooser from './h5p-pick-the-symbols-chooser';
 import Util from './h5p-pick-the-symbols-util';
@@ -6,14 +7,13 @@ import Util from './h5p-pick-the-symbols-util';
 /** Class representing the content */
 export default class PickTheSymbolsContent {
   /**
-   * @constructor
-   *
+   * @class
    * @param {object} params Parameters.
    * @param {string} params.taskDescription Task description text.
    * @param {string} params.text Text to parse.
    * @param {string} params.symbols Symbols to replace and pick from.
    * @param {string} params.colorBackground Background color of blanks.
-   * @param {object} [callbacks={}] Callbacks.
+   * @param {object} [callbacks] Callbacks.
    */
   constructor(params, callbacks = {}) {
     this.params = params;
@@ -71,7 +71,7 @@ export default class PickTheSymbolsContent {
     this.blankGroups = [];
     this.nextBlankId = 0;
 
-    this.answerGiven = (this.params.previousState && this.params.previousState.filter(state => {
+    this.answerGiven = (this.params.previousState && this.params.previousState.filter((state) => {
       return state.length > 1 || (state.length === 1 && state[0] !== null);
     }).length > 0);
     this.overlayIsOpen = false;
@@ -83,10 +83,10 @@ export default class PickTheSymbolsContent {
     this.placeholderTemplate = textDeconstructed.placeholder;
 
     // No need to add blanks for single characters
-    this.textBlankGroups = this.textBlankGroups.map(group => group.trim());
+    this.textBlankGroups = this.textBlankGroups.map((group) => group.trim());
 
     // Check if there are "complicated" blanks
-    this.onlySimpleBlanks = this.textBlankGroups.every(group => group.length < 2);
+    this.onlySimpleBlanks = this.textBlankGroups.every((group) => group.length < 2);
 
     this.enabled = true;
 
@@ -134,7 +134,7 @@ export default class PickTheSymbolsContent {
         onRemoveBlank: () => {
           this.handleChooserRemoveBlank();
         },
-        onGetVerboseSymbol: symbol => {
+        onGetVerboseSymbol: (symbol) => {
           return this.getVerboseSymbol(symbol);
         }
       }
@@ -163,13 +163,13 @@ export default class PickTheSymbolsContent {
 
     // Close overlay on outside click (iframe window and 1st level parent)
     const topWindow = Util.getTopWindow(window, 1);
-    topWindow.addEventListener('click', event => {
+    topWindow.addEventListener('click', (event) => {
       this.handleCloseOverlayExternal(event);
     });
-    window.addEventListener('click', event => {
+    window.addEventListener('click', (event) => {
       this.handleCloseOverlayExternal(event);
     });
-    window.addEventListener('keydown', event => {
+    window.addEventListener('keydown', (event) => {
       this.handleCloseOverlayExternal(event);
     });
 
@@ -227,7 +227,7 @@ export default class PickTheSymbolsContent {
 
   /**
    * Return the DOM for this class.
-   * @return {HTMLElement} DOM for this class.
+   * @returns {HTMLElement} DOM for this class.
    */
   getDOM() {
     return this.content;
@@ -263,8 +263,8 @@ export default class PickTheSymbolsContent {
 
   /**
    * Handle closing the overlay.
-   * @params {object} [params] Parameters.
-   * @params {boolean} [params.keepFocus] If true, don't set focus to current blank.
+   * @param {object} [params] Parameters.
+   * @param {boolean} [params.keepFocus] If true, don't set focus to current blank.
    */
   handleCloseOverlay(params = {}) {
     this.overlayIsOpen = false;
@@ -281,6 +281,7 @@ export default class PickTheSymbolsContent {
 
   /**
    * Handle closing the overlay from outside click.
+   * @param {Event} event Event.
    */
   handleCloseOverlayExternal(event) {
     if (!this.overlayIsOpen) {
@@ -388,7 +389,7 @@ export default class PickTheSymbolsContent {
 
   /**
    * Mark visual state of blanks.
-   * @param {object} [params={}] Parameters.
+   * @param {object} [params] Parameters.
    * @param {boolean} [params.highlight] If true, mark state, else reset.
    * @param {boolean} [params.answer] If true, show answer, else hide.
    */
@@ -397,7 +398,7 @@ export default class PickTheSymbolsContent {
       this.solutionShowing = true;
     }
 
-    this.blankGroups.forEach(blankGroup => {
+    this.blankGroups.forEach((blankGroup) => {
       blankGroup.showSolutions(params);
     });
   }
@@ -406,8 +407,8 @@ export default class PickTheSymbolsContent {
     const total = this.blankGroups.reduce((result, current) => result + current.getLength(), 0);
     let counter = 1;
 
-    this.blankGroups.forEach(group => {
-      group.blanks.forEach(blank => {
+    this.blankGroups.forEach((group) => {
+      group.blanks.forEach((blank) => {
         const position = `${counter} ${this.params.a11y.of} ${total}.`;
 
         const score = blank.getScore();
@@ -451,7 +452,7 @@ export default class PickTheSymbolsContent {
 
   /**
    * Determine if a solution is displayed.
-   * @return {boolean} True if solution is displayed.
+   * @returns {boolean} True if solution is displayed.
    */
   isSolutionShowing() {
     return this.solutionShowing || false;
@@ -464,7 +465,7 @@ export default class PickTheSymbolsContent {
   reset(params = {}) {
     params.keepAllBlanks = params.keepAllBlanks || this.params.showAllBlanks;
 
-    this.blankGroups.forEach(blankGroup => {
+    this.blankGroups.forEach((blankGroup) => {
       blankGroup.reset(params);
     });
 
@@ -493,7 +494,7 @@ export default class PickTheSymbolsContent {
       this.textContainer.classList.add('h5p-pick-the-symbols-disabled');
     }
 
-    this.blankGroups.forEach(group => {
+    this.blankGroups.forEach((group) => {
       group.setEnabled(state);
     });
 
@@ -502,29 +503,29 @@ export default class PickTheSymbolsContent {
 
   /**
    * Get correct responses pattern for reporting.
-   * @return {string} Correct responses pattern.
+   * @returns {string} Correct responses pattern.
    */
   getXAPICorrectResponsesPatterns() {
     return [this.blankGroups
-      .map(group => group.getXAPICorrectResponsesPattern())
-      .filter(group => group !== '')
+      .map((group) => group.getXAPICorrectResponsesPattern())
+      .filter((group) => group !== '')
       .join('[,]')];
   }
 
   /**
    * Get response for reporting.
-   * @return {string} Response.
+   * @returns {string} Response.
    */
   getXAPIResponses() {
     return this.blankGroups
-      .map(group => group.getXAPIResponse())
-      .filter(group => group !== '')
+      .map((group) => group.getXAPIResponse())
+      .filter((group) => group !== '')
       .join('[,]');
   }
 
   /**
    * Get gaps for reporting.
-   * @return {string} Gaps.
+   * @returns {string} Gaps.
    */
   getXAPIGaps() {
     const placeholderText = PickTheSymbolsContent.getPlaceholderText();
@@ -536,7 +537,7 @@ export default class PickTheSymbolsContent {
 
   /**
    * Detect whether an answer has been given.
-   * @return {boolean} True, if answer was given.
+   * @returns {boolean} True, if answer was given.
    */
   getAnswerGiven() {
     return this.answerGiven;
@@ -544,7 +545,7 @@ export default class PickTheSymbolsContent {
 
   /**
    * Get maximum score possible.
-   * @return {number} Maximum score possible.
+   * @returns {number} Maximum score possible.
    */
   getMaxScore() {
     return this.blankGroups.reduce((score, blankGroup) => score + blankGroup.getMaxScore(), 0);
@@ -552,7 +553,7 @@ export default class PickTheSymbolsContent {
 
   /**
    * Get current score.
-   * @return {number} Current score.
+   * @returns {number} Current score.
    */
   getScore() {
     const score = this.blankGroups.reduce((score, blankGroup) => score + blankGroup.getScore(), 0);
@@ -561,16 +562,16 @@ export default class PickTheSymbolsContent {
 
   /**
    * Answer call to return the current state.
-   * @return {object} Current state.
+   * @returns {object} Current state.
    */
   getCurrentState() {
-    return this.blankGroups.map(group => group.getCurrentState());
+    return this.blankGroups.map((group) => group.getCurrentState());
   }
 
   /**
    * Get readable character description.
    * @param {string} symbol Symbol to make readable.
-   * @return {string} Readable character.
+   * @returns {string} Readable character.
    */
   getVerboseSymbol(symbol) {
     symbol = symbol || '&nbsp;';
@@ -584,7 +585,7 @@ export default class PickTheSymbolsContent {
    * requirements popped in.
    * @param {string} text Characters of text.
    * @param {string[]} symbols Symbols to replace.
-   * @return {object} Blanks and HTML text to display.
+   * @returns {object|undefined} Blanks and HTML text to display.
    */
   static deconstructText(text, symbols) {
     if (!text || !symbols) {
@@ -604,9 +605,9 @@ export default class PickTheSymbolsContent {
     tmp.innerHTML = text;
     const paragraphs = Array.prototype.slice
       .call(tmp.querySelectorAll('p'))
-      .map(p => Util.stripHTML(p.innerText));
+      .map((p) => Util.stripHTML(p.innerText));
 
-    paragraphs.forEach(text => {
+    paragraphs.forEach((text) => {
       if (text === '') {
         return;
       }
@@ -670,12 +671,12 @@ export default class PickTheSymbolsContent {
       placeholder = placeholder.replace(PickTheSymbolsContent.getWordGroupMarkerEnd(), '');
     }
 
-    return {sentence: output, blanks: blanks, placeholder: placeholder};
+    return { sentence: output, blanks: blanks, placeholder: placeholder };
   }
 
   /**
    * Get placeholder text.
-   * @return {string} Placeholder text.
+   * @returns {string} Placeholder text.
    */
   static getPlaceholderText() {
     return '<span class="h5p-pick-the-symbols-placeholder"></span>';
@@ -683,7 +684,7 @@ export default class PickTheSymbolsContent {
 
   /**
    * Get text for word group start marker.
-   * @return {string} Word group start marker text.
+   * @returns {string} Word group start marker text.
    */
   static getWordGroupMarkerStart() {
     return '[[[wordgroupstart]]]';
@@ -691,7 +692,7 @@ export default class PickTheSymbolsContent {
 
   /**
    * Get text for word group start marker.
-   * @return {string} Word group start marker text.
+   * @returns {string} Word group start marker text.
    */
   static getWordGroupMarkerEnd() {
     return '[[[wordgroupend]]]';

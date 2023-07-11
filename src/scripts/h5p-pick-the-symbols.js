@@ -8,8 +8,7 @@ import Util from './h5p-pick-the-symbols-util';
  */
 export default class PickTheSymbols extends H5P.Question {
   /**
-   * @constructor
-   *
+   * @class
    * @param {object} params Parameters passed by the editor.
    * @param {number} contentId Content's id.
    * @param {object} [extras] Saved state, metadata, etc.
@@ -32,7 +31,7 @@ export default class PickTheSymbols extends H5P.Question {
     this.params = Util.extend({
       taskDescription: '',
       text: '',
-      symbols: `.?!,:;'"`,
+      symbols: '.?!,:;\'"',
       behaviour: {
         enableSolutionsButton: true,
         enableRetry: true,
@@ -165,7 +164,7 @@ export default class PickTheSymbols extends H5P.Question {
             });
           }
         }
-      );
+        );
 
         // Register content with H5P.Question
         this.setContent(this.content.getDOM());
@@ -193,7 +192,7 @@ export default class PickTheSymbols extends H5P.Question {
           this.showButton('continue');
         }
 
-        this.content.handleCloseOverlay({keepFocus: true});
+        this.content.handleCloseOverlay({ keepFocus: true });
 
         // Show result in aria label
         this.content.relabelBlanks({
@@ -280,27 +279,27 @@ export default class PickTheSymbols extends H5P.Question {
         this.trigger('resize');
       }
       else {
-        this.content.resize({bubblingDown: true});
+        this.content.resize({ bubblingDown: true });
       }
     };
 
     /**
      * Check if result has been submitted or input has been given.
-     * @return {boolean} True, if answer was given.
+     * @returns {boolean} True, if answer was given.
      * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-1}
      */
     this.getAnswerGiven = () => this.content.getAnswerGiven();
 
     /**
      * Get latest score.
-     * @return {number} latest score.
+     * @returns {number} latest score.
      * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-2}
      */
     this.getScore = () => this.content.getScore();
 
     /**
      * Get maximum possible score.
-     * @return {number} Score necessary for mastering.
+     * @returns {number} Score necessary for mastering.
      * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-3}
      */
     this.getMaxScore = () => this.content.getMaxScore();
@@ -348,8 +347,7 @@ export default class PickTheSymbols extends H5P.Question {
 
     /**
      * Get xAPI data.
-     *
-     * @return {object} XAPI statement.
+     * @returns {object} XAPI statement.
      * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-6}
      */
     this.getXAPIData = () => ({
@@ -358,8 +356,7 @@ export default class PickTheSymbols extends H5P.Question {
 
     /**
      * Build xAPI answer event.
-     *
-     * @return {H5P.XAPIEvent} XAPI answer event.
+     * @returns {H5P.XAPIEvent} XAPI answer event.
      */
     this.getXAPIAnswerEvent = () => {
       const xAPIEvent = this.createXAPIEvent('answered');
@@ -372,9 +369,8 @@ export default class PickTheSymbols extends H5P.Question {
 
     /**
      * Create an xAPI event for Dictation.
-     *
      * @param {string} verb Short id of the verb we want to trigger.
-     * @return {H5P.XAPIEvent} Event template.
+     * @returns {H5P.XAPIEvent} Event template.
      */
     this.createXAPIEvent = (verb) => {
       const xAPIEvent = this.createXAPIEventTemplate(verb);
@@ -386,8 +382,7 @@ export default class PickTheSymbols extends H5P.Question {
 
     /**
      * Get the xAPI definition for the xAPI object.
-     *
-     * @return {object} XAPI definition.
+     * @returns {object} XAPI definition.
      */
     this.getxAPIDefinition = () => {
       const definition = {};
@@ -408,13 +403,13 @@ export default class PickTheSymbols extends H5P.Question {
 
     /**
      * Determine whether the task has been passed by the user.
-     * @return {boolean} True if user passed or task is not scored.
+     * @returns {boolean} True if user passed or task is not scored.
      */
     this.isPassed = () => this.getScore() === this.getMaxScore();
 
     /**
      * Get tasks title.
-     * @return {string} Title.
+     * @returns {string} Title.
      */
     this.getTitle = () => {
       let raw;
@@ -429,13 +424,13 @@ export default class PickTheSymbols extends H5P.Question {
 
     /**
      * Get tasks description.
-     * @return {string} Description.
+     * @returns {string} Description.
      */
     this.getDescription = () => this.params.taskDescription || PickTheSymbols.DEFAULT_DESCRIPTION;
 
     /**
      * Answer call to return the current state.
-     * @return {object} Current state.
+     * @returns {object} Current state.
      */
     this.getCurrentState = () => {
       return {

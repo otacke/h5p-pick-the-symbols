@@ -3,10 +3,9 @@ import Util from './h5p-pick-the-symbols-util';
 /** Class representing the content */
 export default class PickTheSymbolsChooser {
   /**
-   * @constructor
-   *
+   * @class
    * @param {object} params Parameters.
-   * @param {object} [callbacks={}] Callbacks.
+   * @param {object} [callbacks] Callbacks.
    */
   constructor(params = {}, callbacks = {}) {
     this.params = params;
@@ -39,7 +38,7 @@ export default class PickTheSymbolsChooser {
     this.symbolButtonsContainer.classList.add('h5p-pick-the-symbols-chooser-symbol-buttons');
     this.content.appendChild(this.symbolButtonsContainer);
 
-    params.symbols.forEach(symbol => {
+    params.symbols.forEach((symbol) => {
       const button = document.createElement('button');
       button.classList.add('h5p-joubelui-button');
       button.classList.add('h5p-pick-the-symbols-chooser-symbol-buttons-button');
@@ -88,8 +87,7 @@ export default class PickTheSymbolsChooser {
 
   /**
    * Return the DOM for this class.
-   *
-   * @return {HTMLElement} DOM for this class.
+   * @returns {HTMLElement} DOM for this class.
    */
   getDOM() {
     return this.content;
@@ -97,7 +95,7 @@ export default class PickTheSymbolsChooser {
 
   /**
    * Resize.
-   * @param {object} [params={}] Parameters.
+   * @param {object} [params] Parameters.
    * @param {number} [params.maxWidth] Maximum width available.
    */
   resize(params = {}) {
@@ -128,6 +126,7 @@ export default class PickTheSymbolsChooser {
 
   /**
    * Toggle visibility of button for removing blank.
+   * @param {boolean} state State.
    */
   toggleAddButtonAddBlank(state) {
     state = (typeof state === 'boolean') ? state : !this.hasButtonAddBlank;
@@ -144,6 +143,7 @@ export default class PickTheSymbolsChooser {
 
   /**
    * Toggle visibility of button for removing blank.
+   * @param {boolean} state State.
    */
   toggleAddButtonRemoveBlank(state) {
     state = (typeof state === 'boolean') ? state : !this.hasButtonRemoveBlank;
@@ -160,6 +160,7 @@ export default class PickTheSymbolsChooser {
 
   /**
    * Toggle blank buttons container visibility
+   * @param {boolean} state State.
    */
   toggleBlankButtonsContainer(state) {
     state = (typeof state === 'boolean') ? state : !this.hasBlankButtonsContainer;
@@ -177,7 +178,7 @@ export default class PickTheSymbolsChooser {
    * @param {string} symbol Symbol.
    */
   activateButton(symbol) {
-    this.buttons.forEach(button => {
+    this.buttons.forEach((button) => {
       if (button.innerHTML === symbol) {
         button.focus();
       }
@@ -204,7 +205,7 @@ export default class PickTheSymbolsChooser {
 
   /**
    * Truncate a button.
-   * @param {Button} button Button HTMLElement.
+   * @param {HTMLButtonElement} button Button HTMLElement.
    */
   truncate(button) {
     button.classList.add('truncated');
@@ -213,7 +214,7 @@ export default class PickTheSymbolsChooser {
 
   /**
    * Untruncate a button.
-   * @param {Button} button Button HTMLElement.
+   * @param {HTMLButtonElement} button Button HTMLElement.
    */
   untruncate(button) {
     button.classList.remove('truncated');
@@ -222,11 +223,11 @@ export default class PickTheSymbolsChooser {
 
   /**
    * Compute min and max width of a blank button.
-   * @param {Button} button Button HTMLElement.
-   * @return {object} MinWidth and MaxWidth.
+   * @param {HTMLButtonElement} button Button HTMLElement.
+   * @returns {object} MinWidth and MaxWidth.
    */
   computeButtonWidths(button) {
-    const widths = {min: 0, max: 0};
+    const widths = { min: 0, max: 0 };
     const wasTruncated = button.classList.contains('truncated');
 
     button.classList.add('truncated');
@@ -245,7 +246,7 @@ export default class PickTheSymbolsChooser {
   /**
    * Get computed width of an element.
    * @param {HTMLElement} element Element.
-   * @return {number} Width.
+   * @returns {number} Width.
    */
   getComputedWidth(element) {
     const style = window.getComputedStyle(element);

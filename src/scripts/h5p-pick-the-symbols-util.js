@@ -2,14 +2,16 @@
 class Util {
   /**
    * Extend an array just like JQuery's extend.
-   * @param {object} arguments Objects to be merged.
-   * @return {object} Merged objects.
+   * @returns {object} Merged objects.
    */
   static extend() {
     for (let i = 1; i < arguments.length; i++) {
       for (let key in arguments[i]) {
-        if (arguments[i].hasOwnProperty(key)) {
-          if (typeof arguments[0][key] === 'object' && typeof arguments[i][key] === 'object') {
+        if (Object.prototype.hasOwnProperty.call(arguments[i], key)) {
+          if (
+            typeof arguments[0][key] === 'object' &&
+            typeof arguments[i][key] === 'object'
+          ) {
             this.extend(arguments[0][key], arguments[i][key]);
           }
           else {
@@ -24,7 +26,7 @@ class Util {
   /**
    * Retrieve true string from HTML encoded string.
    * @param {string} input Input string.
-   * @return {string} Output string.
+   * @returns {string} Output string.
    */
   static htmlDecode(input) {
     var dparser = new DOMParser().parseFromString(input, 'text/html');
@@ -33,8 +35,8 @@ class Util {
 
   /**
    * Retrieve string without HTML tags.
-   * @param {string} input Input string.
-   * @return {string} Output string.
+   * @param {string} html Input string.
+   * @returns {string} Output string.
    */
   static stripHTML(html) {
     const div = document.createElement('div');
@@ -42,11 +44,12 @@ class Util {
     return div.textContent || div.innerText || '';
   }
 
-  /** Get top DOM Window object.
-	 * @param {Window} [startWindow=window] Window to start looking from.
-   * @param {number} [maxLevel=Infinity];
-	 * @return {Window|false} Top window.
-	 */
+  /**
+   * Get top DOM Window object.
+   * @param {Window} [startWindow] Window to start looking from.
+   * @param {number} [maxLevel] Maximum level.
+   * @returns {Window|false} Top window.
+   */
   static getTopWindow(startWindow = window, maxLevel = Infinity) {
     if (maxLevel === 0) {
       return startWindow;
@@ -74,8 +77,8 @@ class Util {
   /**
    * Format language tag (RFC 5646). Assuming "language-coutry". No validation.
    * Cmp. https://tools.ietf.org/html/rfc5646
-   * @param {string} languageTag Language tag.
-   * @return {string} Formatted language tag.
+   * @param {string} languageCode Language tag.
+   * @returns {string} Formatted language tag.
    */
   static formatLanguageCode(languageCode) {
     if (typeof languageCode !== 'string') {

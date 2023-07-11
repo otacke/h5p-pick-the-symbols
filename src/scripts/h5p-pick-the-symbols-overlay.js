@@ -3,11 +3,10 @@ import Util from './h5p-pick-the-symbols-util';
 /** Class representing the content */
 export default class Overlay {
   /**
-   * @constructor
-   *
+   * @class
    * @param {object} params Parameters.
    * @param {HTMLElement} params.content Content to set.
-   * @param {object} callbacks, Callbacks.
+   * @param {object} callbacks Callbacks.
    */
   constructor(params, callbacks = {}) {
     this.params = Util.extend({
@@ -50,7 +49,7 @@ export default class Overlay {
     this.overlay.appendChild(this.buttonClose);
 
     // Trap focus if overlay is visible
-    document.addEventListener('focus', event => {
+    document.addEventListener('focus', (event) => {
       if (!this.isVisible || this.focusableElements.length === 0) {
         return;
       }
@@ -61,8 +60,7 @@ export default class Overlay {
 
   /**
    * Return the DOM for this class.
-   *
-   * @return {HTMLElement} DOM for this class.
+   * @returns {HTMLElement} DOM for this class.
    */
   getDOM() {
     return this.overlay;
@@ -70,21 +68,20 @@ export default class Overlay {
 
   /**
    * Get absolute coordinates for the overlay.
-   *
-   * @param {DOM} element Reference element to show overlay message for.
-   * @param {DOM} overlay Overlay element.
-   * @param {object} [position={}] Relative positioning of the overlay message.
-   * @param {string} [position.horizontal=centered] [before|left|centered|right|after].
-   * @param {string} [position.vertical=below] [above|top|centered|bottom|below].
-   * @param {number} [position.offsetHorizontal=0] Extra horizontal offset.
-   * @param {number} [position.offsetVertical=0] Extra vetical offset.
-   * @param {boolean} [position.noOverflowLeft=false] True to prevent overflow left.
-   * @param {boolean} [position.noOverflowRight=false] True to prevent overflow right.
-   * @param {boolean} [position.noOverflowTop=false] True to prevent overflow top.
-   * @param {boolean} [position.noOverflowBottom=false] True to prevent overflow bottom.
-   * @param {boolean} [position.noOverflowX=false] True to prevent overflow left and right.
-   * @param {boolean} [position.noOverflowY=false] True to prevent overflow top and bottom.
-   * @return {object}
+   * @param {HTMLElement} element Reference element to show overlay message for.
+   * @param {HTMLElement} overlay Overlay element.
+   * @param {object} [position] Relative positioning of the overlay message.
+   * @param {string} [position.horizontal] [before|left|centered|right|after].
+   * @param {string} [position.vertical] [above|top|centered|bottom|below].
+   * @param {number} [position.offsetHorizontal] Extra horizontal offset.
+   * @param {number} [position.offsetVertical] Extra vetical offset.
+   * @param {boolean} [position.noOverflowLeft] True to prevent overflow left.
+   * @param {boolean} [position.noOverflowRight] True to prevent overflow right.
+   * @param {boolean} [position.noOverflowTop] True to prevent overflow top.
+   * @param {boolean} [position.noOverflowBottom] True to prevent overflow bottom.
+   * @param {boolean} [position.noOverflowX] True to prevent overflow left and right.
+   * @param {boolean} [position.noOverflowY] True to prevent overflow top and bottom.
+   * @returns {object} Coordinates.
    */
   getOverlayCoordinates(element, overlay, position) {
     position = position || {};
@@ -155,14 +152,15 @@ export default class Overlay {
       left = bounds.y + bounds.height - overlayRect.height;
     }
 
-    return {left: left, top: top};
+    return { left: left, top: top };
   }
 
   /**
    * Get coordinates for marker.
    * @param {HTMLElement} element Element to fix to.
    * @param {HTMLElement} marker Marker.
-   * @param {number} [overlayOffset=0] Vertical offset.
+   * @param {number} [overlayPosition] Vertical offset.
+   * @returns {object} Coordinates.
    */
   getMarkerCoordinates(element, marker, overlayPosition = 0) {
     const elementRect = element.getBoundingClientRect();
@@ -171,13 +169,13 @@ export default class Overlay {
     let left = - overlayPosition + elementRect.left + (elementRect.width - markerRect.width) / 2;
     let top = marker.style.top || 0;
 
-    return {left: left, top: top};
+    return { left: left, top: top };
   }
 
   /**
    * Visually attach to parent element.
    * @param {HTMLElement} element Element to attach to.
-   * @return {object} Position.
+   * @returns {object} Position.
    */
   moveTo(element) {
     // Content has to be set before getting the coordinates
@@ -192,7 +190,7 @@ export default class Overlay {
     coordinates = this.getMarkerCoordinates(element, this.marker, Math.round(coordinates.left));
     this.marker.style.left = `${Math.round(coordinates.left + closeButtonOffset)}px`;
 
-    return {left: this.overlay.style.left, top: this.overlay.style.top};
+    return { left: this.overlay.style.left, top: this.overlay.style.top };
   }
 
   /**
@@ -228,8 +226,8 @@ export default class Overlay {
 
   /**
    * Check whether an HTML element is a child of the overlay.
-   * @param {HTMLElement} element.
-   * @return {boolean} True, if element is a child.
+   * @param {HTMLElement} element Element.
+   * @returns {boolean} True, if element is a child.
    */
   isChild(element) {
     const parent = element.parentNode;
@@ -251,7 +249,7 @@ export default class Overlay {
   updateFocusableElements() {
     this.focusableElements = []
       .slice.call(this.overlay.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'))
-      .filter(element => element.getAttribute('disabled') !== 'true' && element.getAttribute('disabled') !== true);
+      .filter((element) => element.getAttribute('disabled') !== 'true' && element.getAttribute('disabled') !== true);
   }
 
   /**

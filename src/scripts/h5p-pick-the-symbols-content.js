@@ -1,8 +1,8 @@
-import Overlay from './h5p-pick-the-symbols-overlay';
-import PickTheSymbolsBlank from './h5p-pick-the-symbols-blank';
-import PickTheSymbolsBlankGroup from './h5p-pick-the-symbols-blank-group';
-import PickTheSymbolsChooser from './h5p-pick-the-symbols-chooser';
-import Util from './h5p-pick-the-symbols-util';
+import Overlay from './h5p-pick-the-symbols-overlay.js';
+import PickTheSymbolsBlank from './h5p-pick-the-symbols-blank.js';
+import PickTheSymbolsBlankGroup from './h5p-pick-the-symbols-blank-group.js';
+import PickTheSymbolsChooser from './h5p-pick-the-symbols-chooser.js';
+import Util from './h5p-pick-the-symbols-util.js';
 
 /** Class representing the content */
 export default class PickTheSymbolsContent {

@@ -1,5 +1,5 @@
-import PickTheSymbolsBlank from './h5p-pick-the-symbols-blank';
-import Util from './h5p-pick-the-symbols-util';
+import PickTheSymbolsBlank from './h5p-pick-the-symbols-blank.js';
+import Util from './h5p-pick-the-symbols-util.js';
 
 /** Class representing a group of blanks */
 export default class PickTheSymbolsBlankGroup {

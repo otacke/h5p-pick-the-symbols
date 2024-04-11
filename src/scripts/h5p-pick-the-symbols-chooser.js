@@ -1,4 +1,4 @@
-import Util from './h5p-pick-the-symbols-util';
+import Util from './h5p-pick-the-symbols-util.js';
 
 /** Class representing the content */
 export default class PickTheSymbolsChooser {

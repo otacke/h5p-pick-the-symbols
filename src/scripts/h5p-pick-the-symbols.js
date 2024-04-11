@@ -1,7 +1,7 @@
 // Import required classes
-import PickTheSymbolsBlank from './h5p-pick-the-symbols-blank';
-import PickTheSymbolsContent from './h5p-pick-the-symbols-content';
-import Util from './h5p-pick-the-symbols-util';
+import PickTheSymbolsBlank from './h5p-pick-the-symbols-blank.js';
+import PickTheSymbolsContent from './h5p-pick-the-symbols-content.js';
+import Util from './h5p-pick-the-symbols-util.js';
 
 /**
  * Class holding a full PickTheSymbols.

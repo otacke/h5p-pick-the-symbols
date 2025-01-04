@@ -29,10 +29,10 @@
     "mini-css-extract-plugin": "^2.9.2",
     "regenerator-runtime": "^0.14.1",
     "resolve-url-loader": "^5.0.0",
-    "sass": "^1.83.0",
+    "sass": "^1.83.1",
     "sass-loader": "^16.0.4",
     "webpack": "^5.97.1",
-    "webpack-cli": "^5.1.4"
+    "webpack-cli": "^6.0.1"
   },
   "browserslist": "> 0.5%, last 2 versions, Firefox ESR, not dead",
   "type": "module"

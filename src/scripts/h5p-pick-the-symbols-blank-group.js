@@ -64,13 +64,13 @@ export default class PickTheSymbolsBlankGroup {
           slimBlanks: this.params.slimBlanks,
           answer: answer,
           solution: solution,
-          l10n: this.params.l10n
+          l10n: this.params.l10n,
         },
         {
           onClick: (blank) => {
             this.handleOpenOverlay(blank);
-          }
-        }
+          },
+        },
       );
 
       this.blanks.push(blank);
@@ -82,7 +82,7 @@ export default class PickTheSymbolsBlankGroup {
    * Remove last blank from the group.
    */
   removeBlank() {
-    if (this.blanks.length < 2) {
+    if (this.blanks.length === 1 || this.blanks.length === 0) {
       return;
     }
 

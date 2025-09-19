@@ -14,8 +14,8 @@ export default class Overlay {
       styleBase: 'h5p-pick-the-symbols-overlay',
       position: {
         offsetHorizontal : 0,
-        offsetVertical : 0
-      }
+        offsetVertical : 0,
+      },
     }, params);
 
     this.callbacks = callbacks;
@@ -109,9 +109,11 @@ export default class Overlay {
         left = elementRect.left + elementRect.width - overlayRect.width - position.offsetHorizontal;
         break;
       case 'centered':
+        // eslint-disable-next-line no-magic-numbers
         left = elementRect.left + elementRect.width / 2 - overlayRect.width / 2 + position.offsetHorizontal;
         break;
       default:
+        // eslint-disable-next-line no-magic-numbers
         left = elementRect.left + elementRect.width / 2 - overlayRect.width / 2 + position.offsetHorizontal;
     }
 
@@ -130,6 +132,7 @@ export default class Overlay {
         top = elementRect.top + elementRect.height - overlayRect.height - position.offsetVertical;
         break;
       case 'centered':
+        // eslint-disable-next-line no-magic-numbers
         top = elementRect.top + elementRect.height / 2 - overlayRect.height / 2 + position.offsetVertical;
         break;
       default:
@@ -142,13 +145,17 @@ export default class Overlay {
     if ((position.noOverflowLeft || position.noOverflowX) && (left < bounds.x)) {
       left = bounds.x;
     }
-    if ((position.noOverflowRight || position.noOverflowX) && ((left + overlayRect.width) > (bounds.x + bounds.width))) {
+    if (
+      (position.noOverflowRight || position.noOverflowX) && ((left + overlayRect.width) > (bounds.x + bounds.width))
+    ) {
       left = bounds.x + bounds.width - overlayRect.width;
     }
     if ((position.noOverflowTop || position.noOverflowY) && (top < bounds.y)) {
       top = bounds.y;
     }
-    if ((position.noOverflowBottom || position.noOverflowY) && ((top + overlayRect.height) > (bounds.y + bounds.height))) {
+    if (
+      (position.noOverflowBottom || position.noOverflowY) && ((top + overlayRect.height) > (bounds.y + bounds.height))
+    ) {
       left = bounds.y + bounds.height - overlayRect.height;
     }
 
@@ -166,6 +173,7 @@ export default class Overlay {
     const elementRect = element.getBoundingClientRect();
     const markerRect = marker.getBoundingClientRect();
 
+    // eslint-disable-next-line no-magic-numbers
     let left = - overlayPosition + elementRect.left + (elementRect.width - markerRect.width) / 2;
     let top = marker.style.top || 0;
 
@@ -248,7 +256,9 @@ export default class Overlay {
    */
   updateFocusableElements() {
     this.focusableElements = []
-      .slice.call(this.overlay.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'))
+      .slice.call(
+        this.overlay.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'),
+      )
       .filter((element) => element.getAttribute('disabled') !== 'true' && element.getAttribute('disabled') !== true);
   }
 

@@ -38,7 +38,7 @@ export default class PickTheSymbols extends H5P.Question {
         colorBackground: '#ffffff',
         slimBlanks: false,
         infiniteChecking: true,
-        showAllBlanks: false
+        showAllBlanks: false,
       },
       l10n: {
         checkAnswer: 'Check answer',
@@ -50,7 +50,7 @@ export default class PickTheSymbols extends H5P.Question {
         chooserTitle: 'Pick the symbol',
         addBlank: 'Add blank',
         addSymbol: 'Fill blank with @symbol',
-        removeBlank: 'Remove blank'
+        removeBlank: 'Remove blank',
       },
       a11y: {
         scoreBarLabel: 'You got :num out of :total points',
@@ -101,8 +101,8 @@ export default class PickTheSymbols extends H5P.Question {
         dividedBy: 'divided by',
         multipliedBy: 'multipled by',
         lessThan: 'less than',
-        greaterThan: 'greater than'
-      }
+        greaterThan: 'greater than',
+      },
     }, this.params);
 
     // decode HTML for titles/aria-labels
@@ -150,9 +150,9 @@ export default class PickTheSymbols extends H5P.Question {
             addBlank: this.params.l10n.addBlank,
             addSymbol: this.params.l10n.addSymbol,
             closeWindow: this.params.l10n.closeWindow,
-            removeBlank: this.params.l10n.removeBlank
+            removeBlank: this.params.l10n.removeBlank,
           },
-          a11y: this.params.a11y
+          a11y: this.params.a11y,
         },
         {
           onInteracted: () => {
@@ -160,10 +160,10 @@ export default class PickTheSymbols extends H5P.Question {
           },
           onResize: () => {
             this.resize({
-              bubblingUp: true
+              bubblingUp: true,
             });
-          }
-        }
+          },
+        },
         );
 
         // Register content with H5P.Question
@@ -196,13 +196,13 @@ export default class PickTheSymbols extends H5P.Question {
 
         // Show result in aria label
         this.content.relabelBlanks({
-          result: true
+          result: true,
         });
 
         // Highlight answers depending on settings
         this.content.showSolutions({
           highlight: PickTheSymbolsBlank.HIGHLIGHT_CORRECT,
-          score: true
+          score: true,
         });
 
         const textScore = H5P.Question.determineOverallFeedback(
@@ -212,7 +212,7 @@ export default class PickTheSymbols extends H5P.Question {
           textScore,
           this.getScore(),
           this.getMaxScore(),
-          Util.stripHTML(this.params.a11y.scoreBarLabel.replace('@score', ':num').replace('@total', ':total'))
+          Util.stripHTML(this.params.a11y.scoreBarLabel.replace('@score', ':num').replace('@total', ':total')),
         );
 
         if (!this.params.behaviour.infiniteChecking) {
@@ -233,7 +233,7 @@ export default class PickTheSymbols extends H5P.Question {
         this.reset({
           keepAnswers: true,
           keepAnsweredBlanks: this.content.isSolutionShowing(),
-          keepAllBlanks: !this.content.isSolutionShowing()
+          keepAllBlanks: !this.content.isSolutionShowing(),
         });
       }, false, {}, {});
 
@@ -312,12 +312,12 @@ export default class PickTheSymbols extends H5P.Question {
       this.content.showSolutions({
         highlight: PickTheSymbolsBlank.HIGHLIGHT_ALL,
         answer: true,
-        score: false
+        score: false,
       });
 
       this.content.relabelBlanks({
         result: true,
-        correctAnswer: true
+        correctAnswer: true,
       });
       this.trigger('resize');
     };
@@ -351,7 +351,7 @@ export default class PickTheSymbols extends H5P.Question {
      * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-6}
      */
     this.getXAPIData = () => ({
-      statement: this.getXAPIAnswerEvent().data.statement
+      statement: this.getXAPIAnswerEvent().data.statement,
     });
 
     /**
@@ -434,7 +434,7 @@ export default class PickTheSymbols extends H5P.Question {
      */
     this.getCurrentState = () => {
       return {
-        answers: this.content.getCurrentState()
+        answers: this.content.getCurrentState(),
       };
     };
 

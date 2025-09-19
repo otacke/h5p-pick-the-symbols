@@ -4,6 +4,9 @@ import PickTheSymbolsBlankGroup from './h5p-pick-the-symbols-blank-group.js';
 import PickTheSymbolsChooser from './h5p-pick-the-symbols-chooser.js';
 import Util from './h5p-pick-the-symbols-util.js';
 
+/** @constant {number} COMPLEX_BLANK_THRESHOLD Minimum number of items in a complex blank. */
+const COMPLEX_BLANK_THRESHOLD = 2;
+
 /** Class representing the content */
 export default class PickTheSymbolsContent {
   /**
@@ -20,7 +23,7 @@ export default class PickTheSymbolsContent {
 
     this.callbacks = Util.extend({
       onInteracted: () => {},
-      onResize: () => {}
+      onResize: () => {},
     }, callbacks);
 
     this.verboseSymbolMapping = {
@@ -65,7 +68,7 @@ export default class PickTheSymbolsContent {
       '÷': this.params.a11y.dividedBy,
       '×': this.params.a11y.multipliedBy,
       '<': this.params.a11y.lessThan,
-      '>': this.params.a11y.greaterThan
+      '>': this.params.a11y.greaterThan,
     };
 
     this.blankGroups = [];
@@ -86,7 +89,7 @@ export default class PickTheSymbolsContent {
     this.textBlankGroups = this.textBlankGroups.map((group) => group.trim());
 
     // Check if there are "complicated" blanks
-    this.onlySimpleBlanks = this.textBlankGroups.every((group) => group.length < 2);
+    this.onlySimpleBlanks = this.textBlankGroups.every((group) => group.length < COMPLEX_BLANK_THRESHOLD);
 
     this.enabled = true;
 
@@ -120,9 +123,9 @@ export default class PickTheSymbolsContent {
           title: this.params.l10n.chooserTitle,
           addBlank: this.params.l10n.addBlank,
           addSymbol: this.params.l10n.addSymbol,
-          removeBlank: this.params.l10n.removeBlank
+          removeBlank: this.params.l10n.removeBlank,
         },
-        a11y: this.params.a11y
+        a11y: this.params.a11y,
       },
       {
         onPickSymbol: (symbol) => {
@@ -136,8 +139,8 @@ export default class PickTheSymbolsContent {
         },
         onGetVerboseSymbol: (symbol) => {
           return this.getVerboseSymbol(symbol);
-        }
-      }
+        },
+      },
     );
 
     this.overlay = new Overlay(
@@ -145,19 +148,19 @@ export default class PickTheSymbolsContent {
         content: this.chooser.getDOM(),
         l10n: {
           title: this.params.l10n.chooserTitle,
-          closeWindow: this.params.l10n.closeWindow
+          closeWindow: this.params.l10n.closeWindow,
         },
         position: {
           horizontal: 'left',
           noOverflowX: true,
-          offsetVertical: 5
-        }
+          offsetVertical: 5,
+        },
       },
       {
         onClose: () => {
           this.handleCloseOverlay();
-        }
-      }
+        },
+      },
     );
     this.content.appendChild(this.overlay.getDOM());
 
@@ -195,14 +198,14 @@ export default class PickTheSymbolsContent {
           solution: this.textBlankGroups[index],
           xAPIPlaceholder: this.params.xAPIPlaceholder,
           l10n: {
-            title: this.params.l10n.blankButtonTitle
-          }
+            title: this.params.l10n.blankButtonTitle,
+          },
         },
         {
           onOpenOverlay: (blankGroup, blank) => {
             this.handleOpenOverlay(blankGroup, blank);
-          }
-        }
+          },
+        },
       );
       this.blankGroups.push(blankGroup);
 
@@ -334,7 +337,7 @@ export default class PickTheSymbolsContent {
   handleChooserAddBlank() {
     if (this.currentBlankGroup.getBlank() === this.currentBlank) {
       this.currentBlankGroup.addBlank({
-        provideDefaultSpace: true
+        provideDefaultSpace: true,
       });
     }
 
@@ -366,7 +369,7 @@ export default class PickTheSymbolsContent {
       // Resize chooser content to fit buttons
       const pos = this.overlay.moveTo(this.currentBlank.getBlankDOM());
       this.chooser.resize({
-        maxWidth: this.content.offsetWidth - parseFloat(pos.left)
+        maxWidth: this.content.offsetWidth - parseFloat(pos.left),
       });
 
       // Resize for overlay adjustments
@@ -632,6 +635,7 @@ export default class PickTheSymbolsContent {
           if (blank !== '') {
             // Previous group had blank symbols, can be pushed
             blanks.push(blank);
+            // eslint-disable-next-line @stylistic/js/max-len
             blocks.push(`${PickTheSymbolsContent.getWordGroupMarkerStart()}${block}${PickTheSymbolsContent.getPlaceholderText()}${PickTheSymbolsContent.getWordGroupMarkerEnd()}`);
             blank = '';
             block = '';
@@ -650,6 +654,7 @@ export default class PickTheSymbolsContent {
           placeholder = PickTheSymbolsContent.getPlaceholderText();
           blanks.push(blank);
         }
+        // eslint-disable-next-line @stylistic/js/max-len
         blocks.push(`${PickTheSymbolsContent.getWordGroupMarkerStart()}${block}${placeholder}${PickTheSymbolsContent.getWordGroupMarkerEnd()}`);
       }
 
@@ -662,7 +667,10 @@ export default class PickTheSymbolsContent {
 
     // Replace markers with actual span, can't use those before as </span> might be in input
     while (output.indexOf(PickTheSymbolsContent.getWordGroupMarkerStart()) !== -1) {
-      output = output.replace(PickTheSymbolsContent.getWordGroupMarkerStart(), '<span class="h5p-pick-the-symbols-word-group">');
+      output = output.replace(
+        PickTheSymbolsContent.getWordGroupMarkerStart(),
+        '<span class="h5p-pick-the-symbols-word-group">',
+      );
       placeholder = placeholder.replace(PickTheSymbolsContent.getWordGroupMarkerStart(), '');
     }
 

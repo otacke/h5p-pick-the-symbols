@@ -17,7 +17,7 @@ export default class PickTheSymbolsBlank {
     this.answer = params.answer || null;
 
     this.callbacks = Util.extend({
-      onClick: () => {}
+      onClick: () => {},
     }, callbacks);
 
     this.solution = params.solution;

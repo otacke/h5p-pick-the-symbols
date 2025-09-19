@@ -1,5 +1,8 @@
 import Util from './h5p-pick-the-symbols-util.js';
 
+/** @constant {number} BUTTONS_IN_ROW_MIN Minimum number of buttons in a row. */
+const BUTTONS_IN_ROW_MIN = 2;
+
 /** Class representing the content */
 export default class PickTheSymbolsChooser {
   /**
@@ -15,7 +18,7 @@ export default class PickTheSymbolsChooser {
       onPickSymbol: () => {},
       onRemoveBlank: () => {},
       onResize: () => {},
-      onGetVerboseSymbol: () => {}
+      onGetVerboseSymbol: () => {},
     }, callbacks);
 
     this.buttons = [];
@@ -43,7 +46,14 @@ export default class PickTheSymbolsChooser {
       button.classList.add('h5p-joubelui-button');
       button.classList.add('h5p-pick-the-symbols-chooser-symbol-buttons-button');
       button.innerHTML = symbol;
-      button.setAttribute('title', this.params.l10n.addSymbol.replace(/@symbol/g, (symbol === '&nbsp;') ? this.callbacks.onGetVerboseSymbol(symbol) : symbol));
+      button.setAttribute(
+        'title',
+        this.params.l10n.addSymbol.replace(
+          /@symbol/g, (symbol === '&nbsp;') ?
+            this.callbacks.onGetVerboseSymbol(symbol) :
+            symbol,
+        ),
+      );
       button.setAttribute('aria-label', this.callbacks.onGetVerboseSymbol(symbol));
       button.addEventListener('click', () => {
         this.callbacks.onPickSymbol(button.innerHTML);
@@ -108,7 +118,7 @@ export default class PickTheSymbolsChooser {
 
     // Compute number of buttons in row
     const maxButtonsFitting = Math.floor((params.maxWidth + buttonMarginRight) / (buttonWidth + buttonMarginRight));
-    const maxButtonsInRow = Math.max(Math.min(this.buttons.length, maxButtonsFitting), 2); // At least two buttons
+    const maxButtonsInRow = Math.max(Math.min(this.buttons.length, maxButtonsFitting), BUTTONS_IN_ROW_MIN);
 
     // Fit content to number of buttons
     const maxWidth = maxButtonsInRow * buttonWidth + (maxButtonsInRow - 1) * buttonMarginRight;
@@ -250,8 +260,10 @@ export default class PickTheSymbolsChooser {
    */
   getComputedWidth(element) {
     const style = window.getComputedStyle(element);
-    const border = parseFloat(style.getPropertyValue('border-left')) + parseFloat(style.getPropertyValue('border-right'));
-    const margin = parseFloat(style.getPropertyValue('margin-left')) + parseFloat(style.getPropertyValue('margin-right'));
+    const border =
+      parseFloat(style.getPropertyValue('border-left')) + parseFloat(style.getPropertyValue('border-right'));
+    const margin =
+      parseFloat(style.getPropertyValue('margin-left')) + parseFloat(style.getPropertyValue('margin-right'));
     const width = parseFloat(style.getPropertyValue('width'));
 
     return width + margin + border;

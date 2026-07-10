@@ -1,6 +1,6 @@
 {
   "name": "h5p-pick-the-symbols",
-  "version": "0.1.15",
+  "version": "0.1.16",
   "description": "Let your student put the correct symbols into sentences",
   "private": true,
   "scripts": {

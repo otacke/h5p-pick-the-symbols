@@ -445,6 +445,14 @@ export default class PickTheSymbols extends H5P.Question {
       this.triggerXAPI('interacted');
     };
   }
+
+  /**
+   * Workaround for H5P core mutating prototype to inject its isRoot, but ES6 inheritance here.
+   * @returns {boolean} True, if content type is root. Else false.
+   */
+  isRoot() {
+    return !!this.extras.standalone;
+  }
 }
 
 /** @constant {string} */
